@@ -1,27 +1,48 @@
 {
   "name": "nsfw-commission-neo",
+  "author": "Crystallize",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "next lint --fix",
+    "prebuild": "tsx scripts/dl.ts && tsx scripts/rss.ts",
+    "prod": "pnpm prebuild && pnpm build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "latest",
     "react-dom": "latest",
-    "next": "latest"
+    "next": "latest",
+    "@headlessui/react": "^1.7.17",
+    "dotenv": "^16.3.1",
+    "rss": "^1.2.2",
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/react": "latest",
-    "@types/node": "latest",
-    "@types/react-dom": "latest",
+    "@next/env": "^13.5.3",
+    "@types/node": "^20.7.0",
+    "@types/react": "^18.2.22",
+    "@types/react-dom": "^18.2.7",
+    "@types/rss": "^0.0.30",
+    "@typescript-eslint/eslint-plugin": "^6.7.3",
+    "@typescript-eslint/parser": "^6.7.3",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.3",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2",
     "autoprefixer": "latest",
     "postcss": "latest",
-    "tailwindcss": "latest",
-    "eslint": "latest",
-    "eslint-config-next": "latest"
+    "tailwindcss": "latest"
   }
 }

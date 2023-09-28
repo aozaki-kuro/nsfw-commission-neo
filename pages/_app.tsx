@@ -1,6 +1,49 @@
-import '@/styles/globals.css'
+/* CSS */
+import '../styles/main.css'
+
 import type { AppProps } from 'next/app'
 
+/* Analytics */
+import CustomAnalytics from '#components/analytics'
+
+/* Custom Font */
+import localFont from 'next/font/local'
+
+const inter = localFont({
+  variable: '--font-inter',
+  display: 'block',
+  style: 'normal',
+  src: [
+    {
+      path: '../public/fonts/InterDisplay-roman.var.woff2',
+      weight: '100',
+      style: 'normal',
+    },
+    {
+      path: '../public/fonts/InterDisplay-roman.var.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+})
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <>
+      {/* headless UI is rendered in <body> and next/font cannot be used in _document.tsx
+       * So according to the issue
+       * https://github.com/tailwindlabs/headlessui/issues/2189
+       * Style should be injected into the html here.
+       */}
+      <style jsx global>{`
+        html {
+          font-family: ${inter.style.fontFamily};
+        }
+      `}</style>
+
+      {/* Normal part*/}
+      <Component {...pageProps} />
+      <CustomAnalytics />
+    </>
+  )
 }

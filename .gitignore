@@ -33,3 +33,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# public images
+data/commission/images/
+scripts/dl.js
+
+# sitemap & rss
+public/feed.xml
+public/sitemap*
+public/robots.txt
+
+# .env
+.env
