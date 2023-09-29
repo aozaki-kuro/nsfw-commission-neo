@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { CommissionInfoProps } from './types'
 import formatDate from '#components/lib/dateFormat'
-import kebabCase from '#components/lib/kebabCase' // Make sure you have this import
+import kebabCase from '#components/lib/kebabCase'
 
 const IllustratorInfo = ({
   PublishDate,

@@ -1,5 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+
 import Commission from './listing'
+import kebabCase from '#components/lib/kebabCase'
+import { charaDictionary } from '#data/CharaDictionary'
 
 const Stale = ({ Character }: { Character: string }) => {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -28,14 +32,28 @@ const Stale = ({ Character }: { Character: string }) => {
     }
   }, [])
 
+  const dictionaryEntry = charaDictionary.find(chara => chara.Abbr === Character)
+  const characterFullName = dictionaryEntry?.FullName || Character.toLowerCase()
+
   return (
     <div ref={ref}>
       {isLoaded ? (
-        <div>
-          <Commission Character={Character} />
-        </div>
+        <Commission Character={Character} />
       ) : (
-        <p>Loading...</p>
+        <>
+          <div id={kebabCase(characterFullName)}>
+            <h2 className="group relative pb-2 pt-4">
+              {characterFullName}
+              <Link
+                href={`#${kebabCase(characterFullName)}`}
+                className="ml-2 text-dec-light no-underline opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-dec-dark"
+              >
+                #
+              </Link>
+            </h2>
+          </div>
+          <p>Loading...</p>
+        </>
       )}
     </div>
   )
