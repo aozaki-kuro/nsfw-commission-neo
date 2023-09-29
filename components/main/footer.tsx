@@ -18,7 +18,7 @@ const Footer = () => {
         <p className="pt-2">This site has restricted search engines from indexing.</p>
       </div>
 
-      <small className="block pt-20 text-p-light dark:text-gray-300 ss:pt-10">
+      <small className="block pt-24 text-p-light dark:text-gray-300">
         <time>2020 - {new Date().getFullYear()}</time> ©{' '}
         <Link
           href="https://twitter.com/CrystallizeSub"
