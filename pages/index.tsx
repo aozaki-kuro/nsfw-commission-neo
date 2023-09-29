@@ -18,7 +18,7 @@ const Home: NextPage = () => {
 
       <Warning />
 
-      <div className="max-w-[40rem] pb-[128px] pt-20 ss:pt-7 ss:text-sm">
+      <div className="max-w-[40rem] pb-32 pt-20 ss:pb-12 ss:pt-7 ss:text-sm">
         <CommissionDescription />
 
         {/* Active Commissions */}
