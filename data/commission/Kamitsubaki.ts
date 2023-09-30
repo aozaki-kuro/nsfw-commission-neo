@@ -17,7 +17,7 @@ export const Kamitsubaki: Props[] = [
     fileName: '20230924',
     Character: currentChara,
     Twitter: '',
-    Pixiv: '',
+    Pixiv: 'https://www.pixiv.net/artworks/112144494',
     Skeb: '',
   },
 ]
