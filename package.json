@@ -62,5 +62,14 @@
       "object.values": "npm:@nolyfill/object.values@latest",
       "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
     }
-  }
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,jsx,ts,tsx}": [
+      "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/'"
+    ],
+    "*.{json,css,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@8.8.0"
 }
