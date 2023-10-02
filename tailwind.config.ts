@@ -21,6 +21,9 @@ export default {
       ],
       mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
     },
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         'p-light': '#313233',

@@ -2,8 +2,6 @@ import type { NextPage } from 'next'
 
 import Warning from '#components/warning'
 
-import CustomHead from '#components/main/head'
-
 import CommissionDescription from '#components/main/description'
 
 import Commission from '#components/commission/listing'
@@ -14,11 +12,9 @@ import Footer from '#components/main/footer'
 const Home: NextPage = () => {
   return (
     <>
-      <CustomHead />
-
       <Warning />
 
-      <div className="max-w-[40rem] pb-32 pt-20 ss:pb-16 ss:pt-7 ss:text-sm">
+      <div className="container max-w-[40rem] pb-32 pt-20 ss:pb-16 ss:pt-7 ss:text-sm">
         <CommissionDescription />
 
         {/* Active Commissions */}

@@ -3,8 +3,9 @@ import '../styles/main.css'
 
 import type { AppProps } from 'next/app'
 
-/* Analytics */
+/* Custom */
 import CustomAnalytics from '#components/analytics'
+import CustomHead from '#components/main/head'
 
 /* Custom Font */
 import localFont from 'next/font/local'
@@ -42,6 +43,7 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
 
       {/* Normal part*/}
+      <CustomHead />
       <Component {...pageProps} />
       <CustomAnalytics />
     </>
