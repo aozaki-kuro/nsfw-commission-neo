@@ -4,7 +4,7 @@ import '../styles/main.css'
 import type { AppProps } from 'next/app'
 
 /* Custom */
-import CustomAnalytics from '#components/analytics'
+import CustomAnalytics from '#components/Analytics'
 import CustomHead from '#components/main/CustomHead'
 
 /* Custom Font */
