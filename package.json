@@ -1,0 +1,75 @@
+{
+  "name": "nsfw-commission-neo",
+  "author": "Crystallize",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint-fix": "next lint --fix",
+    "prebuild": "tsx scripts/dl.ts && tsx scripts/rss.ts",
+    "prod": "pnpm prebuild && pnpm build",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "dotenv": "^16.3.1",
+    "next": "^13.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rss": "^1.2.2",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "@next/env": "^13.5.4",
+    "@types/node": "^20.8.2",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "@types/rss": "^0.0.30",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "autoprefixer": "^10.4.16",
+    "eslint": "8.50.0",
+    "eslint-config-next": "13.5.4",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "5.0.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "postcss": "^8.4.31",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.5",
+    "tailwindcss": "^3.3.3",
+    "tsx": "^3.13.0",
+    "typescript": "^5.2.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "array-includes": "npm:@nolyfill/array-includes@latest",
+      "array.prototype.findlastindex": "npm:@nolyfill/array.prototype.findlastindex@latest",
+      "array.prototype.flat": "npm:@nolyfill/array.prototype.flat@latest",
+      "array.prototype.flatmap": "npm:@nolyfill/array.prototype.flatmap@latest",
+      "array.prototype.tosorted": "npm:@nolyfill/array.prototype.tosorted@latest",
+      "es-iterator-helpers": "npm:@nolyfill/es-iterator-helpers@latest",
+      "has": "npm:@nolyfill/has@latest",
+      "object.assign": "npm:@nolyfill/object.assign@latest",
+      "object.entries": "npm:@nolyfill/object.entries@latest",
+      "object.fromentries": "npm:@nolyfill/object.fromentries@latest",
+      "object.groupby": "npm:@nolyfill/object.groupby@latest",
+      "object.hasown": "npm:@nolyfill/object.hasown@latest",
+      "object.values": "npm:@nolyfill/object.values@latest",
+      "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest"
+    }
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,jsx,ts,tsx}": [
+      "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/'"
+    ],
+    "*.{json,css,md,mdx}": [
+      "prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@8.8.0"
+}
