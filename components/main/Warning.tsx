@@ -11,7 +11,7 @@ export default function MyModal() {
     const hasConfirmedAge = localStorage.getItem(confirmedAgeStorageKey)
     if (hasConfirmedAge) {
       const timestamp = parseInt(hasConfirmedAge, 10)
-      const confirmTime = Date.now() - 12 * 60 * 60 * 1000
+      const confirmTime = Date.now() - 7 * 24 * 60 * 60 * 1000
       if (timestamp > confirmTime) {
         setIsOpen(false)
       }
