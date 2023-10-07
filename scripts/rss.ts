@@ -19,6 +19,11 @@ const characterNameMapping = Object.fromEntries(
   characterDictionary.map(({ Abbr, FullName }) => [Abbr, FullName.replace('_', '○')]),
 )
 
+// Filter for active characters
+const activeCharacters = characterDictionary
+  .filter(char => char.Active === true)
+  .map(char => char.Abbr)
+
 function extractDetailsFromFileName(fileName: string) {
   const [datePart, artistPart] = fileName.split('_')
   return {
@@ -38,6 +43,8 @@ async function generateRSSFeed() {
 
     // Enhanced sorting and reduced redundant computation
     const sortedCommissions = commissionData
+      // Only include commissions of active characters
+      .filter(commission => activeCharacters.includes(commission.Character))
       .map(commission => {
         const details = extractDetailsFromFileName(commission.fileName)
         return {
