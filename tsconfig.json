@@ -51,7 +51,7 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "#components/*": ["components/*"],
+      "#components/*": ["app/components/*"],
       "#images/*": ["public/images/*"],
       "#photography/*": ["public/images/photography/*"],
       "#commission/*": ["components/commission/*"],
