@@ -53,9 +53,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
               className="pt-4"
             >
               <Image
-                src={require(
-                  `data/commission/images/${commission.Character}/${commission.fileName}.jpg`,
-                )}
+                src={require(`data/images/${commission.Character}/${commission.fileName}.jpg`)}
                 alt={`${commission.Creator} ©️ ${commission.PublishDate}`}
                 quality={95}
                 placeholder="blur"
