@@ -29,8 +29,8 @@ export const metadata = SiteMeta
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} font-sans`}>
-      <body className="min-h-screen bg-back-light antialiased selection:bg-selected dark:bg-back-dark ss:mx-4">
-        <div className="container mx-auto max-w-[40rem] pb-32 pt-20 tracking-[0.005em] ss:min-h-dynamic ss:pb-16 ss:pt-7 ss:text-sm">
+      <body className="min-h-screen bg-back-light antialiased selection:bg-selected dark:bg-back-dark md:mx-4">
+        <div className="container mx-auto max-w-[40rem] pb-32 pt-20 tracking-custom ss:pb-16 ss:pt-7 ss:text-sm md:min-h-dynamic">
           {children}
         </div>
       </body>

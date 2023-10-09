@@ -13,13 +13,13 @@
     font-variation-settings: 'wght' 650;
     letter-spacing: -0.02em;
     margin-bottom: 0.4em;
-    @apply text-[1.6em] text-p-light dark:text-highlight ss:text-[1.6em];
+    @apply text-[1.6em] text-p-light dark:text-highlight md:text-[1.6em];
   }
 
   h2 {
     font-variation-settings: 'wght' 600;
     letter-spacing: -0.015em;
-    @apply text-[1.5em] text-p-light dark:text-highlight ss:text-[1.4em];
+    @apply text-[1.5em] text-p-light dark:text-highlight md:text-[1.4em];
   }
 
   h3,
@@ -37,7 +37,7 @@
   /* Spacing above and under <480px */
 
   article {
-    @apply ss:pb-16 ss:pt-8;
+    @apply md:pb-16 md:pt-8;
   }
 
   /* Article Main Font color */
