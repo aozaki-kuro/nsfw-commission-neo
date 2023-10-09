@@ -4,6 +4,8 @@ import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
 
+import HeadImage from '#images/nsfw-cover-s.jpg'
+
 const confirmedAgeStorageKey = 'hasConfirmedAge'
 
 export default function MyModal() {
@@ -62,7 +64,7 @@ export default function MyModal() {
               >
                 <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-back-dark">
                   <Image
-                    src={require('data/images/nsfw-cover-s.jpg')}
+                    src={HeadImage}
                     alt="NSFW Commissions"
                     quality={95}
                     placeholder="blur"

@@ -11,6 +11,17 @@ import IllustratorInfo from './IllustratorInfo'
 import CharacterTitle from './CharacterTitle'
 import StaleLoader from './StaleLoader'
 
+import { blurhashes } from '#data/blurhashes'
+
+const resolveImagePath = (character: string, fileName: string): string => {
+  return `/images/${character}/${fileName}.jpg`
+}
+
+const resolveBlurhash = (character: string, fileName: string): string | undefined => {
+  const key = `${character}/${fileName}.jpg`
+  return (blurhashes as Record<string, string>)[key] // This tells TypeScript to trust you that this is safe
+}
+
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()
 
@@ -43,7 +54,6 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   return (
     <div className="pb-4">
       <CharacterTitle Name={characterFullName} />
-
       <StaleLoader Name={characterFullName} isStale={isStale}>
         {commissions.length === 0 ? (
           <p>To be announced...</p>
@@ -55,10 +65,13 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
               className="pt-4"
             >
               <Image
-                src={require(`data/images/${commission.Character}/${commission.fileName}.jpg`)}
+                src={resolveImagePath(commission.Character, commission.fileName)}
+                placeholder="blur"
+                blurDataURL={resolveBlurhash(commission.Character, commission.fileName)}
                 alt={`${commission.Creator} ©️ ${commission.PublishDate}`}
                 quality={95}
-                placeholder="blur"
+                width={640}
+                height={272.5}
               />
               <IllustratorInfo commission={commission} />
             </div>
