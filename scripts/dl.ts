@@ -25,7 +25,7 @@ const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 // const msgInfo = '\x1b[0m[\x1b[33m INFO \x1b[0m]'
 // const msgWarn = '\x1b[0m[\x1b[33m WARN \x1b[0m]'
 
-const publicDirPath = './data/images'
+const publicDirPath = './public/images'
 
 dotenv.config()
 
