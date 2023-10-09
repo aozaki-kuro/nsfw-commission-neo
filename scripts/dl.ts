@@ -70,13 +70,13 @@ async function downloadImages() {
     await downloadResource(smallCoverUrl, smallCoverPath)
 
     const downloadPromises = commissionData.map(async commission => {
-      const { fileName, Character } = commission
-      const dirPath = path.join(publicDirPath, Character)
+      const { fileName } = commission
+      const dirPath = publicDirPath
 
       await fsPromises.mkdir(dirPath, { recursive: true })
 
       const filePath = path.join(dirPath, `${fileName}.jpg`)
-      const imageUrl = `https://${HOSTING}/nsfw-commission/${Character}/${fileName}.jpg`
+      const imageUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
 
       await downloadResource(imageUrl, filePath)
     })
