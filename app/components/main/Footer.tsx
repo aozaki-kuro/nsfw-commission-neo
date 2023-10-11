@@ -6,6 +6,8 @@ const Footer = () => {
       <div className="pt-4" />
       <hr />
       <div className="pb-8" />
+
+      {/* The disclaimers about copyrights */}
       <div className="pb-10 text-center text-xs">
         <p className="pt-2">
           規約による、Skeb でやり取りされた作品のすべての権利はクリエイターと版権元に帰属する。
@@ -18,6 +20,7 @@ const Footer = () => {
         <p className="pt-2">This site has restricted search engines from indexing.</p>
       </div>
 
+      {/* The dates, name and DMCA */}
       <small className="block pt-24 text-p-light dark:text-gray-300">
         <time>2022 - {new Date().getFullYear()}</time> © Crystallize
         <div className="float-right">

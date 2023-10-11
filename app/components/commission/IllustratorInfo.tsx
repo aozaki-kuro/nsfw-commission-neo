@@ -1,18 +1,9 @@
 import Link from 'next/link'
-import { formatDate, kebabCase } from '#components/utils'
-
-type CommissionType = {
-  FullName: string
-  PublishDate: string
-  Creator: string
-  Twitter?: string
-  Pixiv?: string
-  Fantia?: string
-  Skeb?: string
-}
+import { CommissionInfoProps } from './types'
+import { kebabCase, formatDate } from '#components/utils'
 
 type IllustratorInfoProps = {
-  commission: CommissionType
+  commission: CommissionInfoProps
 }
 
 const IllustratorInfo: React.FC<IllustratorInfoProps> = ({ commission }) => {
