@@ -10,6 +10,8 @@ import { useScrollHook } from './useScrollHook'
 import IllustratorInfo from './IllustratorInfo'
 import CharacterTitle from './CharacterTitle'
 import StaleLoader from './StaleLoader'
+import ImageModal from './ImageModal'
+import { useState } from 'react'
 
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()
@@ -38,6 +40,18 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
     // Sort commissions by publish date in descending order
     .sort((a, b) => b.PublishDate.localeCompare(a.PublishDate))
 
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalImageSrc, setModalImageSrc] = useState('')
+
+  const handleImageClick = (imgSrc: string) => {
+    setModalImageSrc(imgSrc)
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
   const characterFullName = commissions[0].FullName
 
   return (
@@ -59,12 +73,16 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
                 alt={`${commission.Creator} ©️ ${commission.PublishDate}`}
                 quality={95}
                 placeholder="blur"
+                onClick={() =>
+                  handleImageClick(require(`public/images/${commission.fileName}_full.jpg`))
+                }
               />
               <IllustratorInfo commission={commission} />
             </div>
           ))
         )}
       </StaleLoader>
+      <ImageModal isOpen={isModalOpen} onClose={closeModal} imgSrc={modalImageSrc} />
     </div>
   )
 }
