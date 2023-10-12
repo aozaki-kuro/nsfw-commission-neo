@@ -47,14 +47,6 @@
     @apply text-p-light dark:text-gray-300;
   }
 
-  blockquote {
-    @apply dark:!border-l-zinc-600;
-  }
-
-  summary {
-    cursor: pointer;
-  }
-
   hr {
     @apply dark:!border-[#292c2d];
   }
@@ -83,7 +75,6 @@
 /*=========================*/
 
 * {
-  line-height: 1.6;
   word-spacing: -0.04em;
 }
 
