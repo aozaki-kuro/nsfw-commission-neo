@@ -30,14 +30,17 @@ const IllustratorInfo: React.FC<IllustratorInfoProps> = ({ commission }) => {
       <span>{commission.Creator || '-'}</span>
       <span className="grow text-right">
         <span className="pr-3 md:pr-2" />
-        {!(commission.Twitter || commission.Pixiv || commission.Fantia || commission.Skeb) ? (
+        {!(
+          (commission.Twitter || commission.Pixiv || commission.Fantia)
+          // || commission.Skeb
+        ) ? (
           <span>N/A</span>
         ) : (
           <>
             {createLink(commission.Twitter || '', 'Twitter')}
             {createLink(commission.Pixiv || '', 'Pixiv')}
             {createLink(commission.Fantia || '', 'Fantia')}
-            {createLink(commission.Skeb || '', 'Skeb')}
+            {/* {createLink(commission.Skeb || '', 'Skeb')} */}
           </>
         )}
       </span>
