@@ -6,6 +6,7 @@ import Listing from '#components/commission/Listing'
 import Footer from '#components/main/Footer'
 
 import { characterDictionary } from '#data/commissionStatus'
+import RootLayout from './layout'
 
 const Home: NextPage = () => {
   // Segregate characters into active and stale
@@ -13,7 +14,7 @@ const Home: NextPage = () => {
   const staleChars = characterDictionary.filter(chara => !chara.Active)
 
   return (
-    <main>
+    <RootLayout>
       <Warning />
 
       <CommissionDescription />
@@ -34,7 +35,7 @@ const Home: NextPage = () => {
       ))}
 
       <Footer />
-    </main>
+    </RootLayout>
   )
 }
 
