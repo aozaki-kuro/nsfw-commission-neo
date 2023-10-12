@@ -6,7 +6,7 @@ type IllustratorInfoProps = {
   commission: CommissionInfoProps
 }
 
-const IllustratorInfo: React.FC<IllustratorInfoProps> = ({ commission }) => {
+const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
   const createLink = (url: string, text: string) => {
     return url ? (
       <>

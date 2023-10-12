@@ -8,11 +8,11 @@ interface ImageModalProps {
   imgSrc: string
 }
 
-const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imgSrc }) => {
+const ImageModal = ({ isOpen, onClose, imgSrc }: ImageModalProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={onClose}>
-        <div className="min-h-screen px-4 text-center">
+        <div className="flex min-h-screen items-center justify-center px-4 text-center">
           <Dialog.Overlay className="fixed inset-0 bg-black opacity-75" />
 
           <div
@@ -40,12 +40,12 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imgSrc }) => {
             &#8203;
           </span>
 
-          <div className="my-8 inline-block w-full max-w-2xl transform overflow-hidden bg-white p-4 text-left align-middle shadow-xl transition-all md:p-2">
+          <div className="inline-block transform overflow-hidden text-left align-middle shadow-xl transition-all">
             <div className="relative">
               <Image
                 src={imgSrc}
                 alt="Preview"
-                className="max-h-[2048px] w-full max-w-[2048px] object-contain"
+                className="mx-auto max-h-screen w-full max-w-[1024px] object-contain"
               />
             </div>
           </div>
