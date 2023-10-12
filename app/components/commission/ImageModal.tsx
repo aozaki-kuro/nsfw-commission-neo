@@ -11,7 +11,7 @@ interface ImageModalProps {
 const ImageModal = ({ isOpen, onClose, imgSrc }: ImageModalProps) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={onClose}>
+      <Dialog as="div" className="fixed inset-0" onClose={onClose}>
         <div className="flex min-h-screen items-center justify-center px-4 text-center">
           <Dialog.Overlay className="fixed inset-0 bg-black opacity-75" />
 
@@ -22,7 +22,7 @@ const ImageModal = ({ isOpen, onClose, imgSrc }: ImageModalProps) => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12 text-gray-500"
+              className="h-12 w-12 text-gray-500 md:h-8 md:w-8"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -36,16 +36,13 @@ const ImageModal = ({ isOpen, onClose, imgSrc }: ImageModalProps) => {
             </svg>
           </div>
 
-          <span className="inline-block h-screen align-middle" aria-hidden="true">
-            &#8203;
-          </span>
-
           <div className="inline-block transform overflow-hidden text-left align-middle shadow-xl transition-all">
             <div className="relative">
               <Image
                 src={imgSrc}
                 alt="Preview"
-                className="mx-auto max-h-screen w-full max-w-[1024px] object-contain"
+                className="mx-auto max-h-[1024px] w-full max-w-[860px] object-contain"
+                quality={75}
               />
             </div>
           </div>
