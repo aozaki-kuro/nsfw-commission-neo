@@ -1,3 +1,8 @@
-#! /bin/bash
+#!/bin/fish
 
-scp -r ./public/images/* aozaki@oracle-amd0:/home/aozaki/share/nsfw-commission/
+# Define the local and remote directories
+LOCAL_DIR="./public/images/"
+REMOTE_DIR="aozaki@oracle-amd0:./share/nsfw-commission/"
+
+# Run rsync to synchronize the directories
+rsync -avc $LOCAL_DIR $REMOTE_DIR
