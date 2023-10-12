@@ -17,7 +17,7 @@ export const commissionData: Props[] = [
   {
     fileName: '20230611_病ん太廊',
     Character: 'azki',
-    Twitter: 'https://www.pixiv.net/artworks/111809434',
+    Pixiv: 'https://www.pixiv.net/artworks/111809434',
     Skeb: 'https://skeb.jp/@hcz_n/works/51',
   },
   {
