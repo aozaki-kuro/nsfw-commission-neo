@@ -6,6 +6,7 @@ export interface Props {
   // Optional links, if no links were provided will show N/A
   Twitter?: string
   Pixiv?: string
+  Fanbox?: string
   Fantia?: string
   Skeb?: string
 }

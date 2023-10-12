@@ -4,7 +4,7 @@ export const commissionData: Props[] = [
   {
     fileName: '20230527_病ん太廊',
     Character: 'azki',
-    Pixiv: 'https://www.fanbox.cc/@hv-yantaro/posts/6073423',
+    Fanbox: 'https://www.fanbox.cc/@hv-yantaro/posts/6073423',
     Skeb: 'https://skeb.jp/@hcz_n/works/50',
   },
   {
@@ -121,6 +121,7 @@ export const commissionData: Props[] = [
     fileName: '20230405_島どうま',
     Character: 'nishe',
     Pixiv: 'https://www.pixiv.net/artworks/107783858',
+    Fanbox: 'https://www.fanbox.cc/@simado-ma/posts/5996475',
     Skeb: 'https://skeb.jp/@ikura_momen/works/97',
   },
   {

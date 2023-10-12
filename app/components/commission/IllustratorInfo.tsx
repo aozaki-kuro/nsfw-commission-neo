@@ -30,17 +30,14 @@ const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
       <span>{commission.Creator || '-'}</span>
       <span className="grow text-right">
         <span className="pr-3 md:pr-2" />
-        {!(
-          (commission.Twitter || commission.Pixiv || commission.Fantia)
-          // || commission.Skeb
-        ) ? (
+        {!(commission.Twitter || commission.Pixiv || commission.Fantia || commission.Fanbox) ? (
           <span>N/A</span>
         ) : (
           <>
             {createLink(commission.Twitter || '', 'Twitter')}
             {createLink(commission.Pixiv || '', 'Pixiv')}
+            {createLink(commission.Fanbox || '', 'Fanbox')}
             {createLink(commission.Fantia || '', 'Fantia')}
-            {/* {createLink(commission.Skeb || '', 'Skeb')} */}
           </>
         )}
       </span>
