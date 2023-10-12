@@ -17,8 +17,7 @@ const CommissionDescription = () => {
       </p>
       <p className="pt-6 md:pt-4">
         For illustrators who are interested in reaching out, feel free to contact me through{' '}
-        <Link href="https://skeb.jp/@Crystallize">skeb</Link>,{' '}
-        <Link href="https://odaibako.net/u/CrystallizeSub">odaibako</Link>, or{' '}
+        <Link href="https://odaibako.net/u/CrystallizeSub">odaibako</Link> or{' '}
         <Link href="mailto:skeb@crystallize.eu.org">email</Link>.
       </p>
       <Update />

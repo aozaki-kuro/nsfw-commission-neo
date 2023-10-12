@@ -8,7 +8,7 @@ interface StaleLoaderProps {
   children?: React.ReactNode
 }
 
-const StaleLoader: React.FC<StaleLoaderProps> = ({ isStale = false, children }) => {
+const StaleLoader = ({ isStale = false, children }: StaleLoaderProps) => {
   const [isLoaded, setIsLoaded] = useState(!isStale)
   const ref = useRef<HTMLDivElement | null>(null)
 
