@@ -40,7 +40,7 @@ const Update = () => {
   const formattedDate = formatDate(fileName)
 
   return (
-    <div className="flex flex-auto py-6 font-mono text-sm ss:text-xs">
+    <div className="flex flex-auto py-8 font-mono text-sm ss:text-xs md:py-6">
       <p className="pr-2">Last update:</p>
       <p className="pr-2" suppressHydrationWarning={true}>
         {formattedDate}
