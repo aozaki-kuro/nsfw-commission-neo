@@ -1,13 +1,13 @@
-import { formatDate, getCharacterFullName, isCharacterActive, kebabCase } from '#components/utils'
+import { formatDate, isCharacterActive, kebabCase } from '#components/utils'
 import { Commission } from '#data/types'
 import Link from 'next/link'
 
 type IllustratorInfoProps = {
   commission: Commission
-  characterAbbr: string
+  characterDisplayName: string
 }
 
-const IllustratorInfo = ({ commission, characterAbbr }: IllustratorInfoProps) => {
+const IllustratorInfo = ({ commission, characterDisplayName }: IllustratorInfoProps) => {
   // Function to determine link type and generate JSX
   const createLinks = (links: string[]) => {
     return links.map((url, index) => {
@@ -29,12 +29,10 @@ const IllustratorInfo = ({ commission, characterAbbr }: IllustratorInfoProps) =>
     })
   }
 
-  const isActive = isCharacterActive(characterAbbr)
+  const isActive = isCharacterActive(characterDisplayName)
 
-  // Get the full character name from the abbreviation
-  const characterFullName = getCharacterFullName(characterAbbr)
   // Convert to kebab case for the link
-  const kebabCaseName = kebabCase(characterFullName)
+  const kebabCaseName = kebabCase(characterDisplayName)
 
   const commissionDate = commission.fileName.slice(0, 8)
 

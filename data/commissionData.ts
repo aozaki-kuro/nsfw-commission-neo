@@ -4,7 +4,7 @@ import { staleData } from './staleData'
 export const commissionData: Props = [
   /* Hanabasami Kyo */
   {
-    Character: 'hanabasami-kyo',
+    Character: 'H*nabasami Kyo',
     Commissions: [
       {
         fileName: '20231006_うたゆうか',
@@ -12,8 +12,10 @@ export const commissionData: Props = [
       },
     ],
   },
+
+  /* Kamitsubaki Studio & SINSEKAI Studio */
   {
-    Character: 'kamitsubaki',
+    Character: 'Studio K',
     Commissions: [
       {
         fileName: '20230924',
@@ -28,7 +30,7 @@ export const commissionData: Props = [
 
   /* AZKi */
   {
-    Character: 'azki',
+    Character: 'AZKi',
     Commissions: [
       {
         fileName: '20230914_もけ太',
@@ -68,7 +70,7 @@ export const commissionData: Props = [
 
   /* nayuta */
   {
-    Character: 'nayuta',
+    Character: 'n*yuta',
     Commissions: [
       {
         fileName: '20230830_七市',
@@ -79,7 +81,7 @@ export const commissionData: Props = [
 
   /* Misc */
   {
-    Character: 'misc',
+    Character: 'Misc',
     Commissions: [
       {
         fileName: '20230808_中村六翅',
@@ -97,7 +99,7 @@ export const commissionData: Props = [
 
   /* Lucia */
   {
-    Character: 'lucia',
+    Character: 'L*cia',
     Commissions: [
       {
         fileName: '20230706_七市',

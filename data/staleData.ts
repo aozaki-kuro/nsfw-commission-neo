@@ -3,7 +3,7 @@ import { Props } from '#data/types'
 export const staleData: Props = [
   /* Ina'nis */
   {
-    Character: 'ina',
+    Character: "Ninomae Ina'nis",
     Commissions: [
       {
         fileName: '20230629_七市',
@@ -60,7 +60,7 @@ export const staleData: Props = [
 
   /* Tokomachi */
   {
-    Character: 'tkmt',
+    Character: 'Tokomachi',
     Commissions: [
       {
         fileName: '20220824_病ん太廊',

@@ -24,9 +24,9 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
 
   // Look up the full character name from the dictionary
   const dictionaryEntry = characterDictionary.find(
-    chara => chara.Abbr.toLowerCase() === Character.toLowerCase(),
+    chara => chara.DisplayName.toLowerCase() === Character.toLowerCase(),
   )
-  const characterFullName = dictionaryEntry?.FullName || Character.toLowerCase()
+  const characterFullName = dictionaryEntry?.DisplayName || Character.toLowerCase()
 
   return (
     <div className="pb-4">
@@ -49,7 +49,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
                 placeholder="blur"
                 className="pointer-events-none select-none"
               />
-              <IllustratorInfo commission={commission} characterAbbr={Character} />
+              <IllustratorInfo commission={commission} characterDisplayName={Character} />
             </div>
           ))
         )}

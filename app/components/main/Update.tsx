@@ -11,8 +11,10 @@ type LatestEntry = {
 }
 
 // Utility function to check if a character is active
-const isActiveCharacter = (characterAbbr: string): boolean => {
-  const characterStatus = characterDictionary.find(chara => chara.Abbr === characterAbbr)
+const isActiveCharacter = (characterDisplayName: string): boolean => {
+  const characterStatus = characterDictionary.find(
+    chara => chara.DisplayName === characterDisplayName,
+  )
   return !!characterStatus?.Active
 }
 
@@ -42,8 +44,8 @@ const Update = () => {
   }
 
   const { fileName, Character } = latestEntry
-  const { FullName: fullName = Character.toLowerCase() } =
-    characterDictionary.find(chara => chara.Abbr === Character) || {}
+  const { DisplayName: fullName = Character.toLowerCase() } =
+    characterDictionary.find(chara => chara.DisplayName === Character) || {}
   const formattedDate = formatDate(fileName.substring(0, 8))
 
   return (

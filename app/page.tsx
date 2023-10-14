@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
       {/* Display Active Commissions */}
       {activeChars.map(chara => (
-        <Listing Character={chara.Abbr} key={chara.Abbr} />
+        <Listing Character={chara.DisplayName} key={chara.DisplayName} />
       ))}
 
       {/* Divider between Active and Stale Commissions */}
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
 
       {/* Display Stale Commissions */}
       {staleChars.map(chara => (
-        <Listing Character={chara.Abbr} isStale={true} key={chara.Abbr} />
+        <Listing Character={chara.DisplayName} isStale={true} key={chara.DisplayName} />
       ))}
 
       <Footer />

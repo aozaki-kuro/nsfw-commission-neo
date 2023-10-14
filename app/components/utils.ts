@@ -1,18 +1,13 @@
 import { characterDictionary } from '#data/commissionStatus'
 
 export const isCharacterActive = (character: string): boolean => {
-  const characterInfo = characterDictionary.find(char => char.Abbr === character)
+  const characterInfo = characterDictionary.find(char => char.DisplayName === character)
   return characterInfo?.Active === true
 }
 
 export const isCharacterStale = (character: string): boolean => {
-  const characterInfo = characterDictionary.find(char => char.Abbr === character)
+  const characterInfo = characterDictionary.find(char => char.DisplayName === character)
   return characterInfo?.Active === false
-}
-
-export const getCharacterFullName = (abbreviation: string): string => {
-  const characterInfo = characterDictionary.find(char => char.Abbr === abbreviation)
-  return characterInfo?.FullName || abbreviation
 }
 
 /**

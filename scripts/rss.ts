@@ -1,11 +1,9 @@
-// ./scripts/rss.ts
-
 import { promises as fs } from 'fs'
 import RSS from 'rss'
 
-import { commissionData } from '#data/commissionData' // Assuming this is the correct path to your data
+import { formatDate, kebabCase } from '#components/utils'
+import { commissionData } from '#data/commissionData'
 import { characterDictionary } from '#data/commissionStatus'
-import { kebabCase, formatDate } from '#components/utils'
 
 // Constants
 const SITE_TITLE = "Crystallize's NSFW Commissions"
@@ -17,7 +15,7 @@ const MSG_DONE = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 
 // Create a dictionary for faster lookups
 const characterStatusDictionary = Object.fromEntries(
-  characterDictionary.map(({ Abbr, FullName, Active }) => [Abbr, { FullName, Active }]),
+  characterDictionary.map(({ DisplayName, Active }) => [DisplayName, { Active }]),
 )
 
 function extractDetailsFromFileName(fileName: string) {
@@ -43,7 +41,7 @@ async function generateRSSFeed() {
       .flatMap(characterData =>
         characterData.Commissions.map(commission => ({
           ...commission,
-          characterFullName: characterStatusDictionary[characterData.Character].FullName,
+          characterFullName: characterData.Character, // This uses the `Character` directly from the data
         })),
       )
 
@@ -59,10 +57,10 @@ async function generateRSSFeed() {
       const { commissionDate, artistName, rawCommissionDate } = extractDetailsFromFileName(
         commission.fileName,
       )
-      const characterFullName = commission.characterFullName // Corrected line
+      const characterFullName = commission.characterFullName
       feed.item({
         title: characterFullName,
-        url: `${SITE_URL}#${kebabCase(characterFullName)}-${rawCommissionDate}`,
+        url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`, // Encoded commission title
         date: new Date(commissionDate),
         description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
       })
