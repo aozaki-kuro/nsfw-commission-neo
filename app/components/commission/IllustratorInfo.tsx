@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { CommissionInfoProps } from './types'
+import { Commission } from '#data/types'
 import { kebabCase, formatDate } from '#components/utils'
 
 type IllustratorInfoProps = {
-  commission: CommissionInfoProps
+  commission: Commission
 }
 
 const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
@@ -31,13 +31,13 @@ const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
   return (
     <div className="flex flex-auto pb-4 pt-8 font-mono text-sm md:pb-1 md:pt-5 md:text-xs">
       <Link
-        href={`#${kebabCase(commission.FullName)}-${commission.PublishDate}`}
+        href={`#${kebabCase(commission.fileName)}-${commission.fileName.slice(0, 8)}`} // Adjusted href
         className="text-p-light no-underline dark:text-gray-300"
       >
-        {formatDate(commission.PublishDate)}
+        {formatDate(commission.fileName.slice(0, 8))}
       </Link>
       <span className="pr-16 md:pr-6" />
-      <span>{commission.Creator || '-'}</span>
+      <span>{commission.fileName.split('_')[1] || '-'}</span>
       <span className="grow text-right">
         {commission.Links.length === 0 ? <span>N/A</span> : createLinks(commission.Links)}
       </span>

@@ -1,5 +1,5 @@
 import { characterDictionary } from '#data/commissionStatus'
-import { commissionData } from '#data/commissionData'
+import { commissionData } from '#data/commissionData' // Adjust the import to your new data file
 import Link from 'next/link'
 import { kebabCase } from '#components/utils'
 import { formatDate } from '#components/utils'
@@ -16,18 +16,24 @@ const isActiveCharacter = (characterAbbr: string): boolean => {
 }
 
 // Determine the latest entry considering only active characters
-const latestEntry = Object.values(commissionData).reduce(
-  (latest: LatestEntry | null, commission) => {
-    const { fileName, Character } = commission
-    const publishDateInt = parseInt(fileName.substring(0, 8))
-    if (isNaN(publishDateInt) || !isActiveCharacter(Character)) return latest
-    if (!latest || latest.fileName < fileName) {
-      return { fileName, Character }
-    }
-    return latest
-  },
-  null,
-)
+const latestEntry = commissionData.reduce((latest: LatestEntry | null, characterData) => {
+  const activeCommissions = characterData.Commissions.filter(() =>
+    isActiveCharacter(characterData.Character),
+  )
+  if (activeCommissions.length === 0) return latest
+
+  const latestCommission = activeCommissions.reduce(
+    (latestCommission, commission) =>
+      latestCommission.fileName > commission.fileName ? latestCommission : commission,
+    activeCommissions[0],
+  )
+
+  if (!latest || latestCommission.fileName > latest.fileName) {
+    return { fileName: latestCommission.fileName, Character: characterData.Character }
+  }
+
+  return latest
+}, null)
 
 const Update = () => {
   if (!latestEntry) {
@@ -37,7 +43,7 @@ const Update = () => {
   const { fileName, Character } = latestEntry
   const { FullName: fullName = Character.toLowerCase() } =
     characterDictionary.find(chara => chara.Abbr === Character) || {}
-  const formattedDate = formatDate(fileName)
+  const formattedDate = formatDate(fileName.substring(0, 8))
 
   return (
     <div className="flex flex-auto py-8 font-mono text-sm ss:text-xs md:py-6">

@@ -1,7 +1,9 @@
+// ./scripts/rss.ts
+
 import { promises as fs } from 'fs'
 import RSS from 'rss'
 
-import { commissionData } from '#data/commissionData'
+import { commissionData } from '#data/commissionData' // Assuming this is the correct path to your data
 import { characterDictionary } from '#data/commissionStatus'
 import { kebabCase, formatDate } from '#components/utils'
 
@@ -13,23 +15,9 @@ const FEED_URL = `${SITE_URL}/feed.xml`
 const MSG_ERROR = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
 const MSG_DONE = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 
-// Define the shape of the characterNameMapping
-interface CharacterNameMapping {
-  [key: string]: string
-}
-
-// Create the mapping with the defined shape
-const characterNameMapping: CharacterNameMapping = characterDictionary.reduce<CharacterNameMapping>(
-  (acc, { Abbr, FullName }) => {
-    acc[Abbr] = FullName.replace('_', '○')
-    return acc
-  },
-  {},
-)
-
-// Use Set for faster membership checking
-const activeCharacters = new Set(
-  characterDictionary.filter(char => char.Active).map(char => char.Abbr),
+// Create a dictionary for faster lookups
+const characterStatusDictionary = Object.fromEntries(
+  characterDictionary.map(({ Abbr, FullName, Active }) => [Abbr, { FullName, Active }]),
 )
 
 function extractDetailsFromFileName(fileName: string) {
@@ -49,29 +37,36 @@ async function generateRSSFeed() {
       feed_url: FEED_URL,
     })
 
-    const sortedCommissions = commissionData
-      .filter(commission => activeCharacters.has(commission.Character))
-      .map(commission => {
-        const details = extractDetailsFromFileName(commission.fileName)
-        const characterFullName = characterNameMapping[commission.Character] || commission.Character
-        return {
+    // Filter out stale characters and get all commissions in a flat array
+    const allCommissions = commissionData
+      .filter(characterData => characterStatusDictionary[characterData.Character]?.Active)
+      .flatMap(characterData =>
+        characterData.Commissions.map(commission => ({
           ...commission,
-          ...details,
-          characterFullName,
-        }
-      })
-      .sort((a, b) => b.commissionDate.localeCompare(a.commissionDate))
+          characterFullName: characterStatusDictionary[characterData.Character].FullName,
+        })),
+      )
 
-    sortedCommissions.forEach(
-      ({ commissionDate, artistName, characterFullName, rawCommissionDate }) => {
-        feed.item({
-          title: characterFullName,
-          url: `${SITE_URL}#${kebabCase(characterFullName)}-${rawCommissionDate}`,
-          date: new Date(commissionDate),
-          description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
-        })
-      },
-    )
+    // Sort all commissions by date
+    const sortedCommissions = allCommissions.sort((a, b) => {
+      const dateA = a.fileName.split('_')[0]
+      const dateB = b.fileName.split('_')[0]
+      return dateB.localeCompare(dateA)
+    })
+
+    // Add each commission as an item in the RSS feed
+    sortedCommissions.forEach(commission => {
+      const { commissionDate, artistName, rawCommissionDate } = extractDetailsFromFileName(
+        commission.fileName,
+      )
+      const characterFullName = commission.characterFullName // Corrected line
+      feed.item({
+        title: characterFullName,
+        url: `${SITE_URL}#${kebabCase(characterFullName)}-${rawCommissionDate}`,
+        date: new Date(commissionDate),
+        description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
+      })
+    })
 
     try {
       await fs.writeFile('./public/feed.xml', feed.xml({ indent: true }))

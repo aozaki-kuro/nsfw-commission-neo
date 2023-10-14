@@ -3,7 +3,7 @@
 import Image from 'next/image'
 
 import { characterDictionary } from '#data/commissionStatus'
-import { commissionData } from '#data/commissionData'
+import { commissionData } from '#data/commissionData' // Adjust the import to your new data file
 
 import { kebabCase } from '#components/utils'
 import { useScrollHook } from './useScrollHook'
@@ -14,31 +14,17 @@ import StaleLoader from './StaleLoader'
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()
 
-  /**
-   * commissions - A derived list of commissions for the specific character.
-   * Each commission includes its full name, publish date, creator's name, and other details.
-   */
-  const commissions = Object.values(commissionData)
-    // Filter for commissions that match the given character
-    .filter(commission => commission.Character.toLowerCase() === Character.toLowerCase())
-    .map(commission => {
-      // Look up the full character name from the dictionary
-      const dictionaryEntry = characterDictionary.find(chara => chara.Abbr === commission.Character)
-      const fullName = dictionaryEntry?.FullName || commission.Character.toLowerCase()
+  // Find the character's commission data
+  const characterData = commissionData.find(
+    data => data.Character.toLowerCase() === Character.toLowerCase(),
+  )
+  const commissions = characterData ? characterData.Commissions : []
 
-      return {
-        ...commission,
-        FullName: fullName,
-        // Extract the publish date from the file name (expected format: YYYYMMDD)
-        PublishDate: commission.fileName.slice(0, 8),
-        // Extract the creator's name from the file name (expected after underscore)
-        Creator: commission.fileName.split('_')[1],
-      }
-    })
-    // Sort commissions by publish date in descending order
-    .sort((a, b) => b.PublishDate.localeCompare(a.PublishDate))
-
-  const characterFullName = commissions[0].FullName
+  // Look up the full character name from the dictionary
+  const dictionaryEntry = characterDictionary.find(
+    chara => chara.Abbr.toLowerCase() === Character.toLowerCase(),
+  )
+  const characterFullName = dictionaryEntry?.FullName || Character.toLowerCase()
 
   return (
     <div className="pb-4">
@@ -48,15 +34,15 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
         {commissions.length === 0 ? (
           <p>To be announced...</p>
         ) : (
-          commissions.map(commission => (
+          commissions.map((commission, index) => (
             <div
-              key={`${kebabCase(commission.FullName)}-${commission.PublishDate}`}
-              id={`${kebabCase(commission.FullName)}-${commission.PublishDate}`}
+              key={index} // It's generally better to use unique keys, but index can work if the list doesn't change dynamically
+              id={`${kebabCase(characterFullName)}-${commission.fileName.slice(0, 8)}`} // Adjusted id
               className="pt-4"
             >
               <Image
                 src={require(`public/images/${commission.fileName}.jpg`)}
-                alt={`${commission.Creator} ©️ ${commission.PublishDate}`}
+                alt={`${commission.fileName} ©️ ${commission.fileName.slice(0, 8)}`} // Adjusted alt text
                 quality={95}
                 placeholder="blur"
               />

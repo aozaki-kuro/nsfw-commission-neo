@@ -9,20 +9,25 @@ const dataToSort = isStale ? staleData : commissionData
 // Function to extract the date from the fileName
 const getDate = (fileName: string): string => fileName.slice(0, 8)
 
-// Sort the data array from latest to oldest
-const sortedData = dataToSort.sort((a, b) => {
-  const dateA = getDate(a.fileName)
-  const dateB = getDate(b.fileName)
-  return dateB.localeCompare(dateA) // Sort in descending order
-})
+// Function to sort commissions within each character
+const sortCommissions = (characterData: any) => {
+  characterData.Commissions.sort((a: any, b: any) => {
+    const dateA = getDate(a.fileName)
+    const dateB = getDate(b.fileName)
+    return dateB.localeCompare(dateA) // Sort in descending order
+  })
+}
+
+// Sort the commissions for each character
+dataToSort.forEach(sortCommissions)
 
 // Prepare the sorted data for output
 const outputData = `
 import { Props } from "#data/types";
-${isStale ? '' : 'import { staleData } from "#data/staleData"'}
+${isStale ? '' : 'import { staleData } from "#data/staleData";'}
 
-export const ${isStale ? 'staleData' : 'commissionData'}: Props[] = ${JSON.stringify(
-  sortedData,
+export const ${isStale ? 'staleData' : 'commissionData'}: Props = ${JSON.stringify(
+  dataToSort,
   null,
   2,
 )

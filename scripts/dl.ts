@@ -60,26 +60,23 @@ async function downloadImages() {
   try {
     await fsPromises.mkdir(publicDirPath, { recursive: true })
 
-    // const coverUrl = `https://${HOSTING}/nsfw-commission/nsfw-cover.jpg`
-    // const coverPath = path.join(publicDirPath, 'nsfw-cover.jpg')
-    // await downloadResource(coverUrl, coverPath)
-
-    // Small size cover image
     const smallCoverUrl = `https://${HOSTING}/nsfw-commission/nsfw-cover-s.jpg`
     const smallCoverPath = path.join(publicDirPath, 'nsfw-cover-s.jpg')
     await downloadResource(smallCoverUrl, smallCoverPath)
 
-    const downloadPromises = commissionData.map(async commission => {
-      const { fileName } = commission
-      const dirPath = publicDirPath
+    const downloadPromises = commissionData.flatMap(characterData =>
+      characterData.Commissions.map(async commission => {
+        const { fileName } = commission
+        const dirPath = publicDirPath
 
-      await fsPromises.mkdir(dirPath, { recursive: true })
+        await fsPromises.mkdir(dirPath, { recursive: true })
 
-      const filePath = path.join(dirPath, `${fileName}.jpg`)
-      const imageUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
+        const filePath = path.join(dirPath, `${fileName}.jpg`)
+        const imageUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
 
-      await downloadResource(imageUrl, filePath)
-    })
+        await downloadResource(imageUrl, filePath)
+      }),
+    )
 
     await Promise.all(downloadPromises)
 
