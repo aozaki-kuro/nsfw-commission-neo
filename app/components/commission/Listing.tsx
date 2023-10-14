@@ -45,6 +45,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
                 alt={`${commission.fileName} ©️ ${commission.fileName.slice(0, 8)}`}
                 quality={95}
                 placeholder="blur"
+                className="pointer-events-none select-none"
               />
               <IllustratorInfo commission={commission} characterAbbr={Character} />
             </div>
