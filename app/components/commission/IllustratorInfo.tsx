@@ -7,15 +7,25 @@ type IllustratorInfoProps = {
 }
 
 const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
-  const createLink = (url: string, text: string) => {
-    return url ? (
-      <>
-        <span className="pr-3 md:pr-2" />
-        <Link href={url} className="underline-offset-[0.1rem]" target="_blank">
-          {text}
-        </Link>
-      </>
-    ) : null
+  // Function to determine link type and generate JSX
+  const createLinks = (links: string[]) => {
+    return links.map((url, index) => {
+      let type
+      if (url.includes('twitter.com') || url.includes('x.com')) type = 'Twitter'
+      else if (url.includes('pixiv.net')) type = 'Pixiv'
+      else if (url.includes('fanbox.cc')) type = 'Fanbox'
+      else if (url.includes('fantia.jp')) type = 'Fantia'
+      else return null
+
+      return (
+        <span key={index}>
+          <span className="pr-3 md:pr-2" />
+          <Link href={url} className="underline-offset-[0.1rem]" target="_blank">
+            {type}
+          </Link>
+        </span>
+      )
+    })
   }
 
   return (
@@ -29,17 +39,7 @@ const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
       <span className="pr-16 md:pr-6" />
       <span>{commission.Creator || '-'}</span>
       <span className="grow text-right">
-        <span className="pr-3 md:pr-2" />
-        {!(commission.Twitter || commission.Pixiv || commission.Fantia || commission.Fanbox) ? (
-          <span>N/A</span>
-        ) : (
-          <>
-            {createLink(commission.Twitter || '', 'Twitter')}
-            {createLink(commission.Pixiv || '', 'Pixiv')}
-            {createLink(commission.Fanbox || '', 'Fanbox')}
-            {createLink(commission.Fantia || '', 'Fantia')}
-          </>
-        )}
+        {commission.Links.length === 0 ? <span>N/A</span> : createLinks(commission.Links)}
       </span>
     </div>
   )
