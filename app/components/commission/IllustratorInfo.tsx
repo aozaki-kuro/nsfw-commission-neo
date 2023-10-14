@@ -1,12 +1,13 @@
 import Link from 'next/link'
 import { Commission } from '#data/types'
-import { kebabCase, formatDate } from '#components/utils'
+import { getCharacterFullName, kebabCase, formatDate } from '#components/utils'
 
 type IllustratorInfoProps = {
   commission: Commission
+  characterAbbr: string
 }
 
-const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
+const IllustratorInfo = ({ commission, characterAbbr }: IllustratorInfoProps) => {
   // Function to determine link type and generate JSX
   const createLinks = (links: string[]) => {
     return links.map((url, index) => {
@@ -28,10 +29,15 @@ const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
     })
   }
 
+  // Get the full character name from the abbreviation
+  const characterFullName = getCharacterFullName(characterAbbr)
+  // Convert to kebab case for the link
+  const kebabCaseName = kebabCase(characterFullName)
+
   return (
     <div className="flex flex-auto pb-4 pt-8 font-mono text-sm md:pb-1 md:pt-5 md:text-xs">
       <Link
-        href={`#${kebabCase(commission.fileName)}-${commission.fileName.slice(0, 8)}`} // Adjusted href
+        href={`#${kebabCaseName}-${commission.fileName.slice(0, 8)}`} // Adjusted href
         className="text-p-light no-underline dark:text-gray-300"
       >
         {formatDate(commission.fileName.slice(0, 8))}
@@ -39,7 +45,11 @@ const IllustratorInfo = ({ commission }: IllustratorInfoProps) => {
       <span className="pr-16 md:pr-6" />
       <span>{commission.fileName.split('_')[1] || '-'}</span>
       <span className="grow text-right">
-        {commission.Links.length === 0 ? <span>N/A</span> : createLinks(commission.Links)}
+        {commission.Links.length === 0 ? (
+          <span className="cursor-not-allowed select-none">N/A</span>
+        ) : (
+          createLinks(commission.Links)
+        )}
       </span>
     </div>
   )

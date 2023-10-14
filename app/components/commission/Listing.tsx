@@ -36,17 +36,17 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
         ) : (
           commissions.map((commission, index) => (
             <div
-              key={index} // It's generally better to use unique keys, but index can work if the list doesn't change dynamically
-              id={`${kebabCase(characterFullName)}-${commission.fileName.slice(0, 8)}`} // Adjusted id
+              key={index}
+              id={`${kebabCase(characterFullName)}-${commission.fileName.slice(0, 8)}`}
               className="pt-4"
             >
               <Image
                 src={require(`public/images/${commission.fileName}.jpg`)}
-                alt={`${commission.fileName} ©️ ${commission.fileName.slice(0, 8)}`} // Adjusted alt text
+                alt={`${commission.fileName} ©️ ${commission.fileName.slice(0, 8)}`}
                 quality={95}
                 placeholder="blur"
               />
-              <IllustratorInfo commission={commission} />
+              <IllustratorInfo commission={commission} characterAbbr={Character} />
             </div>
           ))
         )}
