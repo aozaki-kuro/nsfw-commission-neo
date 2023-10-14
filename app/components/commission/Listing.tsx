@@ -17,16 +17,12 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   useScrollHook()
 
   // Find the character's commission data
-  const characterData = commissionData.find(
-    data => data.Character.toLowerCase() === Character.toLowerCase(),
-  )
+  const characterData = commissionData.find(data => data.Character === Character)
   const commissions = characterData ? characterData.Commissions : []
 
   // Look up the full character name from the dictionary
-  const dictionaryEntry = characterDictionary.find(
-    chara => chara.DisplayName.toLowerCase() === Character.toLowerCase(),
-  )
-  const characterFullName = dictionaryEntry?.DisplayName || Character.toLowerCase()
+  const dictionaryEntry = characterDictionary.find(chara => chara.DisplayName === Character)
+  const characterFullName = dictionaryEntry?.DisplayName || Character
 
   return (
     <div className="pb-4">
