@@ -1,6 +1,6 @@
-import Link from 'next/link'
+import { formatDate, getCharacterFullName, isCharacterActive, kebabCase } from '#components/utils'
 import { Commission } from '#data/types'
-import { getCharacterFullName, kebabCase, formatDate, isCharacterActive } from '#components/utils'
+import Link from 'next/link'
 
 type IllustratorInfoProps = {
   commission: Commission

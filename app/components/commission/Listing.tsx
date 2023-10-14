@@ -2,14 +2,16 @@
 
 import Image from 'next/image'
 
+import { commissionData } from '#data/commissionData'
 import { characterDictionary } from '#data/commissionStatus'
-import { commissionData } from '#data/commissionData' // Adjust the import to your new data file
+
+import CharacterTitle from './CharacterTitle'
+import IllustratorInfo from './IllustratorInfo'
+import StaleLoader from './StaleLoader'
 
 import { kebabCase } from '#components/utils'
+
 import { useScrollHook } from './useScrollHook'
-import IllustratorInfo from './IllustratorInfo'
-import CharacterTitle from './CharacterTitle'
-import StaleLoader from './StaleLoader'
 
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()

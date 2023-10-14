@@ -1,8 +1,9 @@
+import { commissionData } from '#data/commissionData'
 import { characterDictionary } from '#data/commissionStatus'
-import { commissionData } from '#data/commissionData' // Adjust the import to your new data file
+
+import { formatDate, kebabCase } from '#components/utils'
+
 import Link from 'next/link'
-import { kebabCase } from '#components/utils'
-import { formatDate } from '#components/utils'
 
 type LatestEntry = {
   fileName: string

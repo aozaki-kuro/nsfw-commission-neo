@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
 
 import Warning from '#components/main/Warning'
+
 import CommissionDescription from '#components/main/Description'
-import Listing from '#components/commission/Listing'
 import Footer from '#components/main/Footer'
+
+import Listing from '#components/commission/Listing'
 
 import { characterDictionary } from '#data/commissionStatus'
 import RootLayout from './layout'

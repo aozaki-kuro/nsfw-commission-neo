@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import { kebabCase } from '#components/utils'
+import Link from 'next/link'
 
 type CharacterTitleProps = {
   Name: string

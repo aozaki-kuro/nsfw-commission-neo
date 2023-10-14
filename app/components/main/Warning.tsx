@@ -1,8 +1,9 @@
 'use client'
 
-import { Dialog, Transition } from '@headlessui/react'
 import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
+
+import { Dialog, Transition } from '@headlessui/react'
 
 import HeadImage from '#images/nsfw-cover-s.jpg'
 
