@@ -1,26 +1,18 @@
 'use client'
 
-import Image from 'next/image'
-
+import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import { characterDictionary } from '#data/commissionStatus'
-
+import Image from 'next/image'
 import CharacterTitle from './CharacterTitle'
 import IllustratorInfo from './IllustratorInfo'
 import StaleLoader from './StaleLoader'
-
-import { kebabCase } from '#components/utils'
-
 import { useScrollHook } from './useScrollHook'
 
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()
 
-  // Find the character's commission data
   const characterData = commissionData.find(data => data.Character === Character)
-  const commissions = characterData ? characterData.Commissions : []
-
-  // Look up the full character name from the dictionary
   const dictionaryEntry = characterDictionary.find(chara => chara.DisplayName === Character)
   const characterFullName = dictionaryEntry?.DisplayName || Character
 
@@ -29,10 +21,10 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
       <CharacterTitle Name={characterFullName} />
 
       <StaleLoader Name={characterFullName} isStale={isStale}>
-        {commissions.length === 0 ? (
+        {!characterData || characterData.Commissions.length === 0 ? (
           <p>To be announced...</p>
         ) : (
-          commissions.map((commission, index) => (
+          characterData.Commissions.map((commission, index) => (
             <div
               key={index}
               id={`${kebabCase(characterFullName)}-${commission.fileName.slice(0, 8)}`}
