@@ -373,7 +373,7 @@ export const staleData: Props = [
       },
       {
         fileName: '20230327_もけ太',
-        Links: ['https://www.pixiv.net/artworks/107682931'],
+        Links: ['https://www.pixiv.net/artworks/107682931', 'https://fantia.jp/posts/2039830'],
       },
       {
         fileName: '20230319_ギシュレッド',
