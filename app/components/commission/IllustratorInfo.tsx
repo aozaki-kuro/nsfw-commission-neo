@@ -61,7 +61,7 @@ const IllustratorInfo = ({ commission, characterAbbr }: IllustratorInfoProps) =>
       }
       <span className="select-none pr-16 md:pr-6" />
       {commissionCreator != null ? (
-        <span className="select-all">{commissionCreator}</span>
+        <span>{commissionCreator}</span>
       ) : (
         <span className="select-none">-</span>
       )}
