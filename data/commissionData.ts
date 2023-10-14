@@ -2,32 +2,6 @@ import { Props } from '#data/types'
 import { staleData } from './staleData'
 
 export const commissionData: Props = [
-  /* Hanabasami Kyo */
-  {
-    Character: 'H*nabasami Kyo',
-    Commissions: [
-      {
-        fileName: '20231006_うたゆうか',
-        Links: [],
-      },
-    ],
-  },
-
-  /* Kamitsubaki Studio & SINSEKAI Studio */
-  {
-    Character: 'Studio K',
-    Commissions: [
-      {
-        fileName: '20230924',
-        Links: ['https://www.pixiv.net/artworks/112144494'],
-      },
-      {
-        fileName: '20230917',
-        Links: ['https://www.pixiv.net/artworks/111840737'],
-      },
-    ],
-  },
-
   /* AZKi */
   {
     Character: 'AZKi',
@@ -75,6 +49,32 @@ export const commissionData: Props = [
       {
         fileName: '20230830_七市',
         Links: ['https://www.pixiv.net/artworks/111302832'],
+      },
+    ],
+  },
+
+  /* Kamitsubaki Studio & SINSEKAI Studio */
+  {
+    Character: 'Studio K',
+    Commissions: [
+      {
+        fileName: '20230924',
+        Links: ['https://www.pixiv.net/artworks/112144494'],
+      },
+      {
+        fileName: '20230917',
+        Links: ['https://www.pixiv.net/artworks/111840737'],
+      },
+    ],
+  },
+
+  /* Hanabasami Kyo */
+  {
+    Character: 'H*nabasami Kyo',
+    Commissions: [
+      {
+        fileName: '20231006_うたゆうか',
+        Links: [],
       },
     ],
   },
