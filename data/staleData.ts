@@ -355,7 +355,7 @@ export const staleData: Props = [
 
   /* Kanaut Nishe */
   {
-    Character: 'nishe',
+    Character: 'Kanaut Nishe',
     Commissions: [
       {
         fileName: '20231005_ぐれます',
