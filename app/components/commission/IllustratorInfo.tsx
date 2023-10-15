@@ -19,14 +19,17 @@ const IllustratorInfo = ({ commission, characterDisplayName }: IllustratorInfoPr
   const commissionCreator = commission.fileName.split('_')[1]
 
   return (
-    <div className="flex flex-auto pb-4 pt-8 font-mono text-sm md:pb-1 md:pt-5 md:text-xs">
-      <span className="select-none pr-16 text-p-light dark:text-gray-300 md:pr-6">
+    <div className="flex flex-auto pb-4 pt-8 font-mono text-sm text-p-light dark:text-gray-300 md:pb-1 md:pt-5 md:text-xs">
+      <span className="select-none pr-16 md:pr-6">
         {
           /*
            * This disables the linking functions for the stale commissions
            */
           isActive ? (
-            <Link href={`#${kebabCaseName}-${commissionDate}`} className="no-underline ">
+            <Link
+              href={`#${kebabCaseName}-${commissionDate}`}
+              className="text-p-light no-underline dark:text-gray-300 "
+            >
               <time>{formatDate(commissionDate)}</time>
             </Link>
           ) : (
@@ -35,7 +38,7 @@ const IllustratorInfo = ({ commission, characterDisplayName }: IllustratorInfoPr
         }
       </span>
       {commissionCreator || `-`}
-      <span className="grow select-none text-right">
+      <span className="grow text-right">
         {commission.Links.length === 0 ? `N/A` : createLinks(commission.Links)}
       </span>
     </div>
