@@ -71,5 +71,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "pnpm@8.9.1"
+  "packageManager": "pnpm@8.9.2"
 }
