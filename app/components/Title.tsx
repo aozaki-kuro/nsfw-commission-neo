@@ -8,7 +8,7 @@ type TitleProps = {
 const Title = ({ Content }: TitleProps) => {
   return (
     <div id={kebabCase(Content)}>
-      <h2 className="group relative py-6 md:py-4">
+      <h2 className="group relative">
         {Content}
         <Link
           href={`#${kebabCase(Content)}`}

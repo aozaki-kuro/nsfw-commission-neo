@@ -6,10 +6,11 @@ import Title from '#components/Title'
 const CommissionDescription = () => {
   return (
     <div>
-      <h1 className="">NSFW Commissions</h1>
-      <Title Content="Introduction" />
+      <h1>NSFW Commissions</h1>
+      <div className="py-6 md:py-4">
+        <Title Content="Introduction" />
+      </div>
 
-      <h2 className="">Introduction</h2>
       <p>
         Preview images are showcased together with their respective links to platforms such as
         Twitter, Pixiv, or Fantia when they are available. By selecting these links, you will be
