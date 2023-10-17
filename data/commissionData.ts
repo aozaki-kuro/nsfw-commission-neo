@@ -58,6 +58,10 @@ export const commissionData: Props = [
     Character: 'Studio K',
     Commissions: [
       {
+        fileName: '20231018',
+        Links: [''],
+      },
+      {
         fileName: '20230924',
         Links: ['https://www.pixiv.net/artworks/112144494'],
       },
@@ -79,24 +83,6 @@ export const commissionData: Props = [
     ],
   },
 
-  /* Misc */
-  {
-    Character: 'Misc',
-    Commissions: [
-      {
-        fileName: '20230808_中村六翅',
-        Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
-      },
-      {
-        fileName: '20230613_中村六翅',
-        Links: [
-          'https://twitter.com/NakamuraRohane/status/1668625063602708483',
-          'https://www.pixiv.net/artworks/108990302',
-        ],
-      },
-    ],
-  },
-
   /* Lucia */
   {
     Character: 'L*cia',
@@ -110,6 +96,24 @@ export const commissionData: Props = [
         Links: [
           'https://twitter.com/UnoRyoku/status/1671030802241716231',
           'https://www.pixiv.net/artworks/109181457',
+        ],
+      },
+    ],
+  },
+
+  /* Misc */
+  {
+    Character: 'Misc',
+    Commissions: [
+      {
+        fileName: '20230808_中村六翅',
+        Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
+      },
+      {
+        fileName: '20230613_中村六翅',
+        Links: [
+          'https://twitter.com/NakamuraRohane/status/1668625063602708483',
+          'https://www.pixiv.net/artworks/108990302',
         ],
       },
     ],
