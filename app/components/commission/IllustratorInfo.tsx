@@ -5,14 +5,14 @@ import { createLinks } from './CreateLinks'
 
 type IllustratorInfoProps = {
   commission: Commission
-  characterDisplayName: string
+  characterName: string
 }
 
-const IllustratorInfo = ({ commission, characterDisplayName }: IllustratorInfoProps) => {
-  const isActive = isCharacterActive(characterDisplayName)
+const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) => {
+  const isActive = isCharacterActive(characterName)
 
   // Convert to kebab case for the link
-  const kebabCaseName = kebabCase(characterDisplayName)
+  const kebabCaseName = kebabCase(characterName)
 
   const commissionDate = commission.fileName.slice(0, 8)
 

@@ -1,12 +1,15 @@
 import Link from 'next/link'
 
 import Update from '#components/main/Update'
+import Title from '#components/Title'
 
 const CommissionDescription = () => {
   return (
     <div>
       <h1 className="">NSFW Commissions</h1>
-      <h2 className="py-6 md:py-4">Introduction</h2>
+      <Title Content="Introduction" />
+
+      <h2 className="">Introduction</h2>
       <p>
         Preview images are showcased together with their respective links to platforms such as
         Twitter, Pixiv, or Fantia when they are available. By selecting these links, you will be
