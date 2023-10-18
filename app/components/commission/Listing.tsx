@@ -20,7 +20,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   })
 
   return (
-    <div className="pb-4">
+    <div className="pb-6">
       {/* Display character title */}
       <Title Content={Character} />
 
@@ -34,7 +34,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
             const illustYear = commission.fileName.slice(0, 4)
             const illustDate = commission.fileName.slice(0, 8)
             const Creator = commission.fileName.slice(9) || 'Anonymous'
-            const altText = `${illustYear} ©️ ${Creator}`
+            const altText = `Copyright ©️ ${illustYear} ${Creator} & Crystallize`
 
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">

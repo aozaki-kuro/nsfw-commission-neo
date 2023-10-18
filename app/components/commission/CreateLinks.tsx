@@ -1,6 +1,24 @@
 import Link from 'next/link'
 
+// 1. Add a helper function to validate the input links.
+const validateLinks = (links: string[]): boolean => {
+  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp']
+
+  for (const link of links) {
+    if (patterns.some(pattern => link.includes(pattern))) {
+      return true
+    }
+  }
+  return false
+}
+
 export const createLinks = (links: string[]) => {
+  // 2. Use the helper function inside the createLinks function.
+  if (!validateLinks(links)) {
+    // 3. Return an error or 'N/A' when none of the patterns match.
+    return [<span key="error">N/A</span>]
+  }
+
   const order = ['Twitter', 'Pixiv', 'Fanbox', 'Fantia']
 
   return order.flatMap(type => {
