@@ -2,6 +2,6 @@
 . "$(dirname "$0")/_/husky.sh"
 
 # Read the .env file in the root dir of the project
-if grep -q "DEV_MACOS=true" ../.env; then
+if grep -q "DEV_MACOS=true" .env; then
     bash scripts/upload.sh
 fi
