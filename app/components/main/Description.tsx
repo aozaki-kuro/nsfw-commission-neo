@@ -12,18 +12,18 @@ const CommissionDescription = () => {
       </div>
 
       <p>
-        Preview images are showcased together with their respective links to platforms such as
-        Twitter, Pixiv, or Fantia when they are available. By selecting these links, you will be
-        able to view the complete image. You can also subscribe for updates through{' '}
-        <Link href={`/feed.xml`}>RSS</Link>.
+        Preview images are displayed alongside their corresponding links to platforms like Twitter,
+        Pixiv, or Fantia when available. By clicking on these links, you can view the full image.
+        You can also subscribe for updates through <Link href={`/feed.xml`}>RSS</Link>.
       </p>
       <p className="pt-6 md:pt-4">
-        If you enjoy the illustrations, please consider following and supporting the illustrators.
+        I am not an illustrator but someone who frequently commissions artworks. If you appreciate
+        the illustrations, please consider following and supporting the illustrators.
       </p>
       <p className="pt-6 md:pt-4">
-        For illustrators or readers who are interested in reaching out, feel free to contact me
-        through <Link href="https://odaibako.net/u/CrystallizeSub">odaibako</Link> or send me an{' '}
-        <Link href="mailto:skeb@crystallize.eu.org">email</Link>.
+        If any illustrators or readers wish to get in touch, don&apos;t hesitate to reach out
+        through <Link href="https://odaibako.net/u/CrystallizeSub">odaibako</Link> or by sending me
+        an <Link href="mailto:skeb@crystallize.eu.org">email</Link>.
       </p>
       <Update />
     </div>
