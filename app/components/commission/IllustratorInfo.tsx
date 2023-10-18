@@ -39,7 +39,9 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
       </span>
       {commissionCreator || `-`}
       <span className="grow text-right">
-        {commission.Links.length === 0 ? `N/A` : createLinks(commission.Links)}
+        {commission.Links && commission.Links.some(link => link.trim() !== '')
+          ? createLinks(commission.Links)
+          : `N/A`}
       </span>
     </div>
   )
