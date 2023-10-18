@@ -22,7 +22,9 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   return (
     <div className="pb-6">
       {/* Display character title */}
-      <Title Content={Character} />
+      <div className="pb-2">
+        <Title Content={Character} />
+      </div>
 
       <StaleLoader Name={Character} isStale={isStale}>
         {!characterData || sortedCommissions.length === 0 ? (
