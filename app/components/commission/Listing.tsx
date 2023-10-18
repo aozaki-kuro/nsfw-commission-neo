@@ -14,17 +14,22 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   // Find data related to the given character
   const characterData = commissionData.find(data => data.Character === Character)
 
+  // Sort commissions in descending order, or default to an empty array if undefined
+  const sortedCommissions = [...(characterData?.Commissions || [])].sort((a, b) => {
+    return parseInt(b.fileName.slice(0, 8)) - parseInt(a.fileName.slice(0, 8))
+  })
+
   return (
     <div className="pb-4">
       {/* Display character title */}
       <Title Content={Character} />
 
       <StaleLoader Name={Character} isStale={isStale}>
-        {!characterData || characterData.Commissions.length === 0 ? (
+        {!characterData || sortedCommissions.length === 0 ? (
           <p>To be announced...</p>
         ) : (
           // List out all commissions related to the character
-          characterData.Commissions.map((commission, index) => {
+          sortedCommissions.map((commission, index) => {
             // Define the Alt text
             const illustYear = commission.fileName.slice(0, 4)
             const illustDate = commission.fileName.slice(0, 8)
