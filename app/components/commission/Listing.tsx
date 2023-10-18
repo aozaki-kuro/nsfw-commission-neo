@@ -45,7 +45,9 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
                   placeholder="blur"
                   className="pointer-events-none select-none"
                 />
-                <IllustratorInfo commission={commission} characterName={Character} />
+                <div className="pb-4 pt-8 md:pb-2 md:pt-6">
+                  <IllustratorInfo commission={commission} characterName={Character} />
+                </div>
               </div>
             )
           })

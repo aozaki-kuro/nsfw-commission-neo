@@ -14,7 +14,7 @@ const Commission = () => {
       ))}
 
       {/* Divider between Active and Stale Commissions */}
-      <div className="pt-4" />
+      <div className="pt-0" />
       <hr />
       <div className="pb-8" />
 

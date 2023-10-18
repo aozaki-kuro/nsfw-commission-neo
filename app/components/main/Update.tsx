@@ -15,7 +15,7 @@ const Update = () => {
   const { fileName, Character } = latestEntry
 
   return (
-    <div className="flex flex-auto py-8 font-mono text-sm ss:text-xs md:py-6">
+    <div className="flex flex-auto pb-4 pt-8 font-mono text-sm ss:text-xs md:pt-6">
       <p className="pr-2">Last update:</p>
       <p className="pr-2">{formatDate(fileName.substring(0, 8))}</p>
       <p>

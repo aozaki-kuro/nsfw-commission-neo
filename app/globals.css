@@ -34,12 +34,6 @@
     font-variation-settings: 'wght' 600;
   }
 
-  /* Spacing above and under <480px */
-
-  article {
-    @apply md:pb-16 md:pt-8;
-  }
-
   /* Article Main Font color */
 
   p,

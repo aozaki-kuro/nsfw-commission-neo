@@ -19,7 +19,7 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
   const commissionCreator = commission.fileName.split('_')[1]
 
   return (
-    <div className="flex flex-auto pb-4 pt-8 font-mono text-sm text-p-light dark:text-gray-300 md:pb-1 md:pt-5 md:text-xs">
+    <div className="flex flex-auto font-mono text-sm text-p-light dark:text-gray-300 md:text-xs">
       <span className="select-none pr-16 md:pr-6">
         {
           /*
