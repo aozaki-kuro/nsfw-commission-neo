@@ -28,7 +28,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
 
       <StaleLoader Name={Character} isStale={isStale}>
         {!characterData || sortedCommissions.length === 0 ? (
-          <p>To be announced...</p>
+          <p className="py-4">To be announced ...</p>
         ) : (
           // List out all commissions related to the character
           sortedCommissions.map((commission, index) => {

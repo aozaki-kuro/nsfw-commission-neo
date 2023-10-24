@@ -83,6 +83,12 @@ export const commissionData: Props = [
     ],
   },
 
+  /* Kotoha */
+  {
+    Character: 'K*toha',
+    Commissions: [],
+  },
+
   /* Lucia */
   {
     Character: 'L*cia',
