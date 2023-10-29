@@ -67,7 +67,7 @@ export default function MyModal() {
                   <Image
                     src={HeadImage}
                     alt="NSFW Commissions"
-                    quality={95}
+                    quality={80}
                     placeholder="blur"
                     className="mb-4"
                     priority={true}
