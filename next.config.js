@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   cleanDistDir: true,
   images: {
-    unoptimized: false,
+    unoptimized: process.env.CF_PAGES === 'true' ? true : false,
   },
 
   // Ignore Lint during Build
