@@ -27,6 +27,9 @@ export async function GET() {
     title: SITE_TITLE,
     site_url: SITE_URL,
     feed_url: FEED_URL,
+    language: 'en-US',
+    webMaster: 'Crystallize',
+    ttl: 60,
   })
 
   const allCommissions = commissionData
@@ -54,6 +57,7 @@ export async function GET() {
       title: characterFullName,
       url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`,
       date: commissionDate,
+      author: artistName || 'Anonymous',
       description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
       enclosure: { url: imageUrl, type: 'image/jpeg' },
     })
