@@ -43,7 +43,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
                 <Image
                   src={require(`public/images/${commission.fileName}.jpg`)}
                   alt={altText}
-                  quality={95}
+                  quality={90}
                   placeholder="blur"
                   className="pointer-events-none select-none"
                 />

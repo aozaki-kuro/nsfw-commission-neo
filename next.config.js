@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   cleanDistDir: true,
   images: {
-    unoptimized: true,
+    unoptimized: false,
   },
 
   // Ignore Lint during Build
