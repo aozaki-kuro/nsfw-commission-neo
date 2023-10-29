@@ -52,7 +52,7 @@ export async function GET() {
     feed.item({
       title: characterFullName,
       url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`,
-      date: new Date(new Date(commissionDate).getTime() + 8 * 60 * 60 * 1000),
+      date: commissionDate,
       description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
     })
   })
