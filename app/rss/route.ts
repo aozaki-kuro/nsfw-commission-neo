@@ -7,7 +7,7 @@ import RSS from 'rss'
 // Constants
 const SITE_TITLE = "Crystallize's NSFW Commissions"
 const SITE_URL = 'https://crystallize.eu.org'
-const FEED_URL = `${SITE_URL}/feed.xml`
+const FEED_URL = `${SITE_URL}/rss`
 
 const characterStatusDictionary = Object.fromEntries(
   characterDictionary.map(({ DisplayName, Active }) => [DisplayName, { Active }]),
@@ -49,11 +49,13 @@ export async function GET() {
       commission.fileName,
     )
     const characterFullName = commission.characterFullName
+    const imageUrl = `https://img.crystallize.eu.org/nsfw-commission/${commission.fileName}.jpg`
     feed.item({
       title: characterFullName,
       url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`,
       date: commissionDate,
       description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
+      enclosure: { url: imageUrl, type: 'image/jpeg' },
     })
   })
 
