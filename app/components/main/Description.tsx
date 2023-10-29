@@ -12,7 +12,7 @@ const CommissionDescription = () => {
       <p className="pt-6 md:pt-4">
         Preview images are displayed alongside their corresponding links to platforms like Twitter,
         Pixiv, or Fantia when available. By clicking on these links, you can view the full image.
-        You can also subscribe for updates through <Link href={`/feed.xml`}>RSS</Link>.
+        You can also subscribe for updates through <Link href="/feed.xml">RSS</Link>.
       </p>
       <p className="pt-6 md:pt-4">
         I am not an illustrator but someone who frequently commissions artworks. If you appreciate
