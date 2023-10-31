@@ -30,7 +30,7 @@ export const staleData: Props = [
     ],
   },
 
-  /* Tokomachi */
+  /* Tokomachi 
   {
     Character: 'Tokomachi',
     Commissions: [
@@ -180,6 +180,7 @@ export const staleData: Props = [
       },
     ],
   },
+  */
 
   /* Kanaut Nishe */
   {
