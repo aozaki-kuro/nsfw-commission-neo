@@ -17,5 +17,5 @@ export const characterDictionary: Props[] = [
   /* Stale Characters */
   { DisplayName: "Ninomae Ina'nis", Active: false, Order: 997 }, // Adjusted name as per comment
   { DisplayName: 'Kanaut Nishe', Active: false, Order: 998 },
-  { DisplayName: 'Tokomachi', Active: false, Order: 999 },
+  // { DisplayName: 'Tokomachi', Active: false, Order: 999 },
 ]

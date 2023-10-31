@@ -11,10 +11,7 @@ export const staleData: Props = [
       },
       {
         fileName: '20220915_七市',
-        Links: [
-          'https://twitter.com/CrystallizeSub/status/1580894566814605312',
-          'https://www.pixiv.net/artworks/106680937',
-        ],
+        Links: ['https://www.pixiv.net/artworks/106680937'],
       },
       {
         fileName: '20220817_紫信号',
@@ -248,10 +245,7 @@ export const staleData: Props = [
       },
       {
         fileName: '20221113_七市',
-        Links: [
-          'https://twitter.com/CrystallizeSub/status/1594548279831719936',
-          'https://www.pixiv.net/artworks/102825365',
-        ],
+        Links: ['https://www.pixiv.net/artworks/102825365'],
       },
       {
         fileName: '20221106_GSUS',
