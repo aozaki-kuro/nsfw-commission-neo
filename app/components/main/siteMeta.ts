@@ -33,16 +33,16 @@ export const SiteMeta: Metadata = {
   applicationName: Site,
 
   icons: {
-    icon: [{ url: '/favicon20231031/icon.png' }, new URL('/icon.png?v=20231031', CanonicalUrl)],
-    shortcut: ['/favicon20231031/android-chrome-192x192.png'],
+    icon: [{ url: '/favicon/icon.png' }, new URL('/icon.png?v=20231031', CanonicalUrl)],
+    shortcut: ['/favicon/android-chrome-192x192.png'],
     apple: [
-      { url: '/favicon20231031/apple-touch-icon.png' },
-      { url: '/favicon20231031/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon/apple-touch-icon.png' },
+      { url: '/favicon/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
     ],
     other: [
       {
         rel: 'apple-touch-icon-precomposed',
-        url: '/favicon20231031/apple-touch-icon.png',
+        url: '/favicon/apple-touch-icon.png',
       },
     ],
   },
