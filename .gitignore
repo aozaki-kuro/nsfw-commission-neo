@@ -36,7 +36,7 @@ next-env.d.ts
 
 # public images
 public/images/
-scripts/dl.js
+data/images/
 
 # sitemap & rss
 public/feed.xml

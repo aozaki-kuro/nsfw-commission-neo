@@ -12,12 +12,12 @@ const inter = localFont({
   style: 'normal',
   src: [
     {
-      path: '../public/fonts/InterDisplay-roman.var.woff2',
+      path: './components/fonts/InterDisplay-roman.var.woff2',
       weight: '100',
       style: 'normal',
     },
     {
-      path: '../public/fonts/InterDisplay-roman.var.woff2',
+      path: './components/fonts/InterDisplay-roman.var.woff2',
       weight: '900',
       style: 'normal',
     },

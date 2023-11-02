@@ -41,7 +41,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">
                 <Image
-                  src={require(`public/images/${commission.fileName}.jpg`)}
+                  src={require(`data/images/${commission.fileName}.jpg`)}
                   alt={altText}
                   quality={90}
                   placeholder="blur"
