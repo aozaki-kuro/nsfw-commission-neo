@@ -13,23 +13,17 @@ export default function MyModal() {
   const [isOpen, setIsOpen] = useState(false)
 
   useEffect(() => {
-    // Check if the user agent is Lighthouse or PageSpeed Insights
-    const isTestingAgent = /Speed Insights|Lighthouse/.test(navigator.userAgent)
-
-    if (isTestingAgent) {
-      // Don't open the modal if it's a testing agent
-      setIsOpen(false)
-      return
-    }
-
-    // Your existing age confirmation logic
     const hasConfirmedAge = localStorage.getItem(confirmedAgeStorageKey)
     if (hasConfirmedAge) {
       const timestamp = parseInt(hasConfirmedAge, 10)
       const confirmTime = Date.now() - 7 * 24 * 60 * 60 * 1000
       if (timestamp > confirmTime) {
         setIsOpen(false)
+      } else {
+        setIsOpen(true)
       }
+    } else {
+      setIsOpen(true)
     }
   }, [])
 
