@@ -53,7 +53,9 @@ const nextConfig = {
   },
 
   ...(process.env.CF_PAGES === 'true'
-    ? { output: 'export' } // Use static output for Cloudflare Pages
+    ? {
+        //output: 'export' // Use static output for Cloudflare Pages
+      }
     : {
         // Add headers when NOT on Cloudflare Pages
         async headers() {
