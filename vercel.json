@@ -9,8 +9,8 @@
       "statusCode": 301
     },
     {
-      "source": "/feed.xml",
-      "destination": "/rss",
+      "source": "/rss",
+      "destination": "/feed.xml",
       "statusCode": 301
     }
   ]

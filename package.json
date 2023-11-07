@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
-    "prebuild": "tsx scripts/dl.ts",
+    "prebuild": "tsx scripts/dl.ts && tsx scripts/rss.ts",
     "prod": "pnpm prebuild && pnpm build",
     "prepare": "husky install"
   },

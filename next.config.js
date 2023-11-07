@@ -54,7 +54,13 @@ const nextConfig = {
 
   ...(process.env.CF_PAGES === 'true'
     ? {
-        //output: 'export' // Use static output for Cloudflare Pages
+        /*
+         * pnpm prod && pnpx @cloudflare/next-on-pages
+         * Change output dir: .vercel/output/static
+         * Add compability flag: nodejs_compat
+         * Then you can disable output: 'export'
+         */
+        output: 'export', // Use static output for Cloudflare Pages
       }
     : {
         // Add headers when NOT on Cloudflare Pages
