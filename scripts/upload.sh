@@ -1,7 +1,7 @@
 #!/bin/fish
 
 # Define the local and remote directories
-LOCAL_DIR="./public/images/"
+LOCAL_DIR="./data/images/"
 REMOTE_DIR="aozaki@oracle-amd0:./share/nsfw-commission/"
 
 # Run rsync to synchronize the directories
