@@ -11,9 +11,9 @@ export const characterDictionary: Props[] = [
   { DisplayName: 'Studio K', Active: true, Order: 3 },
   { DisplayName: 'H*nabasami Kyo', Active: true, Order: 5 },
   { DisplayName: 'K*toha', Active: true, Order: 6 }, // TBA
-  { DisplayName: 'Misc', Active: true, Order: 99 },
 
   /* Stale Characters */
+  { DisplayName: 'Blue Archive', Active: false, Order: 99 },
   { DisplayName: 'L*cia', Active: false, Order: 996 },
   { DisplayName: "Ninomae Ina'nis", Active: false, Order: 997 }, // Adjusted name as per comment
   { DisplayName: 'Kanaut Nishe', Active: false, Order: 998 },
