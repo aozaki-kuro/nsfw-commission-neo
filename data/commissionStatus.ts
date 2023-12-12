@@ -16,6 +16,6 @@ export const characterDictionary: Props[] = [
   { DisplayName: 'Blue Archive', Active: false, Order: 99 },
   { DisplayName: 'L*cia', Active: false, Order: 996 },
   { DisplayName: "Ninomae Ina'nis", Active: false, Order: 997 }, // Adjusted name as per comment
-  { DisplayName: 'Kanaut Nishe', Active: false, Order: 998 },
+  { DisplayName: 'Kanaut Nishe', Active: true, Order: 998 },
   // { DisplayName: 'Tokomachi', Active: false, Order: 999 },
 ]
