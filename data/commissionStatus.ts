@@ -9,11 +9,11 @@ export const characterDictionary: Props[] = [
   { DisplayName: 'AZKi', Active: true, Order: 1 },
   { DisplayName: 'Studio K', Active: true, Order: 3 },
   { DisplayName: 'H*nabasami Kyo', Active: true, Order: 5 },
-  { DisplayName: 'K*toha', Active: true, Order: 6 }, // TBA
+  // { DisplayName: 'K*toha', Active: true, Order: 6 }, // TBA
   { DisplayName: 'Kanaut Nishe', Active: true, Order: 9 },
 
   /* Stale Characters */
-  { DisplayName: 'n*yuta', Active: true, Order: 996 },
+  { DisplayName: 'n*yuta', Active: false, Order: 996 },
   { DisplayName: 'L*cia', Active: false, Order: 997 },
   { DisplayName: "Ninomae Ina'nis", Active: false, Order: 998 },
   { DisplayName: 'Blue Archive', Active: false, Order: 999 },
