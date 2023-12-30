@@ -20,6 +20,7 @@ overrides:
   object.values: npm:@nolyfill/object.values@latest
   string.prototype.matchall: npm:@nolyfill/string.prototype.matchall@latest
   function-bind: npm:@nolyfill/function-bind@latest
+  hasown: npm:@nolyfill/hasown@latest
 
 dependencies:
   '@headlessui/react':
@@ -795,8 +796,8 @@ packages:
       '@nolyfill/shared': 1.0.21
     dev: true
 
-  /@nolyfill/function-bind@1.0.21:
-    resolution: {integrity: sha512-0Jsaoxp/9HJqCa3GzEzJcoi4+VfupD/o+1pBG0qJ0X3d+sKbbfSej2Faiyp0fTHH36mhsdAKi2TahEx9JV08ZA==}
+  /@nolyfill/hasown@1.0.25:
+    resolution: {integrity: sha512-RhoW4Hk6B4/DM8B6sjbCkVJkhmtycA38cURrC489u4lwb/YafpUeknuLRzBoaNWvfLqkyR3rM/t0aa8U2/tvkQ==}
     engines: {node: '>=12.4.0'}
     dev: true
 
@@ -1602,7 +1603,7 @@ packages:
       eslint: 8.56.0
       eslint-import-resolver-node: 0.3.9
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.16.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.56.0)
-      hasown: 2.0.0
+      hasown: /@nolyfill/hasown@1.0.25
       is-core-module: 2.13.1
       is-glob: 4.0.3
       minimatch: 3.1.2
@@ -1634,7 +1635,7 @@ packages:
       emoji-regex: 9.2.2
       es-iterator-helpers: /@nolyfill/es-iterator-helpers@1.0.21
       eslint: 8.56.0
-      hasown: 2.0.0
+      hasown: /@nolyfill/hasown@1.0.25
       jsx-ast-utils: 3.3.5
       language-tags: 1.0.9
       minimatch: 3.1.2
@@ -2011,13 +2012,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /hasown@2.0.0:
-    resolution: {integrity: sha512-vUptKVTpIJhcczKBbgnS+RtcuYMB8+oNzPK2/Hp3hanz8JmpATdmmgLgSaadVREkDm+e2giHwY3ZRkyjSIDDFA==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      function-bind: /@nolyfill/function-bind@1.0.21
-    dev: true
-
   /human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
@@ -2072,7 +2066,7 @@ packages:
   /is-core-module@2.13.1:
     resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
     dependencies:
-      hasown: 2.0.0
+      hasown: /@nolyfill/hasown@1.0.25
     dev: true
 
   /is-extglob@2.1.1:
