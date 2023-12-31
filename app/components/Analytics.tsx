@@ -1,7 +1,10 @@
 import Script from 'next/script'
 
 const Analytics = () => {
-  // Check if process.env.CF_PAGES is 'true'
+  if (process.env.NODE_ENV === 'development') {
+    return null
+  }
+
   return (
     <Script
       data-domain="crystallize.eu.org"
