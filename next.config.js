@@ -84,7 +84,7 @@ const nextConfig = {
           return [
             {
               source: '/app.js',
-              destination: 'https://sight.aozaki.cc/app.js',
+              destination: 'https://sight.aozaki.cc/app-event.js',
             },
           ]
         },
