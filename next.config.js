@@ -53,7 +53,10 @@ const nextConfig = {
   },
 
   ...(process.env.CF_PAGES === 'true'
-    ? {
+    ? /*
+       * If true = Cloudflare Pages
+       */
+      {
         /*
          * pnpm prod && pnpx @cloudflare/next-on-pages
          * Change output dir: .vercel/output/static
@@ -62,13 +65,26 @@ const nextConfig = {
          */
         output: 'export', // Use static output for Cloudflare Pages
       }
-    : {
+    : /*
+       * If false = Not Cloudflare Pages
+       */
+      {
         // Add headers when NOT on Cloudflare Pages
         async headers() {
           return [
             {
               source: '/(.*)',
               headers: [...securityHeaders, ...noRobots],
+            },
+          ]
+        },
+
+        // Plausible Analytics
+        async rewrites() {
+          return [
+            {
+              source: '/app.js',
+              destination: 'https://sight.aozaki.cc/app.js',
             },
           ]
         },
