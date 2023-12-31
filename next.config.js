@@ -83,7 +83,7 @@ const nextConfig = {
         async rewrites() {
           return [
             {
-              source: '/app.js',
+              source: '/sight/app.js',
               destination: 'https://sight.aozaki.cc/app-event.js',
             },
             {
