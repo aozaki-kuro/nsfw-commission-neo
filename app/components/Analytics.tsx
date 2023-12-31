@@ -10,7 +10,12 @@ const Analytics = () => {
     />
   ) : (
     // Return the Script component if the condition is false
-    <Script data-domain="crystallize.eu.org" src="/app.js" strategy="lazyOnload" />
+    <Script
+      data-domain="crystallize.eu.org"
+      src="/app.js"
+      strategy="lazyOnload"
+      data-api="/sight/event"
+    />
   )
 }
 

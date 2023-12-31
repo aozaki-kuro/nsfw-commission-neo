@@ -87,7 +87,7 @@ const nextConfig = {
               destination: 'https://sight.aozaki.cc/app-event.js',
             },
             {
-              source: '/api/event',
+              source: '/sight/event',
               destination: 'https://sight.aozaki.cc/api/event',
             },
           ]
