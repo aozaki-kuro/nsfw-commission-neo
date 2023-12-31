@@ -86,6 +86,10 @@ const nextConfig = {
               source: '/app.js',
               destination: 'https://sight.aozaki.cc/app-event.js',
             },
+            {
+              source: '/api/event',
+              destination: 'https://sight.aozaki.cc/api/event',
+            },
           ]
         },
       }),
