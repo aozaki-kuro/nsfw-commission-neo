@@ -48,7 +48,7 @@ export const commissionData: Props = [
       },
       {
         fileName: '20240106_桃萌百',
-        Links: ['https://www.pixiv.net/artworks/114922359', 'https://fantia.jp/fanclubs/377975'],
+        Links: ['https://www.pixiv.net/artworks/114922359', 'https://fantia.jp/posts/2478938'],
       },
     ],
   },
