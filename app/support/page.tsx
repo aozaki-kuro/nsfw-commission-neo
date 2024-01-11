@@ -1,4 +1,5 @@
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import RootLayout from '../layout'
 
 const Home: NextPage = () => {
@@ -30,9 +31,13 @@ const Home: NextPage = () => {
       </li>
        */}
 
-      <p className="pb-6 md:pb-4">
-        Thank you! Please remember to follow and support the illustrators!
-      </p>
+      <p className="pb-6 md:pb-4">Thank you!</p>
+
+      <p className="pb-6 md:pb-4">Please remember to follow and support the illustrators!</p>
+
+      <Link href="/" className="pb-6 md:pb-4">
+        Back to Home
+      </Link>
     </RootLayout>
   )
 }
