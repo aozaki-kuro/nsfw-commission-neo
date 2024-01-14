@@ -2,7 +2,7 @@ import { Props } from '#data/types'
 import { staleData } from './staleData'
 
 export const commissionData: Props = [
-  /* AZKi */
+  /* ========= AZKi ========= */
   {
     Character: 'AZKi',
     Commissions: [
@@ -53,7 +53,7 @@ export const commissionData: Props = [
     ],
   },
 
-  /* Kamitsubaki Studio & SINSEKAI Studio */
+  /* ========= Kamitsubaki Studio & SINSEKAI Studio ========= */
   {
     Character: 'Studio K',
     Commissions: [
@@ -78,13 +78,13 @@ export const commissionData: Props = [
         Links: ['https://www.pixiv.net/artworks/114364539'],
       },
       {
-        fileName: '20240113_V.W.P. 現象II',
+        fileName: '20240113_V.W.P 現象II',
         Links: ['https://www.pixiv.net/artworks/115136395'],
       },
     ],
   },
 
-  /* Hanabasami Kyo */
+  /* ========= 花鋏キョウ / Hanabasami Kyo ========= */
   {
     Character: 'H*nabasami Kyo',
     Commissions: [
@@ -99,7 +99,7 @@ export const commissionData: Props = [
     ],
   },
 
-  /* Kanaut Nishe */
+  /* =========  銀海渡ニシェ / Kanaut Nishe ========= */
   {
     Character: 'Kanaut Nishe',
     Commissions: [
@@ -200,7 +200,7 @@ export const commissionData: Props = [
     ],
   },
 
-  /* Kotoha 
+  /* ========= Kotoha ========= 
   {
     Character: 'K*toha',
     Commissions: [],

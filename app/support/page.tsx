@@ -23,13 +23,13 @@ const Home: NextPage = () => {
         Crypto Currency:{' '}
         <span className="font-mono">0x51A99Cdb999be0522B8a3537eb833c0562f4FC80</span>
       </li>
-      {/* 
-        * Disabled due to Ko-Fi not being able to donate anonymously
-
-      <li className="pb-6 md:pb-4">
-        <Link href="https://ko-fi.com/crystallize_iko">Ko-Fi</Link>
-      </li>
+      {/*
+       * Disabled due to Ko-Fi not being able to donate anonymously
        */}
+
+      <li className="pb-6 md:pb-4">Ko-Fi (WIP)</li>
+
+      <li className="pb-6 md:pb-4">Patreon (WIP)</li>
 
       <p className="pb-6 md:pb-4">Thank you!</p>
 
