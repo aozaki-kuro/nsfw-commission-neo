@@ -58,7 +58,7 @@ export const commissionData: Props = [
     Character: 'Studio K',
     Commissions: [
       {
-        fileName: '20231018',
+        fileName: '20231018_1st Album Release',
         Links: ['https://www.pixiv.net/artworks/112712843'],
       },
       {
@@ -74,11 +74,11 @@ export const commissionData: Props = [
         Links: ['https://www.pixiv.net/artworks/113681042'],
       },
       {
-        fileName: '20231215',
+        fileName: '20231215_parallel canvas II',
         Links: ['https://www.pixiv.net/artworks/114364539'],
       },
       {
-        fileName: '20240113',
+        fileName: '20240113_V.W.P. 現象II',
         Links: ['https://www.pixiv.net/artworks/115136395'],
       },
     ],
