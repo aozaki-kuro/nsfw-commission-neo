@@ -122,7 +122,7 @@ export const commissionData: Props = [
         Links: ['https://www.pixiv.net/artworks/107682931', 'https://fantia.jp/posts/2039830'],
       },
       {
-        fileName: '20230319_ギシュレッド',
+        fileName: '20230319_Gisyu',
         Links: [
           'https://twitter.com/gisyuled/status/1637254201863737347',
           'https://www.pixiv.net/artworks/106350101',
@@ -155,7 +155,7 @@ export const commissionData: Props = [
         Links: ['https://www.pixiv.net/artworks/104341374'],
       },
       {
-        fileName: '20221211_ギシュレッド',
+        fileName: '20221211_Gisyu',
         Links: [
           'https://twitter.com/gisyuled/status/1601848085356822528',
           'https://www.pixiv.net/artworks/103521450',
