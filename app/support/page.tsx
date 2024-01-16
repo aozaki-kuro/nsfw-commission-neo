@@ -20,9 +20,10 @@ const Home: NextPage = () => {
 
       {/* ======= Link ======= */}
       <li className="pb-6 md:pb-4">
-        Crypto Currency:{' '}
-        <span className="font-mono">0x51A99Cdb999be0522B8a3537eb833c0562f4FC80</span>
+        USDT-TRC20:{' '}
+        <span className="font-mono">TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa</span>
       </li>
+
       {/*
        * Disabled due to Ko-Fi not being able to donate anonymously
        */}
