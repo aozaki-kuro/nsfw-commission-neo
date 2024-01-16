@@ -20,8 +20,8 @@ const Home: NextPage = () => {
 
       {/* ======= Link ======= */}
       <li className="pb-6 md:pb-4">
-        USDT-TRC20:{' '}
-        <span className="font-mono">TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa</span>
+        Crypto Currency:{' '}
+        <span className="font-mono">0x128e6E0BC4ad6d4979A6C94B860Bef4a851eF01e</span>
       </li>
 
       {/*
