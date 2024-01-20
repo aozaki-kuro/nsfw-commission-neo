@@ -24,7 +24,7 @@ const Support: NextPage = () => {
       </div>
 
       {/* ======= Crypto ======= */}
-      <h2 className="pb-6 text-xl md:pb-4">Crypto Currencies</h2>
+      <h2 className="pb-6 text-lg md:pb-4 md:text-base">Crypto Currencies</h2>
 
       <div className="">
         <CryptoAddress currencyName="USDT (TRC20)" address="TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa" />
