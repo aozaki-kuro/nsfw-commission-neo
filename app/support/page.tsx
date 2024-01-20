@@ -2,57 +2,47 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import RootLayout from '../layout'
 
-const Home: NextPage = () => {
+import CryptoAddress from './components/CryptoAddress'
+
+const Support: NextPage = () => {
   return (
     <RootLayout>
       <h1 className="pb-6 md:pb-4">Support me!</h1>
 
       {/* ======= Text ======= */}
 
-      <p className="pb-6 md:pb-4">
-        Please consider support me if you appreciated the works I commissioned!
-      </p>
-      <p className="pb-6 md:pb-4">
-        Commissioning such high-quality artworks at this pace made the entire project quite
-        time-consuming and extremely expensive. Currently I found myself spending around 20k - 40k
-        JPY on these each month. Therefore, any financial assistance you can provide, even a few
-        dollards, would be greatly appreciated.
-      </p>
+      <div>
+        <p className="pb-6 md:pb-4">
+          Please consider support me if you appreciated the works I commissioned!
+        </p>
+        <p className="pb-6 md:pb-4">
+          Commissioning such high-quality artworks at this pace made the entire project quite
+          time-consuming and extremely expensive. Currently I found myself spending around 20k - 40k
+          JPY on these each month. Therefore, any financial assistance you can provide, even a few
+          dollards, would be greatly appreciated.
+        </p>
+      </div>
 
       {/* ======= Crypto ======= */}
       <h2 className="pb-6 text-xl md:pb-4">Crypto Currencies</h2>
 
-      <li className="">
-        <b>USDT (TRC20)</b>
-        {' - '}
-        <span className="font-mono">TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa</span>
-      </li>
+      <div className="">
+        <CryptoAddress currencyName="USDT (TRC20)" address="TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa" />
+        <CryptoAddress
+          currencyName="USDT (ERC20)"
+          address="0xcca71d75cfc76d4b792666e600591577ebb71922"
+        />
+        <CryptoAddress currencyName="BTC" address="33PopHvEh47jkokX1EXv75TkUDjVFGmbWs" />
 
-      <li className="">
-        <b>USDT (ERC20)</b>
-        {' - '}
-        <span className="font-mono">0xcca71d75cfc76d4b792666e600591577ebb71922</span>
-      </li>
+        <CryptoAddress currencyName="ETH" address="0xcca71d75cfc76d4b792666e600591577ebb71922" />
 
-      <li className="">
-        <b>BTC</b>
-        {' - '}
-        <span className="font-mono">33PopHvEh47jkokX1EXv75TkUDjVFGmbWs</span>
-      </li>
+        <br />
 
-      <li className="">
-        <b>ETH</b>
-        {' - '}
-        <span className="font-mono">0xcca71d75cfc76d4b792666e600591577ebb71922</span>
-      </li>
-
-      <br />
-
-      <li className="pb-6 md:pb-4">
-        <b>Metamask</b>
-        {' - '}
-        <span className="font-mono">0x128e6E0BC4ad6d4979A6C94B860Bef4a851eF01e</span>
-      </li>
+        <CryptoAddress
+          currencyName="Metamask"
+          address="0x128e6E0BC4ad6d4979A6C94B860Bef4a851eF01e"
+        />
+      </div>
 
       {/* ======= Patreon Sites ======= 
 
@@ -83,4 +73,4 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export default Support
