@@ -20,7 +20,7 @@ const CryptoAddress = ({ currencyName, address }: CryptoAddressProps) => {
   return (
     <li>
       <b>{currencyName}</b> {' - '}
-      <span className="cursor-pointer md:hidden" onClick={copyToClipboard}>
+      <span className="cursor-pointer font-mono md:hidden" onClick={copyToClipboard}>
         {address}
       </span>
       <span className="hidden cursor-pointer text-gray-600 md:inline" onClick={copyToClipboard}>
