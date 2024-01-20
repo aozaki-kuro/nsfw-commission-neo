@@ -23,9 +23,12 @@ const CryptoAddress = ({ currencyName, address }: CryptoAddressProps) => {
       <span className="cursor-pointer font-mono md:hidden" onClick={copyToClipboard}>
         {address}
       </span>
-      <span className="hidden cursor-pointer text-gray-600 md:inline" onClick={copyToClipboard}>
+      <p
+        className="hidden cursor-pointer text-gray-600 md:inline dark:text-gray-200"
+        onClick={copyToClipboard}
+      >
         Click to copy
-      </span>
+      </p>
       {showFeedback && <span className={styles.feedbackAnimation}>Copied!</span>}
     </li>
   )
