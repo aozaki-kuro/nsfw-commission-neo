@@ -8,6 +8,7 @@ const Home: NextPage = () => {
       <h1 className="pb-6 md:pb-4">Support me!</h1>
 
       {/* ======= Text ======= */}
+
       <p className="pb-6 md:pb-4">
         Please consider support me if you appreciated the works I commissioned!
       </p>
@@ -18,23 +19,62 @@ const Home: NextPage = () => {
         dollards, would be greatly appreciated.
       </p>
 
-      {/* ======= Link ======= */}
+      {/* ======= Crypto ======= */}
+      <h2 className="pb-6 text-xl md:pb-4">Crypto Currencies</h2>
+
+      <li className="">
+        <b>USDT (TRC20)</b>
+        {' - '}
+        <span className="font-mono">TEHCVekfCn5FxLFayUHAVj6qGpQyRW6Usa</span>
+      </li>
+
+      <li className="">
+        <b>USDT (ERC20)</b>
+        {' - '}
+        <span className="font-mono">0xcca71d75cfc76d4b792666e600591577ebb71922</span>
+      </li>
+
+      <li className="">
+        <b>BTC</b>
+        {' - '}
+        <span className="font-mono">33PopHvEh47jkokX1EXv75TkUDjVFGmbWs</span>
+      </li>
+
+      <li className="">
+        <b>ETH</b>
+        {' - '}
+        <span className="font-mono">0xcca71d75cfc76d4b792666e600591577ebb71922</span>
+      </li>
+
+      <br />
+
       <li className="pb-6 md:pb-4">
-        Crypto Currency:{' '}
+        <b>Metamask</b>
+        {' - '}
         <span className="font-mono">0x128e6E0BC4ad6d4979A6C94B860Bef4a851eF01e</span>
       </li>
 
-      {/*
-       * Disabled due to Ko-Fi not being able to donate anonymously
-       */}
+      {/* ======= Patreon Sites ======= 
+
+      <h2 className="pb-6 text-xl md:pb-4">Other sites</h2>
 
       <li className="pb-6 md:pb-4">Ko-Fi (WIP)</li>
 
       <li className="pb-6 md:pb-4">Patreon (WIP)</li>
+      
+      */}
 
-      <p className="pb-6 md:pb-4">Thank you!</p>
+      {/* ======= Footer ======= */}
+
+      <div className="pt-4" />
+      <hr />
+      <div className="pb-6" />
+
+      <p className="pb-6 pt-4 md:pb-4">Thank you!</p>
 
       <p className="pb-6 md:pb-4">Please remember to follow and support the illustrators!</p>
+
+      <div className="pb-6" />
 
       <Link href="/" className="pb-6 md:pb-4">
         Back to Home
