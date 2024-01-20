@@ -13,13 +13,13 @@
     font-variation-settings: 'wght' 650;
     letter-spacing: -0.02em;
     margin-bottom: 0.4em;
-    @apply text-[1.6em] text-p-light dark:text-highlight md:text-[1.6em];
+    @apply text-[1.6em] text-p-light md:text-[1.6em] dark:text-highlight;
   }
 
   h2 {
     font-variation-settings: 'wght' 600;
     letter-spacing: -0.015em;
-    @apply text-[1.5em] text-p-light dark:text-highlight md:text-[1.4em];
+    @apply text-[1.5em] text-p-light md:text-[1.4em] dark:text-highlight;
   }
 
   h3,
