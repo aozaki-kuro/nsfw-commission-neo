@@ -212,5 +212,18 @@ export const commissionData: Props = [
 
   */
 
+  /* ========= HACHI ========= 
+  {
+    Character: 'HACHI',
+    Commissions: [
+      {
+        fileName: '',
+        Links: [''],
+      },
+    ],
+  },
+
+  */
+
   ...staleData,
 ]

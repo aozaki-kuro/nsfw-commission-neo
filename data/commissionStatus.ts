@@ -10,6 +10,7 @@ export const characterDictionary: Props[] = [
   { DisplayName: 'Studio K', Active: true, Order: 3 },
   { DisplayName: 'H*nabasami Kyo', Active: true, Order: 5 },
   // { DisplayName: 'K*toha', Active: true, Order: 6 }, // TBA
+  { DisplayName: 'HACHI', Active: true, Order: 8 },
   { DisplayName: 'Kanaut Nishe', Active: true, Order: 9 },
 
   /* Stale Characters */
