@@ -19,7 +19,11 @@ const Support: NextPage = () => {
           Commissioning such high-quality artworks at this pace made the entire project quite
           time-consuming and extremely expensive. Currently I found myself spending around 20k - 40k
           JPY on these each month. Therefore, any financial assistance you can provide, even a few
-          dollards, would be greatly appreciated.
+          dollars, would be greatly appreciated.
+        </p>
+        <p className="pb-6 md:pb-4">
+          I&apos;m also thinking of replacing my very, very old car so I will be saving money from
+          2024.
         </p>
       </div>
 
