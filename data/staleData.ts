@@ -1,7 +1,6 @@
 import { Props } from '#data/types'
 
 export const staleData: Props = [
-  /* =========  Blue Archive ========= */
   {
     Character: 'Blue Archive',
     Commissions: [
@@ -24,6 +23,10 @@ export const staleData: Props = [
     Character: 'L*cia',
     Commissions: [
       {
+        fileName: '20231109_YYDAP',
+        Links: ['https://twitter.com/potatoyyda/status/1722527075972870639'],
+      },
+      {
         fileName: '20230706_七市',
         Links: ['https://www.pixiv.net/artworks/109713460'],
       },
@@ -33,10 +36,6 @@ export const staleData: Props = [
           'https://twitter.com/UnoRyoku/status/1671030802241716231',
           'https://www.pixiv.net/artworks/109181457',
         ],
-      },
-      {
-        fileName: '20231109_YYDAP',
-        Links: ['https://twitter.com/potatoyyda/status/1722527075972870639'],
       },
     ],
   },
@@ -75,12 +74,12 @@ export const staleData: Props = [
     Character: 'n*yuta',
     Commissions: [
       {
-        fileName: '20230830_七市',
-        Links: ['https://www.pixiv.net/artworks/111302832'],
-      },
-      {
         fileName: '20231031_七市',
         Links: ['https://www.pixiv.net/artworks/113113526'],
+      },
+      {
+        fileName: '20230830_七市',
+        Links: ['https://www.pixiv.net/artworks/111302832'],
       },
     ],
   },
@@ -89,6 +88,14 @@ export const staleData: Props = [
   {
     Character: 'Kanaut Nishe',
     Commissions: [
+      {
+        fileName: '20240223_AOS',
+        Links: ['https://www.pixiv.net/artworks/116390504'],
+      },
+      {
+        fileName: '20231227_そーだみず',
+        Links: ['https://twitter.com/so_dasui1/status/1739831358724489679'],
+      },
       {
         fileName: '20231005_ぐれます',
         Links: [
@@ -178,14 +185,6 @@ export const staleData: Props = [
           'https://twitter.com/UnoRyoku/status/1572917959684915206',
           'https://www.pixiv.net/artworks/101403093',
         ],
-      },
-      {
-        fileName: '20231227_そーだみず',
-        Links: ['https://twitter.com/so_dasui1/status/1739831358724489679'],
-      },
-      {
-        fileName: '20240223_AOS',
-        Links: ['https://www.pixiv.net/artworks/116390504'],
       },
     ],
   },
