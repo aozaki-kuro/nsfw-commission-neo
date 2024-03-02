@@ -90,7 +90,7 @@ export const staleData: Props = [
     Commissions: [
       {
         fileName: '20240223_AOS',
-        Links: ['https://www.pixiv.net/artworks/116390504'],
+        Links: ['https://twitter.com/AOS_Libido/status/1763898007307870678'],
       },
       {
         fileName: '20231227_そーだみず',
