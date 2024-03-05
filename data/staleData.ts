@@ -1,23 +1,6 @@
 import { Props } from '#data/types'
 
 export const staleData: Props = [
-  {
-    Character: 'Blue Archive',
-    Commissions: [
-      {
-        fileName: '20230808_中村六翅',
-        Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
-      },
-      {
-        fileName: '20230613_中村六翅',
-        Links: [
-          'https://twitter.com/NakamuraRohane/status/1668625063602708483',
-          'https://www.pixiv.net/artworks/108990302',
-        ],
-      },
-    ],
-  },
-
   /* =========  Lucia ========= */
   {
     Character: 'L*cia',
@@ -335,6 +318,24 @@ export const staleData: Props = [
         Links: [
           'https://twitter.com/hcz_n/status/1340447220559069184',
           'https://www.pixiv.net/artworks/86407839',
+        ],
+      },
+    ],
+  },
+
+  /* =========  Blue Archive ========= */
+  {
+    Character: 'Blue Archive',
+    Commissions: [
+      {
+        fileName: '20230808_中村六翅',
+        Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
+      },
+      {
+        fileName: '20230613_中村六翅',
+        Links: [
+          'https://twitter.com/NakamuraRohane/status/1668625063602708483',
+          'https://www.pixiv.net/artworks/108990302',
         ],
       },
     ],
