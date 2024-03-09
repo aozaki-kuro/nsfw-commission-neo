@@ -62,7 +62,9 @@
       "object.values": "npm:@nolyfill/object.values@latest",
       "string.prototype.matchall": "npm:@nolyfill/string.prototype.matchall@latest",
       "function-bind": "npm:@nolyfill/function-bind@latest",
-      "hasown": "npm:@nolyfill/hasown@latest"
+      "hasown": "npm:@nolyfill/hasown@latest",
+      "array.prototype.findlast": "npm:@nolyfill/array.prototype.findlast@latest",
+      "array.prototype.toreversed": "npm:@nolyfill/array.prototype.toreversed@latest"
     }
   },
   "lint-staged": {
