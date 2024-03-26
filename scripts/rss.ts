@@ -58,7 +58,7 @@ async function generateRSSFeed() {
         commission.fileName,
       )
       const characterFullName = commission.characterFullName
-      const imageUrl = `https://img.crystallize.eu.org/nsfw-commission/${commission.fileName}.jpg`
+      const imageUrl = `https://img.${SITE_URL}/nsfw-commission/${commission.fileName}.jpg`
       feed.item({
         title: characterFullName,
         url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`, // Encoded commission title
