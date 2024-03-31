@@ -1,10 +1,10 @@
-// CharacterListings.tsx
+// components/commission/index.tsx
+
 import Listing from '#components/commission/Listing'
-import { characterDictionary } from '#data/commissionStatus'
+import { characterStatus } from '#data/commissionStatus'
 
 const Commission = () => {
-  const activeChars = characterDictionary.filter(chara => chara.Active)
-  const staleChars = characterDictionary.filter(chara => !chara.Active)
+  const { active: activeChars, stale: staleChars } = characterStatus
 
   return (
     <>

@@ -1,13 +1,11 @@
-import { characterDictionary } from '#data/commissionStatus'
+import { characterStatus } from '#data/commissionStatus'
 
 export const isCharacterActive = (character: string): boolean => {
-  const characterInfo = characterDictionary.find(char => char.DisplayName === character)
-  return characterInfo?.Active === true
+  return characterStatus.active.some(char => char.DisplayName === character)
 }
 
 export const isCharacterStale = (character: string): boolean => {
-  const characterInfo = characterDictionary.find(char => char.DisplayName === character)
-  return characterInfo?.Active === false
+  return characterStatus.stale.some(char => char.DisplayName === character)
 }
 
 /**
@@ -32,7 +30,7 @@ export const formatDate = (dateStr: string): string => {
 }
 
 export const kebabCase = (str: string) =>
-  str.toLowerCase().replace(/&|\s+|[^a-z-_]+/g, (match: string) => {
+  str.toLowerCase().replace(/&|\s+|[^a-z0-9-]+/g, (match: string) => {
     if (match === '&') return ''
     if (match === ' ') return '-'
     if (match === '*') return '-'
