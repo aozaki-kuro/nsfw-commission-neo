@@ -17,9 +17,9 @@ export const isCharacterStale = (character: string): boolean => {
 
 export const formatDate = (dateStr: string): string => {
   // Input validation
-  // if (!/^\d{8}$/.test(dateStr)) {
-  //  throw new Error('The provided date string does not match the "yyyyMMdd" format.')
-  // }
+  if (!/^\d{8}$/.test(dateStr)) {
+    throw new Error('The provided date string does not match the "yyyyMMdd" format.')
+  }
 
   // Formatting logic
   const year = dateStr.slice(0, 4)
