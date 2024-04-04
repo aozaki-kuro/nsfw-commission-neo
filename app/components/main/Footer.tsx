@@ -25,7 +25,7 @@ const Footer = () => {
         <time>2022 - {new Date().getFullYear()}</time> © Crystallize
         <div className="float-right">
           <Link
-            href="mailto:dmca@crystallize.eu.org"
+            href="mailto:dmca@crystallize.cc"
             className="decoration-inherit decoration-dotted dark:text-gray-300"
           >
             DMCA

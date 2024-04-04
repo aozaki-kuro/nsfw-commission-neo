@@ -7,7 +7,7 @@ import { characterStatus } from '#data/commissionStatus'
 
 // Constants
 const SITE_TITLE = "Crystallize's NSFW Commissions"
-const SITE_URL = 'https://crystallize.eu.org'
+const SITE_URL = 'https://crystallize.cc'
 const FEED_URL = `${SITE_URL}/feed.xml`
 
 const MSG_ERROR = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
