@@ -116,5 +116,16 @@ export const commissionData: Props = [
     ],
   },
 
+  /* =========  HACHI ========= */
+  {
+    Character: 'HACHI',
+    Commissions: [
+      {
+        fileName: '20240406_七市',
+        Links: [''],
+      },
+    ],
+  },
+
   ...staleData,
 ]
