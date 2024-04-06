@@ -65,6 +65,10 @@ export const staleData: Props = [
     Character: 'Kanaut Nishe',
     Commissions: [
       {
+        fileName: '20240406_どれい',
+        Links: ['https://twitter.com/dorei_FT/status/1776529855389245652'],
+      },
+      {
         fileName: '20240223_AOS',
         Links: ['https://twitter.com/AOS_Libido/status/1763898007307870678'],
       },

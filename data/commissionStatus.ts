@@ -14,13 +14,13 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'Studio K' },
     { DisplayName: 'L*cia' },
     { DisplayName: 'HACHI' },
+    { DisplayName: 'Kanaut Nishe' },
   ],
 
   /* Stale Characters */
   stale: [
     { DisplayName: 'n*yuta' },
     { DisplayName: 'H*nabasami Kyo' },
-    { DisplayName: 'Kanaut Nishe' },
     { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Blue Archive' },
     // { DisplayName: 'Tokomachi' },
