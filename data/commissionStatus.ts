@@ -23,6 +23,6 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'H*nabasami Kyo' },
     { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Blue Archive' },
-    // { DisplayName: 'Tokomachi' },
+    { DisplayName: 'Tokomachi' },
   ],
 }
