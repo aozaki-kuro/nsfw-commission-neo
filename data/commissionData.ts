@@ -61,12 +61,10 @@ export const commissionData: Props = [
   {
     Character: 'Studio K',
     Commissions: [
-      /*
       {
-        fileName: '20240314', // CIEL
+        fileName: '20240410', // Isekaijoucho
         Links: [''],
       },
-      **/
       {
         fileName: '20240225', // CIEL
         Links: ['https://www.pixiv.net/artworks/116444725'],
