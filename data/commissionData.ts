@@ -8,7 +8,10 @@ export const commissionData: Props = [
     Commissions: [
       {
         fileName: '20240409_雪国裕',
-        Links: ['https://www.pixiv.net/artworks/117744700'],
+        Links: [
+          'https://www.pixiv.net/artworks/117744700',
+          'https://www.fanbox.cc/@yukiguni16/posts/7769811',
+        ],
       },
       {
         fileName: '20240408_病ん太廊',
