@@ -13,7 +13,6 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'AZKi' },
     { DisplayName: 'Studio K' },
     { DisplayName: 'L*cia' },
-    { DisplayName: 'HACHI' },
     { DisplayName: 'Kanaut Nishe' },
   ],
 
@@ -21,8 +20,9 @@ export const characterStatus: CommissionStatus = {
   stale: [
     { DisplayName: 'n*yuta' },
     { DisplayName: 'H*nabasami Kyo' },
-    { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Blue Archive' },
+    { DisplayName: 'HACHI' },
+    { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Tokomachi' },
   ],
 }
