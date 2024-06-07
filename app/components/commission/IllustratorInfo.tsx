@@ -28,7 +28,7 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
           isActive ? (
             <Link
               href={`#${kebabCaseName}-${commissionDate}`}
-              className="text-p-light no-underline dark:text-gray-300 "
+              className="text-p-light no-underline dark:text-gray-300"
             >
               <time>{formatDate(commissionDate)}</time>
             </Link>
