@@ -1,12 +1,34 @@
 'use client'
 
+import { useEffect } from 'react'
+
 import Title from '#components/Title'
 import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Image from 'next/image'
 import IllustratorInfo from './IllustratorInfo'
 import StaleLoader from './StaleLoader'
-import { useScrollHook } from './useScrollHook'
+
+export const useScrollHook = () => {
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.location.hash) {
+        const element = document.querySelector(window.location.hash)
+        if (element) {
+          const rect = element.getBoundingClientRect()
+          if (rect.bottom < 0 || rect.top > window.innerHeight) {
+            history.replaceState(null, '', ' ')
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+}
 
 const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
   useScrollHook()

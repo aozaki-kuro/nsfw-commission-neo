@@ -1,5 +1,3 @@
-// components/commission/index.tsx
-
 import Listing from '#components/commission/Listing'
 import { characterStatus } from '#data/commissionStatus'
 

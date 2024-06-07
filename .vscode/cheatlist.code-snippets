@@ -17,13 +17,18 @@
   // }
   "newCommission": {
     "prefix": "newCommission",
-    "body": ["{", "  fileName: '$1',", "  Links: ['$3'],", "},"],
+    "body": [
+      "{",
+      "  fileName: '$1',",
+      "  Links: ['$3'],",
+      "},"
+    ],
     "description": "Add new commission info"
   },
   "newCharacter": {
     "prefix": "newCharacter",
     "body": [
-      "/* $1 */"
+      "/* $1 */",
       "{",
       "  Character: '$2',",
       "  Commissions: [",
