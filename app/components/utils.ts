@@ -4,10 +4,6 @@ export const isCharacterActive = (character: string): boolean => {
   return characterStatus.active.some(char => char.DisplayName === character)
 }
 
-export const isCharacterStale = (character: string): boolean => {
-  return characterStatus.stale.some(char => char.DisplayName === character)
-}
-
 /**
  * Transforms a date string from the "yyyyMMdd" format to the "yyyy/MM/dd" format.
  *

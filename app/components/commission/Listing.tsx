@@ -1,3 +1,4 @@
+/** eslint-disable prettier/prettier */
 'use client'
 
 import { useEffect } from 'react'
@@ -38,7 +39,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
 
   // Sort commissions in descending order, or default to an empty array if undefined
   const sortedCommissions = [...(characterData?.Commissions || [])].sort((a, b) => {
-    return parseInt(b.fileName.slice(0, 8)) - parseInt(a.fileName.slice(0, 8))
+    return Number(b.fileName.slice(0, 8)) - Number(a.fileName.slice(0, 8))
   })
 
   return (
@@ -57,7 +58,9 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
             // Define the Alt text
             const illustYear = commission.fileName.slice(0, 4)
             const illustDate = commission.fileName.slice(0, 8)
-            const Creator = commission.fileName.slice(9) || 'Anonymous'
+            const Creator = commission.fileName.slice(9)
+              ? commission.fileName.slice(9)
+              : 'Anonymous'
             const altText = `Copyright ©️ ${illustYear} ${Creator} & Crystallize`
 
             return (
