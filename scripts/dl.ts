@@ -19,11 +19,9 @@ import fs, { promises as fsPromises } from 'fs'
 import https from 'https'
 import path from 'path'
 
-// Message definition
+// Message definitions
 const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
 const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
-// const msgInfo = '\x1b[0m[\x1b[33m INFO \x1b[0m]'
-// const msgWarn = '\x1b[0m[\x1b[33m WARN \x1b[0m]'
 
 const dlDestination = './data/images'
 
@@ -62,23 +60,18 @@ async function downloadImages() {
 
     const smallCoverUrl = `https://${HOSTING}/nsfw-commission/nsfw-cover-s.jpg`
     const smallCoverPath = path.join(dlDestination, 'nsfw-cover-s.jpg')
-    await downloadResource(smallCoverUrl, smallCoverPath)
+    const initialDownloads = [downloadResource(smallCoverUrl, smallCoverPath)]
 
     const downloadPromises = commissionData.flatMap(characterData =>
-      characterData.Commissions.map(async commission => {
+      characterData.Commissions.map(commission => {
         const { fileName } = commission
-        const dirPath = dlDestination
-
-        await fsPromises.mkdir(dirPath, { recursive: true })
-
-        const filePath = path.join(dirPath, `${fileName}.jpg`)
+        const filePath = path.join(dlDestination, `${fileName}.jpg`)
         const imageUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
-
-        await downloadResource(imageUrl, filePath)
+        return downloadResource(imageUrl, filePath)
       }),
     )
 
-    await Promise.all(downloadPromises)
+    await Promise.all([...initialDownloads, ...downloadPromises])
 
     const endTime = process.hrtime.bigint()
     const elapsedTime = (endTime - startTime) / BigInt(1000000)
