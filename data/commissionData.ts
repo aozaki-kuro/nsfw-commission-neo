@@ -150,16 +150,17 @@ export const commissionData: Props = [
     ],
   },
 
-  /* =========  HACHI ========= */
+  /* =========  Vspo! / 八雲べに =========
   {
-    Character: 'HACHI',
+    Character: 'Y*kumo Beni',
     Commissions: [
       {
-        fileName: '20240405_七市',
-        Links: ['https://www.pixiv.net/artworks/117601997'],
+        fileName: '',
+        Links: [''],
       },
     ],
   },
+  */
 
   /* =========  銀海渡ニシェ / Kanaut Nishe ========= */
   {
