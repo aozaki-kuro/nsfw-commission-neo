@@ -125,6 +125,10 @@ export const commissionData: Props = [
     Character: 'L*cia',
     Commissions: [
       {
+        fileName: '20240620_どれい',
+        Links: ['https://x.com/dorei_FT/status/1803768367360479317'],
+      },
+      {
         fileName: '20240519_たれぞう',
         Links: [''],
       },
