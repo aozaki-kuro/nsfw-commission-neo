@@ -36,6 +36,7 @@ const Support: NextPage = () => {
           currencyName="USDT (ERC20)"
           address="0xcca71d75cfc76d4b792666e600591577ebb71922"
         />
+        <CryptoAddress currencyName="USDT (Polygon)" address="0xcca71d75cfc76d4b792666e600591577ebb71922" />
         <CryptoAddress currencyName="BTC" address="33PopHvEh47jkokX1EXv75TkUDjVFGmbWs" />
 
         <CryptoAddress currencyName="ETH" address="0xcca71d75cfc76d4b792666e600591577ebb71922" />
