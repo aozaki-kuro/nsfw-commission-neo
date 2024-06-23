@@ -19,7 +19,7 @@ export const createLinks = (links: string[]) => {
     return [<span key="error">N/A</span>]
   }
 
-  const order = ['Twitter', 'Pixiv', 'Fanbox', 'Fantia']
+  const order = ['Twitter', 'Pixiv', 'Nijie', 'Fanbox', 'Fantia']
 
   return order.flatMap(type => {
     const url = links.find(link => {
@@ -27,6 +27,7 @@ export const createLinks = (links: string[]) => {
         return true
       }
       if (type === 'Pixiv' && link.includes('pixiv.net')) return true
+      if (type === 'Nijie' && link.includes('nijie.info')) return true
       if (type === 'Fanbox' && link.includes('fanbox.cc')) return true
       if (type === 'Fantia' && link.includes('fantia.jp')) return true
       return false
