@@ -58,7 +58,7 @@ const nextConfig = {
        */
       {
         /*
-         * pnpm prod && pnpx @cloudflare/next-on-pages
+         * pnpm prebuild && pnpx @cloudflare/next-on-pages
          * Change output dir: .vercel/output/static
          * Add compability flag: nodejs_compat
          * Then you can disable output: 'export'
