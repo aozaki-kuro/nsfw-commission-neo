@@ -1,4 +1,3 @@
-/** eslint-disable prettier/prettier */
 'use client'
 
 import { useEffect } from 'react'
@@ -45,9 +44,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
   return (
     <div className="pb-6">
       {/* Display character title */}
-      <div className="pb-2">
-        <Title Content={Character} />
-      </div>
+      <Title Content={Character} />
 
       <StaleLoader Name={Character} isStale={isStale}>
         {!characterData || sortedCommissions.length === 0 ? (
