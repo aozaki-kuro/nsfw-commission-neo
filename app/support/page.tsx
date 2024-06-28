@@ -52,16 +52,6 @@ const Support: NextPage = () => {
         </p>
       </div>
 
-      {/* ======= Patreon Sites ======= 
-
-      <h2 className="pb-6 text-xl md:pb-4">Other sites</h2>
-
-      <li className="pb-6 md:pb-4">Ko-Fi (WIP)</li>
-
-      <li className="pb-6 md:pb-4">Patreon (WIP)</li>
-      
-      */}
-
       {/* ======= Footer ======= */}
 
       <div className="pt-4 md:pt-8" />

@@ -1,15 +1,11 @@
 import { formatDate, kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
-// import { characterStatus } from '#data/commissionStatus'
 import RSS from 'rss'
 
 // Constants
 const SITE_TITLE = "Crystallize's NSFW Commissions"
 const SITE_URL = 'https://crystallize.cc'
 const FEED_URL = `${SITE_URL}/rss`
-
-// Create a dictionary to check active characters
-// const activeCharacters = new Set(characterStatus.active.map(({ DisplayName }) => DisplayName))
 
 function extractDetailsFromFileName(fileName: string) {
   const [datePart, artistPart] = fileName.split('_')
@@ -30,14 +26,12 @@ export async function GET() {
     ttl: 60,
   })
 
-  const allCommissions = commissionData
-    // .filter(characterData => activeCharacters.has(characterData.Character))
-    .flatMap(characterData =>
-      characterData.Commissions.map(commission => ({
-        ...commission,
-        characterFullName: characterData.Character,
-      })),
-    )
+  const allCommissions = commissionData.flatMap(characterData =>
+    characterData.Commissions.map(commission => ({
+      ...commission,
+      characterFullName: characterData.Character,
+    })),
+  )
 
   const sortedCommissions = allCommissions.sort((a, b) => {
     const dateA = a.fileName.split('_')[0]

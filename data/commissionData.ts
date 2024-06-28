@@ -156,7 +156,7 @@ export const commissionData: Props = [
 
   /* =========  Vspo! / 八雲べに =========
   {
-    Character: 'Y*kumo Beni',
+    Character: '****!',
     Commissions: [
       {
         fileName: '',
