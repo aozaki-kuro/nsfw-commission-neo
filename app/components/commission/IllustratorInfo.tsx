@@ -1,4 +1,4 @@
-import { formatDate, isCharacterActive, kebabCase } from '#components/utils'
+import { formatDate, kebabCase } from '#components/utils'
 import { Commission } from '#data/types'
 import Link from 'next/link'
 import { createLinks } from './CreateLinks'
@@ -9,8 +9,6 @@ type IllustratorInfoProps = {
 }
 
 const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) => {
-  const isActive = isCharacterActive(characterName)
-
   // Convert to kebab case for the link
   const kebabCaseName = kebabCase(characterName)
 
@@ -22,19 +20,12 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
     <div className="flex flex-auto font-mono text-sm text-p-light md:text-xs dark:text-gray-300">
       <span className="select-none pr-16 md:pr-6">
         {
-          /*
-           * This disables the linking functions for the stale commissions
-           */
-          isActive ? (
-            <Link
-              href={`#${kebabCaseName}-${commissionDate}`}
-              className="text-p-light no-underline dark:text-gray-300"
-            >
-              <time>{formatDate(commissionDate)}</time>
-            </Link>
-          ) : (
+          <Link
+            href={`#${kebabCaseName}-${commissionDate}`}
+            className="text-p-light no-underline dark:text-gray-300"
+          >
             <time>{formatDate(commissionDate)}</time>
-          )
+          </Link>
         }
       </span>
       {commissionCreator || `-`}

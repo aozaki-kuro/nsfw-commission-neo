@@ -7,7 +7,6 @@ import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Image from 'next/image'
 import IllustratorInfo from './IllustratorInfo'
-import StaleLoader from './StaleLoader'
 
 export const useScrollHook = () => {
   useEffect(() => {
@@ -30,7 +29,7 @@ export const useScrollHook = () => {
   }, [])
 }
 
-const Listing = ({ Character, isStale = false }: { Character: string; isStale?: boolean }) => {
+const Listing = ({ Character }: { Character: string }) => {
   useScrollHook()
 
   // Find data related to the given character
@@ -46,7 +45,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
       {/* Display character title */}
       <Title Content={Character} />
 
-      <StaleLoader Name={Character} isStale={isStale}>
+      <>
         {!characterData || sortedCommissions.length === 0 ? (
           <p className="py-4">To be announced ...</p>
         ) : (
@@ -77,7 +76,7 @@ const Listing = ({ Character, isStale = false }: { Character: string; isStale?: 
             )
           })
         )}
-      </StaleLoader>
+      </>
     </div>
   )
 }

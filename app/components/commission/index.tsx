@@ -18,7 +18,7 @@ const Commission = () => {
 
       {/* Display Stale Commissions */}
       {staleChars.map(chara => (
-        <Listing Character={chara.DisplayName} isStale={true} key={chara.DisplayName} />
+        <Listing Character={chara.DisplayName} key={chara.DisplayName} />
       ))}
     </>
   )
