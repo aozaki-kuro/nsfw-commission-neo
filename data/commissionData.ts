@@ -78,6 +78,10 @@ export const commissionData: Props = [
     Character: 'Studio K',
     Commissions: [
       {
+        fileName: '20240726_Welcome party', // CIEL w/ V.W.P
+        Links: [''],
+      },
+      {
         fileName: '20240513', // CIEL
         Links: ['https://www.pixiv.net/artworks/118703993'],
       },
