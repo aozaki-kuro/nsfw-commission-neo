@@ -79,7 +79,7 @@ export const commissionData: Props = [
     Commissions: [
       {
         fileName: '20240726_Welcome party', // CIEL w/ V.W.P
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/120932009'],
       },
       {
         fileName: '20240513', // CIEL
@@ -128,6 +128,12 @@ export const commissionData: Props = [
   {
     Character: 'L*cia',
     Commissions: [
+      /**
+      {
+        fileName: "20240727_Goddess's secret",
+        Links: [''],
+      },
+      */
       {
         fileName: '20240620_どれい',
         Links: ['https://x.com/dorei_FT/status/1803768367360479317'],
