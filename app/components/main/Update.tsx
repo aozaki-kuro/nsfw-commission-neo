@@ -1,3 +1,4 @@
+/** eslint-disable prettier/prettier */
 import { formatDate, isCharacterActive, kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Link from 'next/link'
@@ -22,7 +23,7 @@ const Update = () => {
         {'[ '}
         <Link
           href={`#${kebabCase(Character)}-${fileName.substring(0, 8)}`}
-          className="underline-offset-[0.1rem]"
+          className="plausible-event-name=Check+Latest underline-offset-[0.1rem]"
         >
           {Character}
         </Link>
