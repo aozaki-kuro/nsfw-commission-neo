@@ -1,8 +1,3 @@
-/** eslint-disable prettier/prettier */
-/** eslint-disable prettier/prettier */
-/** eslint-disable prettier/prettier */
-/** eslint-disable prettier/prettier */
-/** eslint-disable prettier/prettier */
 import Link from 'next/link'
 
 import Update from '#components/main/Update'
@@ -38,9 +33,7 @@ const CommissionDescription = () => {
           odaibako
         </Link>{' '}
         or <Link href="mailto:contact@crystallize.cc">Email</Link>. Please note, any requests
-        regarding or <Link href="mailto:contact@crystallize.cc">Email</Link>. Please note, any
-        requests regarding or <Link href="mailto:contact@crystallize.cc">Email</Link>. Please note,
-        any requests regarding the release or distribution of the illustrations will be ignored.
+        regarding the release or distribution of the illustrations will be ignored.
       </p>
       <Update />
     </div>
