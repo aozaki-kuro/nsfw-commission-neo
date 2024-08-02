@@ -10,7 +10,7 @@
     "lint": "next lint",
     "lint-fix": "next lint --fix",
     "pre-build": "tsx scripts/dl.ts",
-    "prod": "pnpm pre-build && pnpm build",
+    "prod": "tsx scripts/dl.ts && next build",
     "prepare": "husky"
   },
   "dependencies": {
