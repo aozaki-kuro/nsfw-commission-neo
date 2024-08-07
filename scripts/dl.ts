@@ -23,7 +23,7 @@ import path from 'path'
 const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
 const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 
-const dlDestination = './data/images'
+const dlDestination = 'public/images'
 
 dotenv.config()
 

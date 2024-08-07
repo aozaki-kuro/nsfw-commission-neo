@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint-fix": "next lint --fix",
-    "pre-build": "tsx scripts/dl.ts",
-    "prod": "tsx scripts/dl.ts && next build",
+    "pre-build": "tsx scripts/dl.ts && tsx scripts/generateImageMap.ts",
+    "prod": "bun run pre-build && next build",
     "prepare": "husky"
   },
   "dependencies": {

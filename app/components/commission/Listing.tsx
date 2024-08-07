@@ -8,6 +8,8 @@ import { commissionData } from '#data/commissionData'
 import Image from 'next/image'
 import IllustratorInfo from './IllustratorInfo'
 
+import imageMap from '#data/imageMap'
+
 export const useScrollHook = () => {
   useEffect(() => {
     const handleScroll = () => {
@@ -62,10 +64,13 @@ const Listing = ({ Character }: { Character: string }) => {
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">
                 <Image
-                  src={require(`data/images/${commission.fileName}.jpg`)}
+                  src={imageMap[commission.fileName].src}
                   alt={altText}
+                  width={1280}
+                  height={525}
                   quality={90}
                   placeholder="blur"
+                  blurDataURL={imageMap[commission.fileName].blurDataURL}
                   className="pointer-events-none select-none"
                   loading="lazy"
                 />
