@@ -1,7 +1,7 @@
 #!/bin/fish
 
 # Define the local and remote directories
-LOCAL_DIR="./data/images/"
+LOCAL_DIR="./public/images/"
 REMOTE_DIR="root@speedypage-jp:/var/www/share/nsfw-commission/"
 
 # Run rsync to synchronize the directories
