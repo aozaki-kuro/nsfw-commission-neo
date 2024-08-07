@@ -1,14 +1,11 @@
 'use client'
 
-import { useEffect } from 'react'
-
 import Title from '#components/Title'
 import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import IllustratorInfo from './IllustratorInfo'
-
-import imageMap from '#data/imageMap'
 
 export const useScrollHook = () => {
   useEffect(() => {
@@ -64,13 +61,11 @@ const Listing = ({ Character }: { Character: string }) => {
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">
                 <Image
-                  src={imageMap[commission.fileName].src}
+                  src={`/images/${commission.fileName}.jpg`}
                   alt={altText}
                   width={1280}
                   height={525}
                   quality={90}
-                  placeholder="blur"
-                  blurDataURL={imageMap[commission.fileName].blurDataURL}
                   className="pointer-events-none select-none"
                   loading="lazy"
                 />
