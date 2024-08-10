@@ -61,11 +61,12 @@ const Listing = ({ Character }: { Character: string }) => {
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">
                 <Image
-                  src={`/images/${commission.fileName}.jpg`}
+                  src={require(`public/images/${commission.fileName}.jpg`)}
                   alt={altText}
                   width={1280}
                   height={525}
                   quality={90}
+                  placeholder="blur"
                   className="pointer-events-none select-none"
                   loading="lazy"
                 />
