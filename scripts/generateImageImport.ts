@@ -35,7 +35,7 @@ const generateImports = () => {
     fileContent += `  ${key}: ${importName},\n`
   })
 
-  fileContent += `};\n`
+  fileContent += `}\n`
 
   // 将生成的内容写入文件
   fs.writeFileSync(outputFilePath, fileContent, 'utf-8')
