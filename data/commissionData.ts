@@ -133,7 +133,7 @@ export const commissionData: Props = [
     Character: 'L*cia',
     Commissions: [
       {
-        fileName: "20240725_Goddess's secret",
+        fileName: '20240725_AOS',
         Links: ['https://www.pixiv.net/en/artworks/121003264'],
       },
       {

@@ -3,6 +3,7 @@
 import Title from '#components/Title'
 import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
+import { imageImports } from '#data/imageImports'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import IllustratorInfo from './IllustratorInfo'
@@ -58,18 +59,24 @@ const Listing = ({ Character }: { Character: string }) => {
               : 'Anonymous'
             const altText = `Copyright ©️ ${illustYear} ${Creator} & Crystallize`
 
+            // Handle image source based on the generated imports
+            const imageKey = commission.fileName
+            const imageSrc = imageImports[imageKey as keyof typeof imageImports]
+
             return (
               <div key={index} id={`${kebabCase(Character)}-${illustDate}`} className="pt-4">
-                <Image
-                  src={require(`public/images/${commission.fileName}.jpg`)}
-                  alt={altText}
-                  width={1280}
-                  height={525}
-                  quality={90}
-                  placeholder="blur"
-                  className="pointer-events-none select-none"
-                  loading="lazy"
-                />
+                {imageSrc && (
+                  <Image
+                    src={imageSrc}
+                    alt={altText}
+                    width={1280}
+                    height={525}
+                    quality={90}
+                    placeholder="blur"
+                    className="pointer-events-none select-none"
+                    loading="lazy"
+                  />
+                )}
                 <div className="pb-4 pt-8 md:pb-2 md:pt-6">
                   <IllustratorInfo commission={commission} characterName={Character} />
                 </div>
