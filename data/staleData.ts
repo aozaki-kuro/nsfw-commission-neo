@@ -143,7 +143,7 @@ export const staleData: Props = [
         ],
       },
       {
-        fileName: '20211209_PUKARA',
+        fileName: '20211208_PUKARA',
         Links: [
           'https://twitter.com/abcd0936/status/1470049898213294080',
           'https://www.pixiv.net/artworks/107887848',

@@ -24,7 +24,7 @@ const generateImports = () => {
         const sanitizedFileName = commission.fileName.replace(/'/g, "\\'")
 
         // 写入 import 语句，不使用末尾的分号
-        fileContent += `import ${importName} from '#images/${sanitizedFileName}.jpg'\n`
+        fileContent += `import ${importName} from '#images/webp/${sanitizedFileName}.webp'\n`
       }
     })
   })

@@ -71,7 +71,6 @@ const Listing = ({ Character }: { Character: string }) => {
                     alt={altText}
                     width={1280}
                     height={525}
-                    quality={90}
                     placeholder="blur"
                     className="pointer-events-none select-none"
                     loading="lazy"

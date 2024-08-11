@@ -43,7 +43,8 @@ const nextConfig = {
   reactStrictMode: true,
   cleanDistDir: true,
   images: {
-    unoptimized: process.env.CF_PAGES === 'true' ? true : false,
+    // unoptimized: process.env.CF_PAGES === 'true' ? true : false,
+    unoptimized: true,
     minimumCacheTTL: 604800,
   },
 

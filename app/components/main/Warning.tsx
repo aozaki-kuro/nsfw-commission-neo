@@ -5,7 +5,7 @@ import { Fragment, useEffect, useState } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 
-import HeadImage from 'public/nsfw-cover-s.jpg'
+import HeadImage from 'public/nsfw-cover-s.webp'
 
 const confirmedAgeStorageKey = 'hasConfirmedAge'
 
