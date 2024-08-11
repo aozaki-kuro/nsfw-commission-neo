@@ -1,73 +1,78 @@
-/*
- * Notice: TypeScript version did this in a different approach:
- *
- * The array was written in TypeScript and imported here to be processed.
- * The script cannot be compiled into CommonJS because of this.
- * I don't know which is more sensible after all so I kept both versions.
- */
-
-/*
- * Update:
- * After optimization the performance impact is minor now.
- * So the script was switched to TypeScript version.
- *
- */
-
 import { commissionData } from '#data/commissionData'
 import dotenv from 'dotenv'
 import fs, { promises as fsPromises } from 'fs'
+import { IncomingMessage } from 'http'
 import https from 'https'
 import path from 'path'
+import { pipeline } from 'stream'
+import { promisify } from 'util'
 
 // Message definitions
 const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
 const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 
-const dlDestination = 'public/images/webp'
+const dlDestinationWebp = 'public/images/webp'
+const dlDestinationJpg = 'public/images'
 
 dotenv.config()
 
 const HOSTING = process.env.HOSTING
+const NODE_ENV = process.env.NODE_ENV
+
 if (!HOSTING) {
   console.error(msgError, 'DL links not set correctly in the environment or .env')
   process.exit(1)
 }
 
+const streamPipeline = promisify(pipeline)
+
 async function downloadResource(url: string, filePath: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    const fileStream = fs.createWriteStream(filePath)
-    https
-      .get(url, response => {
-        response.pipe(fileStream)
-        fileStream.on('finish', () => {
-          fileStream.close()
-          resolve()
-        })
-      })
-      .on('error', err => {
-        fileStream.close()
-        fsPromises.unlink(filePath).finally(() => {
-          reject(err)
-        })
-      })
+  const response = await new Promise<IncomingMessage>((resolve, reject) => {
+    https.get(url, resolve).on('error', reject)
   })
+
+  if (response.statusCode !== 200) {
+    throw new Error(`Failed to get '${url}' (${response.statusCode})`)
+  }
+
+  await streamPipeline(response, fs.createWriteStream(filePath))
+}
+
+async function ensureDirectories() {
+  await Promise.all([
+    fsPromises.mkdir(dlDestinationWebp, { recursive: true }),
+    NODE_ENV === 'development'
+      ? fsPromises.mkdir(dlDestinationJpg, { recursive: true })
+      : Promise.resolve(),
+  ])
 }
 
 async function downloadImages() {
   const startTime = process.hrtime.bigint()
+
   try {
-    await fsPromises.mkdir(dlDestination, { recursive: true })
+    await ensureDirectories()
 
     const downloadPromises = commissionData.flatMap(characterData =>
-      characterData.Commissions.map(commission => {
+      characterData.Commissions.flatMap(commission => {
         const { fileName } = commission
-        const filePath = path.join(dlDestination, `${fileName}.webp`)
-        const imageUrl = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
-        return downloadResource(imageUrl, filePath)
+
+        const imageUrlWebp = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
+        const filePathWebp = path.join(dlDestinationWebp, `${fileName}.webp`)
+
+        const promises = [downloadResource(imageUrlWebp, filePathWebp)]
+
+        if (NODE_ENV === 'development') {
+          const imageUrlJpg = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
+          const filePathJpg = path.join(dlDestinationJpg, `${fileName}.jpg`)
+          promises.push(downloadResource(imageUrlJpg, filePathJpg))
+        }
+
+        return promises
       }),
     )
 
-    await Promise.all([...downloadPromises])
+    await Promise.all(downloadPromises)
 
     const endTime = process.hrtime.bigint()
     const elapsedTime = (endTime - startTime) / BigInt(1000000)
