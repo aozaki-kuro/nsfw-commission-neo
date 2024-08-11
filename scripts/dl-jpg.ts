@@ -58,16 +58,20 @@ async function downloadImages() {
   try {
     await fsPromises.mkdir(dlDestination, { recursive: true })
 
+    const smallCoverUrl = `https://${HOSTING}/nsfw-commission/nsfw-cover-s.jpg`
+    const smallCoverPath = path.join(dlDestination, 'nsfw-cover-s.jpg')
+    const initialDownloads = [downloadResource(smallCoverUrl, smallCoverPath)]
+
     const downloadPromises = commissionData.flatMap(characterData =>
       characterData.Commissions.map(commission => {
         const { fileName } = commission
-        const filePath = path.join(dlDestination, `${fileName}.webp`)
-        const imageUrl = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
+        const filePath = path.join(dlDestination, `${fileName}.jpg`)
+        const imageUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
         return downloadResource(imageUrl, filePath)
       }),
     )
 
-    await Promise.all([...downloadPromises])
+    await Promise.all([...initialDownloads, ...downloadPromises])
 
     const endTime = process.hrtime.bigint()
     const elapsedTime = (endTime - startTime) / BigInt(1000000)
