@@ -1,10 +1,13 @@
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import globals from 'globals'
-import tsParser from '@typescript-eslint/parser'
+// @ts-check
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
+
 import { FlatCompat } from '@eslint/eslintrc'
+import { fixupConfigRules } from '@eslint/compat'
+
+import ts from 'typescript-eslint'
+import prettierConfigRecommended from 'eslint-plugin-prettier/recommended'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -14,52 +17,14 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 })
 
-export default [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ),
+const patchedConfig = fixupConfigRules([...compat.extends('next/core-web-vitals')])
+
+const config = [
+  ...patchedConfig,
+  ...ts.configs.recommended,
+  prettierConfigRecommended,
   {
-    plugins: {
-      '@typescript-eslint': typescriptEslint,
-    },
-
-    linterOptions: {
-      reportUnusedDisableDirectives: true,
-    },
-
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-
-      parser: tsParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-
-    settings: {
-      react: {
-        pragma: 'React',
-        version: 'detect',
-      },
-
-      'import/resolver': {
-        node: {
-          extensions: ['.ts', '.tsx'],
-        },
-      },
-    },
-
+    ignores: ['**/.next/**', '**/_next/**', '**/dist/**', '**/out/**'],
     rules: {
       '@next/next/no-img-element': 'off',
       'prefer-const': 'error',
@@ -69,3 +34,5 @@ export default [
     },
   },
 ]
+
+export default config
