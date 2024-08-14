@@ -14,6 +14,7 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'Studio K' },
     { DisplayName: 'L*cia' },
     { DisplayName: 'Kanaut Nishe' },
+    { DisplayName: 'Sport!' },
   ],
 
   /* Stale Characters */

@@ -166,17 +166,16 @@ export const commissionData: Props = [
     ],
   },
 
-  /* =========  Vspo! / 八雲べに =========
+  /* =========  Vspo! / 八雲べに ========= */
   {
-    Character: '****!',
+    Character: 'Sport!',
     Commissions: [
       {
-        fileName: '',
+        fileName: '20240814',
         Links: [''],
       },
     ],
   },
-  */
 
   /* =========  銀海渡ニシェ / Kanaut Nishe ========= */
   {
