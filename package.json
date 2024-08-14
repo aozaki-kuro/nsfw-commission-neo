@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "pre-build": "tsx scripts/dl.ts",
+    "import-update": "tsx scripts/generateImageImport.ts",
     "prod": "bun run pre-build && next build",
     "prepare": "husky"
   },
