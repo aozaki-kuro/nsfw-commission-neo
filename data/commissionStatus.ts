@@ -22,7 +22,7 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'n*yuta' },
     { DisplayName: 'H*nabasami Kyo' },
     { DisplayName: 'Blue Archive' },
-    // { DisplayName: 'HACHI' },
+    { DisplayName: 'HACHI' },
     { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Tokomachi' },
   ],
