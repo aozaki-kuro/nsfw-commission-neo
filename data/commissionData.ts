@@ -22,10 +22,12 @@ export const commissionData: Props = [
           'https://www.fanbox.cc/@yukiguni16/posts/7769811',
         ],
       },
+      /*
       {
         fileName: '20240408_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/117692460'],
       },
+      */
       {
         fileName: '20240114_七市',
         Links: ['https://www.pixiv.net/en/artworks/115230067'],
@@ -55,10 +57,12 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/109525980',
         ],
       },
+      /*
       {
         fileName: '20230611_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/111809434'],
       },
+       */
       {
         fileName: '20230603_うたゆうか',
         Links: [
@@ -132,18 +136,22 @@ export const commissionData: Props = [
   {
     Character: 'L*cia',
     Commissions: [
+      /*
       {
         fileName: '20240725_AOS',
         Links: ['https://www.pixiv.net/en/artworks/121003264'],
       },
+      */
       {
         fileName: '20240620_どれい',
         Links: ['https://x.com/dorei_FT/status/1803768367360479317'],
       },
+      /*
       {
         fileName: '20240519_たれぞう',
         Links: [''],
       },
+      */
       {
         fileName: '20240515_七市',
         Links: ['https://www.pixiv.net/artworks/118788598'],
@@ -200,6 +208,7 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/116602518',
         ],
       },
+      /*
       {
         fileName: '20231227_そーだみず',
         Links: ['https://twitter.com/so_dasui1/status/1739831358724489679'],
@@ -211,6 +220,7 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/112296316',
         ],
       },
+      */
       {
         fileName: '20230405_島どうま',
         Links: [
@@ -240,10 +250,12 @@ export const commissionData: Props = [
         fileName: '20230129_七市',
         Links: ['https://www.pixiv.net/artworks/104950033'],
       },
+      /*
       {
         fileName: '20230119_こびんびん',
         Links: ['https://www.pixiv.net/artworks/106651946'],
       },
+      */
       {
         fileName: '20230113_GSUS',
         Links: [
@@ -251,10 +263,12 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/104483469',
         ],
       },
+      /*
       {
         fileName: '20221231_うたゆうか',
         Links: ['https://www.pixiv.net/artworks/104341374'],
       },
+       */
       {
         fileName: '20221211_Gisyu',
         Links: [
@@ -273,6 +287,7 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/102572203',
         ],
       },
+      /*
       {
         fileName: '20221014_温野りょく',
         Links: [
@@ -287,6 +302,7 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/101602138',
         ],
       },
+      */
       {
         fileName: '20220922_温野りょく',
         Links: [
