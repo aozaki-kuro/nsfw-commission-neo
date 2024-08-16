@@ -34,7 +34,6 @@ import A20240406 from '#images/webp/20240406_どれい.webp'
 import A20240223 from '#images/webp/20240223_AOS.webp'
 import A20230405 from '#images/webp/20230405_島どうま.webp'
 import A20230327 from '#images/webp/20230327_もけ太.webp'
-import A20230319 from '#images/webp/20230319_Gisyu.webp'
 import A20230210 from '#images/webp/20230210_温野りょく.webp'
 import A20230129 from '#images/webp/20230129_七市.webp'
 import A20230113 from '#images/webp/20230113_GSUS.webp'
@@ -109,7 +108,6 @@ export const imageImports = {
   '20240223_AOS': A20240223,
   '20230405_島どうま': A20230405,
   '20230327_もけ太': A20230327,
-  '20230319_Gisyu': A20230319,
   '20230210_温野りょく': A20230210,
   '20230129_七市': A20230129,
   '20230113_GSUS': A20230113,
