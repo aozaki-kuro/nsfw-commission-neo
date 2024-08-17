@@ -24,7 +24,9 @@ import A20231117 from '#images/webp/20231117_Happy 4th Anniv..webp'
 import A20231018 from '#images/webp/20231018_1st Album Release.webp'
 import A20230924 from '#images/webp/20230924.webp'
 import A20230917 from '#images/webp/20230917.webp'
+import A20240725 from '#images/webp/20240725_AOS.webp'
 import A20240620 from '#images/webp/20240620_どれい.webp'
+import A20240519 from '#images/webp/20240519_たれぞう.webp'
 import A20240515 from '#images/webp/20240515_七市.webp'
 import A20231109 from '#images/webp/20231109_YYDAP.webp'
 import A20230706 from '#images/webp/20230706_七市.webp'
@@ -34,14 +36,21 @@ import A20240814 from '#images/webp/20240814.webp'
 import A20240819 from '#images/webp/20240819_Q.webp'
 import A20240406 from '#images/webp/20240406_どれい.webp'
 import A20240223 from '#images/webp/20240223_AOS.webp'
+import A20231227 from '#images/webp/20231227_そーだみず.webp'
+import A20231005 from '#images/webp/20231005_ぐれます.webp'
 import A20230405 from '#images/webp/20230405_島どうま.webp'
 import A20230327 from '#images/webp/20230327_もけ太.webp'
+import A20230319 from '#images/webp/20230319_Gisyu.webp'
 import A20230210 from '#images/webp/20230210_温野りょく.webp'
 import A20230129 from '#images/webp/20230129_七市.webp'
+import A20230119 from '#images/webp/20230119_こびんびん.webp'
 import A20230113 from '#images/webp/20230113_GSUS.webp'
+import A20221231 from '#images/webp/20221231_うたゆうか.webp'
 import A20221211 from '#images/webp/20221211_Gisyu.webp'
 import A20221113 from '#images/webp/20221113_七市.webp'
 import A20221106 from '#images/webp/20221106_GSUS.webp'
+import A20221014 from '#images/webp/20221014_温野りょく.webp'
+import A20221001 from '#images/webp/20221001_AsuMi.webp'
 import A20220922 from '#images/webp/20220922_温野りょく.webp'
 import A20231204 from '#images/webp/20231204_温野りょく.webp'
 import A20231006 from '#images/webp/20231006_うたゆうか.webp'
@@ -100,7 +109,9 @@ export const imageImports = {
   '20231018_1st Album Release': A20231018,
   '20230924': A20230924,
   '20230917': A20230917,
+  '20240725_AOS': A20240725,
   '20240620_どれい': A20240620,
+  '20240519_たれぞう': A20240519,
   '20240515_七市': A20240515,
   '20231109_YYDAP': A20231109,
   '20230706_七市': A20230706,
@@ -110,14 +121,21 @@ export const imageImports = {
   '20240819_Q': A20240819,
   '20240406_どれい': A20240406,
   '20240223_AOS': A20240223,
+  '20231227_そーだみず': A20231227,
+  '20231005_ぐれます': A20231005,
   '20230405_島どうま': A20230405,
   '20230327_もけ太': A20230327,
+  '20230319_Gisyu': A20230319,
   '20230210_温野りょく': A20230210,
   '20230129_七市': A20230129,
+  '20230119_こびんびん': A20230119,
   '20230113_GSUS': A20230113,
+  '20221231_うたゆうか': A20221231,
   '20221211_Gisyu': A20221211,
   '20221113_七市': A20221113,
   '20221106_GSUS': A20221106,
+  '20221014_温野りょく': A20221014,
+  '20221001_AsuMi': A20221001,
   '20220922_温野りょく': A20220922,
   '20231204_温野りょく': A20231204,
   '20231006_うたゆうか': A20231006,
