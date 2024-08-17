@@ -92,6 +92,7 @@ export const staleData: Props = [
       {
         fileName: '20220622_JUNGLE',
         Links: ['https://www.pixiv.net/artworks/120958356'],
+        hidden: true,
       },
       {
         fileName: '20220611_うたゆうか',
@@ -106,6 +107,7 @@ export const staleData: Props = [
           'https://twitter.com/uedazirousan/status/1520039652668821504',
           'https://www.pixiv.net/artworks/98241323',
         ],
+        hidden: true,
       },
       {
         fileName: '20220427_病ん太廊',
@@ -120,6 +122,7 @@ export const staleData: Props = [
           'https://twitter.com/UnoRyoku/status/1507529144464474114',
           'https://www.pixiv.net/artworks/97175117',
         ],
+        hidden: true,
       },
       {
         fileName: '20220227_U枝Z狼',

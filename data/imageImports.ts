@@ -3,11 +3,13 @@
 
 import A20240421 from '#images/webp/20240421_Gisyu.webp'
 import A20240409 from '#images/webp/20240409_雪国裕.webp'
+import A20240408 from '#images/webp/20240408_病ん太廊.webp'
 import A20240114 from '#images/webp/20240114_七市.webp'
 import A20231231 from '#images/webp/20231231_流し満貫.webp'
 import A20230914 from '#images/webp/20230914_もけ太.webp'
 import A20230912 from '#images/webp/20230912_温野りょく.webp'
 import A20230702 from '#images/webp/20230702_アータ.webp'
+import A20230611 from '#images/webp/20230611_病ん太廊.webp'
 import A20230603 from '#images/webp/20230603_うたゆうか.webp'
 import A20230527 from '#images/webp/20230527_病ん太廊.webp'
 import A20240729 from '#images/webp/20240729.webp'
@@ -77,11 +79,13 @@ import A20230613 from '#images/webp/20230613_中村六翅.webp'
 export const imageImports = {
   '20240421_Gisyu': A20240421,
   '20240409_雪国裕': A20240409,
+  '20240408_病ん太廊': A20240408,
   '20240114_七市': A20240114,
   '20231231_流し満貫': A20231231,
   '20230914_もけ太': A20230914,
   '20230912_温野りょく': A20230912,
   '20230702_アータ': A20230702,
+  '20230611_病ん太廊': A20230611,
   '20230603_うたゆうか': A20230603,
   '20230527_病ん太廊': A20230527,
   '20240729': A20240729,

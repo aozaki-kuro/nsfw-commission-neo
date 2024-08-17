@@ -4,6 +4,7 @@
 export interface Commission {
   fileName: string
   Links: string[]
+  hidden?: boolean
 }
 
 // Define a new interface for each character's commissions

@@ -35,10 +35,12 @@ const Listing = ({ Character }: { Character: string }) => {
   // Find data related to the given character
   const characterData = commissionData.find(data => data.Character === Character)
 
-  // Sort commissions in descending order, or default to an empty array if undefined
-  const sortedCommissions = [...(characterData?.Commissions || [])].sort((a, b) => {
-    return Number(b.fileName.slice(0, 8)) - Number(a.fileName.slice(0, 8))
-  })
+  // Sort commissions in descending order, filter out hidden commissions
+  const sortedCommissions = [...(characterData?.Commissions || [])]
+    .filter(commission => !commission.hidden) // Filter out hidden commissions
+    .sort((a, b) => {
+      return Number(b.fileName.slice(0, 8)) - Number(a.fileName.slice(0, 8))
+    })
 
   return (
     <div className="pb-6">

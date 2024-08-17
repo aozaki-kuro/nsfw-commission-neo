@@ -22,12 +22,11 @@ export const commissionData: Props = [
           'https://www.fanbox.cc/@yukiguni16/posts/7769811',
         ],
       },
-      /*
       {
         fileName: '20240408_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/117692460'],
+        hidden: true,
       },
-      */
       {
         fileName: '20240114_七市',
         Links: ['https://www.pixiv.net/en/artworks/115230067'],
@@ -57,12 +56,11 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/109525980',
         ],
       },
-      /*
       {
         fileName: '20230611_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/111809434'],
+        hidden: true,
       },
-       */
       {
         fileName: '20230603_うたゆうか',
         Links: [
@@ -136,22 +134,20 @@ export const commissionData: Props = [
   {
     Character: 'L*cia',
     Commissions: [
-      /*
       {
         fileName: '20240725_AOS',
         Links: ['https://www.pixiv.net/en/artworks/121003264'],
+        hidden: true,
       },
-      */
       {
         fileName: '20240620_どれい',
         Links: ['https://x.com/dorei_FT/status/1803768367360479317'],
       },
-      /*
       {
         fileName: '20240519_たれぞう',
         Links: [''],
+        hidden: true,
       },
-      */
       {
         fileName: '20240515_七市',
         Links: ['https://www.pixiv.net/artworks/118788598'],
@@ -208,10 +204,10 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/116602518',
         ],
       },
-      /*
       {
         fileName: '20231227_そーだみず',
         Links: ['https://twitter.com/so_dasui1/status/1739831358724489679'],
+        hidden: true,
       },
       {
         fileName: '20231005_ぐれます',
@@ -219,8 +215,8 @@ export const commissionData: Props = [
           'https://twitter.com/ameashi_nikki/status/1709888658831249689',
           'https://www.pixiv.net/artworks/112296316',
         ],
+        hidden: true,
       },
-      */
       {
         fileName: '20230405_島どうま',
         Links: [
@@ -232,15 +228,14 @@ export const commissionData: Props = [
         fileName: '20230327_もけ太',
         Links: ['https://www.pixiv.net/artworks/107682931', 'https://fantia.jp/posts/2039830'],
       },
-      /*
       {
         fileName: '20230319_Gisyu',
         Links: [
           'https://twitter.com/gisyuled/status/1637254201863737347',
           'https://www.pixiv.net/artworks/106350101',
         ],
+        hidden: true,
       },
-      */
       {
         fileName: '20230210_温野りょく',
         Links: [
@@ -252,12 +247,11 @@ export const commissionData: Props = [
         fileName: '20230129_七市',
         Links: ['https://www.pixiv.net/artworks/104950033'],
       },
-      /*
       {
         fileName: '20230119_こびんびん',
         Links: ['https://www.pixiv.net/artworks/106651946'],
+        hidden: true,
       },
-      */
       {
         fileName: '20230113_GSUS',
         Links: [
@@ -265,12 +259,10 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/104483469',
         ],
       },
-      /*
       {
         fileName: '20221231_うたゆうか',
         Links: ['https://www.pixiv.net/artworks/104341374'],
       },
-       */
       {
         fileName: '20221211_Gisyu',
         Links: [
@@ -289,13 +281,13 @@ export const commissionData: Props = [
           'https://www.pixiv.net/artworks/102572203',
         ],
       },
-      /*
       {
         fileName: '20221014_温野りょく',
         Links: [
           'https://twitter.com/UnoRyoku/status/1580892425404432386',
           'https://www.pixiv.net/artworks/101922655',
         ],
+        hidden: true,
       },
       {
         fileName: '20221001_AsuMi',
@@ -303,8 +295,8 @@ export const commissionData: Props = [
           'https://twitter.com/AsuMi_000/status/1575987028616888320',
           'https://www.pixiv.net/artworks/101602138',
         ],
+        hidden: true,
       },
-      */
       {
         fileName: '20220922_温野りょく',
         Links: [
