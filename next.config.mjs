@@ -59,7 +59,7 @@ const nextConfig = {
        */
       {
         /*
-         * pnpm prebuild && pnpx @cloudflare/next-on-pages
+         * bun run pre-build && bunxx @cloudflare/next-on-pages
          * Change output dir: .vercel/output/static
          * Add compability flag: nodejs_compat
          * Then you can disable output: 'export'
@@ -76,20 +76,6 @@ const nextConfig = {
             {
               source: '/(.*)',
               headers: [...securityHeaders, ...noRobots],
-            },
-          ]
-        },
-
-        // Plausible Analytics
-        async rewrites() {
-          return [
-            {
-              source: '/sight/app.js',
-              destination: 'https://sight.aozaki.cc/app-event.js',
-            },
-            {
-              source: '/sight/event',
-              destination: 'https://sight.aozaki.cc/api/event',
             },
           ]
         },
