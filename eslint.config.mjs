@@ -9,8 +9,6 @@ import { fixupConfigRules } from '@eslint/compat'
 import ts from 'typescript-eslint'
 import prettierConfigRecommended from 'eslint-plugin-prettier/recommended'
 
-import tailwind from 'eslint-plugin-tailwindcss'
-
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
@@ -24,7 +22,6 @@ const patchedConfig = fixupConfigRules([...compat.extends('next/core-web-vitals'
 const config = [
   ...patchedConfig,
   ...ts.configs.recommended,
-  ...tailwind.configs['flat/recommended'],
   prettierConfigRecommended,
   {
     ignores: ['**/.next/**', '**/_next/**', '**/dist/**', '**/out/**'],
