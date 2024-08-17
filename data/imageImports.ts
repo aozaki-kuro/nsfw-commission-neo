@@ -33,7 +33,8 @@ import A20230706 from '#images/webp/20230706_七市.webp'
 import A20230617 from '#images/webp/20230617_温野りょく.webp'
 import A20240816 from '#images/webp/20240816.webp'
 import A20240814 from '#images/webp/20240814.webp'
-import A20240819 from '#images/webp/20240819_Q.webp'
+import A20240819 from '#images/webp/20240819_Q (part 2).webp'
+import A20240819A from '#images/webp/20240819_Q (part 1).webp'
 import A20240406 from '#images/webp/20240406_どれい.webp'
 import A20240223 from '#images/webp/20240223_AOS.webp'
 import A20231227 from '#images/webp/20231227_そーだみず.webp'
@@ -118,7 +119,8 @@ export const imageImports = {
   '20230617_温野りょく': A20230617,
   '20240816': A20240816,
   '20240814': A20240814,
-  '20240819_Q': A20240819,
+  '20240819_Q (part 2)': A20240819,
+  '20240819_Q (part 1)': A20240819A,
   '20240406_どれい': A20240406,
   '20240223_AOS': A20240223,
   '20231227_そーだみず': A20231227,

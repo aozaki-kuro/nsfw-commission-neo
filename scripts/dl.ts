@@ -26,60 +26,96 @@ if (!HOSTING) {
 
 const streamPipeline = promisify(pipeline)
 
+// 创建目录的函数，增加灵活性
+async function ensureDirectory(dir: string): Promise<void> {
+  try {
+    await fsPromises.mkdir(dir, { recursive: true })
+  } catch (error) {
+    console.error(msgError, `Failed to create directory ${dir}: ${error.message}`)
+    throw error
+  }
+}
+
+// 封装下载资源的逻辑，适应多种类型的文件下载
 async function downloadResource(url: string, filePath: string): Promise<void> {
   const response = await new Promise<IncomingMessage>((resolve, reject) => {
     https.get(url, resolve).on('error', reject)
   })
 
   if (response.statusCode !== 200) {
-    throw new Error(`Failed to get '${url}' (${response.statusCode})`)
+    throw new Error(`Failed to download '${url}' (Status: ${response.statusCode})`)
   }
 
-  await streamPipeline(response, fs.createWriteStream(filePath))
-}
-
-async function ensureDirectories() {
-  await Promise.all([
-    fsPromises.mkdir(dlDestinationWebp, { recursive: true }),
-    NODE_ENV === 'development'
-      ? fsPromises.mkdir(dlDestinationJpg, { recursive: true })
-      : Promise.resolve(),
-  ])
-}
-
-async function downloadImages() {
-  const startTime = process.hrtime.bigint()
-
   try {
-    await ensureDirectories()
+    await streamPipeline(response, fs.createWriteStream(filePath))
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(msgError, `Failed to write file ${filePath}: ${error.message}`)
+    } else {
+      console.error(msgError, `Unknown error occurred while writing file ${filePath}.`)
+    }
+    throw error // 继续抛出以便调用者可以捕获
+  }
+}
+
+// 准备下载任务并执行
+async function prepareDownloadTasks(): Promise<void> {
+  try {
+    await ensureDirectory(dlDestinationWebp)
+
+    if (NODE_ENV === 'development') {
+      await ensureDirectory(dlDestinationJpg)
+    }
 
     const downloadPromises = commissionData.flatMap(characterData =>
-      characterData.Commissions.flatMap(commission => {
-        const { fileName } = commission
-
-        const imageUrlWebp = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
-        const filePathWebp = path.join(dlDestinationWebp, `${fileName}.webp`)
-
-        const promises = [downloadResource(imageUrlWebp, filePathWebp)]
-
-        if (NODE_ENV === 'development') {
-          const imageUrlJpg = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
-          const filePathJpg = path.join(dlDestinationJpg, `${fileName}.jpg`)
-          promises.push(downloadResource(imageUrlJpg, filePathJpg))
-        }
-
-        return promises
-      }),
+      characterData.Commissions.flatMap(commission => createDownloadTasks(commission)),
     )
 
     await Promise.all(downloadPromises)
+  } catch (error) {
+    console.error(msgError, `Error during preparation or download: ${error.message}`)
+    throw error
+  }
+}
+
+// 创建下载任务的函数，减少重复代码
+function createDownloadTasks(commission: { fileName: string }): Promise<void>[] {
+  const { fileName } = commission
+  const webpTask = downloadResource(
+    `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`,
+    path.join(dlDestinationWebp, `${fileName}.webp`),
+  )
+
+  const tasks = [webpTask]
+
+  if (NODE_ENV === 'development') {
+    const jpgTask = downloadResource(
+      `https://${HOSTING}/nsfw-commission/${fileName}.jpg`,
+      path.join(dlDestinationJpg, `${fileName}.jpg`),
+    )
+    tasks.push(jpgTask)
+  }
+
+  return tasks
+}
+
+// 主下载流程
+async function downloadImages(): Promise<void> {
+  const startTime = process.hrtime.bigint()
+
+  try {
+    await prepareDownloadTasks()
 
     const endTime = process.hrtime.bigint()
-    const elapsedTime = (endTime - startTime) / BigInt(1000000)
+    const elapsedTime = (endTime - startTime) / BigInt(1000000) // 转换为毫秒
     console.log(msgDone, `All downloads completed in ${elapsedTime}ms.`)
     process.exit(0)
-  } catch (error: any) {
-    console.error(msgError, `Error downloading images: ${error.message}`)
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(msgError, `Download process failed: ${error.message}`)
+    } else {
+      console.error(msgError, `Unknown error occurred during download.`)
+    }
     process.exit(1)
   }
 }

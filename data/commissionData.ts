@@ -190,7 +190,11 @@ export const commissionData: Props = [
     Character: 'Kanaut Nishe',
     Commissions: [
       {
-        fileName: '20240819_Q',
+        fileName: '20240819_Q (part 2)',
+        Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8409630'],
+      },
+      {
+        fileName: '20240819_Q (part 1)',
         Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8389482'],
       },
       {
