@@ -31,8 +31,10 @@ async function ensureDirectory(dir: string): Promise<void> {
   try {
     await fsPromises.mkdir(dir, { recursive: true })
   } catch (error) {
-    console.error(msgError, `Failed to create directory ${dir}: ${error.message}`)
-    throw error
+    if (error instanceof Error) {
+      console.error(msgError, `Failed to create directory ${dir}: ${error.message}`)
+      throw error
+    }
   }
 }
 
@@ -73,8 +75,10 @@ async function prepareDownloadTasks(): Promise<void> {
 
     await Promise.all(downloadPromises)
   } catch (error) {
-    console.error(msgError, `Error during preparation or download: ${error.message}`)
-    throw error
+    if (error instanceof Error) {
+      console.error(msgError, `Error during preparation or download: ${error.message}`)
+      throw error
+    }
   }
 }
 
