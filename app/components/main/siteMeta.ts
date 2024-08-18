@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 const Site = 'NSFW Commission'
 const Description = 'The collection of commissioned NSFW illustrations / Do Not Repost'
-const twitterCard = `https://img.crystallize.cc/nsfw-cover.jpg`
+const twitterCard = `https://img.crystallize.cc/nsfw-cover-s.webp`
 const CanonicalUrl = 'https://crystallize.cc'
 
 export const SiteMeta: Metadata = {
