@@ -35,12 +35,12 @@ export const createLinks = (links: string[]) => {
 
     if (!url) return null
 
-    const sanitizedUrl = url.includes('x.com') ? url.replace('x.com', 'twitter.com') : url
+    // const sanitizedUrl = url.includes('x.com') ? url.replace('x.com', 'twitter.com') : url
 
     return (
       <span key={type}>
         <span className="pr-3 md:pr-2" />
-        <Link href={sanitizedUrl} className="underline-offset-[0.1rem]" target="_blank">
+        <Link href={url} className="underline-offset-[0.1rem]" target="_blank">
           {type}
         </Link>
       </span>

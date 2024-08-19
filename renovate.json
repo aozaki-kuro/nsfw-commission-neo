@@ -24,11 +24,6 @@
       "automerge": true
     },
     {
-      "matchPackagePatterns": ["nextra"],
-      "groupName": "Nextra",
-      "automerge": true
-    },
-    {
       "matchPackageNames": ["^next(?!ra)$"],
       "excludePackageNames": ["^nextra$"],
       "groupName": "Next.js",
