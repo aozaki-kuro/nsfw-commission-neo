@@ -191,11 +191,11 @@ export const commissionData: Props = [
     Commissions: [
       {
         fileName: '20240819_Q (part 2)',
-        Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8409630'],
+        Links: ['https://www.pixiv.net/artworks/121643446'],
       },
       {
         fileName: '20240819_Q (part 1)',
-        Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8389482'],
+        Links: ['https://www.pixiv.net/artworks/121643446'],
       },
       {
         fileName: '20240406_どれい',
