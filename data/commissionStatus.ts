@@ -14,7 +14,6 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'Studio K' },
     { DisplayName: 'L*cia' },
     { DisplayName: 'Kanaut Nishe' },
-    { DisplayName: 'Sport!' },
   ],
 
   /* Stale Characters */
@@ -23,6 +22,7 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'H*nabasami Kyo' },
     { DisplayName: 'Blue Archive' },
     { DisplayName: 'HACHI' },
+    { DisplayName: 'Sport!' },
     { DisplayName: "Ninomae Ina'nis" },
     { DisplayName: 'Tokomachi' },
   ],
