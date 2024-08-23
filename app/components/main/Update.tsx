@@ -1,7 +1,11 @@
-/** eslint-disable prettier/prettier */
 import { formatDate, isCharacterActive, kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Link from 'next/link'
+
+// Calculate the total number of commissions
+const totalCommissions = commissionData.reduce((count, data) => {
+  return count + data.Commissions.length
+}, 0)
 
 const latestEntry = commissionData
   .filter(data => isCharacterActive(data.Character))
@@ -16,11 +20,13 @@ const Update = () => {
   const { fileName, Character } = latestEntry
 
   return (
-    <div className="flex flex-auto pb-4 pt-8 font-mono text-sm ss:text-xs md:pt-6">
-      <p className="pr-2">Last update:</p>
-      <p className="pr-2">{formatDate(fileName.substring(0, 8))}</p>
-      <p>
-        {'[ '}
+    <div className="flex flex-col pb-4 pt-8 font-mono text-sm ss:text-xs md:pt-6">
+      {/* Total commissions on its own line */}
+      <p className="pb-2">Currently {totalCommissions} commissions</p>
+
+      {/* Last update info on a single line */}
+      <p className="pr-2">
+        Last update: {formatDate(fileName.substring(0, 8))} {'[ '}
         <Link
           href={`#${kebabCase(Character)}-${fileName.substring(0, 8)}`}
           className="plausible-event-name=Check+Latest underline-offset-[0.1rem]"
