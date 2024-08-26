@@ -1,20 +1,14 @@
+import { commissionData } from '#data/commissionData'
 import fs from 'fs'
 import path from 'path'
-import { commissionData } from '../data/commissionData'
 
 const outputFilePath = path.join(__dirname, '../data/imageImports.ts')
 
 // 生成唯一的导入名称
 const generateUniqueImportName = (baseName: string, importNames: Map<string, number>): string => {
-  let importName = `A${baseName}`
-  if (importNames.has(importName)) {
-    const count = importNames.get(importName) || 0
-    const suffix = String.fromCharCode(65 + count) // 生成后缀 A, B, C...
-    importName += suffix
-    importNames.set(`A${baseName}`, count + 1) // 更新后缀计数
-  } else {
-    importNames.set(importName, 0) // 初始计数为0
-  }
+  const currentCount = importNames.get(baseName) || 0
+  const importName = `A${baseName}${currentCount > 0 ? String.fromCharCode(65 + currentCount - 1) : ''}`
+  importNames.set(baseName, currentCount + 1)
   return importName
 }
 
@@ -27,14 +21,10 @@ const processCommission = (
 ) => {
   const baseName = commission.fileName.split('_')[0]
   const importName = generateUniqueImportName(baseName, importNames)
-
   const sanitizedFileName = commission.fileName.replace(/'/g, "\\'")
-  importStatements.push(`import ${importName} from '#images/webp/${sanitizedFileName}.webp'`)
 
-  const key = commission.fileName.includes("'")
-    ? `"${commission.fileName}"`
-    : `'${commission.fileName}'`
-  exportMappings.push(`  ${key}: ${importName},`)
+  importStatements.push(`import ${importName} from '#images/webp/${sanitizedFileName}.webp'`)
+  exportMappings.push(`  '${commission.fileName}': ${importName},`)
 }
 
 const generateImports = () => {

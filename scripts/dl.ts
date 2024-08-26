@@ -16,8 +16,8 @@ const dlDestinationJpg = 'public/images'
 
 dotenv.config()
 
-const HOSTING = process.env.HOSTING
-const NODE_ENV = process.env.NODE_ENV
+const HOSTING = process.env.HOSTING || ''
+const NODE_ENV = process.env.NODE_ENV || 'production'
 
 if (!HOSTING) {
   console.error(msgError, 'DL links not set correctly in the environment or .env')
@@ -26,48 +26,45 @@ if (!HOSTING) {
 
 const streamPipeline = promisify(pipeline)
 
+// 封装错误日志打印
+function logError(message: string, error?: Error) {
+  console.error(msgError, message, error ? `: ${error.message}` : '')
+}
+
 // 创建目录的函数，增加灵活性
 async function ensureDirectory(dir: string): Promise<void> {
   try {
     await fsPromises.mkdir(dir, { recursive: true })
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(msgError, `Failed to create directory ${dir}: ${error.message}`)
-      throw error
-    }
+    logError(`Failed to create directory ${dir}`, error as Error)
+    throw error
   }
 }
 
 // 封装下载资源的逻辑，适应多种类型的文件下载
 async function downloadResource(url: string, filePath: string): Promise<void> {
-  const response = await new Promise<IncomingMessage>((resolve, reject) => {
-    https.get(url, resolve).on('error', reject)
-  })
-
-  if (response.statusCode !== 200) {
-    throw new Error(`Failed to download '${url}' (Status: ${response.statusCode})`)
-  }
-
   try {
+    const response = await new Promise<IncomingMessage>((resolve, reject) => {
+      https.get(url, resolve).on('error', reject)
+    })
+
+    if (response.statusCode !== 200) {
+      throw new Error(`Failed to download '${url}' (Status: ${response.statusCode})`)
+    }
+
     await streamPipeline(response, fs.createWriteStream(filePath))
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(msgError, `Failed to write file ${filePath}: ${error.message}`)
-    } else {
-      console.error(msgError, `Unknown error occurred while writing file ${filePath}.`)
-    }
-    throw error // 继续抛出以便调用者可以捕获
+    logError(`Failed to download or write file ${filePath}`, error as Error)
+    throw error
   }
 }
 
 // 准备下载任务并执行
 async function prepareDownloadTasks(): Promise<void> {
   try {
+    // 合并ensureDirectory调用
     await ensureDirectory(dlDestinationWebp)
-
-    if (NODE_ENV === 'development') {
-      await ensureDirectory(dlDestinationJpg)
-    }
+    if (NODE_ENV === 'development') await ensureDirectory(dlDestinationJpg)
 
     const downloadPromises = commissionData.flatMap(characterData =>
       characterData.Commissions.flatMap(commission => createDownloadTasks(commission)),
@@ -75,10 +72,8 @@ async function prepareDownloadTasks(): Promise<void> {
 
     await Promise.all(downloadPromises)
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(msgError, `Error during preparation or download: ${error.message}`)
-      throw error
-    }
+    logError('Error during preparation or download', error as Error)
+    throw error
   }
 }
 
@@ -115,11 +110,7 @@ async function downloadImages(): Promise<void> {
     console.log(msgDone, `All downloads completed in ${elapsedTime}ms.`)
     process.exit(0)
   } catch (error) {
-    if (error instanceof Error) {
-      console.error(msgError, `Download process failed: ${error.message}`)
-    } else {
-      console.error(msgError, `Unknown error occurred during download.`)
-    }
+    logError('Download process failed', error as Error)
     process.exit(1)
   }
 }
