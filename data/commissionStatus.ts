@@ -8,7 +8,7 @@ interface CommissionStatus {
 }
 
 export const characterStatus: CommissionStatus = {
-  /* Active Characters */
+  /* ======= Active Characters ======= */
   active: [
     { DisplayName: 'AZKi' },
     { DisplayName: 'Studio K' },
@@ -17,7 +17,7 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'H*nabasami Kyo' },
   ],
 
-  /* Stale Characters */
+  /* ======= Stale Characters ======= */
   stale: [
     { DisplayName: 'Blue Archive' },
     { DisplayName: 'n*yuta' },
