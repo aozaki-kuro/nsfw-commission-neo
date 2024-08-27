@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "pre-build": "tsx scripts/dl.ts",
-    "import-update": "tsx scripts/generateImageImport.ts",
+    "pre-build": "bun run scripts/dl.ts",
+    "import-update": "bun run scripts/generateImageImport.ts",
     "prod": "bun run pre-build && next build",
     "prepare": "husky"
   },
