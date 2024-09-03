@@ -10,17 +10,18 @@ interface CommissionStatus {
 export const characterStatus: CommissionStatus = {
   /* ======= Active Characters ======= */
   active: [
-    { DisplayName: 'AZKi' },
-    { DisplayName: 'Studio K' },
     { DisplayName: 'L*cia' },
     { DisplayName: 'Kanaut Nishe' },
+    { DisplayName: 'Studio K' },
     { DisplayName: 'H*nabasami Kyo' },
+    { DisplayName: 'AZKi' },
   ],
 
   /* ======= Stale Characters ======= */
   stale: [
     { DisplayName: 'Blue Archive' },
     { DisplayName: 'n*yuta' },
+    // Very unlikely to change
     { DisplayName: 'HACHI' },
     { DisplayName: 'Sport!' },
     { DisplayName: "Ninomae Ina'nis" },
