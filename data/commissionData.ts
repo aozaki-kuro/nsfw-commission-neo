@@ -266,6 +266,7 @@ export const commissionData: Props = [
       {
         fileName: '20221231_うたゆうか',
         Links: ['https://www.pixiv.net/artworks/104341374'],
+        hidden: true,
       },
       {
         fileName: '20221211_Gisyu',
