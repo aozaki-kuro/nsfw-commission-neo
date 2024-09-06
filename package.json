@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "bun run import-update && next",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
