@@ -28,8 +28,8 @@ import A20240515 from '#images/webp/20240515_七市.webp'
 import A20231109 from '#images/webp/20231109_YYDAP.webp'
 import A20230706 from '#images/webp/20230706_七市.webp'
 import A20230617 from '#images/webp/20230617_温野りょく.webp'
-import A20240816 from '#images/webp/20240816.webp'
-import A20240814 from '#images/webp/20240814.webp'
+import A20231204 from '#images/webp/20231204_温野りょく.webp'
+import A20231006 from '#images/webp/20231006_うたゆうか.webp'
 import A20240819 from '#images/webp/20240819_Q (part 2).webp'
 import A20240819A from '#images/webp/20240819_Q (part 1).webp'
 import A20240406 from '#images/webp/20240406_どれい.webp'
@@ -43,8 +43,8 @@ import A20221211 from '#images/webp/20221211_Gisyu.webp'
 import A20221113 from '#images/webp/20221113_七市.webp'
 import A20221106 from '#images/webp/20221106_GSUS.webp'
 import A20220922 from '#images/webp/20220922_温野りょく.webp'
-import A20231204 from '#images/webp/20231204_温野りょく.webp'
-import A20231006 from '#images/webp/20231006_うたゆうか.webp'
+import A20240816 from '#images/webp/20240816.webp'
+import A20240814 from '#images/webp/20240814.webp'
 import A20240405 from '#images/webp/20240405_七市.webp'
 import A20230629 from '#images/webp/20230629_七市.webp'
 import A20220915 from '#images/webp/20220915_七市.webp'
@@ -101,8 +101,8 @@ export const imageImports = {
   '20231109_YYDAP': A20231109,
   '20230706_七市': A20230706,
   '20230617_温野りょく': A20230617,
-  '20240816': A20240816,
-  '20240814': A20240814,
+  '20231204_温野りょく': A20231204,
+  '20231006_うたゆうか': A20231006,
   '20240819_Q (part 2)': A20240819,
   '20240819_Q (part 1)': A20240819A,
   '20240406_どれい': A20240406,
@@ -116,8 +116,8 @@ export const imageImports = {
   '20221113_七市': A20221113,
   '20221106_GSUS': A20221106,
   '20220922_温野りょく': A20220922,
-  '20231204_温野りょく': A20231204,
-  '20231006_うたゆうか': A20231006,
+  '20240816': A20240816,
+  '20240814': A20240814,
   '20240405_七市': A20240405,
   '20230629_七市': A20230629,
   '20220915_七市': A20220915,
