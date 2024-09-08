@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
     "pre-build": "bun run scripts/dl.ts",
-    "import-update": "bun run scripts/generateImageImport.ts",
+    "import-update": "bun run scripts/imageImport.ts",
     "prod": "bun run pre-build && next build",
     "prepare": "husky"
   },
