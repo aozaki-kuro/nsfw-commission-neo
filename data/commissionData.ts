@@ -1,7 +1,9 @@
 import { Props } from '#data/types'
 import { staleData } from './staleData'
 
-export const commissionData: Props = [
+import { filterHiddenCommissions } from '#components/utils'
+
+export const commissionData: Props = filterHiddenCommissions([
   /* ========= AZKi ========= */
   {
     Character: 'AZKi',
@@ -317,4 +319,4 @@ export const commissionData: Props = [
   },
 
   ...staleData,
-]
+])

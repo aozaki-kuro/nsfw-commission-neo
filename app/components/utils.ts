@@ -1,5 +1,7 @@
 import { characterStatus } from '#data/commissionStatus'
 
+import { Props } from '#data/types'
+
 export const isCharacterActive = (character: string): boolean => {
   return characterStatus.active.some(char => char.DisplayName === character)
 }
@@ -32,3 +34,11 @@ export const kebabCase = (str: string) =>
     if (match === '*') return '-'
     return ''
   })
+
+// 在数据库内完成过滤
+export const filterHiddenCommissions = (data: Props): Props => {
+  return data.map(characterData => ({
+    ...characterData,
+    Commissions: characterData.Commissions.filter(commission => !commission.hidden),
+  }))
+}

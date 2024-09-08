@@ -7,7 +7,7 @@
     "dev": "bun run pre-build && next",
     "pre-build": "bun run scripts/convert.ts && bun run scripts/imageImport.ts",
     "dl": "bun run scripts/dl.ts",
-    "build": "next build",
+    "build": "bun run pre-build && next build",
     "prod": "bun run dl && bun run pre-build && next build",
     "start": "next start",
     "lint": "eslint .",
