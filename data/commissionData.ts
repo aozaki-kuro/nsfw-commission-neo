@@ -176,17 +176,17 @@ export const commissionData: Props = filterHiddenCommissions([
     ],
   },
 
-  /* =========  Vspo! / 八雲べに ========= */
+  /* ========= 花鋏キョウ / Hanabasami Kyo ========= */
   {
-    Character: 'Sport!',
+    Character: 'H*nabasami Kyo',
     Commissions: [
       {
-        fileName: '20240816',
-        Links: [''],
+        fileName: '20231204_温野りょく',
+        Links: ['https://www.pixiv.net/artworks/114009866'],
       },
       {
-        fileName: '20240814',
-        Links: [''],
+        fileName: '20231006_うたゆうか',
+        Links: ['https://www.pixiv.net/artworks/112554268'],
       },
     ],
   },
