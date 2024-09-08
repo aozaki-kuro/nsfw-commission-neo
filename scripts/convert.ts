@@ -9,26 +9,34 @@ const webpOutputDir = path.join(inputDir, 'webp')
 // 日志控制
 const failedFiles: string[] = []
 let successCount = 0
+let skippedCount = 0 // 新增跳过计数
+
+// 彩色消息定义
+const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
+const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
+const msgWarn = '\x1b[0m[\x1b[33m WARN \x1b[0m]'
 
 // 确保输出目录存在
 async function ensureOutputDirExists() {
   try {
     await fs.mkdir(webpOutputDir, { recursive: true })
   } catch {
-    console.error('无法创建输出目录')
+    console.error(`${msgError} Unable to create output directory.`)
   }
 }
 
 // 处理图像文件
 async function processImages() {
+  const startTime = Date.now() // 开始计时
   try {
     const files = await fs.readdir(inputDir)
 
     // 并发处理所有文件
     await Promise.all(files.map(file => processFile(file)))
-    reportResults()
+    const endTime = Date.now() // 结束计时
+    reportResults(endTime - startTime) // 传递总处理时间
   } catch {
-    console.error('读取图像目录时出错')
+    console.error(`${msgError} Failed to read the image directory.`)
   }
 }
 
@@ -42,26 +50,51 @@ async function processFile(file: string) {
 
   try {
     if (ext === '.jpg') {
-      // 如果没有 PNG 文件，转换 JPG 为 WebP
+      // 如果没有 PNG 文件，处理 JPG 转换为 WebP
       const pngExists = await fileExists(pngFilePath)
-      if (!pngExists) {
+      if (!pngExists && !(await isUpToDate(jpgFilePath, webpFilePath))) {
         await convertImage(jpgFilePath, webpFilePath, 'webp', { quality: 80 })
+      } else {
+        skippedCount++
       }
     }
 
     if (ext === '.png') {
       // 转换 PNG 为 JPG
       const jpgOutputFilePath = path.join(inputDir, `${baseName}.jpg`)
-      await convertImage(pngFilePath, jpgOutputFilePath, 'jpeg', {
-        quality: 95,
-        progressive: true,
-        chromaSubsampling: '4:4:4',
-        mozjpeg: true,
-      })
+      if (!(await isUpToDate(pngFilePath, jpgOutputFilePath))) {
+        await convertImage(pngFilePath, jpgOutputFilePath, 'jpeg', {
+          quality: 95,
+          progressive: true,
+          chromaSubsampling: '4:4:4',
+          mozjpeg: true,
+        })
+        // 删除成功转换后的 PNG 文件
+        await fs.unlink(pngFilePath)
+      } else {
+        skippedCount++
+      }
     }
   } catch {
     failedFiles.push(file)
   }
+}
+
+// 检查目标文件是否需要更新
+async function isUpToDate(sourceFile: string, targetFile: string): Promise<boolean> {
+  try {
+    const sourceStat = await fs.stat(sourceFile)
+    const targetStat = await fs.stat(targetFile)
+
+    // 如果目标文件存在且没有过期（即目标文件的修改时间比源文件新），跳过生成
+    if (targetStat.mtime >= sourceStat.mtime) {
+      return true
+    }
+  } catch {
+    // 如果目标文件不存在，会抛出错误，因此需要生成
+    return false
+  }
+  return false
 }
 
 // 通用的图像转换函数
@@ -79,7 +112,7 @@ async function convertImage(
     await image.toFile(outputPath)
     successCount++ // 成功计数
   } catch {
-    throw new Error(`${path.basename(inputPath)} 转换失败`)
+    throw new Error(`${msgError} Failed to convert ${path.basename(inputPath)}`)
   }
 }
 
@@ -94,12 +127,15 @@ async function fileExists(filePath: string): Promise<boolean> {
 }
 
 // 输出处理结果
-function reportResults() {
-  console.log(`处理成功的文件数量: ${successCount}`)
+function reportResults(duration: number) {
+  const totalFiles = successCount + skippedCount
   if (failedFiles.length > 0) {
-    console.error(`处理失败的文件: ${failedFiles.join(', ')}`)
+    console.warn(
+      `${msgWarn} Convert ${totalFiles} files in ${duration} ms, but these files failed:`,
+    )
+    console.error(failedFiles.join(', '))
   } else {
-    console.log('所有文件都成功处理')
+    console.log(`${msgDone} Convert ${totalFiles} files in ${duration} ms`)
   }
 }
 
@@ -110,5 +146,5 @@ async function main() {
 }
 
 main().catch(() => {
-  console.error('脚本执行过程中出现错误')
+  console.error(`${msgError} Script execution failed.`)
 })

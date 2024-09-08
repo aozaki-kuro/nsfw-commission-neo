@@ -4,14 +4,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "bun run import-update && next",
+    "dev": "bun run pre-build && next",
+    "pre-build": "bun run scripts/convert.ts && bun run scripts/imageImport.ts",
+    "dl": "bun run scripts/dl.ts",
     "build": "next build",
+    "prod": "bun run dl && bun run pre-build && next build",
     "start": "next start",
     "lint": "eslint .",
     "lint-fix": "eslint . --fix",
-    "pre-build": "bun run scripts/dl.ts",
-    "import-update": "bun run scripts/imageImport.ts",
-    "prod": "bun run pre-build && next build",
     "prepare": "husky"
   },
   "dependencies": {
