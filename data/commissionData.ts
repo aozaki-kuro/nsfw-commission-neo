@@ -186,6 +186,10 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'H*nabasami Kyo',
     Commissions: [
       {
+        fileName: '20240918_AsuMi',
+        Links: [''],
+      },
+      {
         fileName: '20231204_温野りょく',
         Links: ['https://www.pixiv.net/artworks/114009866'],
       },
