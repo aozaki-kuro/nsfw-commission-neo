@@ -13,8 +13,8 @@ export const characterStatus: CommissionStatus = {
     { DisplayName: 'L*cia' },
     { DisplayName: 'Kanaut Nishe' },
     { DisplayName: 'Studio K' },
-    { DisplayName: 'H*nabasami Kyo' },
     { DisplayName: 'AZKi' },
+    { DisplayName: 'H*nabasami Kyo' },
   ],
 
   /* ======= Stale Characters ======= */
