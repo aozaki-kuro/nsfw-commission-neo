@@ -147,8 +147,8 @@ export const commissionData: Props = filterHiddenCommissions([
       },
       {
         fileName: '20240725_AOS',
-        Links: ['https://www.pixiv.net/en/artworks/121003264'],
-        hidden: true,
+        Links: ['https://x.com/AOS_Libido/status/1838570303095779667'],
+        // hidden: true,
       },
       {
         fileName: '20240620_どれい',
