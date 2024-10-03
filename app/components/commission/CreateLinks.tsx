@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 // 1. Add a helper function to validate the input links.
 const validateLinks = (links: string[]): boolean => {
-  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp']
+  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp', 'nijie.info']
 
   for (const link of links) {
     if (patterns.some(pattern => link.includes(pattern))) {
