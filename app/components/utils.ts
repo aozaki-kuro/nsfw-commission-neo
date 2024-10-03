@@ -35,7 +35,10 @@ export const kebabCase = (str: string) =>
     return ''
   })
 
-// 在数据库内完成过滤
+/*
+ * Finish filtering in the database to increase the speed of the overall build.
+ * Downside is, the total amount of the commissions will decrease.
+ */
 export const filterHiddenCommissions = (data: Props): Props => {
   return data.map(characterData => ({
     ...characterData,
