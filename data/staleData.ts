@@ -11,7 +11,7 @@ export const staleData: Props = [
       },
       {
         fileName: '20240814',
-        Links: [''],
+        Links: ['https://nijie.info/view.php?id=648202'],
       },
     ],
   },
