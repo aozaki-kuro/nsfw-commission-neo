@@ -1,7 +1,6 @@
 {
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
     "source.addMissingImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
