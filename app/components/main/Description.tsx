@@ -13,7 +13,7 @@ const CommissionDescription = () => {
         Preview images are displayed alongside their corresponding links to platforms like Twitter,
         Pixiv, or Fantia when available. By clicking on these links, you can view the full image.
         You can also subscribe for updates through{' '}
-        <Link href="./feed.xml" target="_blank" className="plausible-event-name=RSS">
+        <Link href="./feed.xml" target="_blank">
           RSS
         </Link>
         .
@@ -25,15 +25,9 @@ const CommissionDescription = () => {
       </p>
       <p className="pt-6 md:pt-4">
         If any illustrators or readers wish to get in touch, don&apos;t hesitate to reach out
-        through{' '}
-        <Link
-          href="https://odaibako.net/u/CrystallizeSub"
-          className="plausible-event-name=Odaibako"
-        >
-          odaibako
-        </Link>{' '}
-        or <Link href="mailto:contact@crystallize.cc">Email</Link>. Please note, any requests
-        regarding the release or distribution of the illustrations will be ignored.
+        through <Link href="https://odaibako.net/u/CrystallizeSub">odaibako</Link> or{' '}
+        <Link href="mailto:contact@crystallize.cc">Email</Link>. Please note, any requests regarding
+        the release or distribution of the illustrations will be ignored.
       </p>
       <Update />
     </div>
