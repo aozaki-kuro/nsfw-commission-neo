@@ -24,7 +24,7 @@ const Update = () =>
         <p className="pr-2">Last update:</p>
         <div className="flex flex-col space-y-2">
           {latestEntries.map(({ fileName, Character }, index) => (
-            <p key={index} className="mb-2 pr-2">
+            <p key={index} className="pr-2">
               {formatDate(fileName.substring(0, 8))} {'[ '}
               <Link
                 href={`#${kebabCase(Character)}-${fileName.substring(0, 8)}`}
