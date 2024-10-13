@@ -23,6 +23,7 @@ import A20231117 from '#images/webp/20231117_Happy 4th Anniv..webp'
 import A20231018 from '#images/webp/20231018_1st Album Release.webp'
 import A20230924 from '#images/webp/20230924.webp'
 import A20230917 from '#images/webp/20230917.webp'
+import A20240911 from '#images/webp/20240911_MINK.webp'
 import A20240906 from '#images/webp/20240906_七市.webp'
 import A20240725 from '#images/webp/20240725_AOS.webp'
 import A20240620 from '#images/webp/20240620_どれい.webp'
@@ -101,6 +102,7 @@ export const imageImports = {
   '20231018_1st Album Release': A20231018,
   '20230924': A20230924,
   '20230917': A20230917,
+  '20240911_MINK': A20240911,
   '20240906_七市': A20240906,
   '20240725_AOS': A20240725,
   '20240620_どれい': A20240620,

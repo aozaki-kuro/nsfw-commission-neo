@@ -1,6 +1,2 @@
 [tools]
 node = "22"
-
-[env]
-NODE_ENV = 'production'
-HOSTING = 'aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc'
