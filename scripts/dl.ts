@@ -16,7 +16,7 @@ const dlDestinationJpg = 'public/images'
 
 dotenv.config()
 
-const HOSTING = process.env.HOSTING || ''
+const HOSTING = process.env.HOSTING || 'aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc'
 const NODE_ENV = process.env.NODE_ENV || 'production'
 
 if (!HOSTING) {
