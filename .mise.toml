@@ -1,2 +1,6 @@
 [tools]
 node = "22"
+
+[env]
+HOSTING = "aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc"
+NODE_ENV = "development"
