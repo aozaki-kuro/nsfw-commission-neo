@@ -10,11 +10,7 @@ export const commissionData: Props = filterHiddenCommissions([
     Commissions: [
       {
         fileName: '20240421_Gisyu (part 2)',
-        Links: [
-          'https://twitter.com/gisyuled/status/1781955159112999348',
-          'https://www.pixiv.net/artworks/118035223',
-          'https://fantia.jp/posts/2696363',
-        ],
+        Links: ['https://fantia.jp/posts/2696363'],
       },
       {
         fileName: '20240421_Gisyu (part 1)',
