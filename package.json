@@ -49,7 +49,7 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,tsx}": [
-      "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/'"
+      "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/' --flag unstable_ts_config --config eslint.config.ts"
     ],
     "*.{json,css,md,mdx}": [
       "prettier --write"
