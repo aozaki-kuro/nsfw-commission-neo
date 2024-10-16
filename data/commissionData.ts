@@ -208,11 +208,11 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'Kanaut Nishe',
     Commissions: [
       {
-        fileName: '20241027_Q (preview 2)',
+        fileName: '20241008_Q (preview 2)',
         Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8699390'],
       },
       {
-        fileName: '20241027_Q (preview 1)',
+        fileName: '20241008_Q (preview 1)',
         Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8685263'],
       },
       {
