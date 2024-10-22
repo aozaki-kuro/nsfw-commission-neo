@@ -3,7 +3,7 @@ import {
   getBaseFileName,
   kebabCase,
   mergePartsAndPreviews,
-  sortCommissionsByFileName,
+  sortCommissionsByDate,
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import RSS from 'rss'
@@ -65,7 +65,7 @@ export async function GET() {
   const uniqueCommissions = mergePartsAndPreviews(allCommissions)
 
   // 按日期排序
-  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByFileName)
+  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
 
   // 为每个排序后的 commission 生成 RSS 项目
   sortedCommissions.forEach(commission => {

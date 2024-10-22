@@ -78,6 +78,6 @@ export function mergePartsAndPreviews(commissions: any[]): Map<string, any> {
  * @param {any} commissionB - Commission B
  * @returns {number} - 比较结果
  */
-export function sortCommissionsByFileName(commissionA: any, commissionB: any): number {
+export function sortCommissionsByDate(commissionA: any, commissionB: any): number {
   return commissionB.fileName.localeCompare(commissionA.fileName)
 }

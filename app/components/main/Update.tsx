@@ -4,7 +4,7 @@ import {
   isCharacterActive,
   kebabCase,
   mergePartsAndPreviews,
-  sortCommissionsByFileName,
+  sortCommissionsByDate,
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Link from 'next/link'
@@ -24,7 +24,7 @@ const latestEntries = commissionData
 const uniqueEntries = mergePartsAndPreviews(latestEntries)
 
 // 按日期排序
-const sortedEntries = Array.from(uniqueEntries.values()).sort(sortCommissionsByFileName).slice(0, 3)
+const sortedEntries = Array.from(uniqueEntries.values()).sort(sortCommissionsByDate).slice(0, 3)
 
 const Update = () =>
   sortedEntries.length === 0 ? (
