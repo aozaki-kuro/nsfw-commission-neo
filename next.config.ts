@@ -1,4 +1,5 @@
-/** @type {import('next').NextConfig} */
+import type { NextConfig } from 'next'
+
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {
@@ -39,7 +40,7 @@ const noRobots = [
   },
 ]
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   cleanDistDir: true,
   images: {
