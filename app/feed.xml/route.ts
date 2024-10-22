@@ -1,4 +1,4 @@
-import { formatDate, kebabCase } from '#components/utils'
+import { formatDate, getBaseFileName, kebabCase, mergePartsAndPreviews } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import RSS from 'rss'
 
@@ -9,7 +9,9 @@ const FEED_URL = `${SITE_URL}/rss`
 
 // 提取文件名中的日期和艺术家信息
 function extractDetailsFromFileName(fileName: string) {
-  const [datePart, artistPart] = fileName.split('_')
+  // 调用 utils 中的 getBaseFileName 来清理文件名
+  const cleanedFileName = getBaseFileName(fileName)
+  const [datePart, artistPart] = cleanedFileName.split('_')
   return {
     rawCommissionDate: datePart,
     commissionDate: formatDate(datePart),
@@ -60,8 +62,11 @@ export async function GET() {
     })),
   )
 
+  // 使用 utils 中的函数去重并合并同一作品的不同 part 或 preview
+  const uniqueCommissions = mergePartsAndPreviews(allCommissions)
+
   // 按日期排序
-  const sortedCommissions = allCommissions.sort(sortCommissionsByDate)
+  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
 
   // 为每个排序后的 commission 生成 RSS 项目
   sortedCommissions.forEach(commission => {

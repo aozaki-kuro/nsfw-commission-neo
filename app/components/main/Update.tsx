@@ -1,19 +1,16 @@
-import { formatDate, isCharacterActive, kebabCase } from '#components/utils'
+import {
+  formatDate,
+  getBaseFileName,
+  isCharacterActive,
+  kebabCase,
+  mergePartsAndPreviews,
+} from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import Link from 'next/link'
 
-interface CommissionEntry {
-  fileName: string
-  Character: string
-}
-
 // Calculate the total number of commissions (with unique baseFileName)
 const totalCommissions = commissionData
-  .flatMap(data =>
-    data.Commissions.map(commission =>
-      commission.fileName.replace(/ \(preview.*\)| \(part.*\)/, ''),
-    ),
-  )
+  .flatMap(data => data.Commissions.map(commission => getBaseFileName(commission.fileName)))
   .filter((value, index, self) => self.indexOf(value) === index).length // Remove duplicates by baseFileName
 
 const latestEntries = commissionData
@@ -21,20 +18,12 @@ const latestEntries = commissionData
   .flatMap(data =>
     data.Commissions.map(commission => ({ ...commission, Character: data.Character })),
   )
-  .reduce<Map<string, CommissionEntry>>((acc, commission) => {
-    // Extract the base filename (without the preview/part information)
-    const baseFileName = commission.fileName.replace(/ \(preview.*\)| \(part.*\)/, '')
 
-    // Use Map to keep only the latest entry of each group
-    if (!acc.has(baseFileName) || acc.get(baseFileName)!.fileName < commission.fileName) {
-      acc.set(baseFileName, commission) // Update with the latest entry
-    }
+// 使用 utils 中的 mergePartsAndPreviews 函数来去重
+const uniqueEntries = mergePartsAndPreviews(latestEntries)
 
-    return acc
-  }, new Map()) // Use Map to store unique baseFileName entries
-  .values() // Get the final list of latest entries
-
-const sortedEntries = Array.from(latestEntries)
+// 按日期排序
+const sortedEntries = Array.from(uniqueEntries.values())
   .sort((a, b) => b.fileName.localeCompare(a.fileName))
   .slice(0, 3)
 

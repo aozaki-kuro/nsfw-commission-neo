@@ -45,3 +45,29 @@ export const filterHiddenCommissions = (data: Props): Props => {
     Commissions: characterData.Commissions.filter(commission => !commission.hidden),
   }))
 }
+
+/**
+ * 根据文件名去除 preview 和 part 信息，保留基础文件名
+ * @param {string} fileName - 原始文件名
+ * @returns {string} - 去除 preview 和 part 后的基础文件名
+ */
+export function getBaseFileName(fileName: string): string {
+  return fileName.replace(/ \(preview.*\)| \(part.*\)$/, '')
+}
+
+/**
+ * 去重并合并同一作品的不同 part 或 preview，保留最新的条目
+ * @param {Array} commissions - 全部的 commission 数据
+ * @returns {Map} - 去重后的 commissions 映射表
+ */
+export function mergePartsAndPreviews(commissions: any[]): Map<string, any> {
+  return commissions.reduce<Map<string, any>>((acc, commission) => {
+    const baseFileName = getBaseFileName(commission.fileName)
+
+    if (!acc.has(baseFileName) || acc.get(baseFileName)!.fileName < commission.fileName) {
+      acc.set(baseFileName, commission)
+    }
+
+    return acc
+  }, new Map())
+}
