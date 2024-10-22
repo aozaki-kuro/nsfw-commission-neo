@@ -71,3 +71,13 @@ export function mergePartsAndPreviews(commissions: any[]): Map<string, any> {
     return acc
   }, new Map())
 }
+
+/**
+ * 根据文件名中的日期对 Commissions 进行排序
+ * @param {any} commissionA - Commission A
+ * @param {any} commissionB - Commission B
+ * @returns {number} - 比较结果
+ */
+export function sortCommissionsByFileName(commissionA: any, commissionB: any): number {
+  return commissionB.fileName.localeCompare(commissionA.fileName)
+}

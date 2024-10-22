@@ -1,4 +1,10 @@
-import { formatDate, getBaseFileName, kebabCase, mergePartsAndPreviews } from '#components/utils'
+import {
+  formatDate,
+  getBaseFileName,
+  kebabCase,
+  mergePartsAndPreviews,
+  sortCommissionsByFileName,
+} from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import RSS from 'rss'
 
@@ -37,13 +43,6 @@ function generateRssItem(commission: any, feed: RSS) {
   })
 }
 
-// 按日期排序
-function sortCommissionsByDate(commissionA: any, commissionB: any) {
-  const dateA = commissionA.fileName.split('_')[0]
-  const dateB = commissionB.fileName.split('_')[0]
-  return dateB.localeCompare(dateA)
-}
-
 export async function GET() {
   const feed = new RSS({
     title: SITE_TITLE,
@@ -66,7 +65,7 @@ export async function GET() {
   const uniqueCommissions = mergePartsAndPreviews(allCommissions)
 
   // 按日期排序
-  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
+  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByFileName)
 
   // 为每个排序后的 commission 生成 RSS 项目
   sortedCommissions.forEach(commission => {
