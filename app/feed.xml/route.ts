@@ -6,12 +6,11 @@ import {
   sortCommissionsByDate,
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
-import RSS from 'rss'
 
 // 常量与默认设置
 const SITE_TITLE = "Crystallize's NSFW Commissions"
 const SITE_URL = 'https://crystallize.cc'
-const FEED_URL = `${SITE_URL}/rss`
+// const FEED_URL = `${SITE_URL}/rss`
 
 // 提取文件名中的日期和艺术家信息
 function extractDetailsFromFileName(fileName: string) {
@@ -25,34 +24,27 @@ function extractDetailsFromFileName(fileName: string) {
   }
 }
 
-// 根据 commission 数据生成 RSS 项目
-function generateRssItem(commission: any, feed: RSS) {
+// 根据 commission 数据生成 RSS 项目的 XML
+function generateRssItem(commission: any) {
   const { commissionDate, artistName, rawCommissionDate } = extractDetailsFromFileName(
     commission.fileName,
   )
   const characterFullName = commission.characterFullName
   const imageUrl = `https://img.crystallize.cc/nsfw-commission/webp/${commission.fileName}.webp`
 
-  feed.item({
-    title: characterFullName,
-    url: `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`,
-    date: commissionDate,
-    author: artistName || 'Anonymous',
-    description: `Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}`,
-    enclosure: { url: imageUrl, type: 'image/jpeg' },
-  })
+  return `
+    <item>
+      <title>${characterFullName}</title>
+      <link>${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}</link>
+      <pubDate>${commissionDate}</pubDate>
+      <author>${artistName || 'Anonymous'}</author>
+      <description><![CDATA[Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}]]></description>
+      <enclosure url="${imageUrl}" type="image/jpeg" />
+    </item>
+  `
 }
 
 export async function GET() {
-  const feed = new RSS({
-    title: SITE_TITLE,
-    site_url: SITE_URL,
-    feed_url: FEED_URL,
-    language: 'en-US',
-    webMaster: 'Crystallize',
-    ttl: 60,
-  })
-
   // 将所有 Commission 数据展开并与角色名称关联
   const allCommissions = commissionData.flatMap(characterData =>
     characterData.Commissions.map(commission => ({
@@ -67,13 +59,31 @@ export async function GET() {
   // 按日期排序
   const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
 
+  // 生成 RSS feed 的头部信息
+  let rssFeed = `
+    <rss version="2.0">
+      <channel>
+        <title>${SITE_TITLE}</title>
+        <link>${SITE_URL}</link>
+        <description>NSFW commission feed from Crystallize</description>
+        <language>en-US</language>
+        <webMaster>Crystallize</webMaster>
+        <ttl>60</ttl>
+  `
+
   // 为每个排序后的 commission 生成 RSS 项目
   sortedCommissions.forEach(commission => {
-    generateRssItem(commission, feed)
+    rssFeed += generateRssItem(commission)
   })
 
+  // 关闭 RSS feed 的标签
+  rssFeed += `
+      </channel>
+    </rss>
+  `
+
   // 返回生成的 RSS Feed
-  return new Response(feed.xml({ indent: true }), {
+  return new Response(rssFeed, {
     headers: {
       'Content-Type': 'application/xml',
     },
