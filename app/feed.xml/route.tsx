@@ -10,11 +10,9 @@ import { commissionData } from '#data/commissionData'
 // 常量与默认设置
 const SITE_TITLE = "Crystallize's NSFW Commissions"
 const SITE_URL = 'https://crystallize.cc'
-// const FEED_URL = `${SITE_URL}/rss`
 
 // 提取文件名中的日期和艺术家信息
 function extractDetailsFromFileName(fileName: string) {
-  // 调用 utils 中的 getBaseFileName 来清理文件名
   const cleanedFileName = getBaseFileName(fileName)
   const [datePart, artistPart] = cleanedFileName.split('_')
   return {
@@ -24,7 +22,7 @@ function extractDetailsFromFileName(fileName: string) {
   }
 }
 
-// 根据 commission 数据生成 RSS 项目的 XML
+// 生成单个 RSS 项目的 XML
 function generateRssItem(commission: any) {
   const { commissionDate, artistName, rawCommissionDate } = extractDetailsFromFileName(
     commission.fileName,
@@ -44,8 +42,14 @@ function generateRssItem(commission: any) {
   `
 }
 
+// 用于生成静态参数，但这里不需要动态路径
+export const generateStaticParams = async () => {
+  return []
+}
+
+// HTTP GET 方法的命名导出，用于处理 /feed.xml 请求
 export async function GET() {
-  // 将所有 Commission 数据展开并与角色名称关联
+  // 获取所有的 commission 数据并合并角色名称
   const allCommissions = commissionData.flatMap(characterData =>
     characterData.Commissions.map(commission => ({
       ...commission,
@@ -53,13 +57,13 @@ export async function GET() {
     })),
   )
 
-  // 使用 utils 中的函数去重并合并同一作品的不同 part 或 preview
+  // 去重并合并 part 和 preview
   const uniqueCommissions = mergePartsAndPreviews(allCommissions)
 
   // 按日期排序
   const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
 
-  // 生成 RSS feed 的头部信息
+  // 构建 RSS 头部
   let rssFeed = `
     <rss version="2.0">
       <channel>
@@ -71,7 +75,7 @@ export async function GET() {
         <ttl>60</ttl>
   `
 
-  // 为每个排序后的 commission 生成 RSS 项目
+  // 生成每一个 commission 的 `<item>`
   sortedCommissions.forEach(commission => {
     rssFeed += generateRssItem(commission)
   })
@@ -82,12 +86,10 @@ export async function GET() {
     </rss>
   `
 
-  // 返回生成的 RSS Feed
+  // 返回 RSS feed 的响应
   return new Response(rssFeed, {
     headers: {
       'Content-Type': 'application/xml',
     },
   })
 }
-
-export const runtime = 'edge'
