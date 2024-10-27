@@ -139,6 +139,12 @@ export const commissionData: Props = filterHiddenCommissions([
   {
     Character: 'L*cia',
     Commissions: [
+      /**
+      {
+        fileName: '20241028_アータ',
+        Links: [''],
+      },
+      */
       {
         fileName: '20240911_MINK',
         Links: ['https://www.pixiv.net/artworks/123307170'],
@@ -211,12 +217,12 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'Kanaut Nishe',
     Commissions: [
       {
-        fileName: '20241008_Q (preview 2)',
-        Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8699390'],
+        fileName: '20241027_Q (part 2)',
+        Links: ['https://www.pixiv.net/artworks/123730009'],
       },
       {
-        fileName: '20241008_Q (preview 1)',
-        Links: ['https://www.fanbox.cc/@ledzeppelin910/posts/8685263'],
+        fileName: '20241027_Q (part 1)',
+        Links: ['https://www.pixiv.net/artworks/123730009'],
       },
       {
         fileName: '20240819_Q (part 2)',

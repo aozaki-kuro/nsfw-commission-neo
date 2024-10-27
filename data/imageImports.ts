@@ -34,8 +34,8 @@ import A20230617 from '#images/webp/20230617_温野りょく.webp'
 import A20240918 from '#images/webp/20240918_AsuMi.webp'
 import A20231204 from '#images/webp/20231204_温野りょく.webp'
 import A20231006 from '#images/webp/20231006_うたゆうか.webp'
-import A20241008 from '#images/webp/20241008_Q (preview 2).webp'
-import A20241008A from '#images/webp/20241008_Q (preview 1).webp'
+import A20241027 from '#images/webp/20241027_Q (part 2).webp'
+import A20241027A from '#images/webp/20241027_Q (part 1).webp'
 import A20240819 from '#images/webp/20240819_Q (part 2).webp'
 import A20240819A from '#images/webp/20240819_Q (part 1).webp'
 import A20240406 from '#images/webp/20240406_どれい.webp'
@@ -113,8 +113,8 @@ export const imageImports = {
   '20240918_AsuMi': A20240918,
   '20231204_温野りょく': A20231204,
   '20231006_うたゆうか': A20231006,
-  '20241008_Q (preview 2)': A20241008,
-  '20241008_Q (preview 1)': A20241008A,
+  '20241027_Q (part 2)': A20241027,
+  '20241027_Q (part 1)': A20241027A,
   '20240819_Q (part 2)': A20240819,
   '20240819_Q (part 1)': A20240819A,
   '20240406_どれい': A20240406,
