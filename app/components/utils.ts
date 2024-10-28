@@ -42,7 +42,7 @@ export const kebabCase = (str: string) =>
 export const filterHiddenCommissions = (data: Props): Props => {
   return data.map(characterData => ({
     ...characterData,
-    Commissions: characterData.Commissions.filter(commission => !commission.hidden),
+    Commissions: characterData.Commissions.filter(commission => !commission.Hidden),
   }))
 }
 

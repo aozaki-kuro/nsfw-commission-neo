@@ -15,7 +15,6 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240421_Gisyu (part 1)',
         Links: [
-          'https://twitter.com/gisyuled/status/1781955159112999348',
           'https://www.pixiv.net/artworks/118035223',
           'https://www.fanbox.cc/@gisyu/posts/7801716',
         ],
@@ -30,7 +29,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240408_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/117692460'],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20240114_七市',
@@ -64,7 +63,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20230611_病ん太廊',
         Links: ['https://www.pixiv.net/artworks/111809434'],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20230603_うたゆうか',
@@ -89,8 +88,9 @@ export const commissionData: Props = filterHiddenCommissions([
         Links: ['https://www.pixiv.net/artworks/121113333'],
       },
       {
-        fileName: '20240726_Welcome party', // CIEL w/ V.W.P
+        fileName: '20240726', // CIEL w/ V.W.P
         Links: ['https://www.pixiv.net/artworks/120932009'],
+        Description: 'Welcome party',
       },
       {
         fileName: '20240513', // CIEL
@@ -109,20 +109,24 @@ export const commissionData: Props = filterHiddenCommissions([
         Links: ['https://www.pixiv.net/artworks/116444725'],
       },
       {
-        fileName: '20240113_V.W.P 現象II', // Isekaijoucho
+        fileName: '20240113', // Isekaijoucho
         Links: ['https://www.pixiv.net/artworks/115136395'],
+        Description: 'V.W.P 現象II',
       },
       {
-        fileName: '20231215_parallel canvas II', // Isekaijoucho
+        fileName: '20231215', // Isekaijoucho
         Links: ['https://www.pixiv.net/artworks/114364539'],
+        Description: 'parallel canvas II',
       },
       {
-        fileName: '20231117_Happy 4th Anniv.', // Isekaijoucho
+        fileName: '20231117', // Isekaijoucho
         Links: ['https://www.pixiv.net/artworks/113681042'],
+        Description: 'Happy 4th Anniv.',
       },
       {
-        fileName: '20231018_1st Album Release', // Albemuth
+        fileName: '20231018', // Albemuth
         Links: ['https://www.pixiv.net/artworks/112712843'],
+        Description: '1st Album Release',
       },
       {
         fileName: '20230924', // CIEL
@@ -142,12 +146,13 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20241028_アータ',
         Links: ['https://www.pixiv.net/artworks/123755437'],
+        // Description: 'Design from "storia" cover',
       },
 
       {
         fileName: '20240911_MINK',
         Links: ['https://www.pixiv.net/artworks/123307170'],
-        // hidden: true,
+        // Hidden: true,
       },
       {
         fileName: '20240906_七市',
@@ -159,7 +164,7 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://x.com/AOS_Libido/status/1838570303095779667',
           'https://www.pixiv.net/artworks/123427204',
         ],
-        // hidden: true,
+        // Hidden: true,
       },
       {
         fileName: '20240620_どれい',
@@ -168,7 +173,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240519_たれぞう',
         Links: [''],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20240515_七市',
@@ -245,7 +250,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20231227_そーだみず',
         Links: ['https://twitter.com/so_dasui1/status/1739831358724489679'],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20231005_ぐれます',
@@ -253,7 +258,7 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://twitter.com/ameashi_nikki/status/1709888658831249689',
           'https://www.pixiv.net/artworks/112296316',
         ],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20230405_島どうま',
@@ -272,7 +277,7 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://twitter.com/gisyuled/status/1637254201863737347',
           'https://www.pixiv.net/artworks/106350101',
         ],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20230210_温野りょく',
@@ -288,7 +293,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20230119_こびんびん',
         Links: ['https://www.pixiv.net/artworks/106651946'],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20230113_GSUS',
@@ -300,7 +305,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20221231_うたゆうか',
         Links: ['https://www.pixiv.net/artworks/104341374'],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20221211_Gisyu',
@@ -326,7 +331,7 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://twitter.com/UnoRyoku/status/1580892425404432386',
           'https://www.pixiv.net/artworks/101922655',
         ],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20221001_AsuMi',
@@ -334,7 +339,7 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://twitter.com/AsuMi_000/status/1575987028616888320',
           'https://www.pixiv.net/artworks/101602138',
         ],
-        hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20220922_温野りょく',

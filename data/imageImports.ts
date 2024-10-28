@@ -12,15 +12,15 @@ import A20230702 from '#images/webp/20230702_アータ.webp'
 import A20230603 from '#images/webp/20230603_うたゆうか.webp'
 import A20230527 from '#images/webp/20230527_病ん太廊.webp'
 import A20240729 from '#images/webp/20240729.webp'
-import A20240726 from '#images/webp/20240726_Welcome party.webp'
+import A20240726 from '#images/webp/20240726.webp'
 import A20240513 from '#images/webp/20240513.webp'
 import A20240423 from '#images/webp/20240423.webp'
 import A20240410 from '#images/webp/20240410.webp'
 import A20240225 from '#images/webp/20240225.webp'
-import A20240113 from '#images/webp/20240113_V.W.P 現象II.webp'
-import A20231215 from '#images/webp/20231215_parallel canvas II.webp'
-import A20231117 from '#images/webp/20231117_Happy 4th Anniv..webp'
-import A20231018 from '#images/webp/20231018_1st Album Release.webp'
+import A20240113 from '#images/webp/20240113.webp'
+import A20231215 from '#images/webp/20231215.webp'
+import A20231117 from '#images/webp/20231117.webp'
+import A20231018 from '#images/webp/20231018.webp'
 import A20230924 from '#images/webp/20230924.webp'
 import A20230917 from '#images/webp/20230917.webp'
 import A20241028 from '#images/webp/20241028_アータ.webp'
@@ -92,15 +92,15 @@ export const imageImports = {
   '20230603_うたゆうか': A20230603,
   '20230527_病ん太廊': A20230527,
   '20240729': A20240729,
-  '20240726_Welcome party': A20240726,
+  '20240726': A20240726,
   '20240513': A20240513,
   '20240423': A20240423,
   '20240410': A20240410,
   '20240225': A20240225,
-  '20240113_V.W.P 現象II': A20240113,
-  '20231215_parallel canvas II': A20231215,
-  '20231117_Happy 4th Anniv.': A20231117,
-  '20231018_1st Album Release': A20231018,
+  '20240113': A20240113,
+  '20231215': A20231215,
+  '20231117': A20231117,
+  '20231018': A20231018,
   '20230924': A20230924,
   '20230917': A20230917,
   '20241028_アータ': A20241028,
