@@ -2,7 +2,7 @@
 
 # Define the local and remote directories
 LOCAL_DIR="./public/images/"
-REMOTE_DIR="root@jp-ddps:/var/www/share/nsfw-commission/"
+REMOTE_DIR="root@us-hetzner:/var/www/share/nsfw-commission/"
 
 # Run rsync to synchronize the directories
 rsync -avc $LOCAL_DIR $REMOTE_DIR
