@@ -144,6 +144,10 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'L*cia',
     Commissions: [
       {
+        fileName: '20241031_温野りょく',
+        Links: [''],
+      },
+      {
         fileName: '20241028_アータ',
         Links: ['https://www.pixiv.net/artworks/123755437'],
         // Description: 'Design from "storia" cover',

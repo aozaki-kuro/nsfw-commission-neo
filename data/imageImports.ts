@@ -23,6 +23,7 @@ import A20231117 from '#images/webp/20231117.webp'
 import A20231018 from '#images/webp/20231018.webp'
 import A20230924 from '#images/webp/20230924.webp'
 import A20230917 from '#images/webp/20230917.webp'
+import A20241031 from '#images/webp/20241031_温野りょく.webp'
 import A20241028 from '#images/webp/20241028_アータ.webp'
 import A20240911 from '#images/webp/20240911_MINK.webp'
 import A20240906 from '#images/webp/20240906_七市.webp'
@@ -103,6 +104,7 @@ export const imageImports = {
   '20231018': A20231018,
   '20230924': A20230924,
   '20230917': A20230917,
+  '20241031_温野りょく': A20241031,
   '20241028_アータ': A20241028,
   '20240911_MINK': A20240911,
   '20240906_七市': A20240906,
