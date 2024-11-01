@@ -156,7 +156,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240911_MINK',
         Links: ['https://www.pixiv.net/artworks/123307170'],
-        // Hidden: true,
+        Hidden: true,
       },
       {
         fileName: '20240906_七市',
