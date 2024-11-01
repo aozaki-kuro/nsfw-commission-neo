@@ -1,0 +1,11 @@
+name = "nsfw-commission-neo"
+
+pages_build_output_dir = ".vercel/output/static"
+
+compatibility_flags = ["nodejs_compat"]
+
+compatibility_date = "2024-09-02"
+
+[env.production]
+
+vars = { HOSTING = "aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc", NODE_VERSION = "22" , BUN_VERSION = "latest", "CF_PAGES" = "false", NODE_ENV = "production" }
