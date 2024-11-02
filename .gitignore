@@ -48,3 +48,6 @@ data/imageMap.ts
 
 # .env
 .env
+
+# wrangler
+/.wrangler/
