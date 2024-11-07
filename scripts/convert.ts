@@ -3,98 +3,130 @@ import * as path from 'path'
 import sharp from 'sharp'
 
 // 设置输入和输出目录
-const inputDir = path.join(process.cwd(), 'public/images')
-const webpOutputDir = path.join(inputDir, 'webp')
+const INPUT_DIR = path.join(process.cwd(), 'public/images')
+const WEBP_OUTPUT_DIR = path.join(INPUT_DIR, 'webp')
 
 // 日志控制
-const failedFiles: string[] = []
-let successCount = 0
-let skippedCount = 0 // 新增跳过计数
+interface ProcessingStats {
+  successCount: number
+  skippedCount: number
+  failedFiles: string[]
+}
+
+const stats: ProcessingStats = {
+  successCount: 0,
+  skippedCount: 0,
+  failedFiles: [],
+}
 
 // 彩色消息定义
-const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
-const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
-const msgWarn = '\x1b[0m[\x1b[33m WARN \x1b[0m]'
+const MSG_ERROR = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
+const MSG_DONE = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
+const MSG_WARN = '\x1b[0m[\x1b[33m WARN \x1b[0m]'
 
-// 确保输出目录存在
-async function ensureOutputDirExists() {
+// 确保目录存在
+async function ensureDirectoryExists(dirPath: string): Promise<void> {
   try {
-    await fs.mkdir(webpOutputDir, { recursive: true })
-  } catch {
-    console.error(`${msgError} Unable to create output directory.`)
+    await fs.mkdir(dirPath, { recursive: true })
+  } catch (error) {
+    console.error(`${MSG_ERROR} Unable to create directory: ${dirPath}`)
+    throw error
   }
 }
 
 // 处理图像文件
-async function processImages() {
-  const startTime = Date.now() // 开始计时
+async function processImages(): Promise<void> {
+  const startTime = Date.now()
   try {
-    const files = await fs.readdir(inputDir)
+    const files = await fs.readdir(INPUT_DIR)
+    const imageFiles = files.filter(file => {
+      const ext = path.extname(file).toLowerCase()
+      return ext === '.jpg' || ext === '.png'
+    })
 
-    // 并发处理所有文件
-    await Promise.all(files.map(file => processFile(file)))
-    const endTime = Date.now() // 结束计时
-    reportResults(endTime - startTime) // 传递总处理时间
-  } catch {
-    console.error(`${msgError} Failed to read the image directory.`)
+    await Promise.all(imageFiles.map(file => processFile(file)))
+    const endTime = Date.now()
+    reportResults(endTime - startTime)
+  } catch (error) {
+    console.error(`${MSG_ERROR} Failed to read the image directory.`)
+    console.error(error)
   }
 }
 
 // 处理单个文件
-async function processFile(file: string) {
-  const ext = path.extname(file).toLowerCase()
-  const baseName = path.basename(file, ext)
-  const pngFilePath = path.join(inputDir, `${baseName}.png`)
-  const jpgFilePath = path.join(inputDir, `${baseName}.jpg`)
-  const webpFilePath = path.join(webpOutputDir, `${baseName}.webp`)
+async function processFile(file: string): Promise<void> {
+  const { name: baseName, ext } = path.parse(file)
+  const extension = ext.toLowerCase()
 
   try {
-    if (ext === '.jpg') {
-      // 如果没有 PNG 文件，处理 JPG 转换为 WebP
-      const pngExists = await fileExists(pngFilePath)
-      if (!pngExists && !(await isUpToDate(jpgFilePath, webpFilePath))) {
-        await convertImage(jpgFilePath, webpFilePath, 'webp', { quality: 80 })
-      } else {
-        skippedCount++
-      }
+    switch (extension) {
+      case '.jpg':
+        await handleJpgFile(baseName)
+        break
+      case '.png':
+        await handlePngFile(baseName)
+        break
+      default:
+        // 跳过非 JPG 和 PNG 文件
+        break
     }
+  } catch (error) {
+    stats.failedFiles.push(file)
+    console.error(`${MSG_ERROR} Failed to process file: ${file}`)
+    console.error(error)
+  }
+}
 
-    if (ext === '.png') {
-      // 转换 PNG 为 JPG
-      const jpgOutputFilePath = path.join(inputDir, `${baseName}.jpg`)
-      if (!(await isUpToDate(pngFilePath, jpgOutputFilePath))) {
-        await convertImage(pngFilePath, jpgOutputFilePath, 'jpeg', {
-          quality: 95,
-          progressive: true,
-          chromaSubsampling: '4:4:4',
-          mozjpeg: true,
-        })
-        // 删除成功转换后的 PNG 文件
-        await fs.unlink(pngFilePath)
-      } else {
-        skippedCount++
-      }
+// 处理 JPG 文件
+async function handleJpgFile(baseName: string): Promise<void> {
+  const jpgFilePath = path.join(INPUT_DIR, `${baseName}.jpg`)
+  const pngFilePath = path.join(INPUT_DIR, `${baseName}.png`)
+  const webpFilePath = path.join(WEBP_OUTPUT_DIR, `${baseName}.webp`)
+
+  const pngExists = await fileExists(pngFilePath)
+
+  if (!pngExists) {
+    const upToDate = await isUpToDate(jpgFilePath, webpFilePath)
+    if (!upToDate) {
+      await convertImage(jpgFilePath, webpFilePath, 'webp', { quality: 80 })
+      stats.successCount++
+    } else {
+      stats.skippedCount++
     }
-  } catch {
-    failedFiles.push(file)
+  } else {
+    stats.skippedCount++
+  }
+}
+
+// 处理 PNG 文件
+async function handlePngFile(baseName: string): Promise<void> {
+  const pngFilePath = path.join(INPUT_DIR, `${baseName}.png`)
+  const jpgFilePath = path.join(INPUT_DIR, `${baseName}.jpg`)
+
+  const upToDate = await isUpToDate(pngFilePath, jpgFilePath)
+  if (!upToDate) {
+    await convertImage(pngFilePath, jpgFilePath, 'jpeg', {
+      quality: 95,
+      progressive: true,
+      chromaSubsampling: '4:4:4',
+      mozjpeg: true,
+    })
+    await fs.unlink(pngFilePath)
+    stats.successCount++
+  } else {
+    stats.skippedCount++
   }
 }
 
 // 检查目标文件是否需要更新
 async function isUpToDate(sourceFile: string, targetFile: string): Promise<boolean> {
   try {
-    const sourceStat = await fs.stat(sourceFile)
-    const targetStat = await fs.stat(targetFile)
-
-    // 如果目标文件存在且没有过期（即目标文件的修改时间比源文件新），跳过生成
-    if (targetStat.mtime >= sourceStat.mtime) {
-      return true
-    }
+    const [sourceStat, targetStat] = await Promise.all([fs.stat(sourceFile), fs.stat(targetFile)])
+    return targetStat.mtime >= sourceStat.mtime
   } catch {
-    // 如果目标文件不存在，会抛出错误，因此需要生成
+    // 如果目标文件不存在，需要生成
     return false
   }
-  return false
 }
 
 // 通用的图像转换函数
@@ -103,16 +135,27 @@ async function convertImage(
   outputPath: string,
   format: 'webp' | 'jpeg',
   options: sharp.WebpOptions | sharp.JpegOptions,
-) {
+): Promise<void> {
   try {
-    const image = sharp(inputPath)[format](options)
+    let image = sharp(inputPath)
+
     if (format === 'jpeg') {
-      image.withIccProfile('sRGB') // 仅为 JPEG 保留 ICC 配置文件
+      image = image[format](options).withMetadata()
+    } else {
+      image = image[format](options)
     }
+
     await image.toFile(outputPath)
-    successCount++ // 成功计数
-  } catch {
-    throw new Error(`${msgError} Failed to convert ${path.basename(inputPath)}`)
+  } catch (error) {
+    if (error instanceof Error) {
+      throw new Error(
+        `${MSG_ERROR} Failed to convert ${path.basename(inputPath)}: ${error.message}`,
+      )
+    } else {
+      throw new Error(
+        `${MSG_ERROR} Failed to convert ${path.basename(inputPath)}: ${String(error)}`,
+      )
+    }
   }
 }
 
@@ -127,24 +170,27 @@ async function fileExists(filePath: string): Promise<boolean> {
 }
 
 // 输出处理结果
-function reportResults(duration: number) {
-  const totalFiles = successCount + skippedCount
-  if (failedFiles.length > 0) {
+function reportResults(duration: number): void {
+  const totalFiles = stats.successCount + stats.skippedCount + stats.failedFiles.length
+  if (stats.failedFiles.length > 0) {
     console.warn(
-      `${msgWarn} Convert ${totalFiles} files in ${duration} ms, but these files failed:`,
+      `${MSG_WARN} Processed ${totalFiles} files in ${duration} ms, but these files failed:`,
     )
-    console.error(failedFiles.join(', '))
+    console.error(stats.failedFiles.join(', '))
   } else {
-    console.log(`${msgDone} Convert ${totalFiles} files in ${duration} ms`)
+    console.log(`${MSG_DONE} Processed ${totalFiles} files in ${duration} ms`)
   }
 }
 
 // 主函数执行
-async function main() {
-  await ensureOutputDirExists()
-  await processImages()
+async function main(): Promise<void> {
+  try {
+    await ensureDirectoryExists(WEBP_OUTPUT_DIR)
+    await processImages()
+  } catch (error) {
+    console.error(`${MSG_ERROR} Script execution failed.`)
+    console.error(error)
+  }
 }
 
-main().catch(() => {
-  console.error(`${msgError} Script execution failed.`)
-})
+main()

@@ -2,39 +2,39 @@ import { commissionData } from '#data/commissionData'
 import fs from 'fs'
 import path from 'path'
 
-const outputFilePath = path.join(__dirname, '../data/imageImports.ts')
+const OUTPUT_FILE_PATH = path.join(__dirname, '../data/imageImports.ts')
 
 // 生成唯一的导入名称
-const generateUniqueImportName = (baseName: string, importNames: Map<string, number>): string => {
-  const currentCount = importNames.get(baseName) || 0
+function generateUniqueImportName(baseName: string, importCount: Record<string, number>): string {
+  const currentCount = importCount[baseName] || 0
   const importName = `A${baseName}${currentCount > 0 ? String.fromCharCode(65 + currentCount - 1) : ''}`
-  importNames.set(baseName, currentCount + 1)
+  importCount[baseName] = currentCount + 1
   return importName
 }
 
 // 处理单个 commission 项，生成导入和映射语句
-const processCommission = (
+function processCommission(
   commission: { fileName: string },
-  importNames: Map<string, number>,
+  importCount: Record<string, number>,
   importStatements: string[],
   exportMappings: string[],
-) => {
+): void {
   const baseName = commission.fileName.split('_')[0]
-  const importName = generateUniqueImportName(baseName, importNames)
+  const importName = generateUniqueImportName(baseName, importCount)
   const sanitizedFileName = commission.fileName.replace(/'/g, "\\'")
 
   importStatements.push(`import ${importName} from '#images/webp/${sanitizedFileName}.webp'`)
   exportMappings.push(`  '${commission.fileName}': ${importName},`)
 }
 
-const generateImports = () => {
-  const importNames = new Map<string, number>()
+function generateImports(): void {
+  const importCount: Record<string, number> = {}
   const importStatements: string[] = []
   const exportMappings: string[] = []
 
   commissionData.forEach(characterData => {
     characterData.Commissions.forEach(commission => {
-      processCommission(commission, importNames, importStatements, exportMappings)
+      processCommission(commission, importCount, importStatements, exportMappings)
     })
   })
 
@@ -50,8 +50,8 @@ ${exportMappings.join('\n')}
 `
 
   // 写入文件
-  fs.writeFileSync(outputFilePath, fileContent, 'utf-8')
-  console.log(`Image imports generated and saved to ${outputFilePath}`)
+  fs.writeFileSync(OUTPUT_FILE_PATH, fileContent, 'utf-8')
+  console.log(`Image imports generated and saved to ${OUTPUT_FILE_PATH}`)
 }
 
 generateImports()

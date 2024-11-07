@@ -7,12 +7,9 @@ import path from 'path'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 
-// Message definitions
-const msgError = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
-const msgDone = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
-
-const dlDestinationWebp = 'public/images/webp'
-const dlDestinationJpg = 'public/images'
+// 日志消息定义
+const MSG_ERROR = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
+const MSG_DONE = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
 
 dotenv.config()
 
@@ -20,18 +17,20 @@ const HOSTING = process.env.HOSTING || 'aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.
 const NODE_ENV = process.env.NODE_ENV || 'production'
 
 if (!HOSTING) {
-  console.error(msgError, 'DL links not set correctly in the environment or .env')
+  console.error(`${MSG_ERROR} DL links not set correctly in the environment or .env`)
   process.exit(1)
 }
 
+const DL_DESTINATION_WEBP = path.join('public', 'images', 'webp')
+const DL_DESTINATION_JPG = path.join('public', 'images')
 const streamPipeline = promisify(pipeline)
 
 // 封装错误日志打印
 function logError(message: string, error?: Error) {
-  console.error(msgError, message, error ? `: ${error.message}` : '')
+  console.error(`${MSG_ERROR} ${message}${error ? `: ${error.message}` : ''}`)
 }
 
-// 创建目录的函数，增加灵活性
+// 创建目录
 async function ensureDirectory(dir: string): Promise<void> {
   try {
     await fsPromises.mkdir(dir, { recursive: true })
@@ -41,7 +40,7 @@ async function ensureDirectory(dir: string): Promise<void> {
   }
 }
 
-// 封装下载资源的逻辑，适应多种类型的文件下载
+// 下载资源
 async function downloadResource(url: string, filePath: string): Promise<void> {
   try {
     const response = await new Promise<IncomingMessage>((resolve, reject) => {
@@ -59,12 +58,31 @@ async function downloadResource(url: string, filePath: string): Promise<void> {
   }
 }
 
-// 准备下载任务并执行
-async function prepareDownloadTasks(): Promise<void> {
+// 创建下载任务
+function createDownloadTasks(commission: { fileName: string }): Promise<void>[] {
+  const { fileName } = commission
+  const tasks: Promise<void>[] = []
+
+  const webpUrl = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
+  const webpPath = path.join(DL_DESTINATION_WEBP, `${fileName}.webp`)
+  tasks.push(downloadResource(webpUrl, webpPath))
+
+  if (NODE_ENV === 'development') {
+    const jpgUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
+    const jpgPath = path.join(DL_DESTINATION_JPG, `${fileName}.jpg`)
+    tasks.push(downloadResource(jpgUrl, jpgPath))
+  }
+
+  return tasks
+}
+
+// 准备并执行下载任务
+async function prepareAndExecuteDownloads(): Promise<void> {
   try {
-    // 合并ensureDirectory调用
-    await ensureDirectory(dlDestinationWebp)
-    if (NODE_ENV === 'development') await ensureDirectory(dlDestinationJpg)
+    await ensureDirectory(DL_DESTINATION_WEBP)
+    if (NODE_ENV === 'development') {
+      await ensureDirectory(DL_DESTINATION_JPG)
+    }
 
     const downloadPromises = commissionData.flatMap(characterData =>
       characterData.Commissions.flatMap(commission => createDownloadTasks(commission)),
@@ -77,37 +95,15 @@ async function prepareDownloadTasks(): Promise<void> {
   }
 }
 
-// 创建下载任务的函数，减少重复代码
-function createDownloadTasks(commission: { fileName: string }): Promise<void>[] {
-  const { fileName } = commission
-  const webpTask = downloadResource(
-    `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`,
-    path.join(dlDestinationWebp, `${fileName}.webp`),
-  )
-
-  const tasks = [webpTask]
-
-  if (NODE_ENV === 'development') {
-    const jpgTask = downloadResource(
-      `https://${HOSTING}/nsfw-commission/${fileName}.jpg`,
-      path.join(dlDestinationJpg, `${fileName}.jpg`),
-    )
-    tasks.push(jpgTask)
-  }
-
-  return tasks
-}
-
 // 主下载流程
 async function downloadImages(): Promise<void> {
-  const startTime = process.hrtime.bigint()
+  const startTime = Date.now()
 
   try {
-    await prepareDownloadTasks()
+    await prepareAndExecuteDownloads()
 
-    const endTime = process.hrtime.bigint()
-    const elapsedTime = (endTime - startTime) / BigInt(1000000) // 转换为毫秒
-    console.log(msgDone, `All downloads completed in ${elapsedTime}ms.`)
+    const elapsedTime = Date.now() - startTime
+    console.log(`${MSG_DONE} All downloads completed in ${elapsedTime}ms.`)
     process.exit(0)
   } catch (error) {
     logError('Download process failed', error as Error)
