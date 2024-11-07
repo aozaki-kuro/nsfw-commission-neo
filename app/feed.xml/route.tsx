@@ -3,51 +3,54 @@ import {
   getBaseFileName,
   kebabCase,
   mergePartsAndPreviews,
+  parseDateString,
   sortCommissionsByDate,
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
+import { Commission } from '#data/types'
 
 const SITE_TITLE = "Crystallize's NSFW Commissions"
 const SITE_URL = 'https://crystallize.cc'
 
-interface Commission {
-  fileName: string
+interface CommissionWithFullName extends Commission {
   characterFullName: string
-  // 其他可能的属性
 }
 
 interface CommissionDetails {
   rawCommissionDate: string
-  commissionDate: string
+  commissionDate: string // 标准的 RSS 日期格式
+  formattedDate: string // 自定义的日期格式
   artistName: string | null
 }
 
-/**
- * 从文件名中提取日期和艺术家信息
- */
 function extractDetailsFromFileName(fileName: string): CommissionDetails {
   const cleanedFileName = getBaseFileName(fileName)
   const [datePart, artistPartWithExt] = cleanedFileName.split('_')
   const artistName = artistPartWithExt ? artistPartWithExt.split('.')[0] : null
 
+  const date = parseDateString(datePart)
+  if (!date) {
+    throw new Error(`Invalid date format in fileName: ${fileName}`)
+  }
+
+  const commissionDate = date.toUTCString()
+  const formattedDate = formatDate(date, 'yyyy/MM/dd')
+
   return {
     rawCommissionDate: datePart,
-    commissionDate: formatDate(datePart),
+    commissionDate,
+    formattedDate,
     artistName,
   }
 }
 
-/**
- * 生成单个 RSS 项目的 XML 字符串
- */
-function generateRssItem(commission: Commission): string {
-  const { commissionDate, artistName, rawCommissionDate } = extractDetailsFromFileName(
-    commission.fileName,
-  )
+function generateRssItem(commission: CommissionWithFullName): string {
+  const { commissionDate, formattedDate, artistName, rawCommissionDate } =
+    extractDetailsFromFileName(commission.fileName)
   const { characterFullName } = commission
   const imageUrl = `https://img.crystallize.cc/nsfw-commission/webp/${commission.fileName}.webp`
   const link = `${SITE_URL}#${encodeURIComponent(kebabCase(characterFullName))}-${rawCommissionDate}`
-  const description = `<![CDATA[Illustrator: ${artistName || 'Anonymous'}, published on ${commissionDate}]]>`
+  const description = `<![CDATA[Illustrator: ${artistName || 'Anonymous'}, published on ${formattedDate}]]>`
 
   return `
     <item>
@@ -61,9 +64,6 @@ function generateRssItem(commission: Commission): string {
   `
 }
 
-/**
- * 生成完整的 RSS Feed
- */
 function generateRssFeed(items: string[]): string {
   return `
     <rss version="2.0">
@@ -80,34 +80,28 @@ function generateRssFeed(items: string[]): string {
   `
 }
 
-// 用于生成静态参数，但这里不需要动态路径
 export const generateStaticParams = async () => {
   return []
 }
 
-// HTTP GET 方法的命名导出，用于处理 /feed.xml 请求
 export async function GET() {
-  // 获取所有的 commission 数据并合并角色名称
-  const allCommissions: Commission[] = commissionData.flatMap(characterData =>
+  const allCommissions = commissionData.flatMap(characterData =>
     characterData.Commissions.map(commission => ({
       ...commission,
       characterFullName: characterData.Character,
     })),
-  )
+  ) as CommissionWithFullName[]
 
-  // 去重并合并 part 和 preview
   const uniqueCommissions = mergePartsAndPreviews(allCommissions)
 
-  // 按日期排序
-  const sortedCommissions = Array.from(uniqueCommissions.values()).sort(sortCommissionsByDate)
+  const commissionsArray = Array.from(uniqueCommissions.values()) as CommissionWithFullName[]
 
-  // 生成每一个 commission 的 `<item>`
+  const sortedCommissions = commissionsArray.sort(sortCommissionsByDate)
+
   const rssItems = sortedCommissions.map(generateRssItem)
 
-  // 构建完整的 RSS Feed
   const rssFeed = generateRssFeed(rssItems)
 
-  // 返回 RSS feed 的响应
   return new Response(rssFeed, {
     headers: {
       'Content-Type': 'application/xml',
