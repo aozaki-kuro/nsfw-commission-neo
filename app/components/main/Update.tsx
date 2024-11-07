@@ -7,7 +7,15 @@ import {
   sortCommissionsByDate,
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
+import { Commission } from '#data/types'
 import Link from 'next/link'
+
+/**
+ * 扩展 Commission 类型，添加 Character 属性。
+ */
+interface CommissionWithCharacter extends Commission {
+  Character: string
+}
 
 /**
  * 使用 Set 去重并计算唯一的委托总数。
@@ -26,7 +34,7 @@ const latestEntries = commissionData
   // 过滤出活跃的角色
   .filter(({ Character }) => isCharacterActive(Character))
   // 展开每个角色的委托列表，并在每个委托对象中添加角色信息
-  .flatMap(({ Character, Commissions }) =>
+  .flatMap(({ Character, Commissions }): CommissionWithCharacter[] =>
     Commissions.map(commission => ({ ...commission, Character })),
   )
 
@@ -38,7 +46,9 @@ const uniqueEntries = mergePartsAndPreviews(latestEntries)
 /**
  * 将委托作品按日期排序，并获取最近的三个条目。
  */
-const sortedEntries = Array.from(uniqueEntries.values()).sort(sortCommissionsByDate).slice(0, 3)
+const sortedEntries = Array.from(uniqueEntries.values())
+  .sort(sortCommissionsByDate)
+  .slice(0, 3) as CommissionWithCharacter[] // 类型断言
 
 /**
  * Update 组件显示最新的委托作品更新信息。
