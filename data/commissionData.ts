@@ -207,7 +207,10 @@ export const commissionData: Props = filterHiddenCommissions([
     Commissions: [
       {
         fileName: '20240918_AsuMi',
-        Links: ['https://www.pixiv.net/artworks/122922812'],
+        Links: [
+          'https://www.pixiv.net/artworks/122922812',
+          'https://www.fanbox.cc/@asumi/posts/8865731',
+        ],
       },
       {
         fileName: '20231204_温野りょく',
