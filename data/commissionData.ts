@@ -84,6 +84,11 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'Studio K',
     Commissions: [
       {
+        fileName: '20241201',
+        Links: [''],
+        Description: '5th Anniv.',
+      },
+      {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
       },
