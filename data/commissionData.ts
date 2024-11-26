@@ -83,10 +83,17 @@ export const commissionData: Props = filterHiddenCommissions([
   {
     Character: 'Studio K',
     Commissions: [
+      /**
       {
-        fileName: '20241201',
+        fileName: '20241201', // Isekaijoucho in toilet
         Links: [''],
         Description: '5th Anniv.',
+      },
+       */
+      {
+        fileName: '20241126', // Isekaijoucho in toilet
+        Links: [''],
+        Description: 'Forget me not',
       },
       {
         fileName: '20240729', // Albemuth
