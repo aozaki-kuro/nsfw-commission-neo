@@ -1,5 +1,6 @@
 name = "nsfw-commission-neo"
 
+# pages_build_output_dir = ".vercel/output/static"
 pages_build_output_dir = "out"
 
 compatibility_flags = ["nodejs_compat"]
