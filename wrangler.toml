@@ -9,4 +9,4 @@ compatibility_date = "2024-09-02"
 
 [env.production]
 
-vars = { HOSTING = "aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc", NODE_VERSION = "22" , BUN_VERSION = "latest", "CF_PAGES" = "false", NODE_ENV = "production" }
+vars = { HOSTING = "aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc", NODE_VERSION = "22" , BUN_VERSION = "latest", "CF_PAGES" = "true", NODE_ENV = "production" }
