@@ -75,7 +75,7 @@ export function parseAndFormatDate(dateStr: string, format: 'yyyy/MM/dd' | 'read
  */
 export const kebabCase = (str: string): string =>
   str.toLowerCase().replace(/&|\s+|\*|[^a-z0-9-]+/g, (match: string) => {
-    if (match === '&' || match === '*') return ''
+    if (match === '&' || match === '*') return '-'
     if (/\s+/.test(match)) return '-'
     return ''
   })
