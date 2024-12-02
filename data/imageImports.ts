@@ -11,6 +11,7 @@ import A20230912 from '#images/webp/20230912_温野りょく.webp'
 import A20230702 from '#images/webp/20230702_アータ.webp'
 import A20230603 from '#images/webp/20230603_うたゆうか.webp'
 import A20230527 from '#images/webp/20230527_病ん太廊.webp'
+import A20241203 from '#images/webp/20241203.webp'
 import A20241126 from '#images/webp/20241126.webp'
 import A20240729 from '#images/webp/20240729.webp'
 import A20240726 from '#images/webp/20240726.webp'
@@ -93,6 +94,7 @@ export const imageImports = {
   '20230702_アータ': A20230702,
   '20230603_うたゆうか': A20230603,
   '20230527_病ん太廊': A20230527,
+  '20241203': A20241203,
   '20241126': A20241126,
   '20240729': A20240729,
   '20240726': A20240726,
