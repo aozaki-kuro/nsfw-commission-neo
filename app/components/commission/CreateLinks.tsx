@@ -6,7 +6,7 @@ import Link from 'next/link'
  * @returns 如果任何链接包含指定的模式，则返回 true，否则返回 false。
  */
 const validateLinks = (links: string[]): boolean => {
-  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp', 'nijie.info']
+  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp', 'patreon.com', 'nijie.info']
   // 检查是否有任何链接包含指定的模式
   return links.some(link => patterns.some(pattern => link.includes(pattern)))
 }
@@ -42,6 +42,7 @@ export const createLinks = (links: string[]) => {
     { type: 'Nijie', patterns: ['nijie.info'] },
     { type: 'Fanbox', patterns: ['fanbox.cc'] },
     { type: 'Fantia', patterns: ['fantia.jp'] },
+    { type: 'Patreon', patterns: ['patreon.com'] },
   ]
 
   // 遍历每种链接类型，生成对应的链接元素
