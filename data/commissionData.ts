@@ -85,8 +85,8 @@ export const commissionData: Props = filterHiddenCommissions([
     Commissions: [
       {
         fileName: '20241203', // Isekaijoucho in toilet
-        Links: [''],
-        Description: '5th Anniv.',
+        Links: ['https://www.pixiv.net/artworks/124865992'],
+        Description: 'Public Toilet',
       },
       {
         fileName: '20241126', // CIEL w/ Sex machine
