@@ -372,5 +372,24 @@ export const commissionData: Props = filterHiddenCommissions([
     ],
   },
 
+  /* =========  nayuta ========= */
+  {
+    Character: 'n*yuta',
+    Commissions: [
+      {
+        fileName: '20241208_七市',
+        Links: [''],
+      },
+      {
+        fileName: '20231031_七市',
+        Links: ['https://www.pixiv.net/artworks/113113526'],
+      },
+      {
+        fileName: '20230830_七市',
+        Links: ['https://www.pixiv.net/artworks/111302832'],
+      },
+    ],
+  },
+
   ...staleData,
 ])
