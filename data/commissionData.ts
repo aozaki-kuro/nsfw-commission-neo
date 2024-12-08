@@ -31,13 +31,13 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240725_AOS',
         Links: [
-          'https://x.com/AOS_Libido/status/1838570303095779667',
+          'https://twitter.com/AOS_Libido/status/1838570303095779667',
           'https://www.pixiv.net/artworks/123427204',
         ],
       },
       {
         fileName: '20240620_どれい',
-        Links: ['https://x.com/dorei_FT/status/1803768367360479317'],
+        Links: ['https://twitter.com/dorei_FT/status/1803768367360479317'],
       },
       {
         fileName: '20240519_たれぞう',
@@ -55,7 +55,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20230706_七市',
         Links: ['https://www.pixiv.net/artworks/109713460'],
-        Design: 'https://x.com/_ushiooo/status/1655551118964035584',
+        Design: 'https://twitter.com/_ushiooo/status/1655551118964035584',
       },
       {
         fileName: '20230617_温野りょく',
@@ -101,7 +101,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20241027_Q (part 2)',
         Links: ['https://www.pixiv.net/artworks/123730009'],
-        Design: 'https://x.com/ukaisaki/status/1800480093405585416',
+        Design: 'https://twitter.com/ukaisaki/status/1800480093405585416',
       },
       {
         fileName: '20241027_Q (part 1)',
@@ -110,7 +110,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240819_Q (part 2)',
         Links: ['https://www.pixiv.net/artworks/121643446'],
-        Design: 'https://x.com/ukaisaki/status/1429821364966346754',
+        Design: 'https://twitter.com/ukaisaki/status/1429821364966346754',
       },
       {
         fileName: '20240819_Q (part 1)',
@@ -197,7 +197,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20221113_七市',
         Links: ['https://www.pixiv.net/artworks/102825365'],
-        Design: 'https://x.com/ukaisaki/status/1541606179650301953/',
+        Design: 'https://twitter.com/ukaisaki/status/1541606179650301953/',
       },
       {
         fileName: '20221106_GSUS',
@@ -249,7 +249,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
-        Design: 'https://x.com/yoneyamai/status/1726414184596775337/',
+        Design: 'https://twitter.com/yoneyamai/status/1726414184596775337/',
       },
       {
         fileName: '20240726', // CIEL w/ V.W.P
@@ -291,7 +291,7 @@ export const commissionData: Props = filterHiddenCommissions([
         fileName: '20231018', // Albemuth
         Links: ['https://www.pixiv.net/artworks/112712843'],
         Description: '1st Album Release',
-        Design: 'https://x.com/yoneyamai/status/1726413893201768591/',
+        Design: 'https://twitter.com/yoneyamai/status/1726413893201768591/',
       },
       {
         fileName: '20230924', // CIEL
@@ -300,7 +300,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20230917', // Albemuth
         Links: ['https://www.pixiv.net/artworks/111840737'],
-        Design: 'https://x.com/ASU_virtual/status/1561669519914938368',
+        Design: 'https://twitter.com/ASU_virtual/status/1561669519914938368',
       },
     ],
   },
@@ -311,8 +311,8 @@ export const commissionData: Props = filterHiddenCommissions([
     Commissions: [
       {
         fileName: '20241208',
-        Links: [''],
-        Design: 'https://x.com/7utauta/status/1839664172331864348',
+        Links: ['https://www.pixiv.net/artworks/125007277'],
+        Design: 'https://twitter.com/7utauta/status/1839664172331864348',
         Description: '17th Album Release',
       },
       {
