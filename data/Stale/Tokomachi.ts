@@ -1,61 +1,6 @@
 import { Props } from '#data/types'
 
-export const staleData: Props = [
-  /* =========  Vspo! / 八雲べに ========= */
-  {
-    Character: 'Sport!',
-    Commissions: [
-      {
-        fileName: '20240816',
-        Links: [''],
-      },
-      {
-        fileName: '20240814',
-        Links: ['https://nijie.info/view.php?id=648202'],
-      },
-    ],
-  },
-
-  /* =========  HACHI ========= */
-  {
-    Character: 'HACHI',
-    Commissions: [
-      {
-        fileName: '20240405_七市',
-        Links: ['https://www.pixiv.net/artworks/117601997'],
-      },
-    ],
-  },
-
-  /* =========  Ina'nis ========= */
-  {
-    Character: "Ninomae Ina'nis",
-    Commissions: [
-      {
-        fileName: '20230629_七市',
-        Links: ['https://www.pixiv.net/artworks/109487406'],
-      },
-      {
-        fileName: '20220915_七市',
-        Links: ['https://www.pixiv.net/artworks/106680937'],
-      },
-      {
-        fileName: '20220817_紫信号',
-        Links: [
-          'https://twitter.com/SignalViolet/status/1562422304574803968',
-          'https://www.pixiv.net/artworks/101600684',
-        ],
-      },
-      {
-        fileName: '20220806_うたゆうか',
-        Links: [
-          'https://twitter.com/YuukaUta/status/1558234376734879745',
-          'https://www.pixiv.net/artworks/100448594',
-        ],
-      },
-    ],
-  },
-
+export const Tokomachi: Props = [
   /* =========  Tokomachi ========= */
   {
     Character: 'Tokomachi',
@@ -205,24 +150,6 @@ export const staleData: Props = [
         Links: [
           'https://twitter.com/hcz_n/status/1340447220559069184',
           'https://www.pixiv.net/artworks/86407839',
-        ],
-      },
-    ],
-  },
-
-  /* =========  Blue Archive ========= */
-  {
-    Character: 'Blue Archive',
-    Commissions: [
-      {
-        fileName: '20230808_中村六翅',
-        Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
-      },
-      {
-        fileName: '20230613_中村六翅',
-        Links: [
-          'https://twitter.com/NakamuraRohane/status/1668625063602708483',
-          'https://www.pixiv.net/artworks/108990302',
         ],
       },
     ],
