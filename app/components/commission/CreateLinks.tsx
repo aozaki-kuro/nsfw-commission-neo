@@ -24,12 +24,12 @@ const sanitizeUrl = (url: string): string => {
  */
 const selectMainLinks = (links: string[]): { type: string; url: string }[] => {
   const mainLinkPriority = [
-    { type: 'Fanbox', patterns: ['fanbox.cc'] },
-    { type: 'Patreon', patterns: ['patreon.com'] },
-    { type: 'Fantia', patterns: ['fantia.jp'] },
     { type: 'Twitter', patterns: ['twitter.com', 'x.com'] },
     { type: 'Pixiv', patterns: ['pixiv.net'] },
     { type: 'Nijie', patterns: ['nijie.info'] },
+    { type: 'Fanbox', patterns: ['fanbox.cc'] },
+    { type: 'Patreon', patterns: ['patreon.com'] },
+    { type: 'Fantia', patterns: ['fantia.jp'] },
   ]
 
   const selectedLinks: { type: string; url: string }[] = []
