@@ -244,12 +244,13 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20241126', // CIEL w/ Sex machine
         Links: ['https://www.pixiv.net/artworks/124739716'],
-        Description: 'Forget me not',
+        Description: 'Remote Ecstasy',
       },
       {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
         Design: 'https://twitter.com/yoneyamai/status/1726414184596775337/',
+        Description: 'Forget me not',
       },
       {
         fileName: '20240726', // CIEL w/ V.W.P
