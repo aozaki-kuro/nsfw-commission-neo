@@ -239,7 +239,7 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20241203', // Isekaijoucho in toilet
         Links: ['https://www.pixiv.net/artworks/124865992'],
-        Description: 'Public Toilet',
+        Description: 'Bathroom stall',
       },
       {
         fileName: '20241126', // CIEL w/ Sex machine
