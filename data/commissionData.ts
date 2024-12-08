@@ -310,9 +310,10 @@ export const commissionData: Props = filterHiddenCommissions([
     Character: 'n*yuta',
     Commissions: [
       {
-        fileName: '20241208_七市',
+        fileName: '20241208',
         Links: [''],
         Design: 'https://x.com/7utauta/status/1839664172331864348',
+        Description: '17th Album Release',
       },
       {
         fileName: '20231031_七市',
