@@ -6,7 +6,8 @@ const config: Config = {
   theme: {
     screens: {
       ss: { max: '480px' },
-      md: { max: '768px' },
+      sd: { max: '540px' },
+      md: { max: '674px' },
     },
     fontFamily: {
       sans: [

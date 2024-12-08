@@ -52,17 +52,17 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
   const hasBoth = hasCreator && hasDescription
 
   // 根据是否有both决定小屏下是否分行：有both则小屏变为flex-col分行，无both则保持flex-row不分行
-  const containerClasses = hasBoth ? 'flex-row md:flex-col' : 'flex-row'
+  const containerClasses = hasBoth ? 'flex-row sd:flex-col' : 'flex-row'
 
   // 当 hasBoth 为 true 时，小屏下添加上间距 md:mt-2；无both时不添加
-  const linkContainerMarginTop = hasBoth ? 'md:mt-2' : ''
+  const linkContainerMarginTop = hasBoth ? 'sd:mt-2' : ''
 
   return (
     <div
       className={`flex ${containerClasses} font-mono text-sm text-p-light md:text-xs dark:text-gray-300`}
     >
-      {/* 左侧信息：日期、创作者/描述。 
-         当 hasBoth=true 并切换到小屏(md:)时，这部分会成为第一行。大屏下仍为一行中的左侧部分。 */}
+      {/* 左侧信息：日期、创作者/描述。
+         当 hasBoth=true 并切换到小屏(sd:)时，这部分会成为第一行。大屏下仍为一行中的左侧部分。 */}
       <div className="flex items-center space-x-2">
         {/* 日期及其链接锚点 */}
         <span className="select-none pr-14 md:pr-4">
@@ -89,7 +89,7 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
         )}
       </div>
 
-      {/* 右侧链接部分。 
+      {/* 右侧链接部分。
          大屏：与上述信息同一行末尾（由于flex-row和ml-auto推到右侧）。
          小屏（当hasBoth=true）时，会因为md:flex-col导致链接自动换行到第二行，并通过linkContainerMarginTop增加间隔。
          当hasBoth=false时，小屏下仍为一行，无额外间距。
