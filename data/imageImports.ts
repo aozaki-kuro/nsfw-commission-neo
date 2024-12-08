@@ -50,7 +50,7 @@ import A20221211 from '#images/webp/20221211_Gisyu.webp'
 import A20221113 from '#images/webp/20221113_七市.webp'
 import A20221106 from '#images/webp/20221106_GSUS.webp'
 import A20220922 from '#images/webp/20220922_温野りょく.webp'
-import A20241208 from '#images/webp/20241208_七市.webp'
+import A20241208 from '#images/webp/20241208.webp'
 import A20231031 from '#images/webp/20231031_七市.webp'
 import A20230830 from '#images/webp/20230830_七市.webp'
 import A20240405 from '#images/webp/20240405_七市.webp'
@@ -134,7 +134,7 @@ export const imageImports = {
   '20221113_七市': A20221113,
   '20221106_GSUS': A20221106,
   '20220922_温野りょく': A20220922,
-  '20241208_七市': A20241208,
+  '20241208': A20241208,
   '20231031_七市': A20231031,
   '20230830_七市': A20230830,
   '20240405_七市': A20240405,

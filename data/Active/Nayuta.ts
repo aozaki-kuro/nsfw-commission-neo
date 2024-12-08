@@ -6,7 +6,7 @@ export const Nayuta: Props = [
     Character: 'n*yuta',
     Commissions: [
       {
-        fileName: '20241208_七市',
+        fileName: '20241208',
         Links: ['https://www.pixiv.net/artworks/125007277'],
         Design: 'https://twitter.com/7utauta/status/1839664172331864348',
         Description: '17th Album Release',
