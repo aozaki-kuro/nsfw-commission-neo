@@ -21,6 +21,7 @@ export const characterStatus: CommissionStatus = {
   stale: [
     { DisplayName: 'Blue Archive' },
     { DisplayName: 'H*nabasami Kyo' },
+
     // Very unlikely to change
     { DisplayName: 'HACHI' },
     { DisplayName: 'Sport!' },

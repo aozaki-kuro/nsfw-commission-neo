@@ -4,154 +4,6 @@ import { staleData } from './staleData'
 import { filterHiddenCommissions } from '#components/utils'
 
 export const commissionData: Props = filterHiddenCommissions([
-  /* ========= AZKi ========= */
-  {
-    Character: 'AZKi',
-    Commissions: [
-      {
-        fileName: '20240421_Gisyu (part 2)',
-        Links: ['https://fantia.jp/posts/2696363'],
-      },
-      {
-        fileName: '20240421_Gisyu (part 1)',
-        Links: [
-          'https://www.pixiv.net/artworks/118035223',
-          'https://www.fanbox.cc/@gisyu/posts/7801716',
-        ],
-      },
-      {
-        fileName: '20240409_雪国裕',
-        Links: [
-          'https://www.pixiv.net/artworks/117744700',
-          'https://www.fanbox.cc/@yukiguni16/posts/7769811',
-        ],
-      },
-      {
-        fileName: '20240408_病ん太廊',
-        Links: ['https://www.pixiv.net/artworks/117692460'],
-        Hidden: true,
-      },
-      {
-        fileName: '20240114_七市',
-        Links: ['https://www.pixiv.net/en/artworks/115230067'],
-      },
-      {
-        fileName: '20231231_流し満貫',
-        Links: [
-          'https://twitter.com/naga4mangan/status/1741268826875159028',
-          'https://www.pixiv.net/artworks/114716726',
-        ],
-      },
-      {
-        fileName: '20230914_もけ太',
-        Links: ['https://www.pixiv.net/artworks/111778285', 'https://fantia.jp/posts/2267273'],
-      },
-      {
-        fileName: '20230912_温野りょく',
-        Links: [
-          'https://twitter.com/UnoRyoku/status/1701294521898901911',
-          'https://www.pixiv.net/artworks/111700726',
-        ],
-      },
-      {
-        fileName: '20230702_アータ',
-        Links: [
-          // 'https://twitter.com/C4Rm93/status/1669365839303434240',
-          'https://www.pixiv.net/artworks/109525980',
-        ],
-      },
-      {
-        fileName: '20230611_病ん太廊',
-        Links: ['https://www.pixiv.net/artworks/111809434'],
-        Hidden: true,
-      },
-      {
-        fileName: '20230603_うたゆうか',
-        Links: [
-          'https://twitter.com/YuukaUta/status/1665328780427296770',
-          'https://www.pixiv.net/artworks/108727689',
-        ],
-      },
-      {
-        fileName: '20230527_病ん太廊',
-        Links: ['https://www.fanbox.cc/@hv-yantaro/posts/6073423'],
-      },
-    ],
-  },
-
-  /* ========= Kamitsubaki Studio & SINSEKAI Studio ========= */
-  {
-    Character: 'Studio K',
-    Commissions: [
-      {
-        fileName: '20241203', // Isekaijoucho in toilet
-        Links: ['https://www.pixiv.net/artworks/124865992'],
-        Description: 'Public Toilet',
-      },
-      {
-        fileName: '20241126', // CIEL w/ Sex machine
-        Links: ['https://www.pixiv.net/artworks/124739716'],
-        Description: 'Forget me not',
-      },
-      {
-        fileName: '20240729', // Albemuth
-        Links: ['https://www.pixiv.net/artworks/121113333'],
-        Design: 'https://x.com/yoneyamai/status/1726414184596775337/',
-      },
-      {
-        fileName: '20240726', // CIEL w/ V.W.P
-        Links: ['https://www.pixiv.net/artworks/120932009'],
-        Description: 'Welcome party',
-      },
-      {
-        fileName: '20240513', // CIEL
-        Links: ['https://www.pixiv.net/artworks/118703993'],
-      },
-      {
-        fileName: '20240423', // Isekaijoucho x CIEL
-        Links: ['https://www.pixiv.net/artworks/118184337'],
-      },
-      {
-        fileName: '20240410', // Isekaijoucho
-        Links: ['https://www.pixiv.net/artworks/117718920'],
-      },
-      {
-        fileName: '20240225', // CIEL
-        Links: ['https://www.pixiv.net/artworks/116444725'],
-      },
-      {
-        fileName: '20240113', // Isekaijoucho
-        Links: ['https://www.pixiv.net/artworks/115136395'],
-        Description: 'V.W.P 現象II',
-      },
-      {
-        fileName: '20231215', // Isekaijoucho
-        Links: ['https://www.pixiv.net/artworks/114364539'],
-        Description: 'parallel canvas II',
-      },
-      {
-        fileName: '20231117', // Isekaijoucho
-        Links: ['https://www.pixiv.net/artworks/113681042'],
-        Description: 'Happy 4th Anniv.',
-      },
-      {
-        fileName: '20231018', // Albemuth
-        Links: ['https://www.pixiv.net/artworks/112712843'],
-        Description: '1st Album Release',
-        Design: 'https://x.com/yoneyamai/status/1726413893201768591/',
-      },
-      {
-        fileName: '20230924', // CIEL
-        Links: ['https://www.pixiv.net/artworks/112144494'],
-      },
-      {
-        fileName: '20230917', // Albemuth
-        Links: ['https://www.pixiv.net/artworks/111840737'],
-        Design: 'https://x.com/ASU_virtual/status/1561669519914938368',
-      },
-    ],
-  },
-
   /* =========  Lucia ========= */
   {
     Character: 'L*cia',
@@ -182,7 +34,6 @@ export const commissionData: Props = filterHiddenCommissions([
           'https://x.com/AOS_Libido/status/1838570303095779667',
           'https://www.pixiv.net/artworks/123427204',
         ],
-        // Hidden: true,
       },
       {
         fileName: '20240620_どれい',
@@ -381,6 +232,79 @@ export const commissionData: Props = filterHiddenCommissions([
     ],
   },
 
+  /* ========= Kamitsubaki Studio & SINSEKAI Studio ========= */
+  {
+    Character: 'Studio K',
+    Commissions: [
+      {
+        fileName: '20241203', // Isekaijoucho in toilet
+        Links: ['https://www.pixiv.net/artworks/124865992'],
+        Description: 'Public Toilet',
+      },
+      {
+        fileName: '20241126', // CIEL w/ Sex machine
+        Links: ['https://www.pixiv.net/artworks/124739716'],
+        Description: 'Forget me not',
+      },
+      {
+        fileName: '20240729', // Albemuth
+        Links: ['https://www.pixiv.net/artworks/121113333'],
+        Design: 'https://x.com/yoneyamai/status/1726414184596775337/',
+      },
+      {
+        fileName: '20240726', // CIEL w/ V.W.P
+        Links: ['https://www.pixiv.net/artworks/120932009'],
+        Description: 'Welcome party',
+      },
+      {
+        fileName: '20240513', // CIEL
+        Links: ['https://www.pixiv.net/artworks/118703993'],
+      },
+      {
+        fileName: '20240423', // Isekaijoucho x CIEL
+        Links: ['https://www.pixiv.net/artworks/118184337'],
+      },
+      {
+        fileName: '20240410', // Isekaijoucho
+        Links: ['https://www.pixiv.net/artworks/117718920'],
+      },
+      {
+        fileName: '20240225', // CIEL
+        Links: ['https://www.pixiv.net/artworks/116444725'],
+      },
+      {
+        fileName: '20240113', // Isekaijoucho
+        Links: ['https://www.pixiv.net/artworks/115136395'],
+        Description: 'V.W.P 現象II',
+      },
+      {
+        fileName: '20231215', // Isekaijoucho
+        Links: ['https://www.pixiv.net/artworks/114364539'],
+        Description: 'parallel canvas II',
+      },
+      {
+        fileName: '20231117', // Isekaijoucho
+        Links: ['https://www.pixiv.net/artworks/113681042'],
+        Description: 'Happy 4th Anniv.',
+      },
+      {
+        fileName: '20231018', // Albemuth
+        Links: ['https://www.pixiv.net/artworks/112712843'],
+        Description: '1st Album Release',
+        Design: 'https://x.com/yoneyamai/status/1726413893201768591/',
+      },
+      {
+        fileName: '20230924', // CIEL
+        Links: ['https://www.pixiv.net/artworks/112144494'],
+      },
+      {
+        fileName: '20230917', // Albemuth
+        Links: ['https://www.pixiv.net/artworks/111840737'],
+        Design: 'https://x.com/ASU_virtual/status/1561669519914938368',
+      },
+    ],
+  },
+
   /* =========  nayuta ========= */
   {
     Character: 'n*yuta',
@@ -397,6 +321,81 @@ export const commissionData: Props = filterHiddenCommissions([
       {
         fileName: '20230830_七市',
         Links: ['https://www.pixiv.net/artworks/111302832'],
+      },
+    ],
+  },
+
+  /* ========= AZKi ========= */
+  {
+    Character: 'AZKi',
+    Commissions: [
+      {
+        fileName: '20240421_Gisyu (part 2)',
+        Links: ['https://fantia.jp/posts/2696363'],
+      },
+      {
+        fileName: '20240421_Gisyu (part 1)',
+        Links: [
+          'https://www.pixiv.net/artworks/118035223',
+          'https://www.fanbox.cc/@gisyu/posts/7801716',
+        ],
+      },
+      {
+        fileName: '20240409_雪国裕',
+        Links: [
+          'https://www.pixiv.net/artworks/117744700',
+          'https://www.fanbox.cc/@yukiguni16/posts/7769811',
+        ],
+      },
+      {
+        fileName: '20240408_病ん太廊',
+        Links: ['https://www.pixiv.net/artworks/117692460'],
+        Hidden: true,
+      },
+      {
+        fileName: '20240114_七市',
+        Links: ['https://www.pixiv.net/en/artworks/115230067'],
+      },
+      {
+        fileName: '20231231_流し満貫',
+        Links: [
+          'https://twitter.com/naga4mangan/status/1741268826875159028',
+          'https://www.pixiv.net/artworks/114716726',
+        ],
+      },
+      {
+        fileName: '20230914_もけ太',
+        Links: ['https://www.pixiv.net/artworks/111778285', 'https://fantia.jp/posts/2267273'],
+      },
+      {
+        fileName: '20230912_温野りょく',
+        Links: [
+          'https://twitter.com/UnoRyoku/status/1701294521898901911',
+          'https://www.pixiv.net/artworks/111700726',
+        ],
+      },
+      {
+        fileName: '20230702_アータ',
+        Links: [
+          // 'https://twitter.com/C4Rm93/status/1669365839303434240',
+          'https://www.pixiv.net/artworks/109525980',
+        ],
+      },
+      {
+        fileName: '20230611_病ん太廊',
+        Links: ['https://www.pixiv.net/artworks/111809434'],
+        Hidden: true,
+      },
+      {
+        fileName: '20230603_うたゆうか',
+        Links: [
+          'https://twitter.com/YuukaUta/status/1665328780427296770',
+          'https://www.pixiv.net/artworks/108727689',
+        ],
+      },
+      {
+        fileName: '20230527_病ん太廊',
+        Links: ['https://www.fanbox.cc/@hv-yantaro/posts/6073423'],
       },
     ],
   },
