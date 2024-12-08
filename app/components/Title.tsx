@@ -7,7 +7,7 @@ type TitleProps = {
 
 const Title = ({ Content }: TitleProps) => {
   return (
-    <div id={kebabCase(Content)} className="pb-2">
+    <div className="mb-2 pt-4">
       <h2 className="group relative">
         {Content}
         <Link

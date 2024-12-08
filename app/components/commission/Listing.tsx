@@ -57,13 +57,13 @@ const Listing = ({ Character }: ListingProps) => {
   })
 
   return (
-    <div className="pb-6">
+    <div id={kebabCase(Character)}>
       {/* 显示角色标题 */}
       <Title Content={Character} />
 
       {/* 如果没有数据，显示占位文本，否则显示委托作品列表 */}
       {!characterData || sortedCommissions.length === 0 ? (
-        <p className="py-4">To be announced ...</p>
+        <p className="my-4">To be announced ...</p>
       ) : (
         sortedCommissions.map((commission, index) => {
           // 从文件名中提取日期和创作者信息
@@ -96,13 +96,14 @@ const Listing = ({ Character }: ListingProps) => {
                 />
               )}
               {/* 显示委托作品的详细信息 */}
-              <div className="pb-4 pt-8 md:pb-2 md:pt-6">
+              <div className="mb-4 mt-8 md:mb-2 md:mt-6">
                 <IllustratorInfo commission={commission} characterName={Character} />
               </div>
             </div>
           )
         })
       )}
+      <div className="pb-6" />
     </div>
   )
 }

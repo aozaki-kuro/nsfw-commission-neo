@@ -61,12 +61,12 @@ const Update = () => {
 
   // 渲染最新的委托作品信息
   return (
-    <div className="flex flex-col pb-4 pt-8 font-mono text-sm ss:text-xs md:pt-6">
+    <div className="mb-4 mt-8 flex flex-col font-mono text-sm ss:text-xs md:mb-4 md:mt-6">
       {/* 显示当前的委托总数 */}
-      <p className="pb-2">Currently {totalCommissions} commissions</p>
+      <p className="mb-2">Currently {totalCommissions} commissions</p>
 
       <div className="flex items-start">
-        <p className="pr-2">Last update:</p>
+        <p className="mr-2">Last update:</p>
         <div className="flex flex-col space-y-2">
           {/* 遍历最近的委托作品条目并渲染 */}
           {sortedEntries.map(({ fileName, Character }, index) => {
@@ -78,7 +78,7 @@ const Update = () => {
             const linkId = `#${kebabCase(Character)}-${commissionDate}`
 
             return (
-              <p key={index} className="pr-2">
+              <p key={index} className="mr-2">
                 {/* 显示格式化日期并创建指向对应角色的链接 */}
                 {formattedDate} {'[ '}
                 <Link href={linkId} className="underline-offset-[0.1rem]">
