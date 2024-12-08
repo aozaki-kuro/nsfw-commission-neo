@@ -18,7 +18,7 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
   const kebabCaseName = kebabCase(characterName)
 
   // 从 commission 对象中解构所需的属性
-  const { fileName, Description: description, Links: links } = commission
+  const { fileName, Description: description, Links: links, Design: designLink } = commission
 
   // 从 fileName 提取日期和创作者信息
   const commissionDate = fileName.slice(0, 8)
@@ -63,7 +63,7 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
         )}
 
         {/* 链接部分 */}
-        <span className="grow text-right">{createLinks(links)}</span>
+        <span className="grow text-right">{createLinks({ links, designLink })}</span>
       </div>
 
       {/* 如果同时存在创作者和描述，在中等及以上屏幕大小下显示描述 */}

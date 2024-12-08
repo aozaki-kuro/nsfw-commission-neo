@@ -1,9 +1,8 @@
-// #data/types.ts
-
 // Define a new interface for individual commission items
 export interface Commission {
   fileName: string
   Links: string[]
+  Design?: string
   Description?: string
   Hidden?: boolean
 }

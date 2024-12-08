@@ -1,12 +1,25 @@
 import Link from 'next/link'
 
+interface CreateLinksProps {
+  links: string[]
+  designLink?: string
+}
+
 /**
  * 验证输入的链接数组中是否包含指定的模式。
  * @param links - 需要验证的链接字符串数组。
  * @returns 如果任何链接包含指定的模式，则返回 true，否则返回 false。
  */
 const validateLinks = (links: string[]): boolean => {
-  const patterns = ['twitter.com', 'x.com', 'pixiv.net', 'fanbox.cc', 'fantia.jp', 'nijie.info']
+  const patterns = [
+    'twitter.com',
+    'x.com',
+    'pixiv.net',
+    'fanbox.cc',
+    'fantia.jp',
+    'patreon.com',
+    'nijie.info',
+  ]
   // 检查是否有任何链接包含指定的模式
   return links.some(link => patterns.some(pattern => link.includes(pattern)))
 }
@@ -24,45 +37,83 @@ const sanitizeUrl = (url: string): string => {
   return url
 }
 
-/**
- * 根据提供的链接数组生成包含链接的 React 元素数组。
- * @param links - 需要处理的链接字符串数组。
- * @returns 包含链接的 React 元素数组，如果没有匹配的链接，则返回包含 'N/A' 的数组。
- */
-export const createLinks = (links: string[]) => {
-  // 如果没有任何链接匹配指定的模式，则返回 'N/A'
-  if (!validateLinks(links)) {
+export const createLinks = ({ links, designLink }: CreateLinksProps) => {
+  const design = designLink ? [designLink] : []
+
+  // If no links and no design links, return 'N/A'
+  if (!validateLinks(links) && design.length === 0) {
     return [<span key="error">N/A</span>]
   }
 
-  // 定义链接类型及其关联的匹配模式
-  const linkPatterns = [
+  // Priority order for main links
+  const mainLinkPriority = [
+    { type: 'Fanbox', patterns: ['fanbox.cc'] },
+    { type: 'Patreon', patterns: ['patreon.com'] },
     { type: 'Twitter', patterns: ['twitter.com', 'x.com'] },
     { type: 'Pixiv', patterns: ['pixiv.net'] },
-    { type: 'Nijie', patterns: ['nijie.info'] },
-    { type: 'Fanbox', patterns: ['fanbox.cc'] },
     { type: 'Fantia', patterns: ['fantia.jp'] },
+    { type: 'Nijie', patterns: ['nijie.info'] },
   ]
 
-  // 遍历每种链接类型，生成对应的链接元素
-  return linkPatterns.flatMap(({ type, patterns }) => {
-    // 查找第一个匹配当前类型模式的链接
-    const url = links.find(link => patterns.some(pattern => link.includes(pattern)))
+  const selectedLinks: { type: string; url: string }[] = []
 
-    // 如果没有找到匹配的链接，则跳过当前类型
-    if (!url) return null
+  // Helper to check and add links based on patterns
+  const addLinksByPattern = (type: string, patterns: string[]) => {
+    const foundLinks = links.filter(link => patterns.some(pattern => link.includes(pattern)))
+    if (foundLinks.length > 0) {
+      if (type === 'Twitter') {
+        const twitterLink = links.find(link =>
+          ['twitter.com', 'x.com'].some(pattern => link.includes(pattern)),
+        )
+        if (twitterLink) {
+          selectedLinks.push({ type: 'Twitter', url: sanitizeUrl(twitterLink) })
+        }
+      } else if (type === 'Fanbox' || type === 'Patreon') {
+        const primaryLink = foundLinks[0]
+        selectedLinks.push({ type, url: sanitizeUrl(primaryLink) })
+      } else {
+        const primaryLink = foundLinks[0]
+        selectedLinks.push({ type, url: sanitizeUrl(primaryLink) })
+      }
+    }
+  }
 
-    // 对链接进行必要的清理
-    const sanitizedUrl = sanitizeUrl(url)
+  // Apply priority selection
+  for (const priority of mainLinkPriority) {
+    if (selectedLinks.length >= 3 - design.length) break
+    addLinksByPattern(priority.type, priority.patterns)
+  }
 
-    // 返回包含链接的 React 元素
-    return (
-      <span key={type}>
-        <span className="pr-3 md:pr-2" />
-        <Link href={sanitizedUrl} className="underline-offset-[0.1rem]" target="_blank">
-          {type}
-        </Link>
-      </span>
-    )
-  })
+  // Limit to (3 - design.length) links
+  const limitedLinks = selectedLinks.slice(0, 3 - design.length)
+
+  // Prepare main link elements
+  const mainLinkElements = limitedLinks.map((link, index) => (
+    <span key={`${link.type}-${index}`}>
+      <span className="pr-3 md:pr-2" />
+      <Link href={link.url} className="underline-offset-[0.1rem]" target="_blank">
+        {link.type}
+      </Link>
+    </span>
+  ))
+
+  // Prepare Design link to be last
+  const designLinkElements = design.map((designUrl, index) => (
+    <span key={`Design-${index}`}>
+      <span className="pr-3 md:pr-2" />
+      <Link href={sanitizeUrl(designUrl)} className="underline-offset-[0.1rem]" target="_blank">
+        Design
+      </Link>
+    </span>
+  ))
+
+  // Combine main links and design links
+  const combinedLinks = [...mainLinkElements, ...designLinkElements]
+
+  // If no main links but have design links
+  if (combinedLinks.length === 0 && design.length > 0) {
+    return designLinkElements
+  }
+
+  return combinedLinks.length > 0 ? combinedLinks : [<span key="error">N/A</span>]
 }
