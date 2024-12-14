@@ -1,0 +1,66 @@
+import { Props } from '#data/types'
+
+export const Lucia: Props = [
+  /* =========  Lucia ========= */
+  {
+    Character: 'L*cia',
+    Commissions: [
+      {
+        fileName: '20241031_温野りょく',
+        Links: ['https://www.pixiv.net/artworks/123904832'],
+      },
+      {
+        fileName: '20241028_アータ',
+        Links: ['https://www.pixiv.net/artworks/123755437'],
+        Design: 'https://www.youtube.com/watch?v=RtoMOLGiGNw',
+      },
+
+      {
+        fileName: '20240911_MINK',
+        Links: ['https://www.pixiv.net/artworks/123307170'],
+        Hidden: true,
+      },
+      {
+        fileName: '20240906_七市',
+        Links: ['https://www.pixiv.net/artworks/122220714'],
+        Design: 'https://www.fanbox.cc/@tks10ru/posts/8198807',
+      },
+      {
+        fileName: '20240725_AOS',
+        Links: [
+          'https://twitter.com/AOS_Libido/status/1838570303095779667',
+          'https://www.pixiv.net/artworks/123427204',
+        ],
+      },
+      {
+        fileName: '20240620_どれい',
+        Links: ['https://twitter.com/dorei_FT/status/1803768367360479317'],
+      },
+      {
+        fileName: '20240519_たれぞう',
+        Links: [''],
+        Hidden: true,
+      },
+      {
+        fileName: '20240515_七市',
+        Links: ['https://www.pixiv.net/artworks/118788598'],
+      },
+      {
+        fileName: '20231109_YYDAP',
+        Links: ['https://twitter.com/potatoyyda/status/1722527075972870639'],
+      },
+      {
+        fileName: '20230706_七市',
+        Links: ['https://www.pixiv.net/artworks/109713460'],
+        Design: 'https://twitter.com/_ushiooo/status/1655551118964035584',
+      },
+      {
+        fileName: '20230617_温野りょく',
+        Links: [
+          'https://twitter.com/UnoRyoku/status/1671030802241716231',
+          'https://www.pixiv.net/artworks/109181457',
+        ],
+      },
+    ],
+  },
+]
