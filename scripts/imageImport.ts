@@ -135,6 +135,7 @@ function generateImports(): void {
       'export const imageImports = {',
       importItems.map(item => item.exportMapping).join('\n'),
       '}',
+      '',
     ].join('\n')
 
     // 一次性写入文件
