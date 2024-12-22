@@ -37,6 +37,7 @@ export const AZKi: Props = [
         Links: [
           'https://twitter.com/naga4mangan/status/1741268826875159028',
           'https://www.pixiv.net/artworks/114716726',
+          'https://www.fanbox.cc/@naga4mangan/posts/7223040',
         ],
       },
       {
