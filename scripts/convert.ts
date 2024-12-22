@@ -92,7 +92,7 @@ class ProcessingStats {
       Logger.warn(`Processed ${total} files (${duration}ms), but these files failed:`)
       Logger.error(this.failedFiles.join(', '))
     } else {
-      Logger.success(`Successfully processed ${total} files (${duration}ms)`)
+      Logger.success(`Processed ${total} files (${duration}ms)`)
     }
   }
 }

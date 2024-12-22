@@ -60,7 +60,7 @@ const nextConfig: NextConfig = {
        */
       {
         /*
-         * bun run pre-build && bunxx @cloudflare/next-on-pages
+         * bun run pre-build && bunx @cloudflare/next-on-pages
          * Change output dir: .vercel/output/static
          * Add compability flag: nodejs_compat
          * Then you can disable output: 'export'
