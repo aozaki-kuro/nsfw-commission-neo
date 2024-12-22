@@ -1,6 +1,6 @@
 import { Props } from '#data/types'
 
-export const HACHI: Props = [
+export const Hachi: Props = [
   /* =========  HACHI ========= */
   {
     Character: 'HACHI',
