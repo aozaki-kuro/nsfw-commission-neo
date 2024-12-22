@@ -14,16 +14,6 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   prettierConfigRecommended,
-  {
-    ignores: ['**/.next/**', '**/_next/**', '**/dist/**', '**/out/**'],
-    rules: {
-      '@next/next/no-img-element': 'off',
-      'prefer-const': 'error',
-      '@typescript-eslint/ban-ts-comment': 0,
-      '@typescript-eslint/no-var-requires': 0,
-      '@typescript-eslint/no-explicit-any': 0,
-    },
-  },
 ]
 
 export default eslintConfig
