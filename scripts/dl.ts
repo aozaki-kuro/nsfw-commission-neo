@@ -1,114 +1,156 @@
 import { commissionData } from '#data/commissionData'
 import dotenv from 'dotenv'
-import fs, { promises as fsPromises } from 'fs'
+import fs from 'fs'
+import { mkdir } from 'fs/promises'
 import { IncomingMessage } from 'http'
 import https from 'https'
 import path from 'path'
-import { pipeline } from 'stream'
-import { promisify } from 'util'
+import { pipeline } from 'stream/promises'
 
-// 日志消息定义
-const MSG_ERROR = '\x1b[0m[\x1b[31m ERROR \x1b[0m]'
-const MSG_DONE = '\x1b[0m[\x1b[32m DONE \x1b[0m]'
+/**
+ * 控制台输出颜色配置
+ */
+const COLORS = {
+  ERROR: '\x1b[31m',
+  SUCCESS: '\x1b[32m',
+  RESET: '\x1b[0m',
+} as const
 
+/**
+ * 日志输出工具
+ */
+const log = {
+  error: (msg: string, err?: Error) =>
+    console.error(
+      `${COLORS.RESET}[${COLORS.ERROR} ERROR ${COLORS.RESET}] ${msg}${err ? `: ${err.message}` : ''}`,
+    ),
+  success: (msg: string) =>
+    console.log(`${COLORS.RESET}[${COLORS.SUCCESS} DONE ${COLORS.RESET}] ${msg}`),
+} as const
+
+// 加载环境变量
 dotenv.config()
 
-const HOSTING = process.env.HOSTING || 'aozaki:Z1hvfxhF96wGUeZkeDh@file1.aozaki.cc'
-const NODE_ENV = process.env.NODE_ENV || 'production'
+/**
+ * 应用配置接口
+ */
+interface Config {
+  /** 远程主机地址 */
+  hosting: string
+  /** 是否为开发环境 */
+  isDev: boolean
+  /** 文件保存路径配置 */
+  paths: {
+    webp: string
+    jpg: string
+  }
+}
 
-if (!HOSTING) {
-  console.error(`${MSG_ERROR} DL links not set correctly in the environment or .env`)
+/**
+ * 应用配置
+ */
+const config: Config = {
+  hosting: process.env.HOSTING || '',
+  isDev: process.env.NODE_ENV === 'development',
+  paths: {
+    webp: path.join('public', 'images', 'webp'),
+    jpg: path.join('public', 'images'),
+  },
+}
+
+// 校验配置
+if (!config.hosting) {
+  log.error('DL links not set correctly in the environment or .env')
   process.exit(1)
 }
 
-const DL_DESTINATION_WEBP = path.join('public', 'images', 'webp')
-const DL_DESTINATION_JPG = path.join('public', 'images')
-const streamPipeline = promisify(pipeline)
-
-// 封装错误日志打印
-function logError(message: string, error?: Error) {
-  console.error(`${MSG_ERROR} ${message}${error ? `: ${error.message}` : ''}`)
+/**
+ * 获取远程文件流
+ * @param url - 文件URL
+ * @returns 文件流
+ * @throws 当HTTP状态码不为200时抛出错误
+ */
+async function getFileStream(url: string): Promise<IncomingMessage> {
+  return new Promise((resolve, reject) => {
+    https
+      .get(url, response => {
+        const { statusCode } = response
+        if (statusCode !== 200) {
+          reject(new Error(`HTTP ${statusCode}`))
+          return
+        }
+        resolve(response)
+      })
+      .on('error', reject)
+  })
 }
 
-// 创建目录
-async function ensureDirectory(dir: string): Promise<void> {
+/**
+ * 下载单个文件
+ * @param url - 文件URL
+ * @param destPath - 保存路径
+ */
+async function downloadFile(url: string, destPath: string): Promise<void> {
   try {
-    await fsPromises.mkdir(dir, { recursive: true })
+    const fileStream = await getFileStream(url)
+    await mkdir(path.dirname(destPath), { recursive: true })
+    await pipeline(fileStream, fs.createWriteStream(destPath))
   } catch (error) {
-    logError(`Failed to create directory ${dir}`, error as Error)
-    throw error
+    throw new Error(`Failed to download ${url}: ${(error as Error).message}`)
   }
 }
 
-// 下载资源
-async function downloadResource(url: string, filePath: string): Promise<void> {
-  try {
-    const response = await new Promise<IncomingMessage>((resolve, reject) => {
-      https.get(url, resolve).on('error', reject)
-    })
+/**
+ * 为单个文件创建下载任务
+ * @param fileName - 文件名
+ * @returns 下载任务数组
+ */
+function createDownloadTasks(fileName: string): Promise<void>[] {
+  // WebP 图片总是需要下载
+  const tasks = [
+    downloadFile(
+      `https://${config.hosting}/nsfw-commission/webp/${fileName}.webp`,
+      path.join(config.paths.webp, `${fileName}.webp`),
+    ),
+  ]
 
-    if (response.statusCode !== 200) {
-      throw new Error(`Failed to download '${url}' (Status: ${response.statusCode})`)
-    }
-
-    await streamPipeline(response, fs.createWriteStream(filePath))
-  } catch (error) {
-    logError(`Failed to download or write file ${filePath}`, error as Error)
-    throw error
-  }
-}
-
-// 创建下载任务
-function createDownloadTasks(commission: { fileName: string }): Promise<void>[] {
-  const { fileName } = commission
-  const tasks: Promise<void>[] = []
-
-  const webpUrl = `https://${HOSTING}/nsfw-commission/webp/${fileName}.webp`
-  const webpPath = path.join(DL_DESTINATION_WEBP, `${fileName}.webp`)
-  tasks.push(downloadResource(webpUrl, webpPath))
-
-  if (NODE_ENV === 'development') {
-    const jpgUrl = `https://${HOSTING}/nsfw-commission/${fileName}.jpg`
-    const jpgPath = path.join(DL_DESTINATION_JPG, `${fileName}.jpg`)
-    tasks.push(downloadResource(jpgUrl, jpgPath))
+  // 开发环境下额外下载 JPG 图片
+  if (config.isDev) {
+    tasks.push(
+      downloadFile(
+        `https://${config.hosting}/nsfw-commission/${fileName}.jpg`,
+        path.join(config.paths.jpg, `${fileName}.jpg`),
+      ),
+    )
   }
 
   return tasks
 }
 
-// 准备并执行下载任务
-async function prepareAndExecuteDownloads(): Promise<void> {
-  try {
-    await ensureDirectory(DL_DESTINATION_WEBP)
-    if (NODE_ENV === 'development') {
-      await ensureDirectory(DL_DESTINATION_JPG)
-    }
+/**
+ * 主下载函数
+ * 并行下载所有文件，并处理错误
+ */
+async function downloadImages(): Promise<void> {
+  const startTime = performance.now()
 
-    const downloadPromises = commissionData.flatMap(characterData =>
-      characterData.Commissions.flatMap(commission => createDownloadTasks(commission)),
+  try {
+    // 创建并执行所有下载任务
+    const tasks = commissionData.flatMap(char =>
+      char.Commissions.flatMap(comm => createDownloadTasks(comm.fileName)),
     )
 
-    await Promise.all(downloadPromises)
+    await Promise.all(tasks)
+
+    const elapsed = Math.round(performance.now() - startTime)
+    log.success(`Downloads completed in ${elapsed}ms`)
   } catch (error) {
-    logError('Error during preparation or download', error as Error)
-    throw error
-  }
-}
-
-// 主下载流程
-async function downloadImages(): Promise<void> {
-  const startTime = Date.now()
-
-  try {
-    await prepareAndExecuteDownloads()
-
-    const elapsedTime = Date.now() - startTime
-    console.log(`${MSG_DONE} All downloads completed in ${elapsedTime}ms.`)
-    process.exit(0)
-  } catch (error) {
-    logError('Download process failed', error as Error)
+    log.error('Download process failed', error as Error)
     process.exit(1)
   }
 }
 
+// 执行下载并处理结果
 downloadImages()
+  .then(() => process.exit(0))
+  .catch(() => process.exit(1))
