@@ -1,5 +1,5 @@
 import { BlueArchive } from './BlueArchive'
-import { Hachi } from './Hachi'
+import { Hachi } from './Hachi8'
 import { HanabasamiKyo } from './HanabasamiKyo'
 import { Ina } from './Ina'
 import { Tokomachi } from './Tokomachi'
