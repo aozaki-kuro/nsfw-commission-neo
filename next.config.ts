@@ -62,7 +62,7 @@ const nextConfig: NextConfig = {
         /*
          * bun run pre-build && bunx @cloudflare/next-on-pages
          * Change output dir: .vercel/output/static
-         * Add compability flag: nodejs_compat
+         * Add compatibility flag: nodejs_compat
          * Then you can disable output: 'export'
          */
         output: 'export', // Use static output for Cloudflare Pages
