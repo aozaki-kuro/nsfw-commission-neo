@@ -50,8 +50,9 @@ export default function AgeConfirmationModal() {
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => setIsOpen(false)}
+        onClose={() => {}} // 提供一个空的 onClose 函数
         initialFocus={confirmButtonRef} // 将初始焦点设置到确认按钮
+        static // 添加 static 属性，阻止点击外部关闭
       >
         {/* 背景遮罩的过渡效果 */}
         <Transition.Child
