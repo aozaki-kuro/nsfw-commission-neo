@@ -1,6 +1,6 @@
 'use client'
 
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
 import Image from 'next/image'
 import { Fragment, useEffect, useRef, useState } from 'react'
 
@@ -55,7 +55,7 @@ export default function AgeConfirmationModal() {
         static // 添加 static 属性，阻止点击外部关闭
       >
         {/* 背景遮罩的过渡效果 */}
-        <Transition.Child
+        <TransitionChild
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
@@ -66,13 +66,13 @@ export default function AgeConfirmationModal() {
         >
           {/* 背景遮罩 */}
           <div className="fixed inset-0 bg-black/25 backdrop-blur-xl dark:bg-white/5" />
-        </Transition.Child>
+        </TransitionChild>
 
         {/* 模态框的定位和布局 */}
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             {/* 模态框内容的过渡效果 */}
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-out duration-300"
               enterFrom="opacity-0 scale-95"
@@ -82,26 +82,26 @@ export default function AgeConfirmationModal() {
               leaveTo="opacity-0 scale-95"
             >
               {/* 模态框的内容面板 */}
-              <Dialog.Panel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-back-dark">
+              <DialogPanel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-back-dark">
                 {/* 顶部的封面图片 */}
                 <Image
                   src={HeadImage}
                   alt="NSFW Commissions"
                   quality={80}
                   placeholder="blur"
-                  className="mb-4"
+                  className="mb-4 select-none"
                   priority
                 />
                 {/* 模态框的标题 */}
-                <Dialog.Title
+                <DialogTitle
                   as="h3"
-                  className="text-center text-lg font-medium leading-6 text-gray-900 dark:text-gray-300"
+                  className="select-none text-center text-lg font-medium leading-6 text-gray-900 dark:text-gray-300"
                 >
                   [ Warning ]
-                </Dialog.Title>
+                </DialogTitle>
                 {/* 提示信息 */}
                 <div className="mt-2">
-                  <p className="text-center text-sm text-gray-500 dark:text-gray-400">
+                  <p className="select-none text-center text-sm text-gray-500 dark:text-gray-400">
                     You have to be over 18 to view the contents.
                     <br />
                     Please <b>leave now</b> if you are under 18.
@@ -114,7 +114,7 @@ export default function AgeConfirmationModal() {
                   <button
                     ref={confirmButtonRef} // 将按钮的引用传递给 ref
                     type="button"
-                    className="button-warning-general button-enter"
+                    className="button-warning-general button-enter select-none"
                     onClick={handleConfirmAge}
                   >
                     I am over 18
@@ -130,8 +130,8 @@ export default function AgeConfirmationModal() {
                     Leave Now
                   </button>
                 </div>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </div>
         </div>
       </Dialog>
