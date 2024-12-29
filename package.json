@@ -10,8 +10,7 @@
     "build": "bun run pre-build && next build",
     "prod": "bun run dl && bun run pre-build && next build",
     "start": "next start",
-    "lint": "eslint .",
-    "lint-fix": "eslint . --fix",
+    "lint": "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/' --flag unstable_ts_config --config eslint.config.ts",
     "prepare": "husky"
   },
   "dependencies": {
@@ -46,10 +45,10 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,jsx,ts,tsx}": [
-      "eslint --cache --fix --cache-location './node_modules/@eslint/.eslintcache/' --flag unstable_ts_config --config eslint.config.ts"
+      "bun lint"
     ],
     "*.{json,css,md,mdx,jsonc}": [
-      "prettier --write"
+      "bun prettier --write"
     ]
   }
 }
