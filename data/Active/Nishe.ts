@@ -7,6 +7,14 @@ export const Nishe: Props = [
     Commissions: [
       /* ================== 2024 ================== */
       {
+        fileName: '20241230_Q (part 2)',
+        Links: ['https://www.pixiv.net/artworks/125701863'],
+      },
+      {
+        fileName: '20241230_Q (part 1)',
+        Links: ['https://www.pixiv.net/artworks/125701863'],
+      },
+      {
         fileName: '20241130_七市',
         Links: ['https://www.pixiv.net/artworks/124782827'],
         Design: 'https://www.youtube.com/live/zPUcKYaLsKw&t=17196',

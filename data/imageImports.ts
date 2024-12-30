@@ -82,6 +82,8 @@ import A20241126 from '#images/webp/20241126.webp'
 import A20241130 from '#images/webp/20241130_七市.webp'
 import A20241203 from '#images/webp/20241203.webp'
 import A20241208 from '#images/webp/20241208.webp'
+import A20241230A from '#images/webp/20241230_Q (part 1).webp'
+import A20241230B from '#images/webp/20241230_Q (part 2).webp'
 
 export const imageImports = {
   '20201220_病ん太廊': A20201220,
@@ -166,4 +168,6 @@ export const imageImports = {
   '20241130_七市': A20241130,
   '20241203': A20241203,
   '20241208': A20241208,
+  '20241230_Q (part 1)': A20241230A,
+  '20241230_Q (part 2)': A20241230B,
 }
