@@ -50,10 +50,8 @@ const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
     (e: React.MouseEvent) => {
       e.preventDefault()
       const targetId = `title-${kebabCase(character.DisplayName)}`
-      close()
-      requestAnimationFrame(() => {
-        router.push(`/#${targetId}`)
-      })
+      close() // 立即关闭菜单
+      router.push(`/#${targetId}`) // 直接跳转
     },
     [character.DisplayName, close, router],
   )
