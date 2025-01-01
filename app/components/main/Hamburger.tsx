@@ -5,42 +5,68 @@ import { characterStatus } from '#data/commissionStatus'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Fragment, memo, useCallback, useEffect, useRef, useState } from 'react'
+import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 interface Character {
   DisplayName: string
 }
 
+const MenuIcon = memo(() => (
+  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M4 6h16M4 12h16M4 18h16"
+    />
+  </svg>
+))
+MenuIcon.displayName = 'MenuIcon'
+
+const ChevronIcon = memo(({ isExpanded }: { isExpanded: boolean }) => (
+  <svg
+    className={`h-4 w-4 text-gray-600 transition-transform duration-200 dark:text-gray-300 ${
+      isExpanded ? 'rotate-180' : ''
+    }`}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+  </svg>
+))
+ChevronIcon.displayName = 'ChevronIcon'
+
 interface ListItemProps {
   character: Character
-  active?: boolean
+  isActive?: boolean
   close: () => void
 }
 
-const ListItem = memo(({ character, close }: ListItemProps) => {
+const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
   const router = useRouter()
 
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault()
       const targetId = `title-${kebabCase(character.DisplayName)}`
-
-      // 先关闭菜单
       close()
-
-      // 使用 setTimeout 确保菜单关闭动画完成后再跳转
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         router.push(`/#${targetId}`)
-      }, 100)
+      })
     },
     [character.DisplayName, close, router],
   )
 
+  const href = useMemo(() => `/#title-${kebabCase(character.DisplayName)}`, [character.DisplayName])
+
   return (
     <Link
-      href={`/#title-${kebabCase(character.DisplayName)}`}
+      href={href}
       onClick={handleClick}
-      className="group flex w-full items-center rounded-lg px-4 py-2 text-base font-medium text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10"
+      className={`${
+        isActive ? 'bg-white/70 dark:bg-white/10' : ''
+      } group flex w-full items-center rounded-lg px-4 py-2 font-mono text-base text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10`}
     >
       {character.DisplayName}
     </Link>
@@ -52,86 +78,95 @@ interface CharacterListProps {
   close: () => void
 }
 
-const CharacterList = ({ close }: CharacterListProps) => {
+const CharacterList = memo(({ close }: CharacterListProps) => {
   const [isStaleExpanded, setIsStaleExpanded] = useState(false)
   const activeListRef = useRef<HTMLDivElement>(null)
   const staleListRef = useRef<HTMLDivElement>(null)
 
+  const toggleStaleList = useCallback(() => {
+    setIsStaleExpanded(prev => !prev)
+  }, [])
+
+  const activeListClass = useMemo(
+    () =>
+      `transform-gpu transition-transform duration-300 ease-in-out ${
+        isStaleExpanded
+          ? 'absolute inset-0 -translate-y-full opacity-0'
+          : 'translate-y-0 opacity-100'
+      }`,
+    [isStaleExpanded],
+  )
+
+  const staleListClass = useMemo(
+    () =>
+      `transform-gpu transition-transform duration-300 ease-in-out ${
+        isStaleExpanded
+          ? 'translate-y-0 opacity-100'
+          : 'absolute inset-0 translate-y-full opacity-0'
+      }`,
+    [isStaleExpanded],
+  )
+
   return (
     <div className="relative">
       <div className="relative overflow-hidden">
-        {/* Active List */}
         <div
           ref={activeListRef}
-          className={`transition-transform duration-300 ease-in-out ${
-            isStaleExpanded
-              ? 'absolute inset-0 -translate-y-full opacity-0'
-              : 'translate-y-0 opacity-100'
-          }`}
+          className={activeListClass}
           style={{ willChange: 'transform, opacity' }}
         >
           {characterStatus.active.map(character => (
-            <MenuItem key={character.DisplayName}>
-              {({ active }) => <ListItem character={character} active={active} close={close} />}
+            <MenuItem key={character.DisplayName} as={Fragment}>
+              {({ active }: { active: boolean }) => (
+                <ListItem character={character} isActive={active} close={close} />
+              )}
             </MenuItem>
           ))}
         </div>
 
-        {/* Stale List */}
         <div
           ref={staleListRef}
-          className={`transition-transform duration-300 ease-in-out ${
-            isStaleExpanded
-              ? 'translate-y-0 opacity-100'
-              : 'absolute inset-0 translate-y-full opacity-0'
-          }`}
+          className={staleListClass}
           style={{ willChange: 'transform, opacity' }}
         >
           {characterStatus.stale.map(character => (
-            <MenuItem key={character.DisplayName}>
-              {({ active }) => <ListItem character={character} active={active} close={close} />}
+            <MenuItem key={character.DisplayName} as={Fragment}>
+              {({ active }: { active: boolean }) => (
+                <ListItem character={character} isActive={active} close={close} />
+              )}
             </MenuItem>
           ))}
         </div>
       </div>
 
-      {/* Stale Toggle Button */}
       <button
-        onClick={() => setIsStaleExpanded(!isStaleExpanded)}
-        className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-2 hover:bg-white/70 dark:hover:bg-white/10"
+        onClick={toggleStaleList}
+        className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-2 font-mono hover:bg-white/70 dark:hover:bg-white/10"
         type="button"
       >
         <p className="font-bold text-gray-600 dark:text-gray-300">Stale Characters</p>
-        <svg
-          className={`h-4 w-4 text-gray-600 transition-transform duration-200 dark:text-gray-300 ${
-            isStaleExpanded ? 'rotate-180' : ''
-          }`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
+        <ChevronIcon isExpanded={isStaleExpanded} />
       </button>
     </div>
   )
-}
+})
+CharacterList.displayName = 'CharacterList'
 
-const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
+const MenuContent = memo(({ open, close }: { open: boolean; close: () => void }) => {
   useEffect(() => {
+    const html = document.documentElement
     if (open) {
-      document.documentElement.classList.add('overflow-hidden', 'touch-none')
+      html.classList.add('overflow-hidden', 'touch-none')
     } else {
-      document.documentElement.classList.remove('overflow-hidden', 'touch-none')
+      html.classList.remove('overflow-hidden', 'touch-none')
     }
     return () => {
-      document.documentElement.classList.remove('overflow-hidden', 'touch-none')
+      html.classList.remove('overflow-hidden', 'touch-none')
     }
   }, [open])
 
   return (
     <>
-      {/* Backdrop */}
       {open && (
         <div className="fixed inset-0 z-20 bg-gray-200/10 backdrop-blur-sm dark:bg-gray-900/10" />
       )}
@@ -145,14 +180,7 @@ const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
         }}
       >
         <span className="sr-only">Open navigation menu</span>
-        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
+        <MenuIcon />
       </MenuButton>
 
       <Transition
@@ -165,7 +193,7 @@ const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
         leaveTo="opacity-0 scale-95"
       >
         <MenuItems
-          className="absolute bottom-full right-4 z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md focus:outline-none dark:bg-black/80"
+          className="absolute bottom-full right-4 z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 font-mono shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md focus:outline-none dark:bg-black/80"
           style={{
             WebkitBackdropFilter: 'blur(12px)',
           }}
@@ -180,11 +208,12 @@ const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
       </Transition>
     </>
   )
-}
+})
+MenuContent.displayName = 'MenuContent'
 
 const Hamburger = () => {
   return (
-    <Menu as="div" className="fixed bottom-8 right-8">
+    <Menu as="div" className="fixed bottom-8 right-8 hidden md:block">
       {({ open, close }) => <MenuContent open={open} close={close} />}
     </Menu>
   )
