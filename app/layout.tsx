@@ -24,11 +24,24 @@ const inter = localFont({
   ],
 })
 
+const menlo = localFont({
+  variable: '--font-menlo',
+  display: 'block',
+  style: 'normal',
+  src: [
+    {
+      path: './components/fonts/Menlo-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+})
+
 export const metadata = SiteMeta
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} font-sans`}>
+    <html lang="en" className={`${inter.variable} ${menlo.variable} font-sans`}>
       <body className="mx-auto min-h-screen max-w-[80rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected ss:pb-16 ss:pt-7 ss:text-sm md:mx-4 md:min-h-dynamic dark:bg-back-dark">
         {children}
       </body>

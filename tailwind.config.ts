@@ -17,7 +17,15 @@ const config: Config = {
           fontVariationSettings: "'common-ligatures','contextual'",
         },
       ],
-      mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+      mono: [
+        'var(--font-menlo)',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        'Liberation Mono',
+        'Courier New',
+        'monospace',
+      ],
     },
     container: {
       center: true,

@@ -120,7 +120,10 @@ const CharacterList = () => {
                     : ''
                 } `}
               >
-                <Link href={`#${id}`} className="no-underline transition-colors duration-200">
+                <Link
+                  href={`#${id}`}
+                  className="font-mono text-sm no-underline transition-colors duration-200"
+                >
                   {character.DisplayName}
                 </Link>
               </li>
