@@ -21,7 +21,7 @@ const Footer = () => {
       </div>
 
       {/* The dates, name and DMCA */}
-      <small className="block pt-24 text-p-light dark:text-gray-300">
+      <small className="block pt-24 text-p-light md:pb-10 dark:text-gray-300">
         <time>2022 - {new Date().getFullYear()}</time> © Crystallize
         <div className="float-right">
           <Link
