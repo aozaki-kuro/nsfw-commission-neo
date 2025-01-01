@@ -5,7 +5,7 @@ import { characterStatus } from '#data/commissionStatus'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, memo, useCallback, useEffect, useMemo, useState } from 'react'
 
 interface Character {
   DisplayName: string
@@ -49,9 +49,8 @@ const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault()
-      const targetId = `title-${kebabCase(character.DisplayName)}`
       close() // 立即关闭菜单
-      router.push(`/#${targetId}`) // 直接跳转
+      router.push(`/#title-${kebabCase(character.DisplayName)}`) // 直接跳转
     },
     [character.DisplayName, close, router],
   )
@@ -62,6 +61,7 @@ const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
     <Link
       href={href}
       onClick={handleClick}
+      prefetch // 预加载目标页面
       className={`${
         isActive ? 'bg-white/70 dark:bg-white/10' : ''
       } group flex w-full items-center rounded-lg px-4 py-2 font-mono text-base text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10`}
@@ -78,8 +78,6 @@ interface CharacterListProps {
 
 const CharacterList = memo(({ close }: CharacterListProps) => {
   const [isStaleExpanded, setIsStaleExpanded] = useState(false)
-  const activeListRef = useRef<HTMLDivElement>(null)
-  const staleListRef = useRef<HTMLDivElement>(null)
 
   const toggleStaleList = useCallback(() => {
     setIsStaleExpanded(prev => !prev)
@@ -108,11 +106,7 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
   return (
     <div className="relative">
       <div className="relative overflow-hidden">
-        <div
-          ref={activeListRef}
-          className={activeListClass}
-          style={{ willChange: 'transform, opacity' }}
-        >
+        <div className={activeListClass} style={{ willChange: 'transform, opacity' }}>
           {characterStatus.active.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
@@ -122,11 +116,7 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
           ))}
         </div>
 
-        <div
-          ref={staleListRef}
-          className={staleListClass}
-          style={{ willChange: 'transform, opacity' }}
-        >
+        <div className={staleListClass} style={{ willChange: 'transform, opacity' }}>
           {characterStatus.stale.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
