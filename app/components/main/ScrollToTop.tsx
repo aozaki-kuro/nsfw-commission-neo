@@ -26,32 +26,28 @@ const ScrollToTop = () => {
   }
 
   return (
-    <>
-      {isVisible && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-8 h-12 w-12 transform rounded-full border border-white/20 bg-white/50 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-white/20 active:scale-95 dark:bg-gray-800/30 dark:hover:bg-gray-800/40"
-          style={{
-            WebkitBackdropFilter: 'blur(8px)',
-          }}
-          aria-label="Scroll to top"
+    <button
+      onClick={scrollToTop}
+      className={`pointer-events-none fixed bottom-8 right-8 h-12 w-12 transform rounded-full border border-white/20 bg-white/50 opacity-0 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-all duration-300 ease-in-out hover:scale-110 hover:bg-white/60 active:scale-95 dark:bg-gray-800/30 dark:hover:bg-gray-800/40 ${isVisible ? 'pointer-events-auto opacity-100' : 'translate-y-8'} `}
+      style={{
+        WebkitBackdropFilter: 'blur(8px)',
+      }}
+      aria-label="Scroll to top"
+    >
+      <div className="flex items-center justify-center">
+        <svg
+          className="h-6 w-6 text-gray-800 transition-transform duration-300 group-hover:translate-y-1 dark:text-white"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2.5"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          <div className="flex items-center justify-center">
-            <svg
-              className="h-6 w-6 text-gray-800 transition-transform duration-300 group-hover:translate-y-1 dark:text-white"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2.5"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M5 15l7-7 7 7" />
-            </svg>
-          </div>
-        </button>
-      )}
-    </>
+          <path d="M5 15l7-7 7 7" />
+        </svg>
+      </div>
+    </button>
   )
 }
 
