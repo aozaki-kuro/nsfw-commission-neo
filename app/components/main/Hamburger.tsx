@@ -4,7 +4,8 @@ import { kebabCase } from '#components/utils'
 import { characterStatus } from '#data/commissionStatus'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import Link from 'next/link'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Fragment, memo, useCallback, useEffect, useRef, useState } from 'react'
 
 interface Character {
   DisplayName: string
@@ -12,21 +13,40 @@ interface Character {
 
 interface ListItemProps {
   character: Character
-  active: boolean
+  active?: boolean
   close: () => void
 }
 
-const ListItem = ({ character, active, close }: ListItemProps) => (
-  <Link
-    href={`#title-${kebabCase(character.DisplayName)}`}
-    onClick={() => setTimeout(close, 100)}
-    className={`${
-      active ? 'bg-white/70 dark:bg-white/10' : 'text-gray-900 dark:text-gray-100'
-    } group flex w-full items-center rounded-lg px-4 py-2 text-base font-medium !no-underline transition-colors duration-150 dark:text-white`}
-  >
-    {character.DisplayName}
-  </Link>
-)
+const ListItem = memo(({ character, close }: ListItemProps) => {
+  const router = useRouter()
+
+  const handleClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault()
+      const targetId = `title-${kebabCase(character.DisplayName)}`
+
+      // 先关闭菜单
+      close()
+
+      // 使用 setTimeout 确保菜单关闭动画完成后再跳转
+      setTimeout(() => {
+        router.push(`/#${targetId}`)
+      }, 100)
+    },
+    [character.DisplayName, close, router],
+  )
+
+  return (
+    <Link
+      href={`/#title-${kebabCase(character.DisplayName)}`}
+      onClick={handleClick}
+      className="group flex w-full items-center rounded-lg px-4 py-2 text-base font-medium text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10"
+    >
+      {character.DisplayName}
+    </Link>
+  )
+})
+ListItem.displayName = 'ListItem'
 
 interface CharacterListProps {
   close: () => void
@@ -97,7 +117,6 @@ const CharacterList = ({ close }: CharacterListProps) => {
   )
 }
 
-// 新增的MenuContent组件来处理菜单内容和副作用
 const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
   useEffect(() => {
     if (open) {
@@ -112,10 +131,15 @@ const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
 
   return (
     <>
+      {/* Backdrop */}
+      {open && (
+        <div className="fixed inset-0 z-20 bg-gray-200/10 backdrop-blur-sm dark:bg-gray-900/10" />
+      )}
+
       <MenuButton
         className={`${
           open ? 'bg-gray-200 dark:bg-gray-800' : ''
-        } inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 hover:bg-gray-200 focus:outline-none dark:bg-black/80 dark:text-white dark:hover:bg-gray-800`}
+        } relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 hover:bg-gray-200 focus:outline-none dark:bg-black/80 dark:text-white dark:hover:bg-gray-800`}
         style={{
           WebkitBackdropFilter: 'blur(12px)',
         }}
@@ -130,11 +154,6 @@ const MenuContent = ({ open, close }: { open: boolean; close: () => void }) => {
           />
         </svg>
       </MenuButton>
-
-      {/* Backdrop */}
-      {open && (
-        <div className="fixed inset-0 z-30 bg-gray-200/10 backdrop-blur-sm dark:bg-gray-900/10" />
-      )}
 
       <Transition
         as={Fragment}
