@@ -1,9 +1,15 @@
 import type { NextPage } from 'next'
 import RootLayout from './layout'
 
+// Main content
 import Commission from '#components/commission'
 import CommissionDescription from '#components/main/Description'
 import Footer from '#components/main/Footer'
+
+// Sidebar
+import CharacterList from '#components/main/CharacterList'
+
+// Other components
 import ScrollToTop from '#components/main/ScrollToTop'
 import Warning from '#components/main/Warning'
 
@@ -18,6 +24,7 @@ const Home: NextPage = () => {
             <Commission />
             <Footer />
           </div>
+          <CharacterList />
         </div>
       </div>
       <ScrollToTop />
