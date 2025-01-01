@@ -10,7 +10,7 @@ import Footer from '#components/main/Footer'
 import CharacterList from '#components/main/CharacterList'
 
 // Other components
-import ScrollToTop from '#components/main/ScrollToTop'
+import Hamburger from '#components/main/Hamburger'
 import Warning from '#components/main/Warning'
 
 const Home: NextPage = () => {
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
           <CharacterList />
         </div>
       </div>
-      <ScrollToTop />
+      <Hamburger />
     </RootLayout>
   )
 }
