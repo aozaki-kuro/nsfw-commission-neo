@@ -82,6 +82,7 @@ import A20241126 from '#images/webp/20241126.webp'
 import A20241130 from '#images/webp/20241130_七市.webp'
 import A20241203 from '#images/webp/20241203.webp'
 import A20241208 from '#images/webp/20241208.webp'
+import A20241223 from '#images/webp/20241223_中村六翅.webp'
 import A20241230A from '#images/webp/20241230_Q (part 1).webp'
 import A20241230B from '#images/webp/20241230_Q (part 2).webp'
 import A20241231 from '#images/webp/20241231_七市.webp'
@@ -169,6 +170,7 @@ export const imageImports = {
   '20241130_七市': A20241130,
   '20241203': A20241203,
   '20241208': A20241208,
+  '20241223_中村六翅': A20241223,
   '20241230_Q (part 1)': A20241230A,
   '20241230_Q (part 2)': A20241230B,
   '20241231_七市': A20241231,

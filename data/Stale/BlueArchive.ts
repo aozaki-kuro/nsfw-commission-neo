@@ -6,6 +6,15 @@ export const BlueArchive: Props = [
     Character: 'Blue Archive',
     Commissions: [
       {
+        fileName: '20241223_中村六翅',
+        Links: [
+          'https://twitter.com/NakamuraRohane/status/1870821852505129266',
+          // 'https://www.pixiv.net/users/5110556',
+          'https://www.fanbox.cc/@nakamurarohane/posts/9078356',
+          'https://www.patreon.com/posts/himari-118476380',
+        ],
+      },
+      {
         fileName: '20230808_中村六翅',
         Links: ['https://twitter.com/NakamuraRohane/status/1688901676277891072'],
       },
