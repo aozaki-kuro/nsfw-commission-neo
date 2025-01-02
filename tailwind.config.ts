@@ -11,7 +11,15 @@ const config: Config = {
     },
     fontFamily: {
       sans: ['var(--font-plex-sans)'],
-      mono: ['var(--font-menlo)'],
+      mono: [
+        'var(--font-menlo)',
+        'Menlo',
+        'Monaco',
+        'Consolas',
+        'Liberation Mono',
+        'Courier New',
+        'monospace',
+      ],
     },
     container: {
       center: true,
