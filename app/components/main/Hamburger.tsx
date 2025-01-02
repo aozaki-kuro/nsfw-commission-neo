@@ -11,14 +11,24 @@ interface Character {
   DisplayName: string
 }
 
-const MenuIcon = memo(() => (
-  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M4 6h16M4 12h16M4 18h16"
-    />
+const MenuIcon = memo(({ isOpen }: { isOpen: boolean }) => (
+  <svg
+    className="h-5 w-5 transform transition-transform duration-300"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)' }}
+  >
+    {isOpen ? (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    ) : (
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    )}
   </svg>
 ))
 MenuIcon.displayName = 'MenuIcon'
@@ -49,8 +59,8 @@ const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault()
-      close() // 立即关闭菜单
-      router.push(`/#title-${kebabCase(character.DisplayName)}`) // 直接跳转
+      close()
+      router.push(`/#title-${kebabCase(character.DisplayName)}`)
     },
     [character.DisplayName, close, router],
   )
@@ -61,7 +71,7 @@ const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
     <Link
       href={href}
       onClick={handleClick}
-      prefetch // 预加载目标页面
+      prefetch
       className={`${
         isActive ? 'bg-white/70 dark:bg-white/10' : ''
       } group flex w-full items-center rounded-lg px-4 py-2 font-mono text-base text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10`}
@@ -160,15 +170,15 @@ const MenuContent = memo(({ open, close }: { open: boolean; close: () => void })
       )}
 
       <MenuButton
-        className={`${
-          open ? 'bg-gray-200 dark:bg-gray-800' : ''
-        } relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 hover:bg-gray-200 focus:outline-none dark:bg-black/80 dark:text-white dark:hover:bg-gray-800`}
+        className={`relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 hover:bg-gray-200 focus:outline-none dark:bg-black/80 dark:text-white dark:hover:bg-gray-800 ${
+          open ? '!bg-gray-200 dark:!bg-gray-800' : ''
+        }`}
         style={{
           WebkitBackdropFilter: 'blur(12px)',
         }}
       >
         <span className="sr-only">Open navigation menu</span>
-        <MenuIcon />
+        <MenuIcon isOpen={open} />
       </MenuButton>
 
       <Transition
