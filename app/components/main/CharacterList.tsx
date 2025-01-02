@@ -8,20 +8,20 @@ const CharacterList = () => {
   const [activeId, setActiveId] = useState<string>('')
   const listRefs = useRef<(HTMLLIElement | null)[]>([])
 
-  // 创建一个类型安全的 ref 回调函数
-  const setListRef = (index: number) => (el: HTMLLIElement | null) => {
-    listRefs.current[index] = el
-  }
+  // 使用 useRef 来存储 rafId，避免在每次渲染时重新创建
+  const rafId = useRef<number | null>(null)
 
   useEffect(() => {
-    let rafId: number
     const handleScroll = () => {
-      cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(() => {
+      if (rafId.current !== null) {
+        cancelAnimationFrame(rafId.current)
+      }
+
+      rafId.current = requestAnimationFrame(() => {
         const sections = getSections(allCharacters)
         const newActiveId = findActiveSection(sections)
 
-        const introductionElement = document.getElementById('introduction')
+        const introductionElement = document.getElementById('title-introduction')
         const isAtTop = window.scrollY === 0
         const isAtIntroduction =
           introductionElement &&
@@ -52,7 +52,9 @@ const CharacterList = () => {
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
-      cancelAnimationFrame(rafId)
+      if (rafId.current !== null) {
+        cancelAnimationFrame(rafId.current)
+      }
     }
   }, [allCharacters])
 
@@ -70,7 +72,9 @@ const CharacterList = () => {
             return (
               <li
                 key={id}
-                ref={setListRef(index)}
+                ref={el => {
+                  listRefs.current[index] = el // 直接赋值，不返回任何值
+                }}
                 className="relative pl-4 text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white"
               >
                 <div
