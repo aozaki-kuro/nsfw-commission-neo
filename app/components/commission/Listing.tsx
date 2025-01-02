@@ -5,34 +5,7 @@ import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import { imageImports } from '#data/imageImports'
 import Image from 'next/image'
-import { useEffect } from 'react'
 import IllustratorInfo from './IllustratorInfo'
-
-/**
- * 自定义滚动钩子，用于处理页面滚动时的哈希值更新。
- */
-const useScrollHook = () => {
-  useEffect(() => {
-    const handleScroll = () => {
-      // 如果 URL 中有哈希值
-      if (window.location.hash) {
-        const element = document.querySelector(window.location.hash)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          // 如果元素不在视口内，清除哈希值
-          if (rect.bottom < 0 || rect.top > window.innerHeight) {
-            history.replaceState(null, '', ' ')
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-}
 
 type ListingProps = {
   Character: string
@@ -43,9 +16,6 @@ type ListingProps = {
  * @param Character - 角色名称。
  */
 const Listing = ({ Character }: ListingProps) => {
-  // 使用自定义滚动钩子
-  useScrollHook()
-
   // 查找与给定角色相关的数据
   const characterData = commissionData.find(data => data.Character === Character)
 
@@ -60,7 +30,6 @@ const Listing = ({ Character }: ListingProps) => {
     <div id={kebabCase(Character)}>
       {/* 显示角色标题 */}
       <Title Content={Character} />
-
       {/* 如果没有数据，显示占位文本，否则显示委托作品列表 */}
       {!characterData || sortedCommissions.length === 0 ? (
         <p className="my-4">To be announced ...</p>

@@ -15,7 +15,30 @@ const CharacterList = () => {
       rafId = requestAnimationFrame(() => {
         const sections = getSections(allCharacters)
         const newActiveId = findActiveSection(sections)
+
+        // 检测是否滚动到 #introduction 区域或页面顶端
+        const introductionElement = document.getElementById('introduction')
+        const isAtTop = window.scrollY === 0
+        const isAtIntroduction =
+          introductionElement &&
+          introductionElement.getBoundingClientRect().top <= window.innerHeight / 2 &&
+          introductionElement.getBoundingClientRect().bottom >= window.innerHeight / 2
+
+        // 如果滚动到 #introduction 区域或页面顶端，清除哈希值
+        if (isAtTop || isAtIntroduction) {
+          if (window.location.hash) {
+            history.replaceState(null, '', ' ')
+          }
+          setActiveId('')
+          return
+        }
+
+        // 否则，更新活动区域和哈希值
         setActiveId(newActiveId)
+        const hash = newActiveId.replace(/^title-/, '')
+        if (hash && window.location.hash !== `#${hash}`) {
+          history.replaceState(null, '', `#${hash}`)
+        }
       })
     }
 
@@ -37,8 +60,8 @@ const CharacterList = () => {
       <nav className="sticky top-4">
         <ul className="space-y-2">
           {allCharacters.map(character => {
-            const id = `title-${kebabCase(character.DisplayName)}`
-            const isActive = activeId === id
+            const id = kebabCase(character.DisplayName) // 移除 title- 前缀
+            const isActive = activeId === `title-${id}` // 保持与 getSections 一致
 
             return (
               <li

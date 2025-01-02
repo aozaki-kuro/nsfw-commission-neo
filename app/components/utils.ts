@@ -171,7 +171,7 @@ export const calculateVisibility = (rect: DOMRect, contentHeight: number) => {
   const visibleHeight = Math.max(0, visibleBottom - visibleTop)
 
   // 计算到视口中心的距离
-  const sectionVisibleCenter = visibleHeight > 0 ? (visibleTop + visibleBottom) * 0.5 : Infinity
+  const sectionVisibleCenter = visibleHeight > 0 ? (visibleTop + visibleBottom) * 0.8 : Infinity
   const distanceToCenter = Math.abs(sectionVisibleCenter - viewportHeight / 2)
 
   return {

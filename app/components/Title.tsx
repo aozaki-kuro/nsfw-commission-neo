@@ -12,7 +12,7 @@ const Title = ({ Content }: TitleProps) => {
         {Content}
         <Link
           href={`#${kebabCase(Content)}`}
-          className="ml-2 text-dec-light no-underline opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-dec-dark"
+          className="ml-2 font-bold text-dec-light no-underline opacity-0 transition-opacity duration-200 group-hover:opacity-100 dark:text-dec-dark"
         >
           #
         </Link>
