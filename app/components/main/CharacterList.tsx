@@ -1,82 +1,11 @@
 'use client'
-import { kebabCase } from '#components/utils'
-import { characterStatus } from '#data/commissionStatus'
+import { findActiveSection, getAllCharacters, getSections, kebabCase } from '#components/utils'
 import Link from 'next/link'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-
-interface Section {
-  id: string
-  visibleHeight: number
-  distanceToCenter: number
-  top: number
-  bottom: number
-}
+import { useEffect, useState } from 'react'
 
 const CharacterList = () => {
-  const allCharacters = useMemo(() => [...characterStatus.active, ...characterStatus.stale], [])
+  const allCharacters = getAllCharacters()
   const [activeId, setActiveId] = useState<string>('')
-
-  // 计算区域可见性的辅助函数
-  const calculateVisibility = useCallback((rect: DOMRect, contentHeight: number) => {
-    const viewportHeight = window.innerHeight
-    const bottom = rect.top + contentHeight
-
-    // 计算可见部分
-    const visibleTop = Math.max(rect.top, 0)
-    const visibleBottom = Math.min(bottom, viewportHeight)
-    const visibleHeight = Math.max(0, visibleBottom - visibleTop)
-
-    // 计算到视口中心的距离
-    const sectionVisibleCenter = visibleHeight > 0 ? (visibleTop + visibleBottom) * 0.5 : Infinity
-    const distanceToCenter = Math.abs(sectionVisibleCenter - viewportHeight / 2)
-
-    return {
-      visibleHeight,
-      distanceToCenter,
-      top: rect.top,
-      bottom,
-    }
-  }, [])
-
-  // 获取所有区域信息
-  const getSections = useCallback(
-    (characters: typeof allCharacters): Section[] => {
-      return characters
-        .map(character => {
-          const id = `title-${kebabCase(character.DisplayName)}`
-          const element = document.getElementById(id)
-          if (!element?.parentElement) return null
-
-          const rect = element.getBoundingClientRect()
-          const contentHeight = element.parentElement.offsetHeight
-
-          return {
-            id,
-            ...calculateVisibility(rect, contentHeight),
-          }
-        })
-        .filter((section): section is Section => section !== null)
-    },
-    [calculateVisibility],
-  )
-
-  // 找出最适合的活动区域
-  const findActiveSection = useCallback((sections: Section[]): string => {
-    // 获取可见的区域
-    const visibleSections = sections.filter(section => section.visibleHeight > 0)
-
-    if (visibleSections.length > 0) {
-      // 返回距离中心最近的区域的 ID
-      return visibleSections.reduce((closest, current) =>
-        current.distanceToCenter < closest.distanceToCenter ? current : closest,
-      ).id
-    }
-
-    // 如果没有可见区域，返回最接近顶部的区域的 ID
-    return sections.reduce((closest, current) =>
-      Math.abs(current.top) < Math.abs(closest.top) ? current : closest,
-    ).id
-  }, [])
 
   useEffect(() => {
     // 使用 requestAnimationFrame 优化滚动性能
@@ -98,7 +27,7 @@ const CharacterList = () => {
       window.removeEventListener('scroll', handleScroll)
       cancelAnimationFrame(rafId)
     }
-  }, [allCharacters, getSections, findActiveSection])
+  }, [allCharacters])
 
   return (
     <aside
