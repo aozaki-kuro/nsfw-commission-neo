@@ -30,10 +30,20 @@ const CharacterList = () => {
 
         if (isAtTop || isAtIntroduction) {
           setActiveId('')
-          return
+        } else {
+          setActiveId(newActiveId)
         }
 
-        setActiveId(newActiveId)
+        if (window.location.hash) {
+          const element = document.querySelector(window.location.hash)
+          if (element) {
+            const rect = element.getBoundingClientRect()
+            // 如果元素不在当前视口内，则清空哈希
+            if (rect.bottom < 0 || rect.top > window.innerHeight) {
+              history.replaceState(null, '', ' ')
+            }
+          }
+        }
       })
     }
 
