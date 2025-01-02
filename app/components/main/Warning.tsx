@@ -95,7 +95,7 @@ export default function AgeConfirmationModal() {
                 {/* 模态框的标题 */}
                 <DialogTitle
                   as="h3"
-                  className="select-none text-center text-lg font-medium leading-6 text-gray-900 dark:text-gray-300"
+                  className="select-none text-center text-lg font-bold leading-6 text-gray-900 dark:text-gray-300"
                 >
                   [ Warning ]
                 </DialogTitle>
