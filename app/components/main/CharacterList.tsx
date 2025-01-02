@@ -2,7 +2,7 @@
 import { kebabCase } from '#components/utils'
 import { characterStatus } from '#data/commissionStatus'
 import Link from 'next/link'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 
 interface Section {
   id: string
@@ -13,7 +13,7 @@ interface Section {
 }
 
 const CharacterList = () => {
-  const allCharacters = [...characterStatus.active, ...characterStatus.stale]
+  const allCharacters = useMemo(() => [...characterStatus.active, ...characterStatus.stale], [])
   const [activeId, setActiveId] = useState<string>('')
 
   // 计算区域可见性的辅助函数
