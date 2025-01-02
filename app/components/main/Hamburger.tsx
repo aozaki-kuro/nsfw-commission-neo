@@ -170,11 +170,10 @@ const MenuContent = memo(({ open, close }: { open: boolean; close: () => void })
       )}
 
       <MenuButton
-        className={`relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md transition-colors duration-300 hover:bg-gray-200 focus:outline-none dark:bg-black/80 dark:text-white dark:hover:bg-gray-800 ${
-          open ? '!bg-gray-200 dark:!bg-gray-800' : ''
-        }`}
+        className="relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_2px_8px_rgba(0,0,0,0.08)] ring-1 ring-black/5 backdrop-blur-[12px] transition-all duration-300 hover:bg-gray-100/80 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] focus:outline-none dark:bg-black/80 dark:text-white dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] dark:ring-white/10 dark:hover:bg-gray-900/80 dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
         style={{
           WebkitBackdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(12px)',
         }}
       >
         <span className="sr-only">Open navigation menu</span>
@@ -191,8 +190,9 @@ const MenuContent = memo(({ open, close }: { open: boolean; close: () => void })
         leaveTo="opacity-0 scale-95"
       >
         <MenuItems
-          className="absolute bottom-full right-4 z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 font-mono shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-md focus:outline-none dark:bg-black/80"
+          className="absolute bottom-full right-4 z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 font-mono shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-lg focus:outline-none dark:bg-black/80"
           style={{
+            backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
           }}
         >
