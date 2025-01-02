@@ -9,7 +9,7 @@ import HeadImage from 'public/nsfw-cover-s.webp'
 // 定义本地存储的键名，用于记录用户是否已确认年龄
 const CONFIRMED_AGE_KEY = 'hasConfirmedAge'
 // 定义年龄确认的有效期，这里设定为7天（以毫秒为单位）
-const AGE_CONFIRM_DURATION = 7 * 24 * 60 * 60 * 1000 // 7 天的毫秒数
+const AGE_CONFIRM_DURATION = 30 * 24 * 60 * 60 * 1000 // 7 天的毫秒数
 
 export default function AgeConfirmationModal() {
   // 定义一个状态变量，用于控制模态框的显示与隐藏
@@ -95,7 +95,7 @@ export default function AgeConfirmationModal() {
                 {/* 模态框的标题 */}
                 <DialogTitle
                   as="h3"
-                  className="select-none text-center text-lg font-medium leading-6 text-gray-900 dark:text-gray-300"
+                  className="select-none text-center text-lg font-bold leading-6 text-gray-900 dark:text-gray-300"
                 >
                   [ Warning ]
                 </DialogTitle>

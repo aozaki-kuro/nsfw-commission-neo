@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun run pre-build && next --turbo",
+    "dev": "bun run pre-build && next",
     "pre-build": "bun run scripts/convert.ts && bun run scripts/imageImport.ts",
     "dl": "bun run scripts/dl.ts",
     "build": "bun run pre-build && next build",
