@@ -4,8 +4,10 @@ import { SiteMeta } from '#components/main/siteMeta'
 import './globals.css'
 
 /* Custom Font */
+import { IBM_Plex_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
+/**
 const inter = localFont({
   variable: '--font-inter',
   display: 'block',
@@ -23,6 +25,7 @@ const inter = localFont({
     },
   ],
 })
+ */
 
 const menlo = localFont({
   variable: '--font-menlo',
@@ -37,11 +40,19 @@ const menlo = localFont({
   ],
 })
 
+const plexSans = IBM_Plex_Sans({
+  variable: '--font-plex-sans',
+  display: 'block',
+  style: 'normal',
+  weight: ['400', '600'],
+  subsets: ['latin'],
+})
+
 export const metadata = SiteMeta
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${menlo.variable} font-sans`}>
+    <html lang="en" className={`${plexSans.variable} ${menlo.variable} font-sans`}>
       <body className="mx-auto min-h-screen max-w-[80rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected ss:pb-16 ss:pt-7 ss:text-sm md:mx-4 md:min-h-dynamic dark:bg-back-dark">
         {children}
       </body>

@@ -10,22 +10,8 @@ const config: Config = {
       md: { max: '674px' },
     },
     fontFamily: {
-      sans: [
-        'var(--font-inter)',
-        {
-          fontFeatureSettings: "'cpsp' 1, 'dlig' 1, 'cv01' 1, 'cv02', 'cv03' 1, 'cv04' 1",
-          fontVariationSettings: "'common-ligatures','contextual'",
-        },
-      ],
-      mono: [
-        'var(--font-menlo)',
-        'Menlo',
-        'Monaco',
-        'Consolas',
-        'Liberation Mono',
-        'Courier New',
-        'monospace',
-      ],
+      sans: ['var(--font-plex-sans)'],
+      mono: ['var(--font-menlo)'],
     },
     container: {
       center: true,
