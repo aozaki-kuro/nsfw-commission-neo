@@ -3,10 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    font-variation-settings: 'wght' 450;
-  }
-
   /* Headings and Strong */
 
   h1 {
@@ -17,18 +13,6 @@
   h2 {
     font: bold;
     @apply text-[1.5em] font-bold text-p-light md:text-[1.4em] dark:text-highlight;
-  }
-
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-variation-settings: 'wght' 600;
-  }
-
-  b,
-  strong {
-    font-variation-settings: 'wght' 600;
   }
 
   /* Article Main Font color */
@@ -47,7 +31,7 @@
   a {
     text-underline-position: from-font;
     text-decoration-skip-ink: all;
-    @apply font-medium underline decoration-dec-light decoration-1 transition-opacity hover:opacity-70 dark:decoration-dec-dark;
+    @apply font-medium underline decoration-dec-light decoration-1 underline-offset-1 transition-opacity hover:opacity-70 dark:decoration-dec-dark;
   }
 }
 
@@ -59,14 +43,6 @@
   body {
     @apply antialiased;
   }
-}
-
-/*=========================*/
-/*      Article Style      */
-/*=========================*/
-
-.dark {
-  font-variation-settings: 'wght' 400;
 }
 
 /*=========================*/

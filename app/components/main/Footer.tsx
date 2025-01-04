@@ -22,11 +22,11 @@ const Footer = () => {
 
       {/* The dates, name and DMCA */}
       <small className="block pt-24 text-p-light md:pb-10 dark:text-gray-300">
-        <time>2022 - {new Date().getFullYear()}</time> © Crystallize
+        <time className="tracking-tight">2022 - {new Date().getFullYear()}</time> © Crystallize
         <div className="float-right">
           <Link
             href="mailto:dmca@crystallize.cc"
-            className="decoration-inherit decoration-dotted dark:text-gray-300"
+            className="decoration-inherit decoration-dotted underline-offset-2 dark:text-gray-300"
           >
             DMCA
           </Link>

@@ -81,7 +81,7 @@ const Update = () => {
               <p key={index} className="mr-2">
                 {/* 显示格式化日期并创建指向对应角色的链接 */}
                 {formattedDate} {'[ '}
-                <Link href={linkId} className="underline-offset-[0.1rem]">
+                <Link href={linkId} className="underline-offset-2">
                   {Character}
                 </Link>
                 {' ]'}
