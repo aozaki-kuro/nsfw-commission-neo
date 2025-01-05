@@ -33,7 +33,7 @@ export const metadata = SiteMeta
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${plexSans.variable} ${menlo.variable} font-sans`}>
-      <body className="ss:pb-16 ss:pt-7 ss:text-sm mx-auto min-h-screen max-w-[70rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected md:mx-4 md:min-h-dynamic dark:bg-back-dark">
+      <body className="mx-auto min-h-screen max-w-[70rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected ss:pb-16 ss:pt-7 ss:text-sm md:mx-4 md:min-h-dynamic dark:bg-back-dark">
         {children}
       </body>
       <Analytics />
