@@ -7,26 +7,6 @@ import './globals.css'
 import { IBM_Plex_Sans } from 'next/font/google'
 import localFont from 'next/font/local'
 
-/**
-const inter = localFont({
-  variable: '--font-inter',
-  display: 'block',
-  style: 'normal',
-  src: [
-    {
-      path: './components/fonts/InterDisplay-roman.var.woff2',
-      weight: '100',
-      style: 'normal',
-    },
-    {
-      path: './components/fonts/InterDisplay-roman.var.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-  ],
-})
- */
-
 const menlo = localFont({
   variable: '--font-menlo',
   display: 'block',
@@ -53,7 +33,7 @@ export const metadata = SiteMeta
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${plexSans.variable} ${menlo.variable} font-sans`}>
-      <body className="mx-auto min-h-screen max-w-[80rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected ss:pb-16 ss:pt-7 ss:text-sm md:mx-4 md:min-h-dynamic dark:bg-back-dark">
+      <body className="ss:pb-16 ss:pt-7 ss:text-sm mx-auto min-h-screen max-w-[70rem] bg-back-light pb-32 pt-20 leading-[1.6] tracking-custom antialiased selection:bg-selected md:mx-4 md:min-h-dynamic dark:bg-back-dark">
         {children}
       </body>
       <Analytics />

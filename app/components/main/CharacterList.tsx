@@ -61,9 +61,9 @@ const CharacterList = () => {
   return (
     <aside
       id="Character List"
-      className="fixed left-[calc(50%+20rem)] top-52 ml-8 h-screen max-w-[20rem] md:hidden"
+      className="fixed left-[calc(50%+20rem)] top-52 h-screen w-full max-w-[15rem] md:hidden"
     >
-      <nav className="sticky top-4">
+      <nav className="sticky top-4 ml-8">
         <ul className="space-y-2">
           {allCharacters.map((character, index) => {
             const id = kebabCase(character.DisplayName)

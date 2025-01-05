@@ -5,9 +5,7 @@ const config: Config = {
   // darkMode: 'class',
   theme: {
     screens: {
-      ss: { max: '480px' },
-      sd: { max: '540px' },
-      md: { max: '674px' },
+      md: { max: '70rem' },
     },
     fontFamily: {
       sans: ['var(--font-plex-sans)'],
