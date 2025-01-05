@@ -5,6 +5,7 @@ const config: Config = {
   // darkMode: 'class',
   theme: {
     screens: {
+      ss: { max: '30rem' },
       md: { max: '70rem' },
     },
     fontFamily: {
