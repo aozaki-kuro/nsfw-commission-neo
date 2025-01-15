@@ -1,5 +1,5 @@
 import Analytics from '#components/Analytics'
-import { SiteMeta } from '#components/main/siteMeta'
+import { SiteMeta } from './siteMeta'
 
 import './globals.css'
 

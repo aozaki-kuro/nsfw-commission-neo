@@ -33,7 +33,7 @@ export const SiteMeta: Metadata = {
   applicationName: Site,
 
   icons: {
-    icon: { url: '/favicon/android-chrome-192x192.png' },
+    icon: { url: '/favicon.ico' },
     shortcut: ['/favicon/android-chrome-192x192.png'],
     apple: [
       { url: '/favicon/apple-touch-icon.png' },
