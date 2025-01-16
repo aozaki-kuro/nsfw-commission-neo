@@ -105,33 +105,20 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
     setIsStaleExpanded(prev => !prev)
   }, [])
 
-  // 动态生成 Active Characters 列表的类名
-  const activeListClass = useMemo(
-    () =>
-      `transform-gpu transition-transform duration-300 ease-in-out ${
-        isStaleExpanded
-          ? 'absolute inset-0 -translate-y-full opacity-0'
-          : 'translate-y-0 opacity-100'
-      }`,
-    [isStaleExpanded],
-  )
-
-  // 动态生成 Stale Characters 列表的类名
-  const staleListClass = useMemo(
-    () =>
-      `transform-gpu transition-transform duration-300 ease-in-out ${
-        isStaleExpanded
-          ? 'translate-y-0 opacity-100'
-          : 'absolute inset-0 translate-y-full opacity-0'
-      }`,
-    [isStaleExpanded],
-  )
+  // 动态生成 Active 和 Stale Characters 列表的类名
+  const listClasses = useMemo(() => {
+    const baseClass = 'transform-gpu transition-transform duration-300 ease-in-out'
+    return {
+      active: `${baseClass} ${isStaleExpanded ? 'absolute inset-0 -translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`,
+      stale: `${baseClass} ${isStaleExpanded ? 'translate-y-0 opacity-100' : 'absolute inset-0 translate-y-full opacity-0'}`,
+    }
+  }, [isStaleExpanded])
 
   return (
     <div className="relative">
       <div className="relative overflow-hidden">
         {/* Active Characters 列表 */}
-        <div className={activeListClass} style={{ willChange: 'transform, opacity' }}>
+        <div className={listClasses.active} style={{ willChange: 'transform, opacity' }}>
           {characterStatus.active.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
@@ -142,7 +129,7 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
         </div>
 
         {/* Stale Characters 列表 */}
-        <div className={staleListClass} style={{ willChange: 'transform, opacity' }}>
+        <div className={listClasses.stale} style={{ willChange: 'transform, opacity' }}>
           {characterStatus.stale.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
@@ -169,23 +156,16 @@ CharacterList.displayName = 'CharacterList'
 
 // MenuContent 组件，用于显示菜单内容
 const MenuContent = memo(({ open, close }: { open: boolean; close: () => void }) => {
-  // 使用 requestAnimationFrame 来优化 DOM 操作
+  // 当菜单打开时，禁止页面滚动
   useEffect(() => {
     const html = document.documentElement
-    const handleScroll = () => {
-      if (open) {
-        html.classList.add('overflow-hidden', 'touch-none')
-      } else {
-        html.classList.remove('overflow-hidden', 'touch-none')
-      }
+    if (open) {
+      html.classList.add('overflow-hidden', 'touch-none')
+    } else {
+      html.classList.remove('overflow-hidden', 'touch-none')
     }
-
-    requestAnimationFrame(handleScroll)
-
     return () => {
-      requestAnimationFrame(() => {
-        html.classList.remove('overflow-hidden', 'touch-none')
-      })
+      html.classList.remove('overflow-hidden', 'touch-none')
     }
   }, [open])
 
