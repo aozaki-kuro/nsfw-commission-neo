@@ -8,6 +8,11 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
+        fileName: '20250117',
+        Links: [''],
+        Description: 'The Harem',
+      },
+      {
         fileName: '20241203', // Bathroom stall
         Links: [
           'https://www.pixiv.net/artworks/124865992',
