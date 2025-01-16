@@ -8,12 +8,12 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
-        fileName: '20250117',
+        fileName: '20250117', // SEKAI-chan and her origins
         Links: [''],
         Description: 'The Harem',
       },
       {
-        fileName: '20241203', // Bathroom stall
+        fileName: '20241203', // Joucho in the Bathroom stall
         Links: [
           'https://www.pixiv.net/artworks/124865992',
           'https://www.patreon.com/posts/untitled-117218877',
