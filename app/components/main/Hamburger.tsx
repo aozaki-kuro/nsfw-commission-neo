@@ -5,7 +5,7 @@ import { characterStatus } from '#data/commissionStatus'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { Fragment, memo, useCallback, useEffect, useMemo, useState } from 'react'
+import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 // 定义 Character 接口，表示角色的基本信息
 interface Character {
@@ -99,26 +99,71 @@ interface CharacterListProps {
 // CharacterList 组件，用于显示角色列表
 const CharacterList = memo(({ close }: CharacterListProps) => {
   const [isStaleExpanded, setIsStaleExpanded] = useState(false)
+  const [isInitialRender, setIsInitialRender] = useState(true)
+  const activeListRef = useRef<HTMLDivElement>(null)
+  const staleListRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  // 切换 Stale Characters 列表的展开状态
+  // 使用 ResizeObserver 监听列表高度变化
+  useEffect(() => {
+    const activeList = activeListRef.current
+    const staleList = staleListRef.current
+    const container = containerRef.current
+
+    if (!activeList || !staleList || !container) return
+
+    const updateHeight = () => {
+      const height = isStaleExpanded ? staleList.scrollHeight : activeList.scrollHeight
+
+      // 初始渲染时直接设置高度，不需要过渡动画
+      if (isInitialRender) {
+        container.style.height = `${height}px`
+        setIsInitialRender(false)
+        return
+      }
+
+      // 使用 requestAnimationFrame 来优化动画性能
+      requestAnimationFrame(() => {
+        container.style.height = `${height}px`
+      })
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      requestAnimationFrame(updateHeight)
+    })
+
+    resizeObserver.observe(activeList)
+    resizeObserver.observe(staleList)
+
+    updateHeight()
+
+    return () => {
+      resizeObserver.disconnect()
+    }
+  }, [isStaleExpanded, isInitialRender])
+
   const toggleStaleList = useCallback(() => {
     setIsStaleExpanded(prev => !prev)
   }, [])
 
-  // 动态生成 Active 和 Stale Characters 列表的类名
-  const listClasses = useMemo(() => {
-    const baseClass = 'transform-gpu transition-transform duration-300 ease-in-out'
-    return {
-      active: `${baseClass} ${isStaleExpanded ? 'absolute inset-0 -translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`,
-      stale: `${baseClass} ${isStaleExpanded ? 'translate-y-0 opacity-100' : 'absolute inset-0 translate-y-full opacity-0'}`,
-    }
-  }, [isStaleExpanded])
-
   return (
     <div className="relative">
-      <div className="relative overflow-hidden">
+      <div
+        ref={containerRef}
+        className={`relative overflow-hidden will-change-[height]${
+          isInitialRender ? '' : 'transition-[height] duration-300 ease-out'
+        }`}
+      >
         {/* Active Characters 列表 */}
-        <div className={listClasses.active} style={{ willChange: 'transform, opacity' }}>
+        <div
+          ref={activeListRef}
+          className={`absolute left-0 right-0 w-full will-change-transform${
+            isInitialRender ? '' : 'transition-transform duration-300 ease-out'
+          } ${isStaleExpanded ? '-translate-y-full' : 'translate-y-0'}`}
+          style={{
+            visibility: isStaleExpanded ? 'hidden' : 'visible',
+          }}
+        >
           {characterStatus.active.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
@@ -129,7 +174,15 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
         </div>
 
         {/* Stale Characters 列表 */}
-        <div className={listClasses.stale} style={{ willChange: 'transform, opacity' }}>
+        <div
+          ref={staleListRef}
+          className={`absolute left-0 right-0 w-full will-change-transform${
+            isInitialRender ? '' : 'transition-transform duration-300 ease-out'
+          } ${isStaleExpanded ? 'translate-y-0' : 'translate-y-full'}`}
+          style={{
+            visibility: isStaleExpanded ? 'visible' : 'hidden',
+          }}
+        >
           {characterStatus.stale.map(character => (
             <MenuItem key={character.DisplayName} as={Fragment}>
               {({ active }: { active: boolean }) => (
@@ -140,10 +193,9 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
         </div>
       </div>
 
-      {/* 切换 Stale Characters 列表的按钮 */}
       <button
         onClick={toggleStaleList}
-        className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-2 font-mono hover:bg-white/70 dark:hover:bg-white/10"
+        className="mt-2 flex w-full cursor-pointer items-center justify-between rounded-lg px-4 py-2 font-mono transition-colors duration-150 hover:bg-white/70 dark:hover:bg-white/10"
         type="button"
       >
         <p className="font-bold text-gray-600 dark:text-gray-300">Stale Characters</p>
