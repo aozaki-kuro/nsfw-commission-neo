@@ -1,8 +1,6 @@
 'use client'
 import { useState } from 'react'
 
-import styles from './CryptoAddress.module.css'
-
 interface CryptoAddressProps {
   currencyName: string
   address: string
@@ -14,7 +12,7 @@ const CryptoAddress = ({ currencyName, address }: CryptoAddressProps) => {
   const copyToClipboard = async () => {
     await navigator.clipboard.writeText(address)
     setShowFeedback(true)
-    setTimeout(() => setShowFeedback(false), 2000) // Hide feedback after 2 seconds
+    setTimeout(() => setShowFeedback(false), 2000)
   }
 
   return (
@@ -29,7 +27,11 @@ const CryptoAddress = ({ currencyName, address }: CryptoAddressProps) => {
       >
         Click to copy
       </p>
-      {showFeedback && <span className={styles.feedbackAnimation}>Copied!</span>}
+      {showFeedback && (
+        <span className="ml-2.5 animate-fadeInOut font-mono text-sm font-bold text-green-600 md:text-xs">
+          Copied!
+        </span>
+      )}
     </li>
   )
 }

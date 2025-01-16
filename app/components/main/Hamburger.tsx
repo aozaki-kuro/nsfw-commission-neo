@@ -169,16 +169,23 @@ CharacterList.displayName = 'CharacterList'
 
 // MenuContent 组件，用于显示菜单内容
 const MenuContent = memo(({ open, close }: { open: boolean; close: () => void }) => {
-  // 当菜单打开时，禁止页面滚动
+  // 使用 requestAnimationFrame 来优化 DOM 操作
   useEffect(() => {
     const html = document.documentElement
-    if (open) {
-      html.classList.add('overflow-hidden', 'touch-none')
-    } else {
-      html.classList.remove('overflow-hidden', 'touch-none')
+    const handleScroll = () => {
+      if (open) {
+        html.classList.add('overflow-hidden', 'touch-none')
+      } else {
+        html.classList.remove('overflow-hidden', 'touch-none')
+      }
     }
+
+    requestAnimationFrame(handleScroll)
+
     return () => {
-      html.classList.remove('overflow-hidden', 'touch-none')
+      requestAnimationFrame(() => {
+        html.classList.remove('overflow-hidden', 'touch-none')
+      })
     }
   }, [open])
 

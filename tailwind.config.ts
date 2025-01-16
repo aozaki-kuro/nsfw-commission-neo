@@ -41,6 +41,15 @@ const config: Config = {
       letterSpacing: {
         custom: '0.005em',
       },
+      keyframes: {
+        fadeInOut: {
+          '0%, 100%': { opacity: '0' },
+          '30%, 70%': { opacity: '1' },
+        },
+      },
+      animation: {
+        fadeInOut: 'fadeInOut 2s',
+      },
     },
   },
   plugins: [],
