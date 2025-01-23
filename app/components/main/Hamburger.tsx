@@ -157,7 +157,7 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
         {/* Active Characters 列表 */}
         <div
           ref={activeListRef}
-          className={`absolute left-0 right-0 w-full will-change-transform${
+          className={`absolute right-0 left-0 w-full will-change-transform${
             isInitialRender ? '' : 'transition-transform duration-300 ease-out'
           } ${isStaleExpanded ? '-translate-y-full' : 'translate-y-0'}`}
           style={{
@@ -176,7 +176,7 @@ const CharacterList = memo(({ close }: CharacterListProps) => {
         {/* Stale Characters 列表 */}
         <div
           ref={staleListRef}
-          className={`absolute left-0 right-0 w-full will-change-transform${
+          className={`absolute right-0 left-0 w-full will-change-transform${
             isInitialRender ? '' : 'transition-transform duration-300 ease-out'
           } ${isStaleExpanded ? 'translate-y-0' : 'translate-y-full'}`}
           style={{
@@ -225,12 +225,12 @@ const MenuContent = memo(({ open, close }: { open: boolean; close: () => void })
     <>
       {/* 菜单打开时的背景遮罩 */}
       {open && (
-        <div className="fixed inset-0 z-20 bg-gray-200/10 backdrop-blur-sm dark:bg-gray-900/10" />
+        <div className="fixed inset-0 z-20 bg-gray-200/10 backdrop-blur-xs dark:bg-gray-900/10" />
       )}
 
       {/* 菜单按钮 */}
       <MenuButton
-        className="relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 shadow-[0_2px_8px_rgba(0,0,0,0.08)] ring-1 ring-black/5 backdrop-blur-[12px] transition-all duration-300 hover:bg-gray-100/80 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] focus:outline-none dark:bg-black/80 dark:text-white dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] dark:ring-white/10 dark:hover:bg-gray-900/80 dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
+        className="relative z-30 inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-gray-900 ring-1 shadow-[0_2px_8px_rgba(0,0,0,0.08)] ring-black/5 backdrop-blur-[12px] transition-all duration-300 hover:bg-gray-100/80 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] focus:outline-hidden dark:bg-black/80 dark:text-white dark:shadow-[0_2px_8px_rgba(0,0,0,0.2)] dark:ring-white/10 dark:hover:bg-gray-900/80 dark:hover:shadow-[0_4px_16px_rgba(0,0,0,0.3)]"
         style={{
           WebkitBackdropFilter: 'blur(12px)',
           backdropFilter: 'blur(12px)',
@@ -251,7 +251,7 @@ const MenuContent = memo(({ open, close }: { open: boolean; close: () => void })
         leaveTo="opacity-0 scale-95"
       >
         <MenuItems
-          className="absolute bottom-full right-4 z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 font-mono shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-lg focus:outline-none dark:bg-black/80"
+          className="absolute right-4 bottom-full z-40 mb-4 max-h-[calc(100vh-8rem)] w-64 origin-bottom-right overflow-y-auto rounded-xl border border-white/20 bg-white/80 font-mono shadow-[0_8px_30px_rgb(0,0,0,0.12)] backdrop-blur-lg focus:outline-hidden dark:bg-black/80"
           style={{
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
@@ -273,7 +273,7 @@ MenuContent.displayName = 'MenuContent'
 // Hamburger 组件，用于显示汉堡菜单
 const Hamburger = () => {
   return (
-    <Menu as="div" className="fixed bottom-8 right-8 hidden md:block">
+    <Menu as="div" className="fixed right-8 bottom-8 hidden md:block">
       {({ open, close }) => <MenuContent open={open} close={close} />}
     </Menu>
   )

@@ -74,7 +74,7 @@ export const createLinks = ({ links, designLink }: CreateLinksProps) => {
     const marginClass = index > 0 ? 'ml-3 md:ml-2' : ''
     return (
       <span key={`${link.type}-${index}`} className={marginClass}>
-        <Link href={link.url} className="select-none underline-offset-2" target="_blank">
+        <Link href={link.url} className="underline-offset-2 select-none" target="_blank">
           {link.type}
         </Link>
       </span>
@@ -86,7 +86,7 @@ export const createLinks = ({ links, designLink }: CreateLinksProps) => {
     <span key="Design" className={mainLinkElements.length > 0 ? 'ml-3 md:ml-2' : ''}>
       <Link
         href={sanitizeUrl(designLink!)}
-        className="select-none underline-offset-2"
+        className="underline-offset-2 select-none"
         target="_blank"
       >
         Design

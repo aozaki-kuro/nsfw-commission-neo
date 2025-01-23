@@ -82,7 +82,7 @@ export default function AgeConfirmationModal() {
               leaveTo="opacity-0 scale-95"
             >
               {/* 模态框的内容面板 */}
-              <DialogPanel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-back-dark">
+              <DialogPanel className="dark:bg-back-dark w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 {/* 顶部的封面图片 */}
                 <Image
                   src={HeadImage}
@@ -95,13 +95,13 @@ export default function AgeConfirmationModal() {
                 {/* 模态框的标题 */}
                 <DialogTitle
                   as="h3"
-                  className="select-none text-center text-lg font-bold leading-6 text-gray-900 dark:text-gray-300"
+                  className="text-center text-lg leading-6 font-bold text-gray-900 select-none dark:text-gray-300"
                 >
                   [ Warning ]
                 </DialogTitle>
                 {/* 提示信息 */}
                 <div className="mt-2">
-                  <p className="select-none text-center text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-center text-sm text-gray-500 select-none dark:text-gray-400">
                     You have to be over 18 to view the contents.
                     <br />
                     Please <b>leave now</b> if you are under 18.

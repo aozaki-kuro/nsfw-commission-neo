@@ -1,18 +1,36 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.ts';
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
 
 @layer base {
   /* Headings and Strong */
 
   h1 {
     margin-bottom: 0.4em;
-    @apply text-[1.6em] font-bold text-p-light md:text-[1.6em] dark:text-highlight;
+    @apply text-p-light dark:text-highlight text-[1.6em] font-bold md:text-[1.6em];
   }
 
   h2 {
     font: bold;
-    @apply text-[1.5em] font-bold text-p-light md:text-[1.4em] dark:text-highlight;
+    @apply text-p-light dark:text-highlight text-[1.5em] font-bold md:text-[1.4em];
   }
 
   /* Article Main Font color */
@@ -23,7 +41,7 @@
   }
 
   hr {
-    @apply dark:!border-[#292c2d];
+    @apply dark:border-[#292c2d]!;
   }
 
   /* Link Styles */
@@ -31,7 +49,7 @@
   a {
     text-underline-position: from-font;
     text-decoration-skip-ink: all;
-    @apply font-medium underline decoration-dec-light decoration-1 underline-offset-1 transition-opacity hover:opacity-70 dark:decoration-dec-dark;
+    @apply decoration-dec-light dark:decoration-dec-dark font-medium underline decoration-1 underline-offset-1 transition-opacity hover:opacity-70;
   }
 }
 
@@ -58,7 +76,7 @@
 }
 
 .button-warning-general {
-  @apply inline-flex justify-center rounded-md border border-transparent px-4 py-2 font-mono text-xs font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  @apply inline-flex justify-center rounded-md border border-transparent px-4 py-2 font-mono text-xs font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2;
 }
 
 p,

@@ -61,7 +61,7 @@ const CharacterList = () => {
   return (
     <aside
       id="Character List"
-      className="fixed left-[calc(50%+20rem)] top-52 h-screen w-full max-w-[15rem] md:hidden"
+      className="fixed top-52 left-[calc(50%+20rem)] h-screen w-full max-w-[15rem] md:hidden"
     >
       <nav className="sticky top-4 ml-8">
         <ul className="space-y-2">
@@ -78,7 +78,7 @@ const CharacterList = () => {
                 className="relative pl-4 text-gray-700 hover:text-gray-900 dark:text-gray-200 dark:hover:text-white"
               >
                 <div
-                  className={`absolute left-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-gray-400 transition-all duration-300 ${
+                  className={`absolute top-1/2 left-0 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-gray-400 transition-all duration-300 ${
                     isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
                   }`}
                 />

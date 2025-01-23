@@ -48,7 +48,7 @@ const Support: NextPage = () => {
             address="0x128e6E0BC4ad6d4979A6C94B860Bef4a851eF01e"
           />
 
-          <p className="pb-6 pt-6 md:hidden md:pb-4">
+          <p className="pt-6 pb-6 md:hidden md:pb-4">
             Please click on the addresses to copy to clipboard.
           </p>
         </div>
@@ -59,7 +59,7 @@ const Support: NextPage = () => {
         <hr />
         <div className="pb-6 md:pb-4" />
 
-        <p className="pb-6 pt-4 md:pb-4">Thank you!</p>
+        <p className="pt-4 pb-6 md:pb-4">Thank you!</p>
 
         <p className="pb-6 md:pb-4">Please remember to follow and support the illustrators!</p>
 

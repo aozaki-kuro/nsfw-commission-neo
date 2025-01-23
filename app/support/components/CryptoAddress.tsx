@@ -28,7 +28,7 @@ const CryptoAddress = ({ currencyName, address }: CryptoAddressProps) => {
         Click to copy
       </p>
       {showFeedback && (
-        <span className="ml-2.5 animate-fadeInOut font-mono text-sm font-bold text-green-600 md:text-xs">
+        <span className="animate-fadeInOut ml-2.5 font-mono text-sm font-bold text-green-600 md:text-xs">
           Copied!
         </span>
       )}

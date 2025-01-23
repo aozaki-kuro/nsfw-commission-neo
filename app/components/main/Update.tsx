@@ -61,7 +61,7 @@ const Update = () => {
 
   // 渲染最新的委托作品信息
   return (
-    <div className="mb-4 mt-8 flex flex-col font-mono text-sm ss:text-xs md:mb-4 md:mt-6">
+    <div className="ss:text-xs mt-8 mb-4 flex flex-col font-mono text-sm md:mt-6 md:mb-4">
       {/* 显示当前的委托总数 */}
       <p className="mb-2">Currently {totalCommissions} commissions</p>
 
