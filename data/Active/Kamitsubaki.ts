@@ -70,6 +70,11 @@ export const Kamitsubaki: Props = [
 
       /* ================== Albemuth ================== */
       {
+        fileName: '20250124',
+        Links: [''],
+        Description: 'In a rush',
+      },
+      {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
         Design: 'https://twitter.com/yoneyamai/status/1726414184596775337/',
