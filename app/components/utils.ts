@@ -26,10 +26,11 @@ export function parseDateString(dateStr: string): Date | null {
   const month = parseInt(dateStr.slice(4, 6), 10) - 1 // 月份索引从 0 开始
   const day = parseInt(dateStr.slice(6, 8), 10)
 
-  const date = new Date(year, month, day)
+  // 使用 Date.UTC 来避免时区问题
+  const date = new Date(Date.UTC(year, month, day))
 
   // 检查日期是否有效
-  return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day
+  return date.getUTCFullYear() === year && date.getUTCMonth() === month && date.getUTCDate() === day
     ? date
     : null
 }
