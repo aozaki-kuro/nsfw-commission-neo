@@ -6,6 +6,14 @@ export const Nishe: Props = [
     Character: 'Kanaut Nishe',
     Commissions: [
       /* ================== 2025 ================== */
+      {
+        fileName: '20250124_中村六翅',
+        Links: [
+          'https://twitter.com/NakamuraRohane/status/1882724652516245966/',
+          'https://www.pixiv.net/artworks/126524958',
+          'https://www.patreon.com/posts/yin-hai-du-120672448',
+        ],
+      },
       /* ================== 2024 ================== */
       {
         fileName: '20241230_Q (part 2)',
