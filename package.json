@@ -11,7 +11,8 @@
     "prod": "bun run dl && bun run pre-build && next build",
     "start": "next start",
     "lint": "eslint --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "clean": "rm -rf .next node_modules out .wrangler && bun i"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
