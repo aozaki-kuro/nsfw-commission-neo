@@ -11,6 +11,7 @@ export const Nishe: Props = [
         Links: [
           'https://twitter.com/NakamuraRohane/status/1882724652516245966/',
           'https://www.pixiv.net/artworks/126524958',
+          'https://www.fanbox.cc/@nakamurarohane/posts/9262326',
           'https://www.patreon.com/posts/yin-hai-du-120672448',
         ],
       },
