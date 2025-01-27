@@ -71,7 +71,7 @@ export const Kamitsubaki: Props = [
       /* ================== Albemuth ================== */
       {
         fileName: '20250124',
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/126631198'],
         Description: 'In a rush',
       },
       {
