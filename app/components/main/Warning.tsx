@@ -114,7 +114,7 @@ export default function AgeConfirmationModal() {
                   <button
                     ref={confirmButtonRef} // 将按钮的引用传递给 ref
                     type="button"
-                    className="button-warning-general button-enter select-none"
+                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 font-mono text-xs font-medium text-blue-900 select-none hover:bg-blue-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={handleConfirmAge}
                   >
                     I am over 18
@@ -124,7 +124,7 @@ export default function AgeConfirmationModal() {
                   {/* “立即离开”按钮 */}
                   <button
                     type="button"
-                    className="button-warning-general button-leave"
+                    className="inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 font-mono text-xs font-medium text-red-900 hover:bg-red-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
                     onClick={handleLeave}
                   >
                     Leave Now

@@ -18,9 +18,7 @@
   ::file-selector-button {
     border-color: var(--color-gray-200, currentColor);
   }
-}
 
-@layer base {
   /* Headings and Strong */
 
   h1 {
@@ -49,7 +47,7 @@
   a {
     text-underline-position: from-font;
     text-decoration-skip-ink: all;
-    @apply decoration-dec-light dark:decoration-dec-dark font-medium underline decoration-1 underline-offset-1 transition-opacity hover:opacity-70;
+    @apply decoration-dec-light dark:decoration-dec-dark font-medium underline decoration-1 underline-offset-1 transition-opacity hover:opacity-70 dark:text-white;
   }
 }
 
@@ -61,29 +59,4 @@
   body {
     @apply antialiased;
   }
-}
-
-/*=========================*/
-/*      Warning Dialog     */
-/*=========================*/
-
-.button-leave {
-  @apply bg-red-100 text-red-900 hover:bg-red-200 focus-visible:ring-red-500;
-}
-
-.button-enter {
-  @apply bg-blue-100 text-blue-900 hover:bg-blue-200 focus-visible:ring-blue-500;
-}
-
-.button-warning-general {
-  @apply inline-flex justify-center rounded-md border border-transparent px-4 py-2 font-mono text-xs font-medium focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2;
-}
-
-p,
-span {
-  @apply text-p-light dark:text-gray-300;
-}
-
-a {
-  @apply dark:text-white;
 }
