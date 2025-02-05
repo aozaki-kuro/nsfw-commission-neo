@@ -8,6 +8,11 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
+        fileName: '20250205',
+        Links: [''],
+        Description: 'Luna',
+      },
+      {
         fileName: '20250117', // SEKAI-chan and her origins
         Links: ['https://www.pixiv.net/artworks/126314118'],
         Description: 'The Harem',
