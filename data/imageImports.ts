@@ -90,6 +90,7 @@ import A20250117 from '#images/webp/20250117.webp'
 import A20250124A from '#images/webp/20250124.webp'
 import A20250124B from '#images/webp/20250124_中村六翅.webp'
 import A20250205 from '#images/webp/20250205.webp'
+import A20250206 from '#images/webp/20250206_温野りょく.webp'
 
 export const imageImports = {
   '20201220_病ん太廊': A20201220,
@@ -182,4 +183,5 @@ export const imageImports = {
   '20250124': A20250124A,
   '20250124_中村六翅': A20250124B,
   '20250205': A20250205,
+  '20250206_温野りょく': A20250206,
 }
