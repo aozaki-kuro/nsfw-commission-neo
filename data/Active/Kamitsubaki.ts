@@ -9,7 +9,7 @@ export const Kamitsubaki: Props = [
       /* ================== Isekaijochou ================== */
       {
         fileName: '20250205',
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/127000490'],
         Description: 'Luna',
       },
       {
