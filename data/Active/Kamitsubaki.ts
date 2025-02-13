@@ -8,7 +8,7 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
-        fileName: '20250205',
+        fileName: '20250205', // Joucho in Luna
         Links: ['https://www.pixiv.net/artworks/127000490'],
         Description: 'Luna',
       },
@@ -74,11 +74,13 @@ export const Kamitsubaki: Props = [
       },
 
       /* ================== Albemuth ================== */
+      /*
       {
-        fileName: '20250124',
+        fileName: '20250124', // Albemuth after sex on stage
         Links: ['https://www.pixiv.net/artworks/126631198'],
         Description: 'In a rush',
       },
+       */
       {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
