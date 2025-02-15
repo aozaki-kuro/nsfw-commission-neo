@@ -74,13 +74,11 @@ export const Kamitsubaki: Props = [
       },
 
       /* ================== Albemuth ================== */
-      /*
       {
         fileName: '20250124', // Albemuth after sex on stage
         Links: ['https://www.pixiv.net/artworks/126631198'],
         Description: 'In a rush',
       },
-       */
       {
         fileName: '20240729', // Albemuth
         Links: ['https://www.pixiv.net/artworks/121113333'],
