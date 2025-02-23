@@ -9,7 +9,7 @@ export const Nayuta: Props = [
       /* ================== 2024 ================== */
       {
         fileName: '20241231_七市',
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/125754033'],
       },
       {
         fileName: '20241208',
