@@ -9,6 +9,7 @@ export const Lucia: Props = [
       {
         fileName: '20250225_七市',
         Links: [''],
+        Design: 'https://twitter.com/TKS_10ru/status/1866079796738056390/',
       },
       {
         fileName: '20250206_温野りょく',
