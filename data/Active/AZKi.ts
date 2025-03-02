@@ -6,6 +6,14 @@ export const AZKi: Props = [
     Character: 'AZKi',
     Commissions: [
       /* ================== 2025 ================== */
+      {
+        fileName: '20250302_Q (part 2)',
+        Links: ['https://www.pixiv.net/artworks/127793761'],
+      },
+      {
+        fileName: '20250302_Q (part 1)',
+        Links: ['https://www.pixiv.net/artworks/127793761'],
+      },
       /* ================== 2024 ================== */
       {
         fileName: '20240421_Gisyu (part 2)',
