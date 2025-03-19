@@ -9,7 +9,7 @@ export const Lucia: Props = [
       {
         fileName: '20250225_七市',
         Links: ['https://www.pixiv.net/artworks/127664461'],
-        Design: 'https://twitter.com/TKS_10ru/status/1866079796738056390/',
+        Design: 'https://files.catbox.moe/jzg8pe.jpg',
       },
       {
         fileName: '20250206_温野りょく',
