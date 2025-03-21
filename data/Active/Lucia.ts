@@ -7,10 +7,6 @@ export const Lucia: Props = [
     Commissions: [
       /* ================== 2025 ================== */
       {
-        fileName: '20250321_温野りょく',
-        Links: [''],
-      },
-      {
         fileName: '20250225_七市',
         Links: ['https://www.pixiv.net/artworks/127664461'],
         Design: 'https://files.catbox.moe/jzg8pe.jpg',

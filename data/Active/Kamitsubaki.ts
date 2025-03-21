@@ -8,6 +8,11 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
+        fileName: '20250322',
+        Links: [''],
+        Design: 'https://x.com/ritao_kamo/status/1894360728070701342',
+      },
+      {
         fileName: '20250205', // Joucho in Luna
         Links: ['https://www.pixiv.net/artworks/127000490'],
         Description: 'Luna',
