@@ -9,7 +9,7 @@ export const Kamitsubaki: Props = [
       /* ================== Isekaijochou ================== */
       {
         fileName: '20250322',
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/128498494'],
         Design: 'https://x.com/ritao_kamo/status/1894360728070701342',
       },
       {
