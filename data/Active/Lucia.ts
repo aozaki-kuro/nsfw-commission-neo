@@ -7,6 +7,10 @@ export const Lucia: Props = [
     Commissions: [
       /* ================== 2025 ================== */
       {
+        fileName: '20250403_ふにょ',
+        Links: [''],
+      },
+      {
         fileName: '20250403_七市',
         Links: ['https://www.pixiv.net/artworks/128959252'],
       },
