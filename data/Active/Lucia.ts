@@ -7,8 +7,8 @@ export const Lucia: Props = [
     Commissions: [
       /* ================== 2025 ================== */
       {
-        fileName: '20250429_ふにょ',
-        Links: ['https://www.pixiv.net/artworks/130440887'],
+        fileName: '20250429',
+        Links: ['https://nijie.info/view.php?id=689982'],
       },
       {
         fileName: '20250403_七市',
