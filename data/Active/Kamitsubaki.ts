@@ -8,7 +8,12 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
-        fileName: '20250322',
+        fileName: '20250602',
+        Links: [''],
+        Description: 'The Harem 2',
+      },
+      {
+        fileName: '20250322', // Joucho collab w/ green pantyhose
         Links: ['https://www.pixiv.net/artworks/128498494'],
         Design: 'https://x.com/ritao_kamo/status/1894360728070701342',
       },
