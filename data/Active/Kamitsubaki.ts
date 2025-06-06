@@ -9,7 +9,7 @@ export const Kamitsubaki: Props = [
       /* ================== Isekaijochou ================== */
       {
         fileName: '20250602',
-        Links: [''],
+        Links: ['https://www.pixiv.net/artworks/131255948'],
         Description: 'The Harem 2',
       },
       {
