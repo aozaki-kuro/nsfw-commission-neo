@@ -6,6 +6,10 @@ export const Nayuta: Props = [
     Character: 'n*yuta',
     Commissions: [
       /* ================== 2025 ================== */
+      {
+        fileName: '20250608_七市',
+        Links: [''],
+      },
       /* ================== 2024 ================== */
       {
         fileName: '20241231_七市',
