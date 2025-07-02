@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "nsfw-commission-neo",
+  "name": "nsfw-commission-workers",
   "compatibility_date": "2025-07-02",
   "vars": {
     "CF_PAGES": "true",
