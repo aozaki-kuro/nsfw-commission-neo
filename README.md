@@ -1,5 +1,11 @@
 # NSFW Commissions
 
-Don't look.
+This project now runs on **Astro** with Tailwind CSS v4.
 
-Personal use only
+## Development
+Run `bun run dev` to start the dev server.
+
+## Build
+Run `bun run build` to generate the static site.
+
+Personal use only.

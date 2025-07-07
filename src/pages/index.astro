@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/BaseLayout.astro'
+import { commissionData } from '../../data/commissionData'
+---
+
+<Layout>
+  <h1>NSFW Commissions</h1>
+  {commissionData.map(character => (
+    <section id={character.Character}>
+      <h2>{character.Character}</h2>
+      {character.Commissions.map(com => (
+        <p>{com.fileName}</p>
+      ))}
+    </section>
+  ))}
+</Layout>

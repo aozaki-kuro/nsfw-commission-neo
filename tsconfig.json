@@ -1,37 +1,10 @@
 {
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "inlineSourceMap": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noUnusedLocals": false,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "traceResolution": false,
-    "listEmittedFiles": false,
-    "listFiles": false,
-    "pretty": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["node"],
-    "typeRoots": ["./node_modules/@types", "./types"],
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "allowJs": true,
-    "noEmit": true,
-    "incremental": true,
-    "importHelpers": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
+    "types": ["astro/client"],
     "baseUrl": ".",
     "paths": {
       "#components/*": ["app/components/*"],
@@ -40,6 +13,6 @@
       "#data/*": ["data/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.astro"],
   "exclude": ["node_modules"]
 }
