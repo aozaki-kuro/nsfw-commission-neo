@@ -1,6 +1,5 @@
 'use client'
 import { findActiveSection, getAllCharacters, getSections, kebabCase } from '#components/utils'
-import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
 const CharacterList = () => {
@@ -82,12 +81,12 @@ const CharacterList = () => {
                     isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0'
                   }`}
                 />
-                <Link
+                <a
                   href={`#${id}`}
                   className="font-mono text-sm no-underline transition-colors duration-200"
                 >
                   {character.DisplayName}
-                </Link>
+                </a>
               </li>
             )
           })}

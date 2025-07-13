@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap');
+
+@font-face {
+  font-family: 'Menlo Custom';
+  src: url('../../app/components/fonts/Menlo-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+:root {
+  --font-menlo: 'Menlo Custom', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-plex-sans: 'IBM Plex Sans', sans-serif;
+}

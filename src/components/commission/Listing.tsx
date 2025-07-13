@@ -4,7 +4,6 @@ import Title from '#components/Title'
 import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import { imageImports } from '#data/imageImports'
-import Image from 'next/image'
 import IllustratorInfo from './IllustratorInfo'
 
 type ListingProps = {
@@ -54,12 +53,11 @@ const Listing = ({ Character }: ListingProps) => {
             <div key={index} id={elementId} className="pt-4">
               {/* 如果有图片资源，显示图片 */}
               {imageSrc && (
-                <Image
+                <img
                   src={imageSrc}
                   alt={altText}
                   width={1280}
                   height={525}
-                  placeholder="blur"
                   className="pointer-events-none select-none"
                   loading="lazy"
                 />

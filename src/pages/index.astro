@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/BaseLayout.astro';
+import Commission from '../components/commission';
+import CommissionDescription from '../components/main/Description';
+import Footer from '../components/main/Footer';
+import CharacterList from '../components/main/CharacterList';
+import Hamburger from '../components/main/Hamburger';
+import Warning from '../components/main/Warning';
+---
+<Layout>
+  <Warning />
+  <div class="relative mx-auto flex justify-center">
+    <div id="Main Contents" class="w-full max-w-[40rem]">
+      <CommissionDescription />
+      <Commission />
+      <Footer />
+    </div>
+    <CharacterList />
+  </div>
+  <Hamburger />
+</Layout>

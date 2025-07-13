@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 interface CreateLinksProps {
   links: string[]
@@ -74,9 +73,9 @@ export const createLinks = ({ links, designLink }: CreateLinksProps) => {
     const marginClass = index > 0 ? 'ml-3 md:ml-2' : ''
     return (
       <span key={`${link.type}-${index}`} className={marginClass}>
-        <Link href={link.url} className="underline-offset-2 select-none" target="_blank">
+        <a href={link.url} className="underline-offset-2 select-none" target="_blank">
           {link.type}
-        </Link>
+        </a>
       </span>
     )
   })
@@ -84,13 +83,13 @@ export const createLinks = ({ links, designLink }: CreateLinksProps) => {
   // 如果有 designLink，需要根据当前已有链接数量决定是否加间距
   const designLinkElement = hasDesign ? (
     <span key="Design" className={mainLinkElements.length > 0 ? 'ml-3 md:ml-2' : ''}>
-      <Link
+      <a
         href={sanitizeUrl(designLink!)}
         className="underline-offset-2 select-none"
         target="_blank"
       >
         Design
-      </Link>
+      </a>
     </span>
   ) : null
 

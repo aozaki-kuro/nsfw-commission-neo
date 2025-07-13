@@ -1,7 +1,6 @@
 // #components/commission/IllustratorInfo.tsx
 import { kebabCase, parseAndFormatDate } from '#components/utils'
 import { Commission } from '#data/types'
-import Link from 'next/link'
 import { createLinks } from './CreateLinks'
 
 type IllustratorInfoProps = {
@@ -34,9 +33,9 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
       {/* 左侧信息块：包含日期、创作者、描述 */}
       <div className="flex items-center">
         <span className="mr-16 select-none md:mr-6">
-          <Link href={linkId} className="text-p-light no-underline dark:text-gray-300!">
+          <a href={linkId} className="text-p-light no-underline dark:text-gray-300!">
             <time>{formattedDate}</time>
-          </Link>
+          </a>
         </span>
 
         <div className="flex items-center">

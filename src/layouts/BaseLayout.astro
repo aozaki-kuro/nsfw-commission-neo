@@ -1,0 +1,16 @@
+---
+import Analytics from '../components/Analytics';
+import '../styles/fonts.css';
+import '../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="en" class="font-sans">
+  <head>
+    <meta charset="utf-8" />
+    <title>NSFW Commissions</title>
+  </head>
+  <body class="bg-back-light tracking-custom selection:bg-selected ss:pb-16 ss:pt-7 ss:text-sm md:min-h-dynamic dark:bg-back-dark mx-auto min-h-screen max-w-[70rem] pt-20 pb-32 leading-[1.6] antialiased md:mx-4">
+    <slot />
+    <Analytics />
+  </body>
+</html>
