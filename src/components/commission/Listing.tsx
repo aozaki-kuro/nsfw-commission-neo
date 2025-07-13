@@ -4,7 +4,6 @@ import Title from '#components/Title'
 import { kebabCase } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import { imageImports } from '#data/imageImports'
-import Image from 'next/image'
 import IllustratorInfo from './IllustratorInfo'
 
 type ListingProps = {
@@ -46,6 +45,11 @@ const Listing = ({ Character }: ListingProps) => {
 
           // 获取对应的图片资源
           const imageSrc = imageImports[fileName as keyof typeof imageImports]
+          // 在不同构建工具下，图片导入可能是字符串或对象
+          const imgUrl =
+            typeof imageSrc === 'string'
+              ? imageSrc
+              : (imageSrc as any).src ?? (imageSrc as any).default ?? ''
 
           // 生成元素的锚点 ID
           const elementId = `${kebabCase(Character)}-${illustDate}`
@@ -53,13 +57,12 @@ const Listing = ({ Character }: ListingProps) => {
           return (
             <div key={index} id={elementId} className="pt-4">
               {/* 如果有图片资源，显示图片 */}
-              {imageSrc && (
-                <Image
-                  src={imageSrc}
+              {imgUrl && (
+                <img
+                  src={imgUrl}
                   alt={altText}
                   width={1280}
                   height={525}
-                  placeholder="blur"
                   className="pointer-events-none select-none"
                   loading="lazy"
                 />

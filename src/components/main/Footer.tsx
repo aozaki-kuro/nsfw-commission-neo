@@ -1,4 +1,3 @@
-import Link from 'next/link'
 
 const Footer = () => {
   return (
@@ -24,12 +23,12 @@ const Footer = () => {
       <small className="text-p-light block pt-24 md:pb-10 dark:text-gray-300">
         <time className="tracking-tight">2022 - {new Date().getFullYear()}</time> © Crystallize
         <div className="float-right">
-          <Link
+          <a
             href="mailto:dmca@crystallize.cc"
             className="decoration-inherit decoration-dotted underline-offset-2 dark:text-gray-300"
           >
             DMCA
-          </Link>
+          </a>
         </div>
       </small>
     </div>

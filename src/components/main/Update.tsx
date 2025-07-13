@@ -8,7 +8,6 @@ import {
 } from '#components/utils'
 import { commissionData } from '#data/commissionData'
 import { Commission } from '#data/types'
-import Link from 'next/link'
 
 /**
  * 扩展 Commission 类型，添加 Character 属性。
@@ -81,9 +80,9 @@ const Update = () => {
               <p key={index} className="mr-2">
                 {/* 显示格式化日期并创建指向对应角色的链接 */}
                 {formattedDate} {'[ '}
-                <Link href={linkId} className="underline-offset-2">
+                <a href={linkId} className="underline-offset-2">
                   {Character}
-                </Link>
+                </a>
                 {' ]'}
               </p>
             )

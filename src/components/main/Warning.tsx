@@ -1,7 +1,7 @@
 'use client'
 
 import { Dialog, DialogPanel, DialogTitle, Transition, TransitionChild } from '@headlessui/react'
-import Image from 'next/image'
+import React from 'react'
 import { Fragment, useEffect, useRef, useState } from 'react'
 
 import HeadImage from 'public/nsfw-cover-s.webp'
@@ -84,13 +84,11 @@ export default function AgeConfirmationModal() {
               {/* 模态框的内容面板 */}
               <DialogPanel className="dark:bg-back-dark w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                 {/* 顶部的封面图片 */}
-                <Image
+                <img
                   src={HeadImage}
                   alt="NSFW Commissions"
-                  quality={80}
-                  placeholder="blur"
                   className="mb-4 select-none"
-                  priority
+                  loading="eager"
                 />
                 {/* 模态框的标题 */}
                 <DialogTitle

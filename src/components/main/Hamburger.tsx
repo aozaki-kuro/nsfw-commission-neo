@@ -3,8 +3,7 @@
 import { kebabCase } from '#components/utils'
 import { characterStatus } from '#data/commissionStatus'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import React from 'react'
 import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 // 定义 Character 接口，表示角色的基本信息
@@ -61,32 +60,30 @@ interface ListItemProps {
 
 // ListItem 组件，用于显示单个角色项
 const ListItem = memo(({ character, isActive, close }: ListItemProps) => {
-  const router = useRouter()
 
   // 处理点击事件，关闭菜单并导航到对应角色的锚点
   const handleClick = useCallback(
     (e: React.MouseEvent) => {
       e.preventDefault()
       close()
-      router.push(`/#title-${kebabCase(character.DisplayName)}`)
+      window.location.hash = `title-${kebabCase(character.DisplayName)}`
     },
-    [character.DisplayName, close, router],
+    [character.DisplayName, close],
   )
 
   // 生成角色的锚点链接
   const href = useMemo(() => `/#title-${kebabCase(character.DisplayName)}`, [character.DisplayName])
 
   return (
-    <Link
+    <a
       href={href}
       onClick={handleClick}
-      prefetch
       className={`${
         isActive ? 'bg-white/70 dark:bg-white/10' : ''
       } group flex w-full items-center rounded-lg px-4 py-2 font-mono text-base text-gray-900 !no-underline transition-colors duration-150 hover:bg-white/70 dark:text-white dark:hover:bg-white/10`}
     >
       {character.DisplayName}
-    </Link>
+    </a>
   )
 })
 ListItem.displayName = 'ListItem'

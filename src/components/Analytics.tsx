@@ -1,4 +1,4 @@
-import Script from 'next/script'
+import React from 'react'
 
 const Analytics = () => {
   if (process.env.NODE_ENV === 'development') {
@@ -6,10 +6,10 @@ const Analytics = () => {
   }
 
   return (
-    <Script
+    <script
       data-domain="crystallize.cc"
       src="https://sight.crystallize.cc/app-links.js"
-      strategy="lazyOnload"
+      defer
     />
   )
 }
