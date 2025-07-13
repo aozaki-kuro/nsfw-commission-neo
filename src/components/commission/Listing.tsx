@@ -45,6 +45,11 @@ const Listing = ({ Character }: ListingProps) => {
 
           // 获取对应的图片资源
           const imageSrc = imageImports[fileName as keyof typeof imageImports]
+          // 在不同构建工具下，图片导入可能是字符串或对象
+          const imgUrl =
+            typeof imageSrc === 'string'
+              ? imageSrc
+              : (imageSrc as any).src ?? (imageSrc as any).default ?? ''
 
           // 生成元素的锚点 ID
           const elementId = `${kebabCase(Character)}-${illustDate}`
@@ -52,9 +57,9 @@ const Listing = ({ Character }: ListingProps) => {
           return (
             <div key={index} id={elementId} className="pt-4">
               {/* 如果有图片资源，显示图片 */}
-              {imageSrc && (
+              {imgUrl && (
                 <img
-                  src={imageSrc}
+                  src={imgUrl}
                   alt={altText}
                   width={1280}
                   height={525}
