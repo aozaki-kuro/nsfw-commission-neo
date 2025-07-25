@@ -4,7 +4,7 @@ import { SiteMeta } from './siteMeta'
 import './globals.css'
 
 /* Custom Font */
-import { IBM_Plex_Mono, IBM_Plex_Sans, Roboto_Mono } from 'next/font/google'
+import { IBM_Plex_Mono, IBM_Plex_Sans } from 'next/font/google'
 
 // import localFont from 'next/font/local'
 
@@ -23,7 +23,7 @@ const menlo = localFont({
 })
 **/
 
-const customMono = Roboto_Mono({
+const customMono = IBM_Plex_Mono({
   variable: '--font-custom-mono',
   display: 'block',
   style: 'normal',
