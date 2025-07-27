@@ -1,19 +1,27 @@
 {
   "name": "nsfw-commission-neo",
-  "author": "Crystallize",
   "version": "1.2.0",
   "private": true,
+  "author": "Crystallize",
   "scripts": {
-    "dev": "bun run pre-build && next dev --turbo",
-    "pre-build": "bun run scripts/convert.ts && bun run scripts/imageImport.ts",
-    "dl": "bun run scripts/dl.ts",
     "build": "bun run pre-build && next build",
-    "prod": "bun run dl && bun run pre-build && next build",
-    "start": "next start",
-    "lint": "eslint --fix",
-    "prepare": "husky",
     "clean": "rm -rf .next node_modules out .wrangler && bun i",
-    "deploy": "bun run prod && wrangler deploy"
+    "deploy": "bun run prod && wrangler deploy",
+    "dev": "bun run pre-build && next dev --turbo",
+    "dl": "bun run scripts/dl.ts",
+    "lint": "eslint --fix",
+    "pre-build": "bun run scripts/convert.ts && bun run scripts/imageImport.ts",
+    "prepare": "husky",
+    "prod": "bun run dl && bun run pre-build && next build",
+    "start": "next start"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,jsx,ts,tsx}": [
+      "bun lint"
+    ],
+    "*.{json,css,md,mdx,jsonc}": [
+      "bun prettier --write"
+    ]
   },
   "dependencies": {
     "@headlessui/react": "^2.2.6",
@@ -44,13 +52,5 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3",
     "wrangler": "^4.26.0"
-  },
-  "lint-staged": {
-    "*.{js,mjs,cjs,jsx,ts,tsx}": [
-      "bun lint"
-    ],
-    "*.{json,css,md,mdx,jsonc}": [
-      "bun prettier --write"
-    ]
   }
 }
