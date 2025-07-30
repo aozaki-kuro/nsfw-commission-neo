@@ -8,6 +8,10 @@ export const Kamitsubaki: Props = [
       //
       /* ================== Isekaijochou ================== */
       {
+        fileName: '20250730_白栎',
+        Links: ['https://twitter.com/BailiKoi'],
+      },
+      {
         fileName: '20250602',
         Links: ['https://www.pixiv.net/artworks/131255948'],
         Description: 'The Harem 2',
@@ -15,7 +19,7 @@ export const Kamitsubaki: Props = [
       {
         fileName: '20250322', // Joucho collab w/ green pantyhose
         Links: ['https://www.pixiv.net/artworks/128498494'],
-        Design: 'https://x.com/ritao_kamo/status/1894360728070701342',
+        Design: 'https://twitter.com/ritao_kamo/status/1894360728070701342',
       },
       {
         fileName: '20250205', // Joucho in Luna
