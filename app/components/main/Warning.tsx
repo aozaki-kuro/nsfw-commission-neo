@@ -86,7 +86,7 @@ export default function AgeConfirmationModal() {
                 {/* 顶部的封面图片 */}
                 <Image
                   src={HeadImage}
-                  alt="NSFW Commissions"
+                  alt="Commission Vault"
                   quality={80}
                   placeholder="blur"
                   className="mb-4 select-none"

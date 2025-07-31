@@ -9,7 +9,7 @@ import {
 import { commissionData } from '#data/commissionData'
 import { Commission } from '#data/types'
 
-const SITE_TITLE = "Crystallize's NSFW Commissions"
+const SITE_TITLE = "Crystallize's Commission Vault"
 const SITE_URL = 'https://crystallize.cc'
 
 interface CommissionWithFullName extends Commission {
@@ -70,7 +70,7 @@ function generateRssFeed(items: string[]): string {
       <channel>
         <title>${SITE_TITLE}</title>
         <link>${SITE_URL}</link>
-        <description>NSFW commission feed from Crystallize</description>
+        <description>Feed from Crystallize</description>
         <language>en-US</language>
         <webMaster>Crystallize</webMaster>
         <ttl>60</ttl>

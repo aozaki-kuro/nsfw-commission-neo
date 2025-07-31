@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-const Site = 'NSFW Commission'
+const Site = 'Commission Vault'
 const Description = 'The collection of commissioned NSFW illustrations / Do Not Repost'
 const TwitterCard = `https://img.crystallize.cc/nsfw-cover-s.webp`
 const CanonicalUrl = 'https://crystallize.cc'
