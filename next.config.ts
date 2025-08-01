@@ -56,22 +56,23 @@ const nextConfig: NextConfig = {
 
   output: 'export',
 
-  ...(process.env.CF_PAGES === 'true'
-    ? /*
-       * If true = Cloudflare Pages
-       */
-      {
-        /*
-         * bun run pre-build && bunx @cloudflare/next-on-pages
-         * Change output dir: .vercel/output/static
-         * Add compatibility flag: nodejs_compat
-         * Then you can disable output: 'export'
-         */
-        // output: 'export', // Use static output for Cloudflare Pages
-      }
-    : /*
+  // ...(process.env.CF_PAGES === 'true'
+  // ? /*
+  //   * If true = Cloudflare Pages
+
+  //  {
+  /*
+   * bun run pre-build && bunx @cloudflare/next-on-pages
+   * Change output dir: .vercel/output/static
+   * Add compatibility flag: nodejs_compat
+   * Then you can disable output: 'export'
+   */
+  // output: 'export', // Use static output for Cloudflare Pages
+  //  }
+  /*
+    : 
        * If false = Not Cloudflare Pages
-       */
+       
       {
         // Add headers when NOT on Cloudflare Pages
         async headers() {
@@ -82,7 +83,7 @@ const nextConfig: NextConfig = {
             },
           ]
         },
-      }),
+      }),*/
 }
 
 export default nextConfig

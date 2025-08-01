@@ -57,8 +57,8 @@ const Listing = ({ Character }: ListingProps) => {
                 <Image
                   src={imageSrc}
                   alt={altText}
-                  width={1280}
-                  height={525}
+                  width={640}
+                  height={263}
                   placeholder="blur"
                   className="pointer-events-none select-none"
                   loading="lazy"
