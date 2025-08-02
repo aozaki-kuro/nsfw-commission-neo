@@ -30,11 +30,11 @@ const IllustratorInfo = ({ commission, characterName }: IllustratorInfoProps) =>
   const hasBoth = hasCreator && hasDescription
 
   return (
-    <div className="text-p-light flex w-full flex-wrap items-center gap-y-2 font-mono text-sm md:text-xs dark:text-gray-300">
+    <div className="flex w-full flex-wrap items-center gap-y-2 font-mono text-sm text-gray-800 md:text-xs dark:text-gray-300">
       {/* 左侧信息块：包含日期、创作者、描述 */}
       <div className="flex items-center">
         <span className="mr-16 select-none md:mr-6">
-          <Link href={linkId} className="text-p-light no-underline dark:text-gray-300!">
+          <Link href={linkId} className="text-gray-800 no-underline dark:text-gray-300!">
             <time>{formattedDate}</time>
           </Link>
         </span>

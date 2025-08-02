@@ -23,19 +23,19 @@
 
   h1 {
     margin-bottom: 0.4em;
-    @apply text-p-light dark:text-highlight text-[1.6em] font-bold md:text-[1.6em];
+    @apply text-[1.6em] font-bold text-gray-800 md:text-[1.6em] dark:text-gray-100;
   }
 
   h2 {
     font: bold;
-    @apply text-p-light dark:text-highlight text-[1.5em] font-bold md:text-[1.4em];
+    @apply text-[1.5em] font-bold text-gray-800 md:text-[1.4em] dark:text-gray-100;
   }
 
   /* Article Main Font color */
 
   p,
   li {
-    @apply text-p-light dark:text-gray-300;
+    @apply text-gray-800 dark:text-gray-300;
   }
 
   hr {
@@ -47,7 +47,7 @@
   a {
     text-underline-position: from-font;
     text-decoration-skip-ink: all;
-    @apply decoration-dec-light dark:decoration-dec-dark font-medium underline decoration-1 underline-offset-1 transition-opacity hover:opacity-70 dark:text-white;
+    @apply font-medium underline decoration-gray-400 decoration-1 underline-offset-1 transition-opacity hover:opacity-70 dark:text-white dark:decoration-gray-600;
   }
 }
 
@@ -59,4 +59,19 @@
   body {
     @apply antialiased;
   }
+}
+
+@keyframes fadeInOut {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  30%,
+  70% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-out {
+  animation: fadeInOut 2s ease-in-out;
 }

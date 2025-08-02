@@ -20,8 +20,9 @@ const CommissionDescription = () => {
       </p>
       <p className="pt-6 md:pt-4">
         I am not an illustrator but someone who frequently commissions artworks. If you appreciate
-        the illustrations, please consider following and supporting the illustrators. You may also
-        consider to <Link href="/support">support my commission projects</Link>.
+        the illustrations, please consider following and supporting the illustrators.
+        <br />
+        You may also consider to <Link href="/support">support my commission projects</Link>.
       </p>
       <p className="pt-6 md:pt-4">
         If any illustrators or readers wish to get in touch, don&apos;t hesitate to reach out

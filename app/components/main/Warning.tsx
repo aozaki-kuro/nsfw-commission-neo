@@ -82,7 +82,7 @@ export default function AgeConfirmationModal() {
               leaveTo="opacity-0 scale-95"
             >
               {/* 模态框的内容面板 */}
-              <DialogPanel className="dark:bg-back-dark w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <DialogPanel className="w-full max-w-md overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all dark:bg-gray-950">
                 {/* 顶部的封面图片 */}
                 <Image
                   src={HeadImage}
