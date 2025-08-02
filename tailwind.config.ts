@@ -8,17 +8,6 @@ const config: Config = {
       ss: { max: '30rem' },
       md: { max: '70rem' },
     },
-    extend: {
-      keyframes: {
-        fadeInOut: {
-          '0%, 100%': { opacity: '0' },
-          '30%, 70%': { opacity: '1' },
-        },
-      },
-      animation: {
-        fadeInOut: 'fadeInOut 2s',
-      },
-    },
   },
   plugins: [],
 }
