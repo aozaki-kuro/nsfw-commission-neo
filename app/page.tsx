@@ -1,5 +1,4 @@
 import type { NextPage } from 'next'
-import RootLayout from './layout'
 
 // Main content
 import Commission from '#components/commission'
@@ -15,7 +14,7 @@ import Warning from '#components/main/Warning'
 
 const Home: NextPage = () => {
   return (
-    <RootLayout>
+    <>
       <Warning />
       <div className="relative mx-auto flex justify-center">
         <div id="Main Contents" className="w-full max-w-[40rem]">
@@ -26,7 +25,7 @@ const Home: NextPage = () => {
         <CharacterList />
       </div>
       <Hamburger />
-    </RootLayout>
+    </>
   )
 }
 
